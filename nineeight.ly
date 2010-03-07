@@ -1,7 +1,7 @@
 \version "2.12.2"
 
 \header {
-	title = "Ar Roman (?)"
+	title = "Ar Roman"
 	}
 
 %music pieces
