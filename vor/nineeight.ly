@@ -2,7 +2,7 @@
 
 \header {
 	title = "Aǧır Roman"
-	copyright = "3/8/10" % put date center bottom
+	copyright = "3/9/10" % put date center bottom
 	}
 
 %music pieces
@@ -42,18 +42,21 @@ melody = {
 	d8 e f g g16 aes aes g g f g g g g | }
 
 	\repeat volta 6 {
-	d8_\markup { \italic "speed up lots" } e f g g16 aes aes g g f g g g g | }
+	d8^\markup { \italic "open" } e_\markup { \italic "speed up lots" } f g g16 aes aes g g f g g g g | }
 	
-	\repeat volta 6 {
-	r2 r4 r4. | r2 r4 r4. }
+	\break \repeat volta 2 { r4_\markup { \italic "drums speed up and change feel" } r r8. r r4 | } 
+		   \repeat volta 2 { r2 r4 r4. }
 
 %the fast part
 	\set beatLength = #(ly:make-moment 1 8) \set beatGrouping = #'(2 2 2 3)
 	
 	\mark \default %F
-	g,8 \mark "SIGN" a b c d ees ees d c | g' g16 fis ees8 fis fis16 ees d ees d8 d16 d d d |
-	g,8[ r16 a] b8 c d ees ees d c | g' g16 fis ees8 fis fis16 ees d ees d8 d16 d d8 |
+  \repeat volta 2 {
+	\repeat volta 2 {
+	g,8 a b c d ees ees d c | g' g16 fis ees8 fis fis16 ees d ees d8 d16 d d d |
+	g,8[ r16 a] b8 c d ees ees d c | g' g16 fis ees8 fis fis16 ees d ees d8 d16 d d8 | }
 
+	\mark \default %G
 	fis16 g g g g8 g16 g g8 g16 g bes8 a16 a g8 | fis16 g g g g g g g g8 g16 g bes8 a g |
 	bes a g bes a g bes a g | fis g g fis fis16 fis fis fis fis8 fis16 fis fis8 |
 	
@@ -63,16 +66,25 @@ melody = {
 
 	c8. d16 ees8 fis g a bes a g | fis8. g16 a8 bes c d ees d c |
 	d,16 ees ees ees ees8 ees ees16 ees ees d fis8 g a |
-	fis16 ees fis g fis ees d ees d d d c d8 d16 d d8 | \mark "TO CODA"
+	fis16 ees fis g fis ees d ees d d d c d8 d16 d d8 | 
 	
-	\repeat volta 4 { c16 d d d d8 d ees fis fis ees d | }
-	\mark "DS AL CODA"
-	
-	\repeat volta 8 { \mark "solo (open)" <d a>4 <d a>8 <d a> <d a>4 <d a>8 <d a>4 }
-	\repeat volta 8 { \mark "solo (open)" 
-	<ees bes>8 <d a> <d a> <d a> <ees bes> <d a> <d a> <d a>16 <d a> <d a> <d a> }
+ }
+	\alternative {
+		{ 
+		  \repeat volta 4 { c16^\markup { \italic "4x" } d d d d8 d ees fis fis ees d^\markup "To F"| }
+		}
 
-	c8. d16 ees8 fis g a bes a g | fis8. g16 a8 bes b c d ees fis | d-^ r8 r4 r4 r4. |
+		{ \break	
+		  \repeat volta 8 { 
+		  	<d a>4^\markup { \italic "solo (open)" } <d a>8 <d a> <d a>4 <d a>8 <d a>4 }
+		  \repeat volta 8 { 
+			<ees bes>8^\markup { \italic "solo (open)" } <d a> <d a> <d a> 
+			<ees bes> <d a> <d a> <d a>16 <d a> <d a> <d a> }
+
+		  c8. d16 ees8 fis g a bes a g | fis8. g16 a8 bes b c d ees fis | d-^ r8 r4 r4 r4. |
+		  \bar "||"
+		}
+	}
 }
 }
 
