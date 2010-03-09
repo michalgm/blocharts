@@ -3,6 +3,7 @@
 \header {
 	title = "Amara Terra Mia"
 	composer = "Domenico Modugno"
+	copyright = "3/6/10"
 	}
 
 % music pieces
