@@ -1,7 +1,7 @@
 \version "2.12.1"
 
 \header {
-	title = ""
+	title = "El Quinto Regimiento"
 	composer = ""
 	copyright = "date of latest edits"
 	}
