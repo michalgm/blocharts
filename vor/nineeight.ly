@@ -7,7 +7,7 @@
 
 %music pieces
 melody = {
-\relative c'' { \time 9/8 \set beatLength = #(ly:make-moment 1 16) \set beatGrouping = #'(4 4 6 4)
+\relative c'' { \time 9/8 \set beatLength = #(ly:make-moment 1 16) \set beatGrouping = #'(4 4 6 4) \tempo 8=176
 	\mark \default %A
 	\repeat volta 2 {
 	a,4 c d16 ees ees d d c d d d d | }
@@ -48,7 +48,7 @@ melody = {
 		   \repeat volta 2 { r2 r4 r4. }
 
 %the fast part
-	\set beatLength = #(ly:make-moment 1 8) \set beatGrouping = #'(2 2 2 3)
+	\set beatLength = #(ly:make-moment 1 8) \set beatGrouping = #'(2 2 2 3) \tempo 8=264
 	
 	\mark \default %F
   \repeat volta 2 {
