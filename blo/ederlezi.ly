@@ -14,8 +14,24 @@ markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begi
 %part: melody
 melody = {
 	\relative c' { \key d \minor
-	r4 a8 b c a~ a g | g a a4 g16 f g8 f4 |
-	r4 <f a>8 <g bes> <g bes>4
+	\mark \default
+	r4 a'8 bes c a~ a g | g a a4 g16 f g8 f4 |
+	r4 <f a>8 <g bes> <g bes>4 <g bes>8 <e g> | 
+	<f a>4. <g bes>8 <e g>16 <d f> <e g>8 f4 |
+	r4 <e a>8 <g bes> <g bes>4 <g bes>8 <e g> | 
+	<f a>4. <g bes>8 \times 2/3 { <e g>8 <d f> <e g> } <d f>4
+	r4 <f a>8 <e g> <g bes> <g bes> <e g>4 |
+	<d f>8 <d f> <d f>2 f4 | \bar "||"
+
+	\mark \default
+	r4 <f a>8 <g bes> <a c> <g bes> <f a> <e g> |
+	<e g> <f a>~ <f a>4 \times 2/3 { <e g>8 <d f> <e g> } <d f>4 |
+	r4 <f a>8 <g bes> <g bes>4 <g bes>8 <e g> |
+	<f a>4. <g bes>8 <e g>16 <d f> <e g>8 <d f>4 |
+	r4 <f a>8 <g bes> <g bes>4 <g bes>8 <e g> |
+	<f a>4. <g bes>8 <e g>16 <d f> <e g>8  <d f>4 |
+	r4 <f a>8 <e g> <g bes> <g bes> <e g>4 | <d f>8 <d f>~ <d f>2 r4
+}
 }
 
 %part: bass
