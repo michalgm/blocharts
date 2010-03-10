@@ -20,7 +20,6 @@ melody = {
     g16 bes c d f2 g16 f d c | a4 c8. a16 r2 |
     g16 bes c d f2 g16 f d c | a4 c8. a16 r4 f'8 g~  |}
     \alternative {
-	% \override Score.RehearsalMark #'self-alignment-X = #RIGHT
 	{ g1~ | g1 \markdownright \mark \markup { \italic "fine"} | }
 	{ g1\repeatTie~ | g2. r8 a | \bar "||" } 
     }

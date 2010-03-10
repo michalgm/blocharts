@@ -3,10 +3,15 @@
 \header {
 	title = "BLO Second Line"
 	composer = "Josh Sperry"
+	copyright = "3/10/10"
 	}
+
+%place before mark to position it at bottom right
+markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
 
 
 % music pieces
+
 %part: melody
 melody = {
 	\relative c'' { \key c \minor
@@ -21,22 +26,21 @@ melody = {
 	<ees, g c>4 r r2 | <ees ges ces>4 r4 r2 | <d f bes>1~ | <d f bes>1 | }
 	\alternative {
 		{ <ees g c>4 r r2 | <ees ges bes>4 r4 r2 | <d f aes>1~ | <d f aes>1 | }
-		{ <ees g c>4 r r2 | <ees ges f'>4 r4 r2 | \mark "To Coda" <d f aes aes'>1~ | <d f aes aes'>1 | }
+		{ <ees g c>4 r r2 | <ees ges f'>4 r4 r2 | <d f aes aes'>1~ | <d f aes aes'>1^\markup "To Coda"  | }
 	}
 
-	\mark "Drums (open)"
-	\repeat volta 2 { r1 | }
+	\repeat volta 2 { \textLengthOn r1^\markup { \center-align "Drums (open)" } \textLengthOff | }
 
 	\mark Bridge
 	\repeat volta 2 {
 	r4 b'8 c d b c d | ees4 d8 ees r2 | r4 b8 c d b c d | aes4 b8 g r2 |
 	r4 b8 c d b c d | ees4 d8 ees r c d ees | f d ees f g ees f g | aes1~ }
-	aes1_\markup { \center-align D.C. al Coda } | \bar "||" 
+	aes1 | \bar "||" \markdownright \mark "D.C. al Coda"
 
 	\stopStaff s1 | \startStaff %blank bar
 
 	\mark \markup { \musicglyph #"scripts.coda" } 
-	<d,, f aes aes'>1~ | <d f aes aes'>8 r8 <d f aes'>4-^ r8 <des fis bes'>8-^ r4 | <ees g c'>-^ r4 r2 | \bar ".|"
+	<d,, f aes aes'>1~ | <d f aes aes'>8 r8 <d f aes'>4-^ r8 <des fis bes'>8-^ r4 | <ees g c'>-^ r4 r2 | \bar "||"
 
   }
 }
@@ -58,14 +62,14 @@ tenor = {
 	  }
 
 	\mark "Drums (open)"
-	\repeat volta 2 { r1 | }
+	\repeat volta 2 { \textLengthOn r1^\markup { \center-align "Drums (open)" } \textLengthOff | }
 
 	\mark Bridge
 	\repeat volta 2 {
 	  \repeat unfold 4 {
 		f4. f8~ f f f f | fis4. fis8~ fis fis fis fis | }
 	}
-	fis1_\markup { \center-align D.C. al Coda } | \bar "||"
+	fis1 | \bar "||" \markdownright \mark "D.C. al Coda"
 
 	\stopStaff s1 | \startStaff %blank bar
 
@@ -91,14 +95,14 @@ bass = {
 	  }
 
 	\mark "Drums (open)"
-	\repeat volta 2 { r1 | }
+	\repeat volta 2 { \textLengthOn r1^\markup { \center-align "Drums (open)" } \textLengthOff | }
 
 	\mark Bridge
 	\repeat volta 2 {
 	  \repeat unfold 4 {
 		bes4. f bes4 | b4. fis b4 | }
 	  }
-	  b2_\markup { \center-align D.C. al Coda } b4 b | \bar "||" 
+	  b2 b4 b | \bar "||" \markdownright \mark "D.C. al Coda"
 	
 	\stopStaff s1 | \startStaff %blank bar
 
@@ -114,6 +118,7 @@ bass = {
 
 
 \book { 
+  \paper { between-system-padding = #2 } %between-system-space = #2 }
   \header { poet = "Melody - C" }
     \score {
 	<<
@@ -140,9 +145,9 @@ bass = {
     }
 %    \words
 }
-%}
 
 
+%{
 \book { \header { poet = "Score" }
   \paper { #(set-paper-size "a4") }
     \score { 
@@ -163,7 +168,7 @@ bass = {
 }
 
 
-
+%{
 \book { \header { poet = "MIDI" }
 	\score {
 	  <<
