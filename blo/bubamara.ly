@@ -27,21 +27,21 @@ melody = {
 }
 
 %part: harmony
-harmony = {	% NOT DONE %
+harmony = {	
 \relative c'' { \key d \minor
     \mark \default
     \repeat volta 2 {
-    f4. g8 f4 e | bes8 bes4 f8 d2 | r8 f'4 f8 f e d cis | d2 bes |
-    r8 d4 bes8 g4 d' | d8 d4 cis8 d4 r | r8 e4 e8 f e dis e | }
+    f4. g8 f4 e | f8 f4 d8 a2 | r8 f'4 f8 f e d cis | d2 bes |
+    r8 d4 bes8 g4 cis | d8 d4 a8 f4 r | r8 g4 g8 a g fis g | }
     \alternative {
-	{ a4 bes a2 | }
-	{ r8 a4 bes8 a g f e | \bar "||" }
+	{ cis4 d cis2 | }
+	{ r8 cis4 d8 cis bes a e | \bar "||" }
     }
 
     \mark \default
     \repeat volta 2 {
-    d8 e f g a gis a4 | r8 d4 bes8 g4 r | r8 a4 f8 d4 r | 
-    g8 f e d cis d e f | d2. r4 |
+    f8 g a bes d d d4 | r8 g4 d8 bes4 r | r8 d4 a8 f4 r | 
+    bes8 a g f e f g a | f2. r4 |
     } 
 }
 }
@@ -74,6 +74,9 @@ bass = {
 	\new Staff {
 		\melody
 	}
+	\new Staff { 
+		\harmony
+	}
 	\new Staff { \clef bass
 		\bass
 	}
@@ -82,3 +85,22 @@ bass = {
 }
 
 
+
+
+\book { \header { poet = "MIDI" }
+    \score { 
+      << \tempo 4 = 180 
+\unfoldRepeats	\new Staff { 
+		\melody
+	}
+\unfoldRepeats	\new Staff { 
+		\harmony
+	}
+\unfoldRepeats	\new Staff { 
+		\bass
+	}
+      >> 
+    \midi { }
+  } 
+}
+%}
