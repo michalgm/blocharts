@@ -3,7 +3,8 @@
 \header {
 	title = "Ederlezi"
 	composer = "Trad. Roma"
-	copyright = "date of latest edits"
+	copyright = "3/10/10"
+%	tagline = "lilyponddd"
 	}
 
 %place a mark at bottom right
@@ -63,7 +64,19 @@ bass = {
 	
 	d4 r c r | f r f r | g r g r | bes r bes r | 
 	g r g r | d r c r | f r a cis | d r d, r |
+	
+	\mark \default 
+	\repeat volta 2 {
+	f r f r | g r g r |d r g r | d r g r | d r g r | }
+	\alternative {
+	  { bes r bes r | g r g r | f r a cis | d r d r | }
+	  { b1 | r | g4 r g r | f r a cis | d r d, r_\markup { \italic "fine" } | \bar "||" }
 	}
+
+	\mark \default
+	d r d r | cis8 d e4 r2 | d4 r e r | a r a r | cis,8 d e4 a,8 a a4 |
+	d r e r | a r a r | d,1~ | \bar ".|" \markdownright \mark "D.C. al Fine"
+}
 }
 
 %part: words
