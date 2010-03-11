@@ -25,7 +25,7 @@ melody = {
 
 %part: pahs
 pahs = { 
-	\relative c { \key f \major \time 3/4
+	\relative c' { \key f \major \time 3/4
 	r4 <a c> <a c> | r <a c> <a c> | r <a c> <a c> | r <a c> <a c> | 
 	r <a c> <a c> | r <a c> <a c> | r <a c> <a c> | r <a c> <a c> | 
 	r <g bes> <g bes> | r <g bes> <g bes> | 
@@ -84,6 +84,7 @@ changes = \chordmode {
 %layout
 #(set-default-paper-size "a5" 'landscape)
 
+%{
 \book { 
   \header { poet = "Bass - C" }
     \score {
@@ -96,8 +97,8 @@ changes = \chordmode {
     }
     \words
 }
+%}
 
-%{
 \book { \header { poet = "Score" }
   \paper { #(set-paper-size "a4") }
     \score { 
@@ -106,7 +107,7 @@ changes = \chordmode {
 	\new Staff { 
 		\melody
 	}
-	\new Staff { \clef bass
+	\new Staff { 
 		\pahs
 	}
 	\new Staff { \clef bass
