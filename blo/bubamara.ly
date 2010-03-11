@@ -66,12 +66,11 @@ bass = {
 
 %layout
 #(set-default-paper-size "a5" 'landscape)
-
 \book { 
  \paper { #(set-paper-size "a4") }
   \header { poet = "Score" }
     \score {
-	<<
+	<< \tempo 4 = 184
 	\new Staff {
 		\melody
 	}
