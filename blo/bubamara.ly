@@ -86,7 +86,7 @@ bass = {
 
 
 
-
+%{
 \book { \header { poet = "MIDI" }
     \score { 
       << \tempo 4 = 180 
