@@ -3,7 +3,7 @@
 \header {
 	title = "El Quinto Regimiento"
 	composer = ""
-	copyright = "date of latest edits"
+	copyright = "3/11/10"
 	}
 
 %place a mark at bottom right
@@ -63,6 +63,12 @@ harmonyTwo = {
 	}
 }
 
+%{ when combining melody and harmony, what order should they be in? 
+harmonyOne
+melody
+harmonyTwo
+%}
+
 %part: bass
 bass = {
 	\relative c { \time 3/4 \key f \minor
@@ -77,18 +83,16 @@ bass = {
 %layout
 #(set-default-paper-size "a5" 'landscape)
 
-%{
+
 \book { 
-  \header { poet = "Melody - C" }
-    \score {
-	<<
-%	\new ChordNames { \set chordChanges = ##t \changes }
-        \new Staff {
-		\melody
-	}
-	>>
+  \header { poet = "Harmony and stuff - C" }
+    \score { <<
+        \new Staff  
+		\context Voice = "A" \harmonyOne
+	  	\context Voice = "A" \melody
+		\context Voice = "A" \harmonyTwo
+	   >> 
     }
-%    \words
 }
 %}
 
@@ -131,7 +135,7 @@ bass = {
 }
 %}
 
-
+%{
 \book { \header { poet = "MIDI" }
     \score { 
       << \tempo 2 = 76 
