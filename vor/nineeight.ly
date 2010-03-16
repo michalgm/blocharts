@@ -2,7 +2,7 @@
 
 \header {
 	title = "Aǧır Roman"
-	copyright = "3/9/10" % put date center bottom
+	copyright = "3/15/10" % put date center bottom
 	}
 
 %music pieces
@@ -38,11 +38,11 @@ melody = {
 
 	\mark \default %E
 	\repeat volta 2 {
-	g8 f16 g f8 e?16 f \times 2/3 { f ees d } d ees d8 d16 d d c |
+	g8\mp f16 g f8 e?16 f \times 2/3 { f ees d } d ees d8 d16 d d c |
 	d8 e f g g16 aes aes g g f g g g g | }
 
 	\repeat volta 6 {
-	d8^\markup { \italic "open" } e_\markup { \italic "speed up lots" } f g g16 aes aes g g f g g g g | }
+	d8^\markup { \italic "4x" } e_\markup { \italic "speed up lots" } f g g16 aes aes g g f g g g g | }
 	
 	\break \repeat volta 2 { r4_\markup { \italic "drums speed up and change feel" } r r8. r r4 | } 
 		   \repeat volta 2 { r2 r4 r4. }
@@ -60,8 +60,8 @@ melody = {
 	fis16 g g g g8 g16 g g8 g16 g bes8 a16 a g8 | fis16 g g g g g g g g8 g16 g bes8 a g |
 	bes a g bes a g bes a g | fis g g fis fis16 fis fis fis fis8 fis16 fis fis8 |
 	
-	f?16 fis fis fis fis8 fis fis fis16 fis g8 fis ees |
-	fis16 fis fis fis fis8 fis16 fis fis fis fis fis g8 fis ees |
+	f?16 fis fis fis fis8 fis16 fis fis8 fis16 fis g8 fis ees |
+	fis16 fis fis fis fis fis fis fis fis8 fis16 fis g8 fis ees |
 	a g fis a g fis a g fis | ees fis fis ees ees4~ ees8 ees16 ees ees8 |
 
 	c8. d16 ees8 fis g a bes a g | fis8. g16 a8 bes c d ees d c |
@@ -76,10 +76,8 @@ melody = {
 
 		{ \break	
 		  \repeat volta 8 { 
-		  	<d a>4^\markup { \italic "solo (open)" } <d a>8 <d a> <d a>4 <d a>8 <d a>4 }
-		  \repeat volta 8 { 
-			<ees bes>8^\markup { \italic "solo (open)" } <d a> <d a> <d a> 
-			<ees bes> <d a> <d a> <d a>16 <d a> <d a> <d a> }
+			<ees bes'>8^\markup { \italic "solo (open)" } <d a'> <d a'> <d a'> 
+			<ees bes'> <d a'> <d a'> <d a'>16 <d a'> <d a'> <d a'> }
 
 		  c8. d16 ees8 fis g a bes a g | fis8. g16 a8 bes b c d ees fis | d-^ r8 r4 r4 r4. |
 		  \bar "||"
@@ -97,7 +95,7 @@ melody = {
 	}
 	}
 }
-%{
+
 \book { \header { poet = "Melody - Bb" }
 	\score {
 	\new Staff { \transpose c d
