@@ -6,6 +6,7 @@
 	}
 
 %music pieces
+%part: melody
 melody = {
 \relative c'' { \time 9/8 \set beatLength = #(ly:make-moment 1 16) \set beatGrouping = #'(4 4 6 4) \tempo 8=176
 	\mark \default %A
