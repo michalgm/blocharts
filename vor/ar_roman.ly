@@ -2,20 +2,18 @@
 
 \header {
 	title = "Aǧır Roman"
-	copyright = "3/15/10" % put date center bottom
+	copyright = "3/16/10" % put date center bottom
 	}
 
 %music pieces
 %part: melody
 melody = {
-\relative c'' { \time 9/8 \set beatLength = #(ly:make-moment 1 16) \set beatGrouping = #'(4 4 6 4) \tempo 8=176
+\relative c'' { \time 9/8 \set beatLength = #(ly:make-moment 1 16) \set beatGrouping = #'(4 4 6 4) 
+	\tempo 8=176
+	\set Score.markFormatter = #format-mark-box-letters
 	\mark \default %A
-	\repeat volta 2 {
-	a,4 c d16 ees ees d d c d d d d | }
-	\alternative {
-		{ a8 c d fis ees16 fis ees d d c d d d d | }
-		{ a8 c d fis ees16 fis ees d d c d d d8  | }
-	}
+	a,4 c d16 ees ees d d c d d d d | a8 c d fis ees16 fis ees d d c d d d d |
+	a4 c d16 ees ees d d c d d d d | a8 c d fis ees16 fis ees d d c d d d8 | \break
 	
 	\mark \default %B
 	\repeat volta 2 {
@@ -42,11 +40,11 @@ melody = {
 	g8\mp f16 g f8 e?16 f \times 2/3 { f ees d } d ees d8 d16 d d c |
 	d8 e f g g16 aes aes g g f g g g g | }
 
-	\repeat volta 6 {
+	\repeat volta 4 {
 	d8^\markup { \italic "4x" } e_\markup { \italic "speed up lots" } f g g16 aes aes g g f g g g g | }
 	
-	\break \repeat volta 2 { r4_\markup { \italic "drums speed up and change feel" } r r8. r r4 | } 
-		   \repeat volta 2 { r2 r4 r4. }
+	\repeat volta 2 { r4_\markup { \italic "drums speed up and change feel" } r r8. r r4 | } 
+	\repeat volta 2 { r2 r4 r4. }
 
 %the fast part
 	\set beatLength = #(ly:make-moment 1 8) \set beatGrouping = #'(2 2 2 3) \tempo 8=264
@@ -54,8 +52,8 @@ melody = {
 	\mark \default %F
   \repeat volta 2 {
 	\repeat volta 2 {
-	g,8 a b c d ees ees d c | g' g16 fis ees8 fis fis16 ees d ees d8 d16 d d d |
-	g,8[ r16 a] b8 c d ees ees d c | g' g16 fis ees8 fis fis16 ees d ees d8 d16 d d8 | }
+	g,8 a b c d ees ees d c | g' g16 fis ees8 fis fis16 ees d ees d8 d16 d d d | \break
+	g,8[ r16 a] b8 c d ees ees d c | g' g16 fis ees8 fis fis16 ees d ees d8 d16 d d8 | \break }
 
 	\mark \default %G
 	fis16 g g g g8 g16 g g8 g16 g bes8 a16 a g8 | fis16 g g g g g g g g8 g16 g bes8 a g |
@@ -87,30 +85,76 @@ melody = {
 }
 }
 
-%layout
+%part: changes
+changes = \chordmode { 
+	%A
+	d1 r8 | d1 r8 | d1 r8 | d1 r8 |
 
+	%B
+	d2.:m g4.:m | g2.:m d4.:m | d2.:m g4.:m | g2.:m d4.:m |  
+
+	%C
+	d2.:m g4.:m | d1:m7 r8 | g1 r8 | g2.:m d4.:m |
+
+	%D
+	g1 r8 | g1 r8 | g1 r8 | f2.:m g4. |
+
+	%E
+	g2. d4.:m | g1 r8 | g1 r8 | r1 r8 | r1 r8 |
+
+	%F is for fast
+	g1 r8 | g2 d r8 | g1 r8 | g2 d r8 | 
+
+	%G
+	g1 r8 | g1 r8 | g1 r8 | d1 r8 |
+	d1 r8 | d1 r8 | d1 r8 | c1:m r8 |
+	c1:m r8 | c1:dim r8 | c2.:m d4. | d1 r8 | d1 r8 | 
+}
+
+
+%layout
+%{
 \book { \header { poet = "Melody - C" }
-	\score {
+	\score { <<
+	\new ChordNames { \set chordChanges = ##t \changes }
 	\new Staff {	
 		\melody	
 	}
-	}
+	>> }
 }
-
+%}
+%{
 \book { \header { poet = "Melody - Bb" }
-	\score {
-	\new Staff { \transpose c d
+	\score { << 
+	\transpose c d \new ChordNames { \set chordChanges = ##t \changes }
+	\new Staff { \transpose c d 
 		\melody	
 	}
-	}
+	>> }
 }
 
 \book { \header { poet = "Melody - Eb" }
-    \score {
+    \score { <<
+	\transpose c a \new ChordNames { \set chordChanges = ##t \changes }
 	\new Staff { \transpose c a 	
 		\melody	
 	}
-    }
+	>> }
 }
 %}
 
+%{
+\book { \header { poet = "MIDI" }
+    \score { 
+      << \tempo 8 = 176 
+\unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"alto sax"
+		\melody
+	}
+\unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"tuba"
+		\bass
+	}
+      >> 
+    \midi { }
+  } 
+}
+%}
