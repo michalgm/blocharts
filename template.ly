@@ -60,7 +60,7 @@ changes = \chordmode { }
 
 
 \book { \header { poet = "Score" }
-  \paper { #(set-paper-size "a4") }
+  \paper { #(set-paper-size "letter") }
     \score { 
       << 
 %	\new ChordNames { \set chordChanges = ##t \changes }
