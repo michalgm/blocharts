@@ -3,7 +3,7 @@
 \header {
 	title = ""
 	composer = ""
-	copyright = "date of latest edits"
+	copyright = "" %date of latest edits
 	}
 
 %place a mark at bottom right
