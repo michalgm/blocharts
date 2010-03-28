@@ -15,16 +15,16 @@ markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begi
 melody = {
 	\relative c' { 
 		\repeat volta 2 {
-			r8 <f a d>16 <f a d> <f a d>8 <f a d>8 r8 <f a d>16 <f a d> <f a d>8 <f a d>8 |
+			r8^\markup { \italic "in Bb" } <f a d>16 <f a d> <f a d>8 <f a d>8 r8 <f a d>16 <f a d> <f a d>8 <f a d>8 |
 		}
 	}
 }
 
 %part: greg
 greg = {
-	\relative c'' {
+	\relative c' {
 		\repeat volta 2 {
-			d8[ r16 d] r8 d r a b cis |
+			d8^\markup { \italic "in Eb" } [ r16 d] r8 d r a b cis |
 		}
 	}
 }
@@ -83,10 +83,10 @@ changes = \chordmode { }
     \score { 
       << 
 %	\new ChordNames { \set chordChanges = ##t \changes }
-	\new Staff { 
+	\new Staff { \transpose c d
 		\melody
 	}
-	\new Staff { 
+	\new Staff { \transpose c a
 		\greg
 	}
 	\new Staff { \clef bass
