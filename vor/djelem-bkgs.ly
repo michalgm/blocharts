@@ -22,7 +22,7 @@ melody = {
 
 %part: greg
 greg = {
-	\relative c' {
+	\relative c'' {
 		\repeat volta 2 {
 			d8[ r16 d] r8 d r a b cis |
 		}
