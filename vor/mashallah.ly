@@ -9,6 +9,7 @@
 %place a mark at bottom right
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
 
+%{THIS IS THE SOLO BACKING.  IT NEEDS TO GET WORKED IN!%}
 
 % music pieces
 %part: melody
