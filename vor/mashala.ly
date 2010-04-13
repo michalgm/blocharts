@@ -1,7 +1,7 @@
 \version "2.12.1"
 
 \header {
-	title = "Masha'Allah"
+	title = "Mashala"
 %	composer = ""
 	copyright = "3/25/10"
 	}

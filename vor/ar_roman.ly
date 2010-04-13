@@ -1,7 +1,7 @@
 \version "2.12.1"
 
 \header {
-	title = "Aǧır Roman"
+	title = "Ar Roman: Oyun Avasi (9/8)"
 	copyright = "3/16/10" % put date center bottom
 	}
 
