@@ -2,19 +2,18 @@
 $lilydir = '/home/dameat/public_html/pondscum/blocharts/blo/';
 $keys = array('Eb'=>'a', 'Bb'=>'d', 'C'=>'c', 'F'=>'g');
 $clefs = array('treble', 'bass', 'alto', 'tenor');
-$layouts = array('letter'=>'"a4"', 'lyre'=>'"a5" \'landscape');
+$layouts = array('letter'=>'"letter"', 'lyre'=>'"a5" \'landscape');
 $octaves = array('+2'=> "''", '+1'=>"'", '0'=>'', "-1"=>',','-2'=>',,');
 $instruments = array('bass'=>'tuba', 'melody'=>'trumpet', 'tenor'=>'trombone', 'pahs'=>'trombone', 'riffTwo'=>'clarinet');
-function returnMidi($lily) { 
-	global $lilydir;
-}
 
 if($_GET['file']) {
 	$file = $_GET['file'];
+	if (substr($file, 0, 1) == "/" || strpos($file, '..') !== false) {
+		error('Invalid filename');
+	}
 	$lily = processFile($file);
 	$lily = buildLayout($lily);
-	$score = $lily[source].$lily[layout];
-	createOutput($file, $score);
+	createOutput($lily);
 	
 	#if($_GET['part'] == 'midi') { returnMidi($lily); }
 	if (strpos($score, 'changes')) {
@@ -22,9 +21,9 @@ if($_GET['file']) {
 	}
 	#createOutput($file, $score);
 } else {
-	$dir = opendir($lilydir);
-	$files = readdir($dir);
-	while (($file = readdir($dir)) !== false) {
+	header('Content-Type: text/html; charset=utf-8'); 
+	$dirh = opendir($lilydir);
+	while (($file = readdir($dirh)) !== false) {
 		$lily = processFile($file);
 		if ($lily) { 
 			printFileSelect($lily);
@@ -32,35 +31,51 @@ if($_GET['file']) {
 	}
 }
 
-function createOutput($filename, $contents) {
-	if ($_GET[part] == 'source') {
-		header('Content-type: text/html');
+function createOutput($lily) {
+	$part = $_GET[part];
+	$contents = $lily[source].$lily[layout];
+	$filename = $lily[file];
+	$outfile = str_replace(' ', '_', $lily[title]);
+	if ($part == 'source') {
+		header('Content-Type: text/html; charset=utf-8'); 
 		print "<pre>$contents</pre>";
 		exit;
 	}
+	if($part != 'midi') { $part = 'pdf'; }
 	$out = fopen("/tmp/$filename", 'w');
 	fwrite($out,$contents);
 	fclose($out);
-	$error = exec("lilypond -o /tmp/$filename /tmp/$filename", $output);
+	exec("lilypond -o /tmp/$filename /tmp/$filename 2>&1", $error);
 	if ($_GET['debug']) { print $contents; print "<hr>".$error."<hr>".join('<br>', $output); exit; }
-	if ($_GET[part] == 'midi') { 
+	if (!file_exists("/tmp/$filename.$part") || filesize("/tmp/$filename.$part") == 0) { 
+		error("Lilypond failed. Here is the output:<hr> ".implode("<br>", $error));
+	}
+	header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
+	header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
+	if ($part == 'midi') { 
 		header('Content-type: audio/midi');
-		header('Content-Disposition: attachment; filename="'.$filename.'.mid"');
+		header('Content-Disposition: attachment; filename="'.$outfile.'.mid"');
 		print file_get_contents("/tmp/$filename.midi");
-		#unlink("/tmp/$filename.midi");
+		unlink("/tmp/$filename.midi");
 	} else { 
+		if (!file_exists("/tmp/$filename.pdf")) { 
+			error("Lilypond failed: $error");
+		}
 		header('Content-type: application/pdf');
-		header('Content-Disposition: attachment; filename="downloaded-'.$key.'.pdf"');
+		header('Content-Disposition: attachment; filename="'.$outfile.'.pdf"');
 		print file_get_contents("/tmp/$filename.pdf");
-		#unlink("/tmp/$filename.pdf");
-		#unlink("/tmp/$filename.ps");
-		#unlink("/tmp/$filename");
+		unlink("/tmp/$filename.pdf");
+		unlink("/tmp/$filename.ps");
+		unlink("/tmp/$filename");
 	}	
 }
 
 function processFile($file) {
 	global $lilydir;
 	$lily = array();
+	if (!file_exists("$lilydir/$file")) { 
+		error("File $file does not exist");
+	}
 	if (preg_match('/.ly$/', $file)){
 		$score = file_get_contents("$lilydir/$file");
 		preg_match_all('/%Part: (\w+)/i', $score, $parts);
@@ -183,4 +198,9 @@ function getOctave($key, $part, $clef, $octave) {
 		}
 	}
 	return $octave;
+}
+
+function error($string) {
+	print "<b>An error occured:</b> $string";
+	exit;
 }

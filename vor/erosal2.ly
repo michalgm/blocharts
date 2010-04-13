@@ -22,7 +22,7 @@ melody = {
 	  | b c a4 a8 b gis4 | \times 2/3  { b8 a gis } a b gis gis f e | d d cis d e e d e | f f e f gis gis f gis | 
 	  \times 2/3  { b a gis } a b gis gis f gis | a gis f e e d e4 | \bar "||"
 		  
-	  \mark \markup { \box "A1" }
+	  \mark \markup { \box \bold "A1" }
 	  e8 f e4 e8 f e4 | e8 f e f gis gis gis f | 
 	  \times 2/3  { b a gis } gis4 \times 2/3 { b8 a gis } gis4 | \times 2/3  { b8 a gis } gis a b b b a | 
 	  b c a4 a8 b gis4 | \times 2/3  { b8 a gis } a b gis gis f e | 
@@ -51,7 +51,7 @@ melody = {
 	  \mark \default %D
 	  \repeat volta 2 {
 		  b'4 b8 b a gis f4 | gis gis8 gis f e d4 | gis gis8 gis f e d f | e e e d e f gis a | 
-		  r b b b a gis f4 | r8 gis gis gis f e d r | gis4 gis8 gis f e d f | e e e d e d e4 |
+		  r b b b a gis f4 | r8 gis gis gis f e d4 | gis gis8 gis f e d f | e e e d e d e4 |
 	  }
 
 	  \mark \default %E
@@ -97,266 +97,109 @@ melody = {
 }
 
 
-%part: tenor
+%p-art: tenor
 tenor = {
 \relative gis {
     \repeat volta 2 {
-	 \clef "bass" \key c \major \time 2/2 <gis b>1 | 
-	 <a b>1 | 
-	 <a c>1 | 
-	 R1 | 
-	 <gis b>1 | 
-	 <a b>1 | 
-	 <f b>1 | 
-	 R1 \bar "||"
+	 \clef "bass" \key c \major \time 2/2 <gis b>1 | <a b>1 | <a c>1 | R1 | <gis b>1 | <a b>1 | <f b>1 | R1 \bar "||" | 
 	 | 
+	 | \times 2/3  { r8 ^"1" r8 <gis b>16 <gis b>16 } <gis b>8 <gis b>8 \times 2/3 { r8 r8 <gis b>16 <gis b>16 } <gis b>8 <gis b>8 | | 
+	 \times 2/3  { r8 r8 <gis b>16 <gis b>16 } <gis b>8 <gis b>8 \times 2/3 { r8 r8 <gis b>16 <gis b>16 } <gis b>8 <gis b>8 | | 
+	 | r4 -"etc." <gis b>4 :16 r4 <gis b>4 :16 | | r4 <gis b>4 :16 r4 <gis b>4 :16 | | r4 <a c>4 :16 r4 <gis b>4 :16 | | r4 <a c>4 :16 r4 <gis b>4 :16 | | 
+	 r4 <f a>4 :16 r4 <f a>4 :16 | | r4 <f a>4 :16 r4 <f a>4 :16 | | r4 <f a>4 :16 r4 <gis b>4 :16 | | r4 <f a>4 :16 r4 <gis b>4 :16 \bar "||" | 
 	 | 
+	 | r4 ^"1" -"1" <gis b>4 :16 r4 <gis b>4 :16 | | r4 <gis b>4 :16 r4 <gis b>4 :16 | | r4 <gis b>4 :16 r4 <gis b>4 :16 | | 
+	 r4 <gis b>4 :16 r4 <gis b>4 :16 | | r4 <a c>4 :16 r4 <gis b>4 :16 | | r4 <a c>4 :16 r4 <gis b>4 :16 | | r4 <f a>4 :16 r4 <f a>4 :16 | | 
+	 r4 <f a>4 :16 r4 <f a>4 :16 | | r4 <f a>4 :16 r4 <gis b>4 :16 | | r4 <f a>4 :16 r4 <gis b>4 :16 \bar "||"
+	 \repeat volta 2 {
+	     | | | <e g>8 ^"1" r8 r4 r2 | | <e g>8 r8 r4 <g b>8 r8 r4 | | <a c>8 r8 r4 <gis b>8 r8 r4 | | <f a>8 r8 r4 <gis b>8 r8 r4 | | 
+	     <f a>8 r8 r4 r2 | | r4 <f a>4 :16 r4 <a c>4 :16 | | r4 <gis b>4 :16 r4 <a c>4 :16 | | r4 <a c>4 :16 r4 <gis b>4 :16 } | 
 	 | 
-	 \times 2/3  {
-	     r8 ^"1" r8 <gis b>16 <gis b>16 }
-	 <gis b>8 <gis b>8 \times 2/3 {
-	     r8 r8 <gis b>16 <gis b>16 }
-	 <gis b>8 <gis b>8 | 
+	 | r4 ^"1" <gis b>4 :16 r4 <gis b>4 :16 | | r4 <gis b>4 :16 r4 <gis b>4 :16 | | r4 <gis b>4 :16 r4 <gis b>4 :16 | | r4 <gis b>4 :16 r4 <gis b>4 :16 | 
 	 | 
-	 \times 2/3  {
-	     r8 r8 <gis b>16 <gis b>16 }
-	 <gis b>8 <gis b>8 \times 2/3 {
-	     r8 r8 <gis b>16 <gis b>16 }
-	 <gis b>8 <gis b>8 | 
-	 | 
-	 | 
-	 r4 -"etc." <gis b>4 :16 r4 <gis b>4 :16 | 
-	 | 
-	 r4 <gis b>4 :16 r4 <gis b>4 :16 | 
-	 | 
-	 r4 <a c>4 :16 r4 <gis b>4 :16 | 
-	 | 
-	 r4 <a c>4 :16 r4 <gis b>4 :16 | 
-	 | 
-	 r4 <f a>4 :16 r4 <f a>4 :16 | 
-	 | 
-	 r4 <f a>4 :16 r4 <f a>4 :16 | 
-	 | 
-	 r4 <f a>4 :16 r4 <gis b>4 :16 | 
-	 | 
-	 r4 <f a>4 :16 r4 <gis b>4 :16 \bar "||"
-	 | 
-	 | 
-	 | 
-	 r4 ^"1" -"1" <gis b>4 :16 r4 <gis b>4 :16 | 
-	 | 
-	 r4 <gis b>4 :16 r4 <gis b>4 :16 | 
-	 | 
-	 r4 <gis b>4 :16 r4 <gis b>4 :16 | 
-	 | 
-	 r4 <gis b>4 :16 r4 <gis b>4 :16 | 
-	 | 
-	 r4 <a c>4 :16 r4 <gis b>4 :16 | 
-	 | 
-	 r4 <a c>4 :16 r4 <gis b>4 :16 | 
-	 | 
-	 r4 <f a>4 :16 r4 <f a>4 :16 | 
-	 | 
-	 r4 <f a>4 :16 r4 <f a>4 :16 | 
-	 | 
-	 r4 <f a>4 :16 r4 <gis b>4 :16 | 
-	 | 
-	 r4 <f a>4 :16 r4 <gis b>4 :16 \bar "||"
+	 r4 <gis b>4 :16 r4 <gis cis>4 :16 | <f a>8 r8 r4 <a c>8 r8 r4 | | <gis b>8 r8 r4 <a c>8 r8 r4 | | <gis b>8 r8 r4 <f a>8 r8 r4 | | 
+	 <f a>8 r8 r4 r2 | | r4 <a c>4 :16 r4 <gis b>4 :16 | | <f a>8 r8 r4 r2 | | <f a>8 r8 r4 <a c>8 r8 r4 | | 
+	 <gis b>8 r8 r4 <a c>8 r8 r4 | | <gis b>8 r8 r4 <f a>8 r8 r4 | | <f a>8 r8 r4 r2 | | r4 <a c>4 :16 r4 <gis b>4 :16 \bar "||"
 	 \repeat volta 2 {
 	     | 
-	     | 
-	     | 
-	     <e g>8 ^"1" r8 r4 r2 | 
-	     | 
-	     <e g>8 r8 r4 <g b>8 r8 r4 | 
-	     | 
-	     <a c>8 r8 r4 <gis b>8 r8 r4 | 
-	     | 
-	     <f a>8 r8 r4 <gis b>8 r8 r4 | 
-	     | 
-	     <f a>8 r8 r4 r2 | 
-	     | 
-	     r4 <f a>4 :16 r4 <a c>4 :16 | 
-	     | 
-	     r4 <gis b>4 :16 r4 <a c>4 :16 | 
-	     | 
-	     r4 <a c>4 :16 r4 <gis b>4 :16 }
-	 | 
-	 | 
-	 | 
-	 r4 ^"1" <gis b>4 :16 r4 <gis b>4 :16 | 
-	 | 
-	 r4 <gis b>4 :16 r4 <gis b>4 :16 | 
-	 | 
-	 r4 <gis b>4 :16 r4 <gis b>4 :16 | 
-	 | 
-	 r4 <gis b>4 :16 r4 <gis b>4 :16 | 
-	 | 
-	 r4 <gis b>4 :16 r4 <gis cis>4 :16 | 
-	 <f a>8 r8 r4 <a c>8 r8 r4 | 
-	 | 
-	 <gis b>8 r8 r4 <a c>8 r8 r4 | 
-	 | 
-	 <gis b>8 r8 r4 <f a>8 r8 r4 | 
-	 | 
-	 <f a>8 r8 r4 r2 | 
-	 | 
-	 r4 <a c>4 :16 r4 <gis b>4 :16 | 
-	 | 
-	 <f a>8 r8 r4 r2 | 
-	 | 
-	 <f a>8 r8 r4 <a c>8 r8 r4 | 
-	 | 
-	 <gis b>8 r8 r4 <a c>8 r8 r4 | 
-	 | 
-	 <gis b>8 r8 r4 <f a>8 r8 r4 | 
-	 | 
-	 <f a>8 r8 r4 r2 | 
-	 | 
-	 r4 <a c>4 :16 r4 <gis b>4 :16 \bar "||"
+	     | | r4 ^"Solos" <gis b>4 :16 r4 <gis b>4 :16 | | r4 <gis b>4 :16 r4 <f a>4 :16 | | r4 <gis b>4 :16 r4 <f a>4 :16 | | 
+	     r4 <gis b>4 :16 r4 <gis b>4 :16 | | r4 <gis b>4 :16 r4 <gis b>4 :16 | | r4 <gis b>4 :16 r4 <gis b>4 :16 | | r4 <gis b>4 :16 r4 <f a>4 :16 | 
+	     | r4 <f a>4 :16 r4 <gis b>4 :16 }
 	 \repeat volta 2 {
 	     | 
-	     | 
-	     | 
-	     r4 ^"Solos" <gis b>4 :16 r4 <gis b>4 :16 | 
-	     | 
-	     r4 <gis b>4 :16 r4 <f a>4 :16 | 
-	     | 
-	     r4 <gis b>4 :16 r4 <f a>4 :16 | 
-	     | 
-	     r4 <gis b>4 :16 r4 <gis b>4 :16 | 
-	     | 
-	     r4 <gis b>4 :16 r4 <gis b>4 :16 | 
-	     | 
-	     r4 <gis b>4 :16 r4 <gis b>4 :16 | 
-	     | 
-	     r4 <gis b>4 :16 r4 <f a>4 :16 | 
-	     | 
-	     r4 <f a>4 :16 r4 <gis b>4 :16 }
-	 \repeat volta 2 {
-	     | 
-	     \mark \markup { \musicglyph #"scripts.segno" } | 
-	     | 
-	     r4 ^"Solos" <gis b>4 :16 r4 <gis b>4 :16 | 
-	     | 
-	     r4 <gis b>4 :16 r4 <gis b>4 :16 }
-	 \alternative { {
-	         | 
-	         | 
-	         r4 <g c>4 :16 r4 <g b>4 :16 | 
-	         | 
-	         r4 <a c>4 :16 r4 <gis b>4 :16 }
-	     {
-	         | 
-	         | 
-	         e'8 d8 r8 c8 r8 b8 r8 a8 }
-	     } | 
+	     \mark \markup { \musicglyph #"scripts.segno" } | | r4 ^"Solos" <gis b>4 :16 r4 <gis b>4 :16 | | r4 <gis b>4 :16 r4 <gis b>4 :16 }
+	 \alternative { { | | r4 <g c>4 :16 r4 <g b>4 :16 | | r4 <a c>4 :16 r4 <gis b>4 :16 }
+	     { | | e'8 d8 r8 c8 r8 b8 r8 a8 } } | 
 	 | 
 	 r4 <gis b>4 :16 r4 <gis b>4 :16 }
     \repeat volta 2 {
 	 | 
-	 | 
-	 a,8 ^"To Coda" ^"Solos" c8 r8 d8 r8 es8 r8 d8 | 
-	 d4 r4 r2 | 
-	 a8 c8 r8 d8 r8 es8 r8 d8 | 
-	 d4 r4 r2 }
+	 | a,8 ^"To Coda" ^"Solos" c8 r8 d8 r8 es8 r8 d8 | d4 r4 r2 | a8 c8 r8 d8 r8 es8 r8 d8 | d4 r4 r2 }
     \repeat volta 2 {
-	 | 
-	 | 
-	 r4 ^"each section open" <g bes>4 :16 r4 <fis a>4 :16 | 
-	 r4 <g bes>4 :16 r4 <fis a>4 :16 | 
-	 r4 <g bes>4 :16 r4 <fis a>4 :16 | 
-	 r4 <es g>4 :16 r4 <fis a>4 :16 | 
-	 \times 2/3  {
-	     d8 d8 d8 }
-	 \times 2/3  {
-	     es8 es8 es8 }
-	 \times 2/3  {
-	     fis8 fis8 fis8 }
-	 \times 2/3  {
-	     g8 g8 g8 }
-	 | 
-	 r4 <g c>4 :16 r4 <g bes>4 :16 | 
-	 r4 <g bes>4 :16 r4 <g bes>4 :16 }
-    \alternative { {
-	     | 
-	     r4 <g bes>4 :16 r4 <fis a>4 :16 | 
-	     r4 <es g>4 :16 r4 <fis a>4 :16 }
-	 {
-	     | 
-	     r4 <a c>4 :16 r4 <gis b>4 :16 }
-	 } | 
+	 | | r4 ^"each section open" <g bes>4 :16 r4 <fis a>4 :16 | r4 <g bes>4 :16 r4 <fis a>4 :16 | r4 <g bes>4 :16 r4 <fis a>4 :16 | r4 <es g>4 :16 r4 <fis a>4 :16 | 
+	 \times 2/3  { d8 d8 d8 } \times 2/3  { es8 es8 es8 } \times 2/3  { fis8 fis8 fis8 }
+	 \times 2/3  { g8 g8 g8 } | r4 <g c>4 :16 r4 <g bes>4 :16 | r4 <g bes>4 :16 r4 <g bes>4 :16 }
+    \alternative { { | r4 <g bes>4 :16 r4 <fis a>4 :16 | r4 <es g>4 :16 r4 <fis a>4 :16 }
+	 { | r4 <a c>4 :16 r4 <gis b>4 :16 } } | 
     r4 <f a>4 :16 r4 <gis b>4 :16 \bar "||"
     \repeat volta 4 {
 	 | 
-	 | 
-	 \times 2/3  {
-	     r8 -"Solos" r8 <e gis>16 -"each section open" <e gis>16 ]
-	     }
-	 <e gis>8 <e gis>8 \times 2/3 {
-	     r8 r8 <e gis>16 <e gis>16 }
-	 <e gis>8 <e gis>8 }
+	 | \times 2/3  { r8 -"Solos" r8 <e gis>16 -"each section open" <e gis>16 ] } <e gis>8 <e gis>8 \times 2/3 { r8 r8 <e gis>16 <e gis>16 } <e gis>8 <e gis>8 }
     \repeat volta 4 {
-	 | 
-	 \times 2/3  {
-	     r8 r8 <d fis>16 <d fis>16 }
-	 <d fis>8 <d fis>8 \times 2/3 {
-	     r8 r8 <d fis>16 <d fis>16 }
-	 <d fis>8 <d fis>8 }
-    | 
-    \times 2/3  {
-	 c4 c4 c4 }
-    \times 2/3  {
-	 c4 c4 c4 }
-    | 
-    \times 2/3  {
-	 c4 c4 c4 }
-    c4 c4 \repeat volta 4 {
-	 | 
-	 \times 2/3  {
-	     r8 r8 <d fis>16 <d fis>16 }
-	 <d fis>8 <d fis>8 \times 2/3 {
-	     r8 r8 <d fis>16 <d fis>16 }
-	 <d fis>8 <d fis>8 }
-    \repeat volta 4 {
-	 | 
-	 \times 2/3  {
-	     r8 r8 <e gis>16 <e gis>16 }
-	 <e gis>8 <e gis>8 \times 2/3 {
-	     r8 r8 <e gis>16 <e gis>16 }
-	 <e gis>8 <e gis>8 }
-    | 
-    R1 \bar "||"
+	 | \times 2/3  { r8 r8 <d fis>16 <d fis>16 } <d fis>8 <d fis>8 \times 2/3 { r8 r8 <d fis>16 <d fis>16 } <d fis>8 <d fis>8 } | 
+    \times 2/3  { c4 c4 c4 } \times 2/3  { c4 c4 c4 } | \times 2/3  { c4 c4 c4 } c4 c4 
+	\repeat volta 4 {
+	 | \times 2/3  { r8 r8 <d fis>16 <d fis>16 } <d fis>8 <d fis>8 \times 2/3 { r8 r8 <d fis>16 <d fis>16 } <d fis>8 <d fis>8 }
+    \repeat volta 4 { | \times 2/3  { r8 r8 <e gis>16 <e gis>16 } <e gis>8 <e gis>8 \times 2/3 { r8 r8 <e gis>16 <e gis>16 } <e gis>8 <e gis>8 }
+    | R1 \bar "||"
     | 
     | 
     \mark \markup { \musicglyph #"scripts.coda" } d8 ^"D.S. al Coda" e8
-    r8 f8 r8 gis8 r8 e8 | 
-    f8 gis8 r8 a8 r8 b8 r8 gis8 | 
-    a8 b8 r8 c8 r8 d8 r8 f8 | 
-    e4 r4 <e, gis>2 ~ ~ | 
-    <e gis>2 r2 \bar "|."
+    r8 f8 r8 gis8 r8 e8 | f8 gis8 r8 a8 r8 b8 r8 gis8 | a8 b8 r8 c8 r8 d8 r8 f8 | e4 r4 <e, gis>2 ~ ~ | <e gis>2 r2 \bar "|."
     }
 
 
 }
 
 %part: changes
-changes = \chordmode { }
+changes = \chordmode { 
+  e1 | f:5- | d:m | r | e | f:5- | b:m/d | r |
+
+  %A
+  e | e | e | e | a2:m e | f e | d:m d:m/cis | d:m/c d:m/b | f e | d:m e |
+  %A1
+  e1 | e | e | e | a2:m e | f e | d:m d:m/cis | d:m/c d:m/b | f e | d:m e |
+  %B
+  c1 | c2 g | a:m e:7 | d:m e:7 | d1:m | d2:m a:m | e:7 f | d:m f |
+  %C
+  e1 | e | e | e | e2. e4:/cis | d2:m a:m | e a:m | e d:m | f1 | f2 e | 
+  d1 | d2:m a:m | e a:m | e d:m | f1 | f2 e |
+  %D
+  e1 | e2 d:m | e d:m | e1 | e | e | e2 d:m | d:m e |
+  %E
+  e1 | e | c2 g | a:m e | e1 | e |
+  %F
+  r1 | r | r | r |
+  %G
+  g2:m d | g:m d | ees d | c:m d | r1 | c2:m g:m | g:m ees| ees d | c:m d | f e | d:m e |
+  %solos
+  e1 | d | c:dim | s | 
+  %coda
+  r | r | r | r | r2 e2 | e2 r2 | 
+}
 
 %layout
-
 
 \book { 
   \header { poet = "Melody - C" }
     \score {
 	<<
-%	\new ChordNames { \set chordChanges = ##t \changes }
-	 \new Staff {
+	\new ChordNames { \set chordChanges = ##t \changes }
+	\new Staff {
 		\melody
 	}
 	>>
     }
-%    \words
 }
 %}
 

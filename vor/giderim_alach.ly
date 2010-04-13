@@ -1,7 +1,7 @@
 \version "2.12.1"
 
 \header {
-	title = "Gideri(?) Masha'Allah"
+	title = "Masha'Allah"
 %	composer = ""
 	copyright = "3/25/10"
 	}
@@ -174,7 +174,7 @@ changes = \chordmode {
 %{
 \book { \header { poet = "MIDI" }
     \score { 
-      << \tempo 4 = 100 
+      << \tempo 4 = 90 
 \unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"alto sax"
 		\melody
 	}

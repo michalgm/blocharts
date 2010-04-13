@@ -54,7 +54,6 @@ melody = {
 
 }
 }
-
 %part: tenor
 tenor = {
 	\relative c { \key d \minor

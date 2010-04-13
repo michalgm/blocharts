@@ -43,8 +43,8 @@ harmony = {
 	bes bes r bes r bes r c | r c r bes c4 bes8 c | bes4. a8~ a2~ | a2 r8 d, f g | 
 	a a r a r a r a | r g r g g4 a8 g | f1~ | f2 r |
 	bes8 bes r bes r c r bes | d2~ d8 c bes c | bes4. a8~ a2~ | a2. r4 |
-	bes8 bes r bes r c r bes | d2~ d8 c e c | bes4. a8~ a2~ | a2. r4 |
-	g8 g r g g4 g | bes8 bes r bes bes4 a8 bes | g2. d'8 d | cis1 | \bar "||"
+	bes8 bes r bes r c r bes | d2~ d8 c c c | bes4. a8~ a2~ | a2. r4 |
+	g8 g r g g4 g | bes8 bes r bes bes4 a8 bes | g2. cis8 d | cis1 | \bar "||"
 
 	\mark \default
 	d8 r r4 c8 r r4 | bes8 r r a8 r a cis4 | d8 r r4 c8 r r4 | bes8 r r a8 r a cis4 |
@@ -123,7 +123,7 @@ changes = \chordmode { }
 %{
 \book { \header { poet = "MIDI" }
     \score { 
-      << \tempo 4 = 152 
+      << \tempo 4 = 184
 \unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"alto sax"
 		\melody
 	}

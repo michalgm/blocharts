@@ -14,16 +14,16 @@ markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begi
 %part: melody
 melody = {
 	\relative c' { 
-		\repeat volta 2 {
+		\repeat volta 48 {
 			r8^\markup { \italic "in Bb" } <f a d>16 <f a d> <f a d>8 <f a d>8 r8 <f a d>16 <f a d> <f a d>8 <f a d>8 |
 		}
 	}
 }
 
-%part: greg
-greg = {
+%part: bari
+bari = {
 	\relative c' {
-		\repeat volta 2 {
+		\repeat volta 48 {
 			d8^\markup { \italic "in Eb" } [ r16 d] r8 d r a b cis |
 		}
 	}
@@ -32,7 +32,7 @@ greg = {
 %part: bass
 bass = {
 	\relative c {
-		\repeat volta 2 {
+		\repeat volta 48 {
 			d,8[ r16 f] a8 f a[ r16 f] a8 e |
 		}
 	}

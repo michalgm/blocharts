@@ -16,11 +16,15 @@ Ciganko Moja
 
 De Colores
 	- working
+	- music done
 
 Dog Eat Dog
 	- done
 
 Ederlezi
+	- music done
+	- final formatting
+	- force new chord at 1st double bar
 
 Got That Fire
 
@@ -37,6 +41,7 @@ Merry Blues
 Mizerlou
 
 Moliendo Cafe
+	- working
 
 No Agreement
 
