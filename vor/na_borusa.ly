@@ -1,128 +1,161 @@
-
-\version "2.12.2"
-% automatically converted from Naborusa2.xml
+\version "2.12.1"
 
 \header {
-    encodingsoftware = "Finale 2008 for Windows"
-    tagline = "Finale 2008 for Windows"
-    encodingdate = "2010-03-18"
 	title = "Na Borusa Sa Sinefa"
-    }
+	composer = "Traditional?"
+	copyright = "4/13/10" %date of latest edits
+	}
 
-#(set-global-staff-size 20.5767485433)
-\paper {
-    paper-width = 21.59\cm
-    paper-height = 27.93\cm
-    top-margin = 1.59\cm
-    botton-margin = 1.59\cm
-    left-margin = 2.53\cm
-    right-margin = 1.27\cm
-    between-system-space = 2.19\cm
-    page-top-space = 1.27\cm
-    }
-\layout {
-    \context { \Score
-        autoBeaming = ##f
-        }
-    }
-PartPOneVoiceOne =  \relative f {
-    \clef "bass" \key f \minor \time 4/4 | % 1
-    f8 -"Bass" [ r16 c16 ] r8 es8 r16 f8 [ f16 ] c8 [ es8 ] | % 2
-    f8 [ r16 c16 ] r8 es8 r16 f8 [ f16 ] c8 -"etc." [ es8 ] \bar "||"
+%place a mark at bottom right
+markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
+
+%FIX BASS LEAD-INS
+
+
+
+
+
+% music pieces
+%part: melody
+melody = { 
+  \relative c {
     \repeat volta 2 {
-        | % 3
-        \clef "treble" | % 3
-        f'8. [ f16 ~ ] f8 [ f8 ] f'4 es8 [ des8 ] | % 4
-        | % 4
-        c16 [ des16 r16 es16 ~ ] es2. | % 5
-        | % 5
-        ges,8. [ ges16 ~ ] ges8 [ bes8 ] des4 c8 [ bes8 ] | % 6
-        | % 6
-        c16 [ bes16 r16 a16 ~ ] a2. }
-    \repeat volta 4 {
-        | % 7
-        | % 7
-        ges4. bes8 des4 c8 [ bes8 ] | % 8
-        | % 8
-        c16 [ des16 r16 es16 ~ ] es2. | % 9
-        | % 9
-        ges,4. bes8 des4 c8 [ bes8 ] | \barNumberCheck #10
-        | \barNumberCheck #10
-        c16 [ bes16 r16 a16 ~ ] a2. }
+        f'8. f16~ f8 f f'4 es8 des | c16 des r es~ es2. | ges,8. ges16~ ges8 bes des4 c8 bes | c16 bes r a~ a2. |
+	  }
     \repeat volta 2 {
-        | % 11
-        | % 11
-        r8 f'8 f8 [ f8 ] f8. [ des16 ~ ] des8 [ es8 ] | % 12
-        f1 | % 13
-        r8 f8 ges8 [ f8 ] es4 des8 [ es8 ] | % 14
-        | % 14
-        des8. [ c16 ] c2. }
+		ges4. bes8 des4 c8 bes | c16 des r es~ es2. | ges,4. bes8 des4 c8 bes | }
+		\alternative { { c16 bes r a~ a2. | } { c16 bes r a~ a2. | } }
+	  
     \repeat volta 2 {
-        | % 15
-        | % 15
-        r8 bes8 ( bes8 [ bes8 ] bes4 c8 [ des8 ] | % 16
-        | % 16
-        c16 [ bes16 r16 as16 ~ ] as2. -\bendAfter #-4 | % 17
-        | % 17
-        ges8 ) [ ges8 ( ges8 ) ges8 ] ges4 as8 [ bes8 ] | % 18
-        | % 18
-        a16 [ ges16 r16 f16 ~ ] f2. }
+       r8 f' f f f8. des16~ des8 es | f1 | r8 f ges f es4 des8 es | des8. c16 c2. |
+	  }
     \repeat volta 2 {
-        | % 19
-        | % 19
-        <f, a c f>8 -"clarinet trumpet trombone bass" [ r16 <a c f a>16
-        -"Solos" ~ ] ~ ~ ~ <a c f a>16 [ r16 <c es a c>8 ] <ges bes des
-            ges>8 [ r16 <bes des ges bes>16 ~ ] ~ ~ ~ <bes des ges bes>16
-        [ r16 <des f bes des>8 ] | \barNumberCheck #20
-        <f, a c f>8 [ r16 <a c f a>16 ~ ] ~ ~ ~ <a c f a>16 [ r16 <c es
-            a c>8 ] <es, ges bes es>8 [ r16 <ges bes es ges>16 ~ ] ~ ~ ~
-        <ges bes es ges>16 [ r16 <bes des ges bes>8 ] }
+        r8 bes( bes bes bes4 c8 des | c16 bes r aes~ aes2. -\bendAfter #-4 |
+        ges8 ) ges( ges ges ges4 as8 bes | a16 ges16 r16 f16 ~ f2. )|
+	  }
+	}
+}
+
+%part: tersa
+tersa = { 
+  \relative c {
+    \repeat volta 2 {
+        des'8. des16~ des8 des des'4 c8 bes | a16 bes r c~ c2. | ees,8. ees16~ ees8 ges bes4 a8 ges | a16 ges r a~ a2. |
+	  }
+    \repeat volta 2 {
+		ees4. ges8 bes4 a8 ges | a16 bes r c~ c2. | ees,4. ges8 bes4 a8 ges | }
+		\alternative { { a16 ges r f~ f2. | } { a16 ges r f~ f2. | } }
+	  
+    \repeat volta 2 {
+       r8 des' des des des8. bes16~ bes8 c | des1 | r8 des ees des c4 bes8 c | bes8. a16 a2. |
+	  }
+    \repeat volta 2 {
+        r8 des( des des des4 ees8 f | ees16 des r c~ c2. -\bendAfter #-4 |
+        bes8 ) bes( bes bes bes4 c8 des | c16 bes16 r16 a16 ~ a2. )|
+	  }
+	}
+}
+
+%part: bass
+bass = {
+  \relative c {
+	\repeat volta 2 {
+		bes8[ r16 f] r8 bes r16 f[ r f] bes8 f | f[ r16 c] r8 ees r ges f fes |
+		ees[ r16 bes] r8 des r16 ees[ r ees] ges8 ees | f[ r16 c] r8 ees r ges f fes |
+	  }
+	\repeat volta 2 {
+		ees[ r16 bes] r8 des r16 ees[ r ees] ges8 ees | f[ r16 c] r8 ees r ges f fes |
+		ees[ r16 bes] r8 des r16 ees[ r ees] ges8 ees |
+	  }
+	  \alternative { { f[ r16 c] r8 ees r ges f fes | } { f[ r16 c] r8 ees r f ges a | } }
+	  
+	\repeat volta 2 {
+		bes[ r16 f] r8 bes r16 f[ r f] bes8 f | bes[ r16 f] r8 bes r ees des c |
+		bes[ r16 f] r8 bes r16 f[ r f] bes8 f | f[ r16 c] r8 ees r f ges a |
+	  }
+	\repeat volta 2 {
+		bes[ r16 f] r8 bes r16 f[ r f] bes8 f | aes[ r16 ees] r8 aes r bes aes g |
+		ges[ r16 des] r8 ges r16 des[ r des] ges8 des | f[ r16 c] r8 ees r f ges a |
+	  }
+
+	}
+  }
+
+%part: words
+words = \markup { }
+
+%part: changes
+changes = \chordmode { 
+    bes1:m | f:7 | ees:m | f:7 |
+    ees:m | f:7 | ees:m | f:7 | f:7 |
+    bes:m | bes:m | bes:m | f:7 | 
+	bes:m | aes | ges | f:7 |
+
+}
+
+%layout
+#(set-default-paper-size "a5" 'landscape)
+
+%{
+\book { 
+  \header { poet = "Melody - C" }
+    \score {
+	<<
+%	\new ChordNames { \set chordChanges = ##t \changes }
+        \new Staff {
+		\melody
+	}
+	>>
     }
+%    \words
+}
+%}
 
-PartPOneVoiceOneChords =  \chordmode {
-    | % 1
-    | % 2
-    | % 3
-    | % 3
-    s1*2 bes8.:m5 | % 4
-    | % 4
-    s16*13 f16:7 | % 5
-    | % 5
-    s16*15 es8.:m5 | % 6
-    | % 6
-    s16*13 f16:7 | % 7
-    | % 7
-    s16*15 es4.:m5 | % 8
-    | % 8
-    s8*5 f16:7 | % 9
-    | % 9
-    s16*15 es4.:m5 | \barNumberCheck #10
-    | \barNumberCheck #10
-    s8*5 f16:7 | % 11
-    | % 11
-    s16*15 bes8:m5 | % 12
-    | % 13
-    | % 14
-    | % 14
-    s8*23 f8.:7 | % 15
-    | % 15
-    s16*13 bes8:m5 | % 16
-    | % 16
-    s8*7 as16:5 | % 17
-    | % 17
-    s16*15 ges8:5 | % 18
-    | % 18
-    s8*7 f16:7 | % 19
-    | % 19
-    | \barNumberCheck #20
+%{
+\book { 
+  \header { poet = "Bass - C" }
+    \score {
+	<<
+%	\new ChordNames { \set chordChanges = ##t \changes }
+        \new Staff { \clef bass
+		\bass
+	}
+	>>
     }
+%    \words
+}
+%}
 
 
-% The score definition
-\new Staff <<
-    \context ChordNames = "PartPOneVoiceOneChords" \PartPOneVoiceOneChords
-    \context Staff <<
-        \context Voice = "PartPOneVoiceOne" { \PartPOneVoiceOne }
-        >>
-    >>
+\book { \header { poet = "Score" }
+  \paper { #(set-paper-size "letter") }
+    \score { 
+      << 
+%	\new ChordNames { \set chordChanges = ##t \changes }
+	\new Staff { 
+		\melody
+	}
+	\new Staff { \clef bass
+		\bass
+	}
+      >> 
+  } 
+%    \words
+}
 
+
+%{
+\book { \header { poet = "MIDI" }
+    \score { 
+      << \tempo 4 = 100 
+\unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"alto sax"
+		\melody
+	}
+\unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"tuba"
+		\bass
+	}
+      >> 
+    \midi { }
+  } 
+}
+%}

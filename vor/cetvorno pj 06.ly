@@ -8,7 +8,7 @@
 }
 
 \header {
-  title = \markup \caps "Chetvorno PJ"
+  title = \markup \caps "Chetvorno PJ 06"
 }
 
 
