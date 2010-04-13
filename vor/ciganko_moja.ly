@@ -26,6 +26,18 @@
         autoBeaming = ##f
         }
     }
+
+%{ SOLO BACKING (WORK IT IN)
+from "ciganko_solo.ly"
+	{ d4-. r8 fis-. ees4-. fis-. | r8 c-. ees-. fis-. g4-- fis4-. }
+	  \\
+	{  a4-. r8 d-. c4-. d-. | r8 a-. c-. d-. ees4-- d4-.  }
+
+from "ciganko_solo_backing.ly" (finale)
+        <a d>4 _. r8 <d fis>8 _. <c es>4 _. <d fis>4 _. | % 2
+        r8 <a c>8 _. <c es>8 _. [ <d fis>8 _. ] <es g>4 _- <d fis>4 _. }
+	%}
+
 PartPOneVoiceOne =  \relative g' {
     \repeat volta 2 {
         \clef "treble" \key a \minor \time 4/4 g4 g8 [ fis8 ] es4 es8 [

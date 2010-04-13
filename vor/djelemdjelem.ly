@@ -6,6 +6,7 @@
     encodingsoftware = "Finale 2008 for Windows"
     tagline = "Finale 2008 for Windows"
     encodingdate = "2010-03-18"
+	title = "Djelem Djelem"
     }
 
 #(set-global-staff-size 20.5767485433)
@@ -25,6 +26,34 @@
         autoBeaming = ##f
         }
     }
+
+	%{ THIS IS THE SOLO BACKINGS!!
+
+melody = {
+	\relative c' { 
+		\repeat volta 48 {
+			r8^\markup { \italic "in Bb" } <f a d>16 <f a d> <f a d>8 <f a d>8 r8 <f a d>16 <f a d> <f a d>8 <f a d>8 |
+		}
+	}
+}
+
+bari = {
+	\relative c' {
+		\repeat volta 48 {
+			d8^\markup { \italic "in Eb" } [ r16 d] r8 d r a b cis |
+		}
+	}
+}
+		
+bass = {
+	\relative c {
+		\repeat volta 48 {
+			d,8[ r16 f] a8 f a[ r16 f] a8 e |
+		}
+	}
+}
+%}
+
 PartPOneVoiceOne =  \relative d' {
     \repeat volta 2 {
         \clef "treble" \key c \major \time 3/4 | % 1

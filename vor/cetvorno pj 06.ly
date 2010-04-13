@@ -8,7 +8,8 @@
 }
 
 \header {
-  title = \markup \caps "Četvorno PJ"
+  %title = \markup \caps "Četvorno PJ"
+  title = \markup \caps "Cetvorno PJ 06"
 }
 
 
