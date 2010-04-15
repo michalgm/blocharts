@@ -54,206 +54,107 @@ bass = {
 }
 %}
 
-PartPOneVoiceOne =  \relative d' {
-    \repeat volta 2 {
-        \clef "treble" \key c \major \time 3/4 | % 1
-        d4 -"conducted freely harmony 2nd X" e4 f4 | % 2
-        g2. \breathe | % 3
-        f4 e4 d8 [ e8 \breathe ] | % 4
-        d2. | % 5
-        cis2. \breathe | % 6
-        e4 f4 g4 | % 7
-        a2. \breathe | % 8
-        g4 f4 e8 [ f8 \breathe ] }
-    \alternative { {
-            | % 9
-            e2. | \barNumberCheck #10
-            d2. }
-        {
-            | % 11
-            \time 4/4  | % 11
-            R1 }
-        } | % 12
-    R1 \bar "||"
-    \repeat volta 2 {
-        | % 13
-        | % 13
-        r8 -"Time" d4 e8 f4 g4 | % 14
-        r8 f4 e8 d4 e4 | % 15
-        | % 15
-        d4. cis8 cis2 | % 16
-        \clef "bass" | % 16
-        e,8 ^"bass only" [ d8 ] r8 e8 d4 cis4 | % 17
-        \clef "treble" | % 17
-        r8 e'4 f8 g4 a4 | % 18
-        r8 g4 f8 e4 f4 | % 19
-        | % 19
-        e4. d8 d2 }
-    \alternative { {
-            | \barNumberCheck #20
-            \clef "bass" | \barNumberCheck #20
-            a,8 ^"bass only" [ g8 ] r8 a8 g4 f4 }
-        {
-            | % 21
-            \clef "treble" r8 a'8 bes8 [ cis8 ] d8 [ e8 ] f8 [ g8 ] }
-        } \repeat volta 2 {
-        | % 22
-        | % 22
-        a1 ~ | % 23
-        a2 g4 a4 | % 24
-        | % 24
-        bes1 | % 25
-        r2 g4 g4 | % 26
-        | % 26
-        g16 [ f16 e16 f16 ] e2. | % 27
-        r8 bes8 cis8 [ d8 ] e8 [ f8 g8 a8 ] | % 28
-        | % 28
-        bes1 ~ | % 29
-        bes2 a4 gis4 | \barNumberCheck #30
-        | \barNumberCheck #30
-        a4 r4 f4 e4 | % 31
-        | % 31
-        \times 2/3  {
-            f8 [ e8 d8 ] }
-        d2. }
-    \alternative { {
-            | % 32
-            r8 a8 bes8 [ cis8 ] d8 [ e8 ] f8 [ g8 ] }
-        {
-            | % 33
-            R1 }
-        } }
+%part: one
+one =  \relative c' {
+    \repeat volta 2 { 
+	    \time 3/4 | d4 ^"conducted freely harmony 2nd X" e f | g2. \breathe | 
+        f4 e d8 e \breathe  | d2. | cis \breathe | 
+		e4 f g | a2. \breathe | g4 f e8 f \breathe |
+	  }
+    \alternative { 
+	  { | e2. | d2. }
+      { \time 4/4 | R1 ^"Time" | } 
+	} 
+	
+	R1 | \bar "||"
 
-PartPOneVoiceOneChords =  \chordmode {
-    | % 1
-    | % 2
-    | % 3
-    | % 4
-    | % 5
-    | % 6
-    | % 7
-    | % 8
-    | % 9
-    | \barNumberCheck #10
-    | % 11
-    | % 11
-    | % 12
-    | % 13
-    | % 13
-    s2*19 d8:m5 | % 14
-    | % 15
-    | % 15
-    s8*15 a4.:7 | % 16
-    | % 16
-    | % 17
-    | % 17
-    s8*13 a8:7 | % 18
-    | % 19
-    | % 19
-    s8*15 d4.:m5 | \barNumberCheck #20
-    | \barNumberCheck #20
-    | % 21
-    | % 22
-    | % 22
-    s8*21 d1:m5 | % 23
-    | % 24
-    | % 24
-    s1 g1:m5 | % 25
-    | % 26
-    | % 26
-    s1 a16:7 | % 27
-    | % 28
-    | % 28
-    s16*31 g1:m5 | % 29
-    | \barNumberCheck #30
-    | \barNumberCheck #30
-    s1 a4:7 | % 31
-    | % 31
-    s2. d8*2/3:m5 | % 32
-    | % 33
+    \repeat volta 2 { 
+	  	r8 d4 e8 f4 g4 | r8 f4 e8 d4 e4 | d4. cis8 cis2 | \clef bass | e,8 ^"bass only" [ d8 ] r8 e8 d4 cis4 | 
+        \clef treble | r8 e'4 f8 g4 a4 | r8 g4 f8 e4 f4 | | e4. d8 d2 
+	  }
+    \alternative { 
+	  { \clef "bass" | a,8 ^"bass only" [ g8 ] r8 a8 g4 f4 } {
+            | \clef "treble" r8 a'8 bes8 [ cis8 ] d8 [ e8 ] f8 [ g8 ] } } 
+			
+	\repeat volta 2 {
+        | | a1 ~ | a2 g4 a4 | | bes1 | r2 g4 g4 | | 
+        g16 [ f16 e16 f16 ] e2. | r8 bes8 cis8 [ d8 ] e8 [ f8 g8 a8 ] | 
+        | bes1 ~ | bes2 a4 gis4 | | a4 r4 f4 e4 | 
+        | \times 2/3  { f8 [ e8 d8 ] } d2. }
+    \alternative { 
+	  	{ | r8 a8 bes8 [ cis8 ] d8 [ e8 ] f8 [ g8 ] }
+        { | R1 }
+    } 
+}
+
+%part: changesone
+changesone =  \chordmode {
+    d1:m | a:7 | a:7 | d:m | 
+    d:m | g:m | a:7 | g:m | 
+    a:7 | d:m | 
     }
 
-PartPTwoVoiceOne =  \relative d {
+%part: two
+two =  \relative d {
     \repeat volta 2 {
         \clef "bass" \key c \major \time 3/4 R2.*8 }
     \alternative { {
-            | % 9
+            | 
             R2.*2 }
         {
-            | % 11
+            | 
             \time 4/4  d4 r4 a4 cis4 }
-        } | % 12
+        } | 
     d4 r4 a4 cis4 \bar "||"
     \repeat volta 2 {
-        | % 13
-        d4 r4 a4 cis4 | % 14
-        d4 r4 a4 cis4 | % 15
-        a4 r4 e4 e4 | % 16
-        | % 16
-        R1 | % 17
-        a4 ^"bass only" r4 e4 e4 | % 18
-        a4 r4 e4 e4 | % 19
+        | 
+        d4 r4 a4 cis4 | 
+        d4 r4 a4 cis4 | 
+        a4 r4 e4 e4 | 
+        | 
+        R1 | 
+        a4 ^"bass only" r4 e4 e4 | 
+        a4 r4 e4 e4 | 
         d'4 r4 a4 cis4 }
     \alternative { {
-            | \barNumberCheck #20
-            | \barNumberCheck #20
+            | 
+            | 
             R1 }
         {
-            | % 21
+            | 
             R1 }
         } \repeat volta 2 {
-        | % 22
-        d4 ^"bass only" r4 a4 a4 | % 23
-        d4 r4 a4 a4 | % 24
-        g4 r4 d'4 d4 | % 25
-        g,4 r4 d'4 d4 | % 26
-        a4 r4 e4 e4 | % 27
-        | % 27
-        a4 r4 r2 | % 28
-        g4 r4 d'4 d4 | % 29
-        g,4 r4 d'4 d4 | \barNumberCheck #30
-        a4 r4 f'4 e4 | % 31
+        | 
+        d4 ^"bass only" r4 a4 a4 | 
+        d4 r4 a4 a4 | 
+        g4 r4 d'4 d4 | 
+        g,4 r4 d'4 d4 | 
+        a4 r4 e4 e4 | 
+        | 
+        a4 r4 r2 | 
+        g4 r4 d'4 d4 | 
+        g,4 r4 d'4 d4 | 
+        a4 r4 f'4 e4 | 
         d4 r4 a4 a4 }
     \alternative { {
-            | % 32
+            | 
             d4 r4 r2 }
         {
-            | % 33
+            | 
             r4 }
         } }
 
-PartPTwoVoiceOneChords =  \chordmode {
-    | % 9
-    | % 11
-    s4*31 d4:m5 | % 12
-    s2. d4:m5 | % 13
-    s2. d4:m5 | % 14
-    s2. d4:m5 | % 15
-    s2. a4:7 | % 16
-    | % 16
-    | % 17
-    s4*7 a4:7 | % 18
-    s2. a4:7 | % 19
-    s2. d4:m5 | \barNumberCheck #20
-    | \barNumberCheck #20
-    | % 21
-    | % 22
-    s4*11 d4:m5 | % 23
-    s2. d4:m5 | % 24
-    s2. g4:m5 | % 25
-    s2. g4:m5 | % 26
-    s2. a4:7 | % 27
-    | % 27
-    s2 a4:7 | % 28
-    s1 g4:m5 | % 29
-    s2. g4:m5 | \barNumberCheck #30
-    s2. a4:7 | % 31
-    s2. d4:m5 | % 32
-    | % 33
+%part: changestwo
+changestwo =  \chordmode {
+    d:m | d:m | d:m | d:m | 
+    a:7 | a:7 | a:7 | d:m | 
+    d:m | d:m | g:m | g:m | 
+    a:7 | a:7 | g:m | g:m  
+    a:7 | d:m | | 
     }
 
 
-% The score definition
+%sdkfasdfe score definition
 \score {
     <<
         \new Staff <<
@@ -271,7 +172,7 @@ PartPTwoVoiceOneChords =  \chordmode {
         
         >>
     \layout {}
-    % To create MIDI output, uncomment the following line:
-    %  \midi {}
+  %   create MIDI output, uncomment the following line:
+%    midi {}
     }
 
