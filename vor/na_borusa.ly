@@ -9,19 +9,15 @@
 %place a mark at bottom right
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
 
-%FIX BASS LEAD-INS
-
-
-
-
 
 % music pieces
 %part: melody
 melody = { 
   \relative c {
     \repeat volta 2 {
-        f'8. f16~ f8 f f'4 es8 des | c16 des r es~ es2. | ges,8. ges16~ ges8 bes des4 c8 bes | c16 bes r a~ a2. |
-	  }
+	  f'8. f16~ f8 f f'4 es8 des | c16 des r es~ es2. | ges,8. ges16~ ges8 bes des4 c8 bes | }
+	  \alternative { { c16 bes r a~ a2. | } { c16 bes r a~ a2. | } }
+
     \repeat volta 2 {
 		ges4. bes8 des4 c8 bes | c16 des r es~ es2. | ges,4. bes8 des4 c8 bes | }
 		\alternative { { c16 bes r a~ a2. | } { c16 bes r a~ a2. | } }
@@ -40,8 +36,9 @@ melody = {
 tersa = { 
   \relative c {
     \repeat volta 2 {
-        des'8. des16~ des8 des des'4 c8 bes | a16 bes r c~ c2. | ees,8. ees16~ ees8 ges bes4 a8 ges | a16 ges r a~ a2. |
-	  }
+	  des'8. des16~ des8 des des'4 c8 bes | a16 bes r c~ c2. | ees,8. ees16~ ees8 ges bes4 a8 ges | }
+	  \alternative { { a16 ges r f~ f2. | } { a16 ges r f~ f2. | } }
+	  
     \repeat volta 2 {
 		ees4. ges8 bes4 a8 ges | a16 bes r c~ c2. | ees,4. ges8 bes4 a8 ges | }
 		\alternative { { a16 ges r f~ f2. | } { a16 ges r f~ f2. | } }
@@ -61,8 +58,10 @@ bass = {
   \relative c {
 	\repeat volta 2 {
 		bes8[ r16 f] r8 bes r16 f[ r f] bes8 f | f[ r16 c] r8 ees r ges f fes |
-		ees[ r16 bes] r8 des r16 ees[ r ees] ges8 ees | f[ r16 c] r8 ees r ges f fes |
+		ees[ r16 bes] r8 des r16 ees[ r ees] ges8 ees |
 	  }
+	  \alternative { { f[ r16 c] r8 ees r f ges a | } {  f[ r16 c] r8 ees r ges f fes | } }
+
 	\repeat volta 2 {
 		ees[ r16 bes] r8 des r16 ees[ r ees] ges8 ees | f[ r16 c] r8 ees r ges f fes |
 		ees[ r16 bes] r8 des r16 ees[ r ees] ges8 ees |
@@ -124,7 +123,7 @@ changes = \chordmode {
     }
 %    \words
 }
-%}
+
 
 
 \book { \header { poet = "Score" }
@@ -159,3 +158,9 @@ changes = \chordmode {
   } 
 }
 %}
+
+{
+  \displayLilyMusic \transpose f c {
+	\new ChordNames { \changes }
+  }
+}
