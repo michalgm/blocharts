@@ -48,7 +48,7 @@ tersa = {
 	  }
     \repeat volta 2 {
         r8 des( des des des4 ees8 f | ees16 des r c~ c2. -\bendAfter #-4 |
-        bes8 ) bes( bes bes bes4 c8 des | c16 bes16 r16 a16 ~ a2. )|
+        bes8 ) bes( bes bes bes4 c8 des | c16 bes16 r16 a16~ a2. )|
 	  }
 	}
 }

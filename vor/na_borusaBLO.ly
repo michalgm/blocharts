@@ -13,7 +13,7 @@ markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begi
 % music pieces
 %part: melody
 melody = { 
-  \relative c' {
+  \relative c' { \key c \minor
 	  \repeat volta 2 {
         c8. c16~ c8 c c'4 bes8 aes | g16 aes r bes~ bes2. | des,8. des16~ des8 f aes4 g8 f | } 
 		\alternative { { g16 f r e~ e2. | } { g16 f r e~ e2. | } } 
@@ -35,7 +35,7 @@ melody = {
 
 %part: tersa
 tersa = { 
-  \relative c' {
+  \relative c' { \key c \minor
 	\repeat volta 2 {
         aes8. aes16~ aes8 aes aes'4 g8 f | e16 f r g~ g2. |
         bes,8. bes16~ bes8 des f4 e8 des |
@@ -54,7 +54,7 @@ tersa = {
 	  
 	\repeat volta 2 {
         r8 aes( aes aes aes4 bes8 c | bes16 aes r g~ g2. -\bendAfter #-4 |
-        f8) f( f f f4 g8 aes | g16 f r e e2.) |
+        f8) f( f f f4 g8 aes | g16 f r e~ e2.) |
       }  
 
 	}
@@ -62,27 +62,27 @@ tersa = {
 
 %part: bass
 bass = {
-  \relative c {
+  \relative c { \key c \minor
 	\repeat volta 2 {
-        f,8[  r16 c] r8 f r16 c[ r c] f8 c | c[ r16 g] r8 bes r des c ces |
-        bes[ r16 f] r8 aes r16 bes[ r bes] des8 bes | 
+        f8[  r16 c] r8 f r c f c | c[ r16 g] r8 bes r des c ces |
+        bes[ r16 f] r8 aes r bes des bes | 
       } 
 	  \alternative { { c[ r16 g] r8 bes r c des e | } { c[ r16 g] r8 bes r des c ces | } } 
 	  
 	\repeat volta 2 {
-        bes[ r16 f] r8 aes r16 bes[ r bes] des8 bes | c[ r16 g] r8 bes r des c ces |
-        bes[ r16 f] r8 aes r16 bes[ r bes] des8 bes | 
+        bes[ r16 f] r8 aes r bes des bes | c[ r16 g] r8 bes r des c ces |
+        bes[ r16 f] r8 aes r bes des bes | 
       } 
 	  \alternative { { c[ r16 g] r8 bes r des c ces | } { c[ r16 g] r8 bes r c des e | } } 
 	  
 	\repeat volta 2 {
-        f[ r16 c] r8 f r16 c[ r c] f8 c | f[ r16 c] r8 f r bes aes g |
-        f[ r16 c] r8 f r16 c[ r c] f8 c | c[ r16 g] r8 bes r c des e |
+        f[ r16 c] r8 f r c f c | f[ r16 c] r8 f r bes aes g |
+        f[ r16 c] r8 f r c f c | c[ r16 g] r8 bes r c des e |
       }  
 	  
 	\repeat volta 2 {
-        f[ r16 c] r8 f r16 c[ r c] f8 c | ees[ r16 bes] r8 ees r f ees d |
-        des[ r16 aes] r8 des r16 aes[ r aes] des8 aes | c[ r16 g] r8 bes r c des e |
+        f[ r16 c] r8 f r c f c | ees[ r16 bes] r8 ees r f ees d |
+        des[ r16 aes] r8 des r aes des8 aes | c[ r16 g] r8 bes r c des e |
       }  
 
 	}
@@ -167,8 +167,3 @@ changes = \chordmode {
 }
 %}
 
-{
-  \displayLilyMusic \transpose f c {
-	\new ChordNames { \changes }
-  }
-}
