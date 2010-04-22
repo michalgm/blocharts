@@ -1,17 +1,18 @@
 <?php
-$lilydir = '/home/dameat/public_html/pondscum/blocharts/blo/';
+$workingdir = '/home/dameat/public_html/pondscum/blocharts/';
+$lilydir = $workingdir . ($_REQUEST['dir'] ? $_REQUEST['dir'] : 'blo');
 $keys = array('Eb'=>'a', 'Bb'=>'d', 'C'=>'c', 'F'=>'g');
 $clefs = array('treble', 'bass', 'alto', 'tenor');
 $layouts = array('letter'=>'"letter"', 'lyre'=>'"a5" \'landscape');
 $octaves = array('+2'=> "''", '+1'=>"'", '0'=>'', "-1"=>',','-2'=>',,');
-$instruments = array('bass'=>'tuba', 'melody'=>'trumpet', 'tenor'=>'trombone', 'pahs'=>'trombone', 'riffTwo'=>'clarinet');
+$instruments = array('bass'=>'tuba', 'melody'=>'trumpet', 'tenor'=>'trombone', 'pahs'=>'trombone', 'riffTwo'=>'clarinet', 'harmony'=>'clarinet', 'chordLo'=>'trombone', 'chordMid'=>'baritone sax', 'bari'=>'baritone sax');
 
 if($_GET['file']) {
 	$file = $_GET['file'];
 	if (substr($file, 0, 1) == "/" || strpos($file, '..') !== false) {
 		error('Invalid filename');
 	}
-	$lily = processFile($file);
+	$lily = processFile($file, $_REQUEST['dir']);
 	$lily = buildLayout($lily);
 	createOutput($lily);
 	
@@ -24,11 +25,16 @@ if($_GET['file']) {
 	header('Content-Type: text/html; charset=utf-8'); 
 	$dirh = opendir($lilydir);
 	while (($file = readdir($dirh)) !== false) {
-		$lily = processFile($file);
+		$lilies[] = processFile($file, $_REQUEST['dir']);
+	}
+	usort($lilies, 'lilysort');
+	foreach ($lilies as $lily) { 
 		if ($lily) { 
-			printFileSelect($lily);
+			$index .= "<li><a href='#$lily[file]'>$lily[title]</a>";
+			$forms .= printFileSelect($lily);
 		}
 	}
+	print "$index<hr>$forms";
 }
 
 function createOutput($lily) {
@@ -45,8 +51,8 @@ function createOutput($lily) {
 	$out = fopen("/tmp/$filename", 'w');
 	fwrite($out,$contents);
 	fclose($out);
-	exec("lilypond -o /tmp/$filename /tmp/$filename 2>&1", $error);
-	if ($_GET['debug']) { print $contents; print "<hr>".$error."<hr>".join('<br>', $output); exit; }
+	exec("lilypond -o '/tmp/$filename' '/tmp/$filename' 2>&1", $error);
+	if ($_GET['debug']) { print "<pre>$contents"; print "<hr>".$error."<hr>".join('<br>', $output); exit; }
 	if (!file_exists("/tmp/$filename.$part") || filesize("/tmp/$filename.$part") == 0) { 
 		error("Lilypond failed. Here is the output:<hr> ".implode("<br>", $error));
 	}
@@ -70,16 +76,16 @@ function createOutput($lily) {
 	}	
 }
 
-function processFile($file) {
+function processFile($file, $dir='blo') {
 	global $lilydir;
 	$lily = array();
 	if (!file_exists("$lilydir/$file")) { 
-		error("File $file does not exist");
+		error("File $lilydir/$file does not exist");
 	}
 	if (preg_match('/.ly$/', $file)){
 		$score = file_get_contents("$lilydir/$file");
 		preg_match_all('/%Part: (\w+)/i', $score, $parts);
-		preg_match('/title ?= ?"([^"]+)"/', $score, $title);
+		preg_match('/title ?=[^"]*"([^"]+)"/', $score, $title);
 		preg_match('/tempo(.*)$/m', $score, $tempo);
 		$lily[title] = $title[1];
 		$lily[parts] = $parts[1];
@@ -88,14 +94,17 @@ function processFile($file) {
 		$lily[source] = preg_replace('/\%layout.*/si', '', $score);
 		$lily[changes] = array_search('changes', $lily[parts]) ? 1 : 0;
 		$lily[words] = array_search('words', $lily[parts]) ? 1 : 0;
+		$lily[dir] = $dir;
 	}
 	return $lily;
 }
 
 function printFileSelect($lily) {	
 	global $keys, $clefs, $octaves, $layouts;
-	print "<div style='position: relative;'><form><input name='file' type='hidden' value='$lily[file]'>
-	<b>$lily[title]</b>";
+	$output .= "<a name='$lily[file]'><div style='position: relative;'><form>
+		<input name='file' type='hidden' value='$lily[file]'>
+		<input name='dir' type='hidden' value='$lily[dir]'>
+		<b>".html_encode($lily[title])."</b>";
 	foreach ($lily[parts] as $part) { 
 		$partselect .= "<option value='$part'>".ucwords($part)."</option>";
 	}
@@ -104,10 +113,10 @@ function printFileSelect($lily) {
 	foreach (array_keys($octaves) as $octave) { $default = $octave == 0 ? "selected='selected'" : ''; $octaveselect .= "<option $default value='$octave'>".ucwords($octave)."</option>"; }
 	foreach (array_keys($layouts) as $layout) { $layoutselect .= "<option value='$layout'>".ucwords($layout)."</option>"; }
 
-	print "<br><a href='?file=$lily[file]&part=midi'>play midi</a>";
-	print " - <a href='?file=$lily[file]&part=score'>score </a>";
-	print " - <a href='?file=$lily[file]&part=source'>source</a>";
-	print "<div class='options' style='position: relative;'> <div class='left'>
+	$output.= "<br><a href='?file=$lily[file]&dir=$lily[dir]&part=midi'>play midi</a>";
+	$output.= " - <a href='?file=$lily[file]&dir=$lily[dir]&part=score'>score </a>";
+	$output.= " - <a href='?file=$lily[file]&dir=$lily[dir]&part=source'>source</a>";
+	$output.= "<div class='options' style='position: relative;'> <div class='left'>
 				<div class='part'>Part: <select name='part'>$partselect</select></div>
 				<div class='key'>Key: <select name='key'>$keyselect</select></div>
 				<div class='clef'>Clef: <select name='clef'>$clefselect</select></div>
@@ -117,13 +126,14 @@ function printFileSelect($lily) {
 				<div class='layout'>Layout: <select name='page'>$layoutselect</select></div>
 		";
 	if ($lily[words]) {
-		print "<div class='lyrics'>Include Lyrics: <input type='checkbox' name='words'></div>";
+		$output.= "<div class='lyrics'>Include Lyrics: <input type='checkbox' name='words'></div>";
 	}
-	print " 	<!--<br>Debug <input type='checkbox' name='debug' value='1'><br>-->
+	$output.= " 	<br>Debug <input type='checkbox' name='debug' value='1'><br>
 				</div>
 				<input style='margin: auto; text=align: center;' type='submit' value='Download PDF'>
 			</form></div></div>
 			";
+	return $output;
 }
 
 function buildLayout($lily) {
@@ -136,7 +146,7 @@ function buildLayout($lily) {
 	$octave = stripslashes($_GET['octave']);
 	if ($part == 'score' || $part == 'source') { $page = 'letter'; }
 	$layout = "%%Generated layout";
-	if ($lily[changes]) { $changes = "\n\t\t\\new ChordNames { \\set chordChanges = ##t \\changes }"; }
+	if ($lily[changes] && $page != 'lyre') { $changes = "\n\t\t\\new ChordNames { \\set chordChanges = ##t \\changes }"; }
 	if ($lily[words]) { $words = " \n\t\words"; }
 	if ($page) {  
 		$layout .= "\n#(set-default-paper-size ".$layouts[$page].')';
@@ -200,7 +210,19 @@ function getOctave($key, $part, $clef, $octave) {
 	return $octave;
 }
 
+function html_encode($var) {
+		return htmlentities($var, ENT_QUOTES, 'UTF-8') ;
+}
+
 function error($string) {
 	print "<b>An error occured:</b> $string";
 	exit;
+}
+
+function lilysort($a, $b) { 
+	if ($a['title'] && $b['title']) {
+		return strcasecmp($a['title'], $b['title']);
+	} else {
+		return strcasecmp($a['file'], $b['file']);
+	}
 }
