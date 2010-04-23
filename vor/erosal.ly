@@ -1,9 +1,9 @@
 \version "2.12.1"
 
 \header {
-	title = "Erosal2"
+	title = "Erosal"
 	composer = "Rumen 'Sali' Shopov"
-	copyright = "3/18/10" %date of latest edits
+	copyright = "4/22/10" %date of latest edits
 	}
 
 %place a mark at bottom right
