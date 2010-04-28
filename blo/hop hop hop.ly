@@ -3,29 +3,10 @@
 % automatically converted from hop hop hop.xml
 
 \header {
-    encodingsoftware = "Finale 2008 for Windows"
-    tagline = "Finale 2008 for Windows"
-    encodingdate = "2010-03-18"
+  title = "Hop Hop Hop"
     }
 
-#(set-global-staff-size 20.5767485433)
-\paper {
-    paper-width = 21.59\cm
-    paper-height = 27.93\cm
-    top-margin = 1.59\cm
-    botton-margin = 1.59\cm
-    left-margin = 2.53\cm
-    right-margin = 1.27\cm
-    between-system-space = 2.19\cm
-    page-top-space = 1.27\cm
-    }
-\layout {
-    \context { \Score
-        skipBars = ##t
-        autoBeaming = ##f
-        }
-    }
-PartPOneVoiceOne =  \relative d'' {
+melody =  \relative d'' {
     \clef "treble" \key g \minor \time 4/4 \repeat volta 2 {
         r8 d8 r8 cis8 d8 [ cis8 d8 bes8 ] | % 2
         b8 [ b8 ] c4 b8 [ c8 ] c4 | % 3
@@ -72,7 +53,7 @@ PartPOneVoiceOne =  \relative d'' {
     c4 c4 es4 d4 \bar "|."
     ^"D.C. al Fine" }
 
-PartPTwoVoiceOne =  \relative d {
+harmony =  \relative d {
     \clef "bass" \key g \minor \time 4/4 \repeat volta 2 {
         <d bes'>4 ^^ ^. r8 <d bes'>8 ^^ ^. r4 <d bes'>4 ^^ ^. | % 2
         r4 <d a'>4 ^^ ^. r4 <d a'>4 ^^ ^. | % 3
@@ -114,7 +95,7 @@ PartPTwoVoiceOne =  \relative d {
     r2 fis2 \bar "|."
     ^"D.C. al Fine" }
 
-PartPThreeVoiceOne =  \relative d {
+bass =  \relative d {
     \clef "bass" \key g \minor \time 4/4 \repeat volta 2 {
         d4 r4 d4 r8 d8 ~ | % 2
         d4 d4 d4 d4 | % 3

@@ -1,6 +1,4 @@
-
 \version "2.12.2"
-% automatically converted from CigankoMoja2.xml
 
 \header {
     title = "Cigonko Moja"
@@ -19,7 +17,7 @@ from "ciganko_solo_backing.ly" (finale)
 	%}
 
 %part: melody
-melody =  \relative c' {
+melody =  \relative c'' {
     \repeat volta 2 {
         g4 g8 fis8 es4 es8 d8 | d2 fis8 g8 a4 | 
         fis8 g8 g8 fis8 es4 es8 d8 | d4 fis8 g8 a8 fis8 g8 es8 | 
