@@ -41,7 +41,7 @@ function createOutput($lily) {
 	$part = $_GET[part];
 	$contents = $lily[source].$lily[layout];
 	$filename = $lily[file];
-	$outfile = str_replace(' ', '_', $lily[title]);
+	$outfile = str_replace(' ', '_', $lily[title]). "-$key-$part";
 	if ($part == 'source') {
 		header('Content-Type: text/html; charset=utf-8'); 
 		print "<pre>$contents</pre>";
@@ -68,7 +68,7 @@ function createOutput($lily) {
 			error("Lilypond failed: $error");
 		}
 		header('Content-type: application/pdf');
-		header('Content-Disposition: attachment; filename="'.$outfile.'.pdf"');
+		header('Content-Disposition: attachment; filename="'.$lily[filename].'.pdf"');
 		print file_get_contents("/tmp/$filename.pdf");
 		unlink("/tmp/$filename.pdf");
 		unlink("/tmp/$filename.ps");
@@ -169,8 +169,10 @@ function buildLayout($lily) {
 		$layout .= "} $words \n}";
 	} else { 
 		$octave = getOctave($key, $part, $clef, $octaves[$octave]);
+		$poet = "$key ".ucwords($part);
 		$layout .="
 		\\book { 
+			\\header{ poet = \"$poet\" }
 			\\score { <<
 				$changes
 				\\new Staff { \\clef $clef \\transpose c ".$keys[$key].$octave." 
@@ -183,6 +185,7 @@ function buildLayout($lily) {
 		$layout .= "\n} ";
 	}
 	$lily[layout] = $layout;
+	$lily['filename'] = $lily['title']."-$key-".ucwords($part);
 	return $lily;	
 }
 
