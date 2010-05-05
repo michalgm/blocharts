@@ -3,8 +3,12 @@
 \header {
 	title = "Amara Terra Mia"
 	composer = "Domenico Modugno"
-	copyright = "3/6/10"
+	copyright = "3/6/10" %date of latest edits
 	}
+
+%place a mark at bottom right
+markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
+
 
 % music pieces
 %part: melody
