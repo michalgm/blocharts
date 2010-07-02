@@ -16,16 +16,12 @@ markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begi
 melody = {
   \relative c'' { \key bes \minor
 
-  \mark "Intro"
-  R1 | r2 r4 r8 f | f2~ f8 ees des ees | f2.~ f8 bes |
-  a4. f8 ees4 c | f2. f4 | aes2~ aes8 bes aes ges | f2. des8 f |
-  ees2. des8 c | f2. ees8 f | ges2. ges8 ees | bes4 f des ees |
-  f2 ees4 c | des1~ | des |
-
+  r1 | r1 | r1 | r1 |
+  
   \mark \default %A
   f4 ges8 f r ees r f | r ges f ees f4 r | f8 ges f ees f ges r f | r ges f ees f4 r |
   f4 ges8 f r ees r f | r ges f ees f4 r | f8 ges f ees f ges r f | r ges f ees f4 r |
-  ges4-- f8 ees r2 | f4-- ees8 des r2 | r8 f f4 f8 f r f | R1 |
+  ges4-- f8 ees r2 | f4-- ees8 des r2 | r8 f f4 f8 f r f | r1 |
   ges4-- f8 ees r2 | f4-- ees8 des r2 | r8 f r a c4 a | bes r8 a~ a4 f | 
 	
   \key bes \major
