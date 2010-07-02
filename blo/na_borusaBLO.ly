@@ -134,6 +134,7 @@ changes = \chordmode {
 
 
 
+%}
 \book { \header { poet = "Score" }
   \paper { #(set-paper-size "letter") }
     \score { 
