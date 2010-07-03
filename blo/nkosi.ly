@@ -46,14 +46,27 @@ alto = {
 
 %part: tenor
 tenor = {
-	\relative c' {
+	\relative c' { \key f \major
+
+	\mark \default %A
+	a8 a a bes c4 c | c c a2 | c8 c c c d4 d | c8 c c4 c bes |
+	a8 a a bes c4 c | c d c2 |
+	bes a | g8 a bes4 a2 | bes a | g8 a bes4 a2 | \bar "||"
+
+	\mark \default %B
+	f4 e8 d c2~ | c1 | f4 e8 d f4 c | a c f f |
+	a c8 c f,2 | g a | g a | 
+	bes a | g8 a bes4 a2 | bes a4. a8 | g a bes4 a2 | \bar "||"
 
 	}
 }
 
 %part: bass
 bass = {
-	\relative c {
+	\relative c { \key f \major
+
+	\mark \default %A
+	f8 f f c f4 f | c c f2 | 
 
 	}
 }
@@ -108,6 +121,9 @@ changes = \chordmode { }
 	}
 	\new Staff { 
 		\alto
+	}
+	\new Staff { \clef bass
+		\tenor
 	}
 	\new Staff { \clef bass
 		\bass
