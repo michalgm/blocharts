@@ -69,7 +69,7 @@ riffTwo = {
 
 %part: bass
 bass = {
-\relative c { \key g \minor \clef bass
+\relative c { \key g \minor
     \mark \default
     \repeat volta 2 {
 	\repeat unfold 3 {
