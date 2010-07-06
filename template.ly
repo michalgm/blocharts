@@ -1,9 +1,10 @@
-\version "2.12.1"
+\version "2.12.3"
 
 \header {
 	title = ""
 	composer = ""
-	copyright = "" %date of latest edits
+	tagline = "" %date of latest edits
+	copyright = \markup {\bold ""} %form
 	}
 
 %place a mark at bottom right

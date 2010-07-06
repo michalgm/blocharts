@@ -1,9 +1,10 @@
-\version "2.12.1"
+\version "2.12.3"
 
 \header {
 	title = "Nkosi Sikelel' iAfrika"
 	composer = "Enoch Sontonga"
-	copyright = "7/2/10" %date of latest edits
+	tagline = "7/2/10" %date of latest edits
+	copyright = \markup { \bold "Form: drums, AB, AB, drum break, AB" }
 	}
 
 %place a mark at bottom right
@@ -66,7 +67,14 @@ bass = {
 	\relative c { \key f \major
 
 	\mark \default %A
-	f8 f f c f4 f | c c f2 | 
+	f8 f f c f4 f | c c f2 | f8 f f f g4 g | f8 f f4 c2 |
+	d8 d d bes f'4 f | c g' f2 | 
+	bes, c | c8 c c4 f2 | bes, c | c8 c c4 f2 | \bar "||"
+
+	\mark \default %B
+	f4 e8 d c2~ | c1 | f4 e8 d c2~ | c1 | 
+	d4 c8 f bes,2 | g c | c f | 
+	bes, c | c8 c c4 f2 | bes, c4. c8 | c c c4 f2 | \bar "||"
 
 	}
 }

@@ -38,10 +38,10 @@ if($_GET['file']) {
 }
 
 function createOutput($lily) {
-	$part = $_GET[part];
-	$contents = $lily[source].$lily[layout];
+	$part = $_GET['part'];
+	$contents = $lily['source'].$lily['layout'];
 	$filename = $lily[file];
-	$outfile = str_replace(' ', '_', $lily[title]). "-$key-$part";
+	$outfile = str_replace(' ', '_', $lily['title']). "-$key-$part";
 	if ($part == 'source') {
 		header('Content-Type: text/html; charset=utf-8'); 
 		print "<pre>$contents</pre>";
@@ -87,14 +87,14 @@ function processFile($file, $dir='blo') {
 		preg_match_all('/%Part: (\w+)/i', $score, $parts);
 		preg_match('/title ?=[^"]*"([^"]+)"/', $score, $title);
 		preg_match('/tempo(.*)$/m', $score, $tempo);
-		$lily[title] = $title[1];
-		$lily[parts] = $parts[1];
-		$lily[tempo] = $tempo[1] ? $tempo[1] : ' 4 = 100';
-		$lily[file] = $file;
-		$lily[source] = preg_replace('/\%layout.*/si', '', $score);
-		$lily[changes] = array_search('changes', $lily[parts]) ? 1 : 0;
-		$lily[words] = array_search('words', $lily[parts]) ? 1 : 0;
-		$lily[dir] = $dir;
+		$lily['title'] = $title[1];
+		$lily['parts'] = $parts[1];
+		$lily['tempo'] = $tempo[1] ? $tempo[1] : ' 4 = 100';
+		$lily['file'] = $file;
+		$lily['source'] = preg_replace('/\%layout.*/si', '', $score);
+		$lily['changes'] = array_search('changes', $lily['parts']) ? 1 : 0;
+		$lily['words'] = array_search('words', $lily['parts']) ? 1 : 0;
+		$lily['dir'] = $dir;
 	}
 	return $lily;
 }
@@ -104,8 +104,8 @@ function printFileSelect($lily) {
 	$output .= "<a name='$lily[file]'><div style='position: relative;'><form>
 		<input name='file' type='hidden' value='$lily[file]'>
 		<input name='dir' type='hidden' value='$lily[dir]'>
-		<b>".html_encode($lily[title])."</b>";
-	foreach ($lily[parts] as $part) { 
+		<b>".html_encode($lily['title'])."</b>";
+	foreach ($lily['parts'] as $part) { 
 		$partselect .= "<option value='$part'>".ucwords($part)."</option>";
 	}
 	foreach (array_keys($keys) as $key) { $keyselect .= "<option value='$key'>".ucwords($key)."</option>"; }
@@ -125,7 +125,7 @@ function printFileSelect($lily) {
 				<div class='octave'>Octave: <select name='octave'>$octaveselect</select></div>
 				<div class='layout'>Layout: <select name='page'>$layoutselect</select></div>
 		";
-	if ($lily[words]) {
+	if ($lily['words']) {
 		$output.= "<div class='lyrics'>Include Lyrics: <input type='checkbox' name='words'></div>";
 	}
 	$output.= " 	<br>Debug <input type='checkbox' name='debug' value='1'><br>
@@ -146,14 +146,14 @@ function buildLayout($lily) {
 	$octave = stripslashes($_GET['octave']);
 	if ($part == 'score' || $part == 'source') { $page = 'letter'; }
 	$layout = "%%Generated layout";
-	if ($lily[changes] && $page != 'lyre') { $changes = "\n\t\t\\new ChordNames { \\set chordChanges = ##t \\changes }"; }
-	if ($lily[words]) { $words = " \n\t\words"; }
+	if ($lily['changes'] && $page != 'lyre') { $changes = "\n\t\t\\new ChordNames { \\set chordChanges = ##t \\changes }"; }
+	if ($lily['words']) { $words = " \n\t\words"; }
 	if ($page) {  
 		$layout .= "\n#(set-default-paper-size ".$layouts[$page].')';
 	}
 	if ($part == 'score'  || $part == 'source' || $part == 'midi') {
 		$parts = $lily['parts'];
-		$layout .= "\n\\book {\n\t\\score { <<\n\t\t\\tempo ".$lily[tempo]. ' ';
+		$layout .= "\n\\book {\n\t\\score { <<\n\t\t\\tempo ".$lily['tempo']. ' ';
 		if ($part != 'midi') { $layout .= $changes; }
 		foreach ($parts as $lilypart) { 
 			if ($lilypart == 'changes' || $lilypart == 'words') { continue; }
@@ -184,7 +184,7 @@ function buildLayout($lily) {
 		} 
 		$layout .= "\n} ";
 	}
-	$lily[layout] = $layout;
+	$lily['layout'] = $layout;
 	$lily['filename'] = $lily['title']."-$key-".ucwords($part);
 	return $lily;	
 }

@@ -12,6 +12,9 @@ Bubamara
 	- working
 	- finish harmony 
 
+Los Chucos Suaves 
+	-
+
 Ciganko Moja
 
 De Colores
@@ -29,6 +32,7 @@ Ederlezi
 Got That Fire
 
 Hop Hop Hop
+	- done
 
 Lil Liza Jane
 
@@ -43,6 +47,9 @@ Mizerlou
 Moliendo Cafe
 	- working
 
+Na Borusa (blo version)
+	- done
+
 No Agreement
 
 O Na Ne
@@ -53,10 +60,12 @@ El Quinto Regimiento
 Roma Rama
 
 Sat
+	-done
 
 El Sombrero Azul
 
 St. James Infirmary Blues
+	-done
 
 Wade
 
