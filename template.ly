@@ -14,10 +14,16 @@ markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begi
 % music pieces
 %part: melody
 melody = {
+	\relative c' {
+
+	}
 }
 
 %part: bass
 bass = {
+	\relative c {
+
+	}
 }
 
 %part: words
