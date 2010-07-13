@@ -3,7 +3,7 @@
 \header {
 	title = "Ederlezi"
 	composer = "Trad. Roma"
-	copyright = "3/10/10"
+	copyright = "7/12/10"
 	}
 
 %place a mark at bottom right
@@ -55,10 +55,10 @@ tenor = {
 
 	\mark \default %A
 	\repeat volta 2 {
-	  r4 <f a> r <e g> | r <f a> r <f a> | 
-	  r <g bes> r <g bes> | r <f bes> r <f bes> | 
-	  r <g bes> r <g bes> | r <f a> r <e g> | 
-	  r <f a> r <e g> | r <f a> r <f a> |
+	  r8. <f a>16 <f a>8 <f a>8 r <e g> <e g>4 | r8. <f a>16 <f a>8 <f a>8 r <f a> <f a>4 | 
+	  r8. <g bes>16 <g bes>8 <g bes>8 r <g bes> <g bes>4 | r8. <f bes>16 <f bes>8 <f bes>8 r <f bes> <f bes>4 | 
+	  r8. <g bes>16 <g bes>8 <g bes>8 r <g bes> <g bes>4 | r8. <f a>16 <f a>8 <f a>8 r <e g> <e g>4 |
+	  r8. <f a>16 <f a>8 <f a>8 r <e g> <e g>4 | r8. <f a>16 <f a>8 <f a>8 r <f a> <f a>4 | 
 	}
 
 	\mark \default %B
