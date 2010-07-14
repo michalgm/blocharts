@@ -3,7 +3,8 @@
 \header {
 	title = "Ederlezi"
 	composer = "Trad. Roma"
-	copyright = "7/12/10"
+	copyright = "7/13/10"
+	copyright = \markup {\bold "A-B A-B drums C A-B "} %form
 	}
 
 %place a mark at bottom right
@@ -45,7 +46,7 @@ melody = {
 	  r1 | <a' a'>8 <g g'> <g g'> <fis fis'> <fis fis'> <e e'> <e e'> <d d'> | 
 	  <cis cis'> <d d'> <e e'> r r2 | r1 |
 	  <a a'>8 <g g'> <g g'> <fis fis'> <fis fis'> <e e'> <e e'> <d d'> | 	
-	  <cis cis'>1 | r1 | \bar ".|" \markdownright \mark "D.C. al Fine"
+	  <cis cis'>1 | \bar ".|" \markdownright \mark "D.C. al Fine"
 
 }
 }
@@ -63,22 +64,33 @@ tenor = {
 
 	\mark \default %B
 	\repeat volta 2 {
-	  r <f a> r <f a> | r <g bes> r <g bes> | 
-	  r <f a> r <g bes> | r <f a> r <g bes> | r <f a> r <g bes> | }
+	  r8. <f a>16 <f a>8 <f a>8 r <f a> <f a>4 | 
+	  r8. <g bes>16 <g bes>8 <g bes>8 r <g bes> <g bes>4 | 
+	  r8. <f a>16 <f a>8 <f a>8 r <e g> <e g>4 | 
+	  r8. <f a>16 <f a>8 <f a>8 r <e g> <e g>4 | 
+	  r8. <f a>16 <f a>8 <f a>8 r <e g> <e g>4 | }
 	  \alternative {
-		{ r <f bes> r <f bes> | r <g bes> r <g bes> | r <f a> r <e g> | r <f a> r <f a> | }
-		{ <f bes>1 | r | r4 <g bes> r <g bes> | r <f a> r <e g> | r <f a> r\markdownright \mark \markup { \italic "fine" }  <f a>\mark \markup { "D.C." } | }
+		{ r8. <f bes>16 <f bes>8 <f bes>8 r <f bes> <f bes>4 |
+	  	r8. <g bes>16 <g bes>8 <g bes>8 r <g bes> <g bes>4 | 
+	  	r8. <f a>16 <f a>8 <f a>8 r <e g> <e g>4 | 
+	  	r8. <f a>16 <f a>8 <f a>8 r <f a> <f a>4 | }
+		{ <f bes>1 | r | 
+	  r8. <g bes>16 <g bes>8 <g bes>8 r <g bes> <g bes>4 | 
+	  r8. <f a>16 <f a>8 <f a>8 r <e g> <e g>4 | 
+	  	r8. <f a>16 <f a>8 <f a>8 r <f a> \markdownright \mark \markup { \italic "fine" } <f a>4\mark \markup { "D.C." } | }
 	  }
 	
 	\repeat volta 2 { r1 \mark \markup { \italic "Drums" } | r1 | }
 	
 
 	\mark \default %C
-	  <cis cis'>8 <d d'> <e e'>4 r2 | r4 <a d> r <gis d'> | 
-	  r <a cis> r <a cis> | <cis, cis'>8 <d d'> <e e'>4 r2 | 
-	  r4 <a d> r <gis d'> | r <a cis> r <a cis> | 
-	  <f a>1~ | \bar ".|" \markdownright \mark "D.C. al Fine"
-	
+	  <cis cis'>8 <d d'> <e e'>4 r2 | 
+	  	r8. <a d>16 <a d>8 <a d>8 r <gis d'> <gis d'>4 | 
+	  	r8. <a cis>16 <a cis>8 <a cis>8 r <a cis> <a cis>4 | 
+	  <cis, cis'>8 <d d'> <e e'>4 r2 | 
+	  	r8. <a d>16 <a d>8 <a d>8 r <gis d'> <gis d'>4 | 
+	  	r8. <a cis>16 <a cis>8 <a cis>8 r <a cis> <a cis>4 | 
+	  \bar ".|" \markdownright \mark "D.C. al Fine" 
 }
 }
 
@@ -98,14 +110,69 @@ bass = {
 	  f r f r | g r g r |d r g r | d r g r | d r g r | }
 	  \alternative {
 		{ bes r bes r | g r g r | f r a cis | d r d, r | }
-		{ bes'1 | r | g4 r g r | f r a cis | d r d,\markdownright \mark \markup { \italic "fine" } r\mark \markup { "D.C." } | }
+		{ bes'1 | r | g4 r g r | f r a cis | d r d, \markdownright \mark \markup { \italic "fine" } r\mark \markup { "D.C." } | }
 	  }
 
 	\repeat volta 2 { r1 \mark \markup { \italic "Drums" } | r1 | }
 
 	\mark \default %C
 	cis8 d e4 r2 | d4 r e r | a r a r | cis,8 d e4 a,8 a a4 |
-	d r e r | a r a r | d,1~ | \bar ".|" \markdownright \mark "D.C. al Fine"
+	d r e r | a r a r | \bar ".|" \markdownright \mark "D.C. al Fine"
+}
+}
+
+%part: hardbass
+hardbass = {
+	\relative c { \key d \minor
+
+	\mark \default %A
+	\repeat volta 2 {
+	  d8. f16 r8 a c,8. e16 r8 g |
+	 f,8. a16 r8 c f,4 fis |
+	 g8. bes16 r8 d g,8. bes16 r8 d |
+	 bes8. f16 r8 a bes8. f16 r8 a |
+	 
+	  g8. bes16 r8 d g,8. bes16 r8 d |
+	 d8. f16 r8 a c,8. e16 r8 g |
+	 f,8. a16 r8 c a4 cis |
+	 d8. f16 r8 a d,8. f16 r8 a |
+	
+	}	
+	
+	\mark \default %B 
+	\repeat volta 2 {
+	  f,8. a16 r8 c f,8. a16 r8 c |
+	 g8. bes16 r8 d g,8. bes16 r8 d |
+	d8. f16 r8 a g,8. bes16 r8 d |
+	 d8. f16 r8 a g,8. bes16 r8 d |
+	 d8. f16 r8 a g,8. bes16 r8 d |
+	 }
+	  \alternative {
+		{ bes8. f16 r8 a bes8. f16 r8 a |
+	 g8. bes16 r8 d g,8. bes16 r8 d |
+	 f,8. a16 r8 c a4 cis |
+	 d8. f16 r8 a d,8. f16 r8 a |
+	 }
+		{ bes,8. f16 r8 a bes8. f16 r8 a |
+	 g8 r r2. |
+	 g8. bes16 r8 d g,8. bes16 r8 d |
+	 f,8. a16 r8 c a4 cis |
+	 d8. f16 r8 a d,8. f16 \markdownright \mark \markup { \italic "fine" } r8 a \mark \markup { "D.C." } |
+	 }
+	  }
+
+	\repeat volta 2 { r1 \mark \markup { \italic "Drums" } |
+	 r1 |
+	 }
+
+	\mark \default %C
+	cis,8 d e4 r2 |
+	 d8. fis16 r8 a e8. gis16 r8 b |
+	 a,8. cis16 r8 e a,8. cis16 r8 e |
+	 cis8 d e4 a,8 a a4 |
+	
+	d8. fis16 r8 a e8. gis16 r8 b |
+	 a,8. cis16 r8 e a,8. cis16 r8 e | \bar ".|" \markdownright \mark "D.C. al Fine"
 }
 }
 
@@ -119,8 +186,10 @@ changes = \chordmode {
 	   bes1 | g:m | f2 a:7 | d1:m | 
 	   bes1 | R | g:m | f2 a:7 | d1:m | 
 	 
+	%drums
+	R | R |
 	%C	
-	R | R | d2 e:7 | a1 | R | d2 e:7 | a1 | d:m |
+	R | d2 e:7 | a1 | R | d2 e:7 | a1 |
  }
 
 %layout
@@ -170,6 +239,9 @@ changes = \chordmode {
 	}
 	\new Staff { \clef bass
 		\bass
+	}
+	\new Staff { \clef bass
+		\hardbass
 	}
       >> 
   } 
