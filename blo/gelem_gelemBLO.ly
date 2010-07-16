@@ -134,49 +134,134 @@ changes = \chordmode {
 	g:m | g:m | a:7	| d:m | a:7 | d:m |
 }
 
+
+
 %layout
 #(set-default-paper-size "a5" 'landscape)
+#(set-global-staff-size 17)
 
-%{
 \book { 
   \header { poet = "Melody - C" }
+	\paper { page-count = 1 } 
     \score {
+
 	<<
-%	\new ChordNames { \set chordChanges = ##t \changes }
         \new Staff {
 		\melody
 	}
 	>>
     }
-%    \words
 }
-%}
-
-%{
 \book { 
-  \header { poet = "Bass - C" }
+  \header { poet = "Melody - Bb" }
+	\paper { page-count = 1 } 
+    \score { \transpose c d
+	<<
+        \new Staff {
+		\melody
+	}
+	>>
+    }
+}
+
+\book { 
+  \header { poet = "Melody - Eb" }
+	\paper { page-count = 1 } 
+    \score { \transpose c a,
+	<<
+        \new Staff {
+		\melody
+	}
+	>>
+    }
+}
+
+\book { 
+  \header { poet = "Tenor - C" }
+	\paper { page-count = 1 } 
     \score {
 	<<
-%	\new ChordNames { \set chordChanges = ##t \changes }
+        \new Staff { 
+		\tenor
+	}
+	>>
+    }
+}
+
+\book { 
+  \header { poet = "Tenor - C" }
+	\paper { page-count = 1 } 
+    \score { \transpose c c,
+	<<
+        \new Staff { \clef bass
+		\tenor
+	}
+	>>
+    }
+}
+
+\book { 
+  \header { poet = "Tenor - Bb" }
+	\paper { page-count = 1 } 
+    \score { \transpose c d
+	<<
+        \new Staff {
+		\tenor
+	}
+	>>
+    }
+}
+
+\book { 
+  \header { poet = "Tenor - Eb" }
+	\paper { page-count = 1 } 
+    \score { \transpose c a
+	<<
+        \new Staff {
+		\tenor
+	}
+	>>
+    }
+}
+
+\book { 
+  \header { poet = "Bass - C" }
+	\paper { page-count = 1 } 
+    \score {
+	<<
+	\new ChordNames { \set chordChanges = ##t \changes }
         \new Staff { \clef bass
 		\bass
 	}
 	>>
     }
-%    \words
 }
-%}
+
+\book { 
+  \header { poet = "Bass - Eb" }
+	\paper { page-count = 1 } 
+    \score { \transpose c a'
+	<<
+	\new ChordNames { \set chordChanges = ##t \changes }
+        \new Staff { \clef treble
+		\bass
+	}
+	>>
+    }
+}
+
 
 
 \book { \header { poet = "Score" }
-  \paper { #(set-paper-size "letter") }
+  \paper { #(set-paper-size "a4") 
+  			page-count = "unset" } 
     \score { 
       << 
 	\new ChordNames { \set chordChanges = ##t \changes }
 	\new Staff { 
 		\melody
 	}
-	\new Staff { 
+	\new Staff { \clef bass
 		\tenor
 	}
 	\new Staff { \clef bass
@@ -184,14 +269,13 @@ changes = \chordmode {
 	}
       >> 
   } 
-%    \words
 }
 
 
-%{
+
 \book { \header { poet = "MIDI" }
     \score { 
-      << \tempo 4 = 100 
+      << \tempo 4 = 120 
 \unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"alto sax"
 		\melody
 	}
@@ -205,4 +289,4 @@ changes = \chordmode {
     \midi { }
   } 
 }
-
+%}

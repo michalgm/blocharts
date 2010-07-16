@@ -4,7 +4,7 @@
 	title = "Ederlezi"
 	composer = "Trad. Roma"
 	copyright = "7/13/10"
-	copyright = \markup {\bold "A-B A-B drums C A-B "} %form
+	tagline = \markup {\bold "A-B A-B drums C A-B "} %form
 	}
 
 %place a mark at bottom right
@@ -194,40 +194,127 @@ changes = \chordmode {
 
 %layout
 #(set-default-paper-size "a5" 'landscape)
-
+#(set-global-staff-size 17)
 %{
 \book { 
   \header { poet = "Melody - C" }
+	\paper { page-count = 1 } 
     \score {
+
 	<<
-%	\new ChordNames { \set chordChanges = ##t \changes }
         \new Staff {
 		\melody
 	}
 	>>
     }
-%    \words
 }
-%}
-
-%{
 \book { 
-  \header { poet = "Bass - C" }
+  \header { poet = "Melody - Bb" }
+	\paper { page-count = 1 } 
+    \score { \transpose c d
+	<<
+        \new Staff {
+		\melody
+	}
+	>>
+    }
+}
+
+\book { 
+  \header { poet = "Melody - Eb" }
+	\paper { page-count = 1 } 
+    \score { \transpose c a,
+	<<
+        \new Staff {
+		\melody
+	}
+	>>
+    }
+}
+
+
+%}
+\book { 
+  \header { poet = "Tenor - C" }
+	\paper { page-count = 1 } 
     \score {
 	<<
-%	\new ChordNames { \set chordChanges = ##t \changes }
+        \new Staff { \clef bass
+		\tenor
+	}
+	>>
+    }
+}
+%{
+\book { 
+  \header { poet = "Tenor - Bb" }
+	\paper { page-count = 1 } 
+    \score { \transpose c d
+	<<
+        \new Staff {
+		\tenor
+	}
+	>>
+    }
+}
+
+\book { 
+  \header { poet = "Tenor - Eb" }
+	\paper { page-count = 1 } 
+    \score { \transpose c a
+	<<
+        \new Staff {
+		\tenor
+	}
+	>>
+    }
+}
+
+\book { 
+  \header { poet = "Bass - C" }
+	\paper { page-count = 1 } 
+    \score {
+	<<
+	\new ChordNames { \set chordChanges = ##t \changes }
         \new Staff { \clef bass
 		\bass
 	}
 	>>
     }
-%    \words
+}
+
+\book { 
+  \header { poet = "Bass - Eb" }
+	\paper { page-count = 1 } 
+    \score { \transpose c a'
+	<<
+	\new ChordNames { \set chordChanges = ##t \changes }
+        \new Staff { \clef treble
+		\bass
+	}
+	>>
+    }
 }
 %}
 
+\book { 
+  \header { poet = "hardbass - C" }
+  \paper { #(set-paper-size "a4") }
+    \score {
+	<<
+	\new ChordNames { \set chordChanges = ##t \changes }
+        \new Staff { \clef bass
+		\hardbass
+	}
+	>>
+    }
+}
+
+%{
 
 \book { \header { poet = "Score" }
-  \paper { #(set-paper-size "a4") }
+  \paper { #(set-paper-size "a4") 
+  			page-count = "unset" } 
     \score { 
       << 
 	\new ChordNames { \set chordChanges = ##t \changes }
@@ -245,19 +332,24 @@ changes = \chordmode {
 	}
       >> 
   } 
-%    \words
 }
 
 
-%{
+
 \book { \header { poet = "MIDI" }
     \score { 
-      << \tempo 4 = 100 
+      << \tempo 4 = 120 
 \unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"alto sax"
 		\melody
 	}
+\unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"trumpet"
+		\tenor
+	}
 \unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"tuba"
 		\bass
+	}
+\unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"tuba"
+		\hardbass
 	}
       >> 
     \midi { }

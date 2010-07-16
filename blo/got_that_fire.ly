@@ -30,8 +30,8 @@ leadsheet = {
 
 	\mark \markup { \box "3" \small "4 times" } 
 	\repeat volta 4 {
-		r4. <ees g>8~ <ees g>4 <des ees> | r4. <ees g>8~ <ees g>4 <des ees> |
-		r4. <ees ges>8~ <ees ges> <des ees> <ees ges> <f aes> | 
+		r4 <des ees>8 <ees g>~ <ees g>4 <des ees> | r4<des ees>8 <ees g>~ <ees g>4 <des ees> |
+		r4 <des ees>8 <ees ges>~ <ees ges> <des ees> <ees ges> <f aes> | 
 		<ges bes>4 <f aes>8  <ees ges>~ <ees ges>4 <des ees> | 
 		}
 	\break
@@ -63,57 +63,49 @@ changes = \chordmode { }
 
 %layout
 #(set-default-paper-size "a5" 'landscape)
+#(set-global-staff-size 17)
 
-%{
 \book { 
-  \header { poet = "Melody - C" }
+  \header { poet = "Lead Sheet- C" }
+	\paper { page-count = 1 } 
     \score {
+
 	<<
-%	\new ChordNames { \set chordChanges = ##t \changes }
         \new Staff {
-		\melody
-	}
-	>>
-    }
-%    \words
-}
-%}
-
-%{
-\book { 
-  \header { poet = "Bass - C" }
-    \score {
-	<<
-%	\new ChordNames { \set chordChanges = ##t \changes }
-        \new Staff { \clef bass
-		\bass
-	}
-	>>
-    }
-%    \words
-}
-%}
-
-
-\book { \header { poet = "Leadsheet" }
-  \paper { #(set-paper-size "letter") }
-    \score { 
-      << 
-%	\new ChordNames { \set chordChanges = ##t \changes }
-	\new Staff { 
 		\leadsheet
 	}
-      >> 
-\layout { indent = #0 line-width = #200 ragged-right = ##t }
-  } 
-%    \words
+	>>
+    }
+}
+\book { 
+  \header { poet = "Lead Sheet - Bb" }
+	\paper { page-count = 1 } 
+    \score { \transpose c d
+	<<
+        \new Staff {
+		\leadsheet
+	}
+	>>
+    }
+}
+
+\book { 
+  \header { poet = "Lead Sheet - Eb" }
+	\paper { page-count = 1 } 
+    \score { \transpose c a,
+	<<
+        \new Staff {
+		\leadsheet
+	}
+	>>
+    }
 }
 
 
 
 \book { \header { poet = "MIDI" }
     \score { 
-      << \tempo 4 = 240 
+      << \tempo 4 = 200 
 \unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"alto sax"
 		\leadsheet
 	}

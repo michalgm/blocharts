@@ -87,50 +87,42 @@ changes = \chordmode { }
 
 %layout
 #(set-default-paper-size "a5" 'landscape)
+#(set-global-staff-size 17)
 
-%{
 \book { 
-  \header { poet = "Melody - C" }
+  \header { poet = "Lead Sheet- C" }
+	\paper { page-count = 1 } 
     \score {
+
 	<<
-%	\new ChordNames { \set chordChanges = ##t \changes }
         \new Staff {
-		\melody
-	}
-	>>
-    }
-%    \words
-}
-%}
-
-%{
-\book { 
-  \header { poet = "Bass - C" }
-    \score {
-	<<
-%	\new ChordNames { \set chordChanges = ##t \changes }
-        \new Staff { \clef bass
-		\bass
-	}
-	>>
-    }
-%    \words
-}
-%}
-
-
-\book { \header { poet = "Leadsheet" }
-  \paper { #(set-paper-size "letter") }
-    \score { 
-      << 
-%	\new ChordNames { \set chordChanges = ##t \changes }
-	\new Staff { 
 		\leadsheet
 	}
-      >> 
-\layout { indent = #0 line-width = #200 ragged-right = ##t }
-  } 
-%    \words
+	>>
+    }
+}
+\book { 
+  \header { poet = "Lead Sheet - Bb" }
+	\paper { page-count = 1 } 
+    \score { \transpose c d
+	<<
+        \new Staff {
+		\leadsheet
+	}
+	>>
+    }
+}
+
+\book { 
+  \header { poet = "Lead Sheet - Eb" }
+	\paper { page-count = 1 } 
+    \score { \transpose c a,
+	<<
+        \new Staff {
+		\leadsheet
+	}
+	>>
+    }
 }
 
 
