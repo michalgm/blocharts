@@ -25,7 +25,9 @@
         autoBeaming = ##f
         }
     }
-PartPOneVoiceOne =  \relative d' {
+%part: melody
+melody =  \relative d' {
+   \set Score.markFormatter = #format-mark-box-letters
     \repeat volta 2 {
         \repeat volta 2 {
             \clef "treble" \key g \minor \time 2/2 \repeat volta 2 {
@@ -39,6 +41,9 @@ PartPOneVoiceOne =  \relative d' {
                 d8 [ es8 es8 d8 ] d8 [ c8 ] d4 | % 7
                 d,8 [ fis8 ] r8 a8 r8 c8 r8 d8 | % 8
                 d8 [ fis8 es8 d8 ] d8 [ c8 ] d4 }
+
+			\mark \default %A
+
             \repeat volta 2 {
                 | % 9
                 d4 d8 [ d8 ] c4 c8 [ c8 ] | \barNumberCheck #10
@@ -52,6 +57,7 @@ PartPOneVoiceOne =  \relative d' {
                     d8 [ d8 d8 d8 ] c4 c8 [ c8 ] }
                 } | % 14
             r8 es8 fis8 [ es8 ] d8 [ d8 d8 d8 ] \bar "||"
+			\mark \default %B
             \repeat volta 2 {
                 | % 15
                 | % 15
@@ -75,6 +81,7 @@ PartPOneVoiceOne =  \relative d' {
                     | % 23
                     fis8 [ fis8 es8 d8 ] d8 [ c8 ] d4 }
                 } \bar "||"
+			\mark \default %A
             \repeat volta 2 {
                 | % 24
                 | % 24
@@ -89,6 +96,7 @@ PartPOneVoiceOne =  \relative d' {
                     d8 [ d8 d8 d8 ] c4 c8 [ c8 ] }
                 } | % 29
             r8 es8 fis8 [ es8 ] d8 [ d8 ] d4 \bar "||"
+			\mark \default %C
             \repeat volta 2 {
                 | \barNumberCheck #30
                 \times 2/3  {
@@ -119,6 +127,7 @@ PartPOneVoiceOne =  \relative d' {
                     | % 38
                     d,8 [ es8 es8 d8 ] d8 [ c8 ] d4 }
                 } \bar "||"
+			\mark \default %D
             \repeat volta 2 {
                 | % 39
                 \times 2/3  {
@@ -140,6 +149,7 @@ PartPOneVoiceOne =  \relative d' {
                     | % 44
                     d8 [ es8 es8 d8 ] d8 [ c8 d8 c8 ] }
                 } \bar "||"
+			\mark \default %E
             \repeat volta 2 {
                 | % 45
                 <d d'>8 r8 fis8 [ g8 ] a4 a4 | % 46
@@ -161,7 +171,9 @@ PartPOneVoiceOne =  \relative d' {
                 {
                     | % 53
                     d8 [ es8 es8 d8 ] d8 [ c8 ] d4 }
-                } \repeat volta 2 {
+                } 
+			\mark \default %F
+				\repeat volta 2 {
                 | % 54
                 fis8 [ es8 d8 fis8 ] es8 [ d8 fis8 es8 ] | % 55
                 d8 [ fis8 es8 d8 ] fis8 [ es8 d8 c8 ] | % 56
@@ -200,6 +212,7 @@ PartPOneVoiceOne =  \relative d' {
         g4. fis4. es4 | % 65
         d1 ~ | % 66
         d1 }
+	\mark \default %G
     \repeat volta 2 {
         | % 67
         d8 [ d8 d8 fis8 ] fis8 [ fis8 a8 a8 ] | % 68
@@ -226,11 +239,48 @@ PartPOneVoiceOne =  \relative d' {
     d4 r4 r2 \bar "|."
     }
 
-
+%part: changes
+changes = \chordmode  {
+	d1 | r1 | r1 | r1 |
+	d1 | r1 | r1 | r1 |
+	%A
+	d1 | ees1 | d1 | c1:m | d1 | c1:m
+	%B
+	d1 | d1 | ees1 | ees1 | 
+	d1 | d1 | c1:m | c1:m | c1:m
+	%A
+	d1 | ees1 | d1 | c1:m | d1 | c1:m
+	%C
+	d1 | d1 | d1 | ees1 | ees1 | 
+	d1 | c1:m | d1 | d1 |
+	%D
+	ees | d | c:m | d |
+	d |
+	%E
+	d | d | g | c:m | c:m | c:m | d | d | d
+	%F
+	d | d | ees | ees | c:m | c:m | c:m | c:m | d | d | c:m | c:m | d | d
+	%G
+	d | d | ees | ees | c:m | c:m | c:m | d | d | d | d | d | ees | c:m | d | d 
+	d | d | d | d
+}
+%layout
+\book { 
+  \header { poet = "Melody - C" }
+	\score {
+	<<
+	\new ChordNames { \set chordChanges = ##t \changes }
+		\new Staff {
+		\melody
+	}
+	>>
+	}
+%    \words
+}
 % The score definition
 \new Staff <<
     \context Staff << 
-        \context Voice = "PartPOneVoiceOne" { \PartPOneVoiceOne }
+        \context Voice = "PartPOneVoiceOne" { \melody }
         >>
     >>
 
