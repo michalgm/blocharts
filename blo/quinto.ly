@@ -73,12 +73,33 @@ harmonyTwo
 bass = {
 	\relative c { \time 3/4 \key f \minor
 	\mark \default
-	c2.
+	\partial 4 r4 | c2. | g2. | f2. | c'2. |
+	ees2. | des2. | c2. | g2. | 
+	c2. | des2. | c2. | g2. |
+	f2. | ees'2. | des4 c2 | g2. |
+	c2. | c2. | c2. | g2. |
+	c2. | g2. | c2 f,4~ | f4 c'2| f,2. |
+	r2. | r2 f4~ | f4 c'2 | f,2. |
+	r2. | c'2. | g2. | c2. | g2. |
+
 	}
 }
 
 %part: words
-%words = \markup { }
+words = \markup { 
+	\column { 
+  \line { Con el quinto, }
+  \line { con el quinto regimiento. }
+  \line { Madre, yo me voy p' al frente }
+  \line { para las líneas de fuego. }
+
+  \hspace #0.2
+  \line { Anda jaleo, jaleo }
+  \line { suena una ametralladora }
+  \line { y ya empieza el tiroteo  }
+  \line { y ya empieza el tiroteo. }
+ }
+}
 
 %layout
 #(set-default-paper-size "a5" 'landscape)
@@ -138,7 +159,7 @@ bass = {
 %{
 \book { \header { poet = "MIDI" }
     \score { 
-      << \tempo 2 = 76 
+      << \tempo 2 = 86 
 \unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"trumpet"
 		\melody
 	}

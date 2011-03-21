@@ -11,9 +11,7 @@ title = "Romani Dream"
 melody =  \relative d' {
    \set Score.markFormatter = #format-mark-box-letters
   \override Score.RehearsalMark #'break-align-symbols = #'(clef)
-       \repeat volta 2 {
-           \repeat volta 2 {
-               \clef "treble" \key g \minor \time 2/2 \repeat volta 2 {
+                \key g \minor \time 2/2 \repeat volta 2 {
                    d4 r8 fis8 r4 a4 | % 2
                    r8 c8 r8 d8 es8 [ es8 ] d4 | % 3
                    d,8 [ d8 d8 fis8 ] fis8 [ fis8 a8 a8 ] | % 4
@@ -81,7 +79,7 @@ melody =  \relative d' {
             r8 es8 fis8 [ es8 ] d8 [ d8 ] d4
 			\bar "||"
 \break
-\mark \default %C
+\mark #3 %C
             \repeat volta 2 {
                 | \barNumberCheck #30
                 \times 2/3  {
@@ -129,11 +127,19 @@ melody =  \relative d' {
                     | % 44
                     d8 [ es8 es8 d8 ] d8 [ c8 d8 c8 ] }
                 } \bar "||"
-			\break
+                \mark "Solos"
+                \repeat volta 2 {
+                  d'4 d8 d c4 c8 c | r ees fis ees d d d d 
+                }
+                \alternative {
+                  { d8 d d d c4 c8 c | r ees fis ees d d d4 | }
+                  { d8 d d d c4 c8 c | r ees fis ees d d d  d | \break }
+                }
+                \break
 			  \mark \default %E
             \repeat volta 2 {
                 | % 45
-                d8 r8 fis8 [ g8 ] a4 a4 | % 46
+                d,8 r8 fis8 [ g8 ] a4 a4 | % 46
                 a8 [ bes8 bes8 a8 ] g8 [ fis8 ] g4 | % 47
                 \times 2/3  {
                     b4 g4 fis4 }
@@ -213,7 +219,116 @@ melody =  \relative d' {
     | % 85
     d4 r4 r2 \bar "|."
     
-}}} 
+}
+
+
+% music pieces
+%part: tenor
+tenor = {
+  \relative c' {
+    \set Score.markFormatter = #format-mark-box-letters
+    \override Score.RehearsalMark #'break-align-symbols = #'(clef)
+       \key g \minor \time 2/2 
+    \repeat volta 2 {
+      d4 r8 fis8 r4 a4 | r8 c8 r8 d8 es8  es8  d4 | 
+      d,8  d8 d8 fis8  fis8  fis8 a8 a8  | a8  d8 es8 c8  es8  es8  d4 |
+    }
+    
+    \repeat volta 2 {
+      d4 r8 d r4 d | r8 d r d ees4-- d | 
+      d4 r8 d r4 d | r8 fis ees d d c d4 | \break 
+    }
+    
+    \mark \default %A
+    \repeat volta 2 {
+      d4. c4. a4~ | a8 c4 d8 ees ees d4 | 
+    }
+      \alternative {
+         { d4. c4. a4~ | a8 d fis d ees ees d4 |  }
+         { d4. c4. a4~ | a8 d fis d ees ees d4 |  }
+       }
+
+    \break
+    \mark \default %B
+    \repeat volta 2 {
+      d8 r8 r2. | d1 | ees | c2 ees4 d~ |
+      d8 r8 r2. | d1 | c | 
+    }
+    \alternative {
+      {  a2 ees'4 d~ | }
+      { a2 ees'4 d | }
+      
+    }
+  
+    \break
+    \mark #1
+    \repeat volta 2 {
+      d4. c4. a4~ | a8 c4 d8 ees ees d4 | 
+    }
+    \alternative {
+      { d4. c4. a4~ | a8 d fis d ees ees d4 |  }
+      { d4. c4. a4~ | a8 d fis d ees ees d4 |  }
+    }
+    
+    
+    \break
+    \mark #3
+    \repeat volta 2 {
+      r1 | r1 | d1\< | ees4\f r r2 |
+      <g, bes>4.^\markup {\tiny "2nd x whole notes" } <g bes>8 r <g bes> <g bes> <g bes> | <fis a>4. <fis a>8 r <fis a> <fis a> <fis a> |
+        <ees g>4. <d a'>8 <ees bes'> <d a'> <ees c'> <fis cis'> |
+      }
+      \alternative {
+        {  <d d'>4 r r2 | }
+        {  <d d'>4 r r2 | }
+      }
+      
+     \break
+      \mark \default %D
+      \repeat volta 2 {
+        <g bes>1 | <fis a> |
+        <ees g>4. <d a'>8 <ees bes'> <d a'> <ees c'> <fis cis'> |
+      }
+      \alternative {
+        {  <d d'>4 r r2 | }
+        {  <d d'>4 r r2 | }
+      }
+      
+      \break
+      \mark "Solos"
+      \repeat volta 2 {
+        d'4 d8 d c4 c8 c | r ees fis ees d d d d 
+      }
+      \alternative {
+        { d8 d d d c4 c8 c | r ees fis ees d d d4 | }
+        { d8 d d d c4 c8 c | r ees fis ees d d d  d | \break }
+      }
+      
+      \mark \default %E
+      \repeat volta 2 {r1 r1 r1 r1 r1 r1 r1 }
+      \alternative { {r1} {r1} }
+ 
+      \break
+      \mark \default %F
+      \repeat volta 2 { r1 r1 r1 r1 r1| }
+      \alternative { {r1 r1 r1 r1} {r1 r1 r1 r1} }
+      
+      \break
+      \mark \default %G
+      \repeat volta 2 { r1 r1 r1 r1 r1 r1 r1 r1 | }
+      
+      \break
+      r1 r1 r1 r1 r1 r1
+      \break
+      \repeat volta 2 {
+        d,4 r8 fis8 r4 a4 | r8 c8 r8 d8 es8  es8  d4 | 
+        d,8  d8 d8 fis8  fis8  fis8 a8 a8  | a8  d8 es8 c8  es8  es8  d4 |
+      }
+      d4 r4 r2 \bar "|."
+      
+    }
+    
+  }
 
 
 %part: changes
@@ -242,3 +357,36 @@ d | d | ees | ees | c:m | c:m | d | d
 %H? 
 d | d | d | ees | c:m | d | d | d | d | d | d
 }
+
+%layout
+\book { \header { poet = "Score" }
+  \paper { #(set-paper-size "letter") }
+\score { 
+  << 
+    \tempo 4=160
+    %   \new ChordNames { \set chordChanges = ##t \changes }
+    \new Staff { \clef treble
+      \melody
+    }
+    \new Staff { \clef treble
+      \tenor
+    }
+  >> 
+} 
+%    \words
+}
+
+\book { \header { poet = "MIDI" }
+  \score { 
+    << \tempo 4 = 160 
+      \unfoldRepeats  \new Staff { \set Staff.midiInstrument = #"trumpet"
+        \melody
+      }
+      \unfoldRepeats  \new Staff { \set Staff.midiInstrument = #"trombone"
+        \tenor
+      }
+    >> 
+    \midi { }
+  } 
+}
+

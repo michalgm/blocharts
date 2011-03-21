@@ -14,6 +14,8 @@ markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begi
 % music pieces
 %part: melody
 melody = {
+   \set Score.markFormatter = #format-mark-box-letters
+  \override Score.RehearsalMark #'break-align-symbols = #'(clef)
   \relative c'' { \set Score.markFormatter = #format-mark-box-letters
 
 	\times 2/3 { d4^\markup { \italic "Trumpet solo, freely" }
@@ -22,18 +24,21 @@ melody = {
 	<d fis a d>1^\markup { \italic "All" } | 
 	\repeat volta 2 { r1^\markup { \italic "drums" } } |
 
+	\break
 	\mark \default %A
 	d8[ r16^\markup { \italic "layer in" }  d] d c d8 r16 c[ r d] ees c d8 |
 	<d fis>8 [ r16 <d fis>] <d fis> <c ees> <d fis>8 r16 <c ees> [ r <d fis>] <ees g> <c ees> <d fis>8 |
 	<d fis a>8 [ r16 <d fis a> ] <d fis a> <c ees g> <d fis a>8 r16 <c ees g> [ r <d fis a>] <ees g bes> <c ees g> <d fis a>8 |
 	<d fis a d>8 [ r16 <d fis a d>] <d fis a d> <c ees g c> <d fis a d>8 r16 <c ees g c>[ r <d fis a d>] <ees g bes ees> <c ees g c> <d fis a d>8 |
 	
+	\break
 	\mark \default %B
 	\repeat volta 2 {
 	  fis16 g^\markup { \italic "2nd x sustain through rests" }  a8 r4 a16 bes g8 r4 | g16 a fis8 r4 g16 fis ees d d ees fis g |
 	  fis16 g a8 r4 a16 bes g8 r4 | g16 a fis8 r4 g16 fis ees d d c d8 |
 	}
 
+	\break
 	\mark \default %C
 	\repeat volta 2 {
 	  r16 \mark \markup { \musicglyph #"scripts.segno" } d[ r d] bes'8 a 
@@ -59,12 +64,14 @@ melody = {
 		{ r16 ees[ r ees] ees d ees f d2 | \bar "||" }
 	}
 
+	\break
 	\mark \default %D
 	r8 a'16 bes c8 c16 bes bes bes bes a g g g g |
 	g r a bes c c c bes bes bes bes a g g g g |
 	g r a bes c c c bes bes bes bes a g g g g |
 	g r a bes c c c bes d2 | \bar "||"
 
+	\break
 	\mark \default %E
 	  r16 c[ r b?] c c bes a r bes[ r a] bes bes a g |
 	  r a[ r g] a a g fis a g fis ees d ees fis g |

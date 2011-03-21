@@ -74,7 +74,7 @@ melody =  \relative c'' {
             | 
             g,4 as8 g8 g8 f8 g4 }
         } | 
-    R1 \repeat volta 4 {
+    \repeat volta 4 {
         | 
         d8 g8 r8 g8 r8 g8 r8 g8 | 
         d8 as'8 r8 as8 r8 as8 r8 as8 | 
@@ -107,7 +107,7 @@ bass =  \relative d {
         d,4. fis4. a4 | 
         d,4. fis4. a4 }
     | 
-    R1*16 \repeat volta 2 {
+    R1 \repeat volta 2 {
         | 
         g4 ^"D. C. 3x" r8 d8 f4 as4 | 
         r8 g4 d8 f4 as4 | 
@@ -142,7 +142,7 @@ bass =  \relative d {
             g4. b4. d4 }
         } \repeat volta 2 {
         | 
-        g,4. b4. d4 }
+        g4. b4. d4 }
     \alternative { {
             | 
             g,4. b4. d4 }
@@ -153,7 +153,7 @@ bass =  \relative d {
             | 
             g,4. b4. d4 }
         } | 
-    R1 \repeat volta 4 {
+    \repeat volta 4 {
         | 
         g,8 g8 r4 r2 | 
         as8 as8 r4 r2 | 
@@ -161,5 +161,19 @@ bass =  \relative d {
         g4. b4. d4 }
     }
 
-
+%{
+\book { \header { poet = "MIDI" }
+    \score { 
+      << \tempo 4 = 170 
+\unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"alto sax"
+		\melody
+	}
+\unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"tuba"
+		\bass
+	}
+      >> 
+    \midi { }
+  } 
+}
+%}
 
