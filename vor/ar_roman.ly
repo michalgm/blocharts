@@ -397,7 +397,104 @@ tenorcombo = {
            \autoBeamOff
            \tenorhigh
          }
-           %layout
+
+
+%part: tenorpaulroolzgregdroolz 
+tenorpaulroolzgregdroolz = {
+  \relative c' { \time 9/8
+      \set Score.markFormatter = #format-mark-box-letters
+      
+      \mark \default %A
+      r8 <d fis a>16 <d fis a> r8 <d fis a>16 <d fis a> r8 <d fis a>16 <d fis a> <d fis a>8 <d fis a>16 <d fis a> <d fis a> <d fis a> |
+      r8 <ees g bes>16 <ees g bes> r8 a,16 a c8 ees d <d fis a>16 <d fis a> <d fis a> <d fis a> |
+      r8 <d fis a>16 <d fis a> r8 <d fis a>16 <d fis a> r8 <d fis a>16 <d fis a> <d fis a>8 <d fis a>16 <d fis a> <d fis a> <d fis a> |
+      r8 <ees g bes>16 <ees g bes> r8 a,16 a c8 ees d <d fis a>16 <d fis a> <d fis a> <d fis a> |
+      \break
+      \mark \default %B
+      \repeat volta 2 {
+        r8 <d f a>16 <d f a> r8 <d f a>16 <d f a> r8 <d f a>16 <d f a> <d g bes>8 <d g bes>16 <d g bes> <d g bes> <d g bes> |
+      r8 <d g bes>16 <d g bes> r8 <d g bes>16 <d g bes> r8 <d g bes>16 <d g bes> <d f a> <d f a> <d f a> <d f a> <d f a> <d f a> |
+        r8 <d f a>16 <d f a> r8 <d f a>16 <d f a> r8 <d f a>16 <d f a> <d g bes>8 <d g bes>16 <d g bes> <d g bes> <d g bes> |
+      r8 <d g bes>16 <d g bes> r8 <d g bes>16 <d g bes> r8 <d g bes>16 <d g bes> <d f a> <d f a> <d f a> <d f a> <d f a> <d f a> \break|
+      }
+      
+      \mark \default %C
+      \repeat volta 2 {
+        r8 <d f a>16 <d f a> r8 <d f a>16 <d f a> r8 <d f a>16 <d f a> <d g bes>8 <d g bes>16 <d g bes> <d g bes> <d g bes> |
+      r8 <d f a>16 <d f a> r8 <d f a>16 <d f a> r8 <d f a>16 <d f a> <d f a> <d f a> <d f a> <d f a> <d f a> <d f a> |
+        r8 <d g b?>16 <d g b> r8 <d g b>16 <d g b> r8 <d g b>16 <d g b> <d g b>8 <d g b>16 <d g b> <d g b> <d g b> |
+      r8 <d g bes>16 <d g bes> r8 <d g bes>16 <d g bes> r8 <d g bes>16 <d g bes> <d f a> <d f a> <d f a> <d f a> <d f a> <d f a> |
+        
+    }
+    \break
+    \mark \default %D
+    \repeat volta 2 {
+      r8 <d g b>16 <d g b> r8 <d g b>16 <d g b> r8 <d g b>16 <d g b> <d g b>8 <d g b>16 <d g b> <d g b> <d g b> |
+        r8 <d g b>16 <d g b> r8 <d g b>16 <d g b> r8 <d g b>16 <d g b> <d g b> <d g b> <d g b> <d g b> <d g b> <d g b> |
+      r8 <d g b>16 <d g b> r8 <d g b>16 <d g b> r8 <d g b>16 <d g b> <d g b>8 <d g b>16 <d g b> <d g b> <d g b> |
+        r8 <f aes c>16 <f aes c> r8 <f aes c>16 <f aes c> r8 <f aes c>16 <f aes c> <d g b> <d g b> <d g b> <d g b> <d g b> <d g b> |
+    }
+    \break
+    \mark \default %E
+    \repeat volta 2 {
+      r8 <d g b>16 <d g b> r8 <d g b>16 <d g b> r8 <d g b>16 <d g b> <d f a>8 <d f a>16 <d f a> <d f a> <d f a> |
+        r8 <d g b>16 <d g b> r8 <d g b>16 <d g b> r8 <d g b>16 <d g b> <d g b> <d g b> <d g b> <d g b> <d g b> <d g b> \break |
+    }
+    
+    \repeat volta 4 {
+      <d f aes>4\f^\markup {\tiny "4x, build harmony"} <f aes c> <aes c ees> <g b d>8 <g b d>4 |
+        }
+      
+        \repeat volta 4 {
+        <ees aes c>8\ff^\markup {\tiny "harmonize 3r<d g b> & 4th times"}[ <d g b> <d g b> <d g b>] <ees aes c>[ <d g b> <d g b>] <d g b>4
+        }
+        
+        \repeat volta 4 {
+          <d g b>8^\markup {\tiny "1st x only"} r r4 r r4. 
+          }
+          \set beatLength = #(ly:make-moment 1 8) \set beatGrouping = #'(2 2 2 3) \tempo 8=264
+              \mark \default %F
+              \repeat volta 2 {
+                \repeat volta 2 {
+				r8 <d g b> r <d g b> r <d g b> r <d g b> <d g b> |
+				r <d g b> r <d g b> r <d fis a> r <d fis a> <d fis a> |
+				r <d g b> r <d g b> r <d g b> r <d g b> <d g b> |
+				r <d g b> <d g b> <d g b> <d fis a> <d fis a> <d fis a> <d fis a> <d fis a> |
+              }
+                \break
+              \mark \default %G
+                
+              r8 <d g b> r <d g b> r <d g b> r <d g b> <d g b> | 
+			  r8 <d g b> r <d g b> r <d g b> r <d g b> <d g b> |
+                bes'8 a g bes a g bes a g | 
+				r8 <d fis a> r <d fis a> r <d fis a> r <d fis a> <d fis a> \break|
+              r8 <d fis a> r <d fis a> r <d fis a> r <d fis a> <d fis a> | 
+			  r8 <d fis a> r <d fis a> r <d fis a> r <d fis a> <d fis a> |
+                a'8 g fis a g fis a g fis | 
+				r8 <ees g c> r <ees g c> r <ees g c> r <ees g c> <ees g c> \break|
+              r8 <ees g c> r <ees g c> r <ees g c> r <ees g c> <ees g c> | 
+			  r8 <fis a ees'> r <fis a ees'> r <fis a ees'> r <fis a ees'> <fis a ees'> |
+                r8 <g c ees> r <g c ees> r <g c ees> r <fis a d> <fis a d> |  
+				r8 <fis a d> r <fis a d> r <fis a d> r <fis a d> <fis a d> \break|
+            }
+            \alternative {
+              { 
+                  \repeat volta 4 { c16^\markup { \italic "4x" } d d d d8 d ees fis fis ees d^\markup "To F"| }
+                  }
+                  
+                  { \break        
+                    \repeat volta 8 { 
+                    r1^\markup { \italic "solo (open)" } r8    
+                             }
+                     
+                     c8. d16 ees8 fis g a bes a g | fis8. g16 a8 bes b c d ees fis | d-^ r8 r4 r4 r4. |
+                     \bar "||"
+                   }
+                   }
+                 }
+             }
+
+%layout
 %{
 \book { \header { poet = "Melody - C" }
 	\score { <<
@@ -434,13 +531,14 @@ tenorcombo = {
                 \melody 
         }
                \new Staff {   
-                 \new Voice <<
+             %{    \new Voice <<
                  { \tenor }
                
                  { \tenormid }
                
                  { \tenorhigh }
-               >>
+               >> %}
+			   \tenorpaulroolzgregdroolz
                }
         >> }
 }
