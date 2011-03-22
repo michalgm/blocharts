@@ -101,7 +101,7 @@ tenor =  \relative c' { \clef "treble" \key c \minor \time 4/4
 
 		\mark \default %E
 		\repeat volta 2 {
-			<f aes c>2 <f aes c>8 <ees g c> <d f d> <c ees ees'> |
+			<f aes c>2 <f aes c>8 <ees g c> <d f d'> <c ees ees'> |
 			r8 <ees g c> r <ees g c> r <d g b> r <d g b> |
 			r <ees g c> r <ees g c> r <ees aes c> r <ees aes c> |
 			r <d fis d'> r <d fis c'> r <d g b> r <d g b> |
