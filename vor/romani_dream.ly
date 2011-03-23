@@ -348,6 +348,8 @@ d1 | c1:m | d1 | d1 |
 %D
 ees | d | c:m | d |
 d |
+%A
+d1 | ees1 | d1 | c1:m | d1 | c1:m
 %E
 d | d | g | c:m | c:m | c:m | d | d | d
 %F
