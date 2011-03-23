@@ -13,8 +13,8 @@ markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begi
 
 % music pieces
 
-%part: tenor
-tenor = {
+%part: tenorone
+tenorone = {
   \relative c'' {
         \mark "1"
         \repeat volta 2 {
@@ -47,12 +47,17 @@ tenor = {
      \break
      \mark "2"
      \repeat volta 2 {
+       d4 f gis a8 a | d,4 f gis a8 a | 
+       d,4 f gis a8 a | a4 gis <f a> <d f>8 <d f> |
+     }
+   \break
+     \mark "3"
+     \repeat volta 2 {
        r4 a'2 a8 a | r4 gis2 gis8 gis | 
        r4 f2 f8 f | a4 gis <f a> <d f>8 <d f> | 
      }
-     
      \break
-     \mark "3"
+     \mark "4"
      \repeat volta 2 {
        d4 f gis a8 a | d,4 f gis a8 a | 
        d,4 f gis a8 a | a4 gis <f a> <d f>8 <d f> |
@@ -74,12 +79,12 @@ tenorthree = {
         }
       }
  }
- %part: tenorcombo
-tenorcombo = {
+ %part: tenor
+tenor = {
   \relative c' {
     \new Voice <<
     { \tenortwo } 
-    {\tenor}
+    {\tenorone}
      {\tenorthree}
   >>
     \shared
