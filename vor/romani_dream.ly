@@ -276,9 +276,10 @@ tenor = {
       \mark \default %E
       \repeat volta 2 {
 	  	<fis, a d>8 r r4 r2 |
-		r8 <fis a d>16 <fis a d> <fis a d>8 <fis a d> r8 <fis a d>16 <fis a d> <fis a d>8 <fis a d> |
-		\times 2/3 { <g b d>4 <g b d> <g b d> } \times 2/3 { <d g b>4 <d g b> <d g b> } |
-		r8 <ees g c>16 <ees g c> <ees g c>8 <ees g c> r8 <ees g c>16 <ees g c> <ees g c>8 <ees g c> |
+        <fis a d>1\<  |
+        %\times 2/3 { <g b d>4\! <g b d> <g b d> } \times 2/3 { <d g b>4 <d g b> <d g b> } |
+        \times 2/3 { <g b d>4\! <g b d> <d g b> } \times 2/3 { <g b d>4 <g b d> <d g b> } |
+        <ees g c>8 r8 r4 r2 |
 		r8 <ees g c>16 <ees g c> <ees g c>8 <ees g c> r8 <ees g c>16 <ees g c> <ees g c>8 <ees g c> |
 		r8 <ees g c>16 <ees g c> <ees g c>8 <ees g c> r8 <ees g c>16 <ees g c> <ees g c>8 <ees g c> |
 		r8 <fis a d>16 <fis a d> <fis a d>8 <fis a d> r8 <fis a d>16 <fis a d> <fis a d>8 <fis a d> |
@@ -381,7 +382,7 @@ d | d | d | ees | c:m | d | d | d | d | d | d
 } 
 %    \words
 }
-%{
+
 \book { \header { poet = "MIDI" }
   \score { 
     << \tempo 4 = 160 
@@ -395,4 +396,4 @@ d | d | d | ees | c:m | d | d | d | d | d | d
     \midi { }
   } 
 }
-%}
+
