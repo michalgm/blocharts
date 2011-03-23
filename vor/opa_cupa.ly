@@ -11,7 +11,7 @@
 		%	}
 
 		%part: melody
-		melody =  \relative c'' { \clef "treble" \key c \minor \time 4/4  
+		melody =  \relative c'' { \key c \minor \time 4/4  
 			\set Score.markFormatter = #format-mark-box-letters
 				\override Score.RehearsalMark #'break-align-symbols = #'(clef)
 
@@ -67,7 +67,7 @@
 		}
 
 %part: tenor
-tenor =  \relative c' { \clef "treble" \key c \minor \time 4/4  
+tenor =  \relative c { \key c \minor \time 4/4  
 	\set Score.markFormatter = #format-mark-box-letters
 		\override Score.RehearsalMark #'break-align-symbols = #'(clef)
 
