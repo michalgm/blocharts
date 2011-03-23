@@ -74,6 +74,59 @@ tersa = {
 	}
 }
 
+%part: tenor
+tenor = {
+  \relative c {
+    \set Score.markFormatter = #format-mark-box-letters
+    
+    \mark \default %A
+    \repeat volta 2 {
+        r8 <f bes des>16 <f bes des> r <f bes des>16 <f bes des> <f bes des> r16 <f bes des> <f bes des>16-- <f bes des> r <f bes des>16 <f bes des> <f bes des>|
+        r8 <f a c>16 <f a c> r <f a c> <f a c> <f a c> r8 ges f fes
+        r8 <ges bes ees>16 <ges bes ees> r <ges bes ees> <ges bes ees> <ges bes ees> r16 <ges bes ees> <ges bes ees>-- <ges bes ees> r <ges bes ees> <ges bes ees> <ges bes ees>        
+      }
+    \alternative {
+      { r8 <f a c>16 <f a c> r <f a c> <f a c> <f a c> r8 f ges a }
+      { r8 <f a c>16 <f a c> r <f a c> <f a c> <f a c> r8 ges f fes }
+    }
+    \break
+	
+    \mark \default %B
+    \repeat volta 2 {
+      r8 <ges bes ees>16 <ges bes ees> r <ges bes ees> <ges bes ees> <ges bes ees> r <ges bes ees> <ges bes ees>-- <ges bes ees> r <ges bes ees> <ges bes ees> <ges bes ees> |
+      r8 <f a c>16 <f a c> r <f a c> <f a c> <f a c> r8 ges f fes |
+      r8 <ges bes ees>16 <ges bes ees> r <ges bes ees> <ges bes ees> <ges bes ees> r <ges bes ees> <ges bes ees>-- <ges bes ees> r <ges bes ees> <ges bes ees> <ges bes ees> |
+    }
+    \alternative {
+      { r8 <f a c>16 <f a c> r <f a c> <f a c> <f a c> r8 ges f fes | }
+      { r8 <f a c>16 <f a c> r <f a c> <f a c> <f a c> r16 <des f> <ees ges> <f a> <ges bes> <a c> <bes des> <c ees>  | }
+    }
+    \break
+
+    \mark \default %C
+    \repeat volta 2 {
+      <bes des f>8 r8 r4 <bes des f>4 <f bes des>|
+      <f bes des>8 <f bes des>16 <f bes des> r <f bes des> <f bes des> <f bes des> r8 ees des c|
+      r8 <f bes des>16 <f bes des> r <f bes des> <f bes des> <f bes des> r <f bes des> r <f bes des> r <f bes des> <f bes des> <f bes des> |
+    }
+    \alternative {
+      { r8 <f a c>16 <f a c> r <f a c> <f a c> <f a c> r16 <des f> <ees ges> <f a> <ges bes> <a c> <bes des> <c ees>  | }
+      { r8 <f, a c>16 <f a c> r <f a c> <f a c> <f a c> r8 f ges a  }
+    }
+    \break
+
+    \mark \default %D
+    \repeat volta 2 {
+      r8 <f bes des>16 <f bes des> r <f bes des> <f bes des> <f bes des> r <f bes des>-- r <f bes des> r <f bes des> <f bes des> <f bes des> |
+      r8 <ees aes c>16 <ees aes c> r <ees aes c> <ees aes c> <ees aes c> r8 bes aes g |
+      r8 <ges' bes des>16 <ges bes des> r <ges bes des> <ges bes des> <ges bes des> r <ges bes des>-- r <ges bes des> r <ges bes des> <ges bes des> <ges bes des> |
+      r8 <f a c>16 <f a c> r <f a c> <f a c> <f a c> r8 f ges a
+      
+    }
+  }
+}
+
+
 %part: bass
 bass = {
   \relative c {
@@ -114,54 +167,6 @@ bass = {
 	}
   }
 
-%part: tenor
-tenor = {
-  \relative c {
-    \set Score.markFormatter = #format-mark-box-letters
-    
-    \mark \default
-    \repeat volta 2 {
-        r8 <bes' des f>16 <bes des f> r <bes des f>16 <bes des f> <bes des f> r16 <bes des f> <bes des f>16-- <bes des f> r <bes des f>16 <bes des f> <bes des f>|
-        r8 <a c f>16 <a c f> r <a c f> <a c f> <a c f> r8 ges f fes
-        r8 <bes ees ges>16 <bes ees ges> r <bes ees ges> <bes ees ges> <bes ees ges> r16 <bes ees ges> <bes ees ges>-- <bes ees ges> r <bes ees ges> <bes ees ges> <bes ees ges>        
-      }
-    \alternative {
-      { r8 <a c f>16 <a c f> r <a c f> <a c f> <a c f> r8 f ges a }
-      { r8 <a c f>16 <a c f> r <a c f> <a c f> <a c f> r8 ges f fes }
-    }
-    \break
-    \mark \default
-    \repeat volta 2 {
-      r8 <bes ees ges>16 <bes ees ges> r <bes ees ges> <bes ees ges> <bes ees ges> r <bes ees ges> <bes ees ges>-- <bes ees ges> r <bes ees ges> <bes ees ges> <bes ees ges> |
-      r8 <a c f>16 <a c f> r <a c f> <a c f> <a c f> r8 ges f fes |
-      r8 <bes ees ges>16 <bes ees ges> r <bes ees ges> <bes ees ges> <bes ees ges> r <bes ees ges> <bes ees ges>-- <bes ees ges> r <bes ees ges> <bes ees ges> <bes ees ges> |
-    }
-    \alternative {
-      { r8 <a c f>16 <a c f> r <a c f> <a c f> <a c f> r8 ges f fes | }
-      { r8 <a c f>16 <a c f> r <a c f> <a c f> <a c f> r16 <f a c> <ges bes des> <a c ees> <bes des f> <c ees ges> <des f a> <ees ges bes>  | }
-    }
-    \break
-    \mark \default
-    \repeat volta 2 {
-      <des f bes>8 r8 r4 <des f bes>4 <bes des ges>|
-      <bes des f>8 <bes des f>16 <bes des f> r <bes des f> <bes des f> <bes des f> r8 ees, des c|
-      r8 <bes' des f>16 <bes des f> r <bes des f> <bes des f> <bes des f> r <bes des f> r <bes des f> r <bes des f> <bes des f> <bes des f> |
-    }
-    \alternative {
-      { r8 <a c f>16 <a c f> r <a c f> <a c f> <a c f> r16 <f a c> <ges bes des> <a c ees> <bes des f> <c ees ges> <des f a> <ees ges bes> | }
-      { r8 <a, c f>16 <a c f> r <a c f> <a c f> <a c f> r8 f ges a  }
-    }
-    \break
-    \mark \default
-    \repeat volta 2 {
-      r8 <bes des f>16 <bes des f> r <bes des f> <bes des f> <bes des f> r <bes des f>-- r <bes des f> r <bes des f> <bes des f> <bes des f> |
-      r8 <aes c ees>16 <aes c ees> r <aes c ees> <aes c ees> <aes c ees> r8 bes aes g |
-      r8 <bes des ges>16 <bes des ges> r <bes des ges> <bes des ges> <bes des ges> r <bes des ges>-- r <bes des ges> r <bes des ges> <bes des ges> <bes des ges> |
-      r8 <a c f>16 <a c f> r <a c f> <a c f> <a c f> r8 f ges a
-      
-    }
-  }
-}
   
 %part: changes
 changes = \chordmode { 
@@ -215,7 +220,7 @@ changes = \chordmode {
 	\new Staff { 
 		\melody
 	}
-    \new Staff { \clef treble
+    \new Staff { \clef bass
       \tenor
     }
     \new Staff { \clef treble 
@@ -228,7 +233,7 @@ changes = \chordmode {
 }
 
 
-
+%{
 \book { \header { poet = "MIDI" }
     \score { 
       << \tempo 4 = 100 
@@ -246,3 +251,4 @@ changes = \chordmode {
     \midi { }
   } 
 }
+%}
