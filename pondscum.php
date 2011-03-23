@@ -134,7 +134,7 @@ function buildLayout($lily) {
 	global $keys, $layouts, $octaves, $instruments, $naturalize_function;
 	$part = $lily['outputoptions']['part'];
 	$key = $lily['outputoptions']['key'];
-	if (! $key) { $key = 'c'; }
+	if (! $key) { $key = 'C'; }
 	$showwords = isset($lily['outputoptions']['words']) ? $lily['outputoptions']['words'] : "";
 	if ($part == 'score' || $part == 'source') { $page = 'letter'; }
 	$layout = "%%Generated layout";
