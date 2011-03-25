@@ -98,7 +98,7 @@ tenorone = {
 
 %part: tenortwo
 tenortwo = {
-  \relative c { \key c \minor
+  \relative c' { \key c \minor
 	\set countPercentRepeats = ##t 
 	\set repeatCountVisibility = #(every-nth-repeat-count-visible 4)
 
@@ -177,7 +177,16 @@ bass = {
     	} 
   }
 }
+%part: tenorboth
+tenorboth = {
+  <<
 
+  \tenorone
+  \new Staff {
+	\tenortwo
+	}
+	>>
+  }
 %\tempo 4 = 96
 %layout
 #(set-default-paper-size "a5" 'landscape)
