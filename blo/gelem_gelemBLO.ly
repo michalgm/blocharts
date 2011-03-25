@@ -42,17 +42,17 @@ melody = {
 
 %part: tenor 
 tenor = {
-	\relative c' { \key d \minor
+	\relative c'' { \key d \minor
 
 	\mark \default %A
 	\repeat volta 2 {
-		r8 <d f>16 <d f> <d f>8 <d f> r <d f> r  <d f> |
-		r8 <d f>16 <d f> <d f>8 <d f> r <d f> r  <d f> |
-		r8 <cis e>16 <cis e> <cis e>8 <cis e> r <cis e> r  <cis e> |
+		r8 <d f a>16 <d f a> <d f a>8 <d f a> r <d f a> r  <d f a> |
+		r8 <d f a>16 <d f a> <d f a>8 <d f a> r <d f a> r  <d f a> |
+		r8 <cis e a>16 <cis e a> <cis e a>8 <cis e a> r <cis e a> r  <cis e a> |
 		e8 d4 e8 d4 cis |
-		r8 <cis e>16 <cis e> <cis e>8 <cis e> r <cis e> r  <cis e> |
-		r8 <cis e>16 <cis e> <cis e>8 <cis e> r <cis e> r  <cis e> |
-		r8 <d f>16 <d f> <d f>8 <d f> r <d f> r  <d f> |
+		r8 <cis e a>16 <cis e a> <cis e a>8 <cis e a> r <cis e a> r  <cis e a> |
+		r8 <cis e a>16 <cis e a> <cis e a>8 <cis e a> r <cis e a> r  <cis e a> |
+		r8 <d f a>16 <d f a> <d f a>8 <d f a> r <d f a> r  <d f a> |
 		}
 			\alternative {
 				{ a8 g4 a8 g4 f | }
@@ -61,20 +61,20 @@ tenor = {
 
 	\mark \default %B
 	\repeat volta 2 {
-		r8 <d f>16 <d f> <d f>8 <d f> r <d f> r  <d f> |
-		r8 <d f>16 <d f> <d f>8 <d f> r <d f> r  <d f> |
-		r8 <d g>16 <d g> <d g>8 <d g> r <d g> r  <d g> |
-		<d g>4 r <d g> <d g> |
-		r8 <cis e>16 <cis e> <cis e>8 <cis e> r <cis e> r  <cis e> |
+		r8 <d f a>16 <d f a> <d f a>8 <d f a> r <d f a> r  <d f a> |
+		r8 <d f a>16 <d f a> <d f a>8 <d f a> r <d f a> r  <d f a> |
+		r8 <d g bes>16 <d g bes> <d g bes>8 <d g bes> r <d g bes> r  <d g bes> |
+		<d g bes>4 r <d g bes> <d g bes> |
+		r8 <cis e a>16 <cis e a> <cis e a>8 <cis e a> r <cis e a> r  <cis e a> |
 		r8 bes cis d e f g a |
-		r8 <d, g>16 <d g> <d g>8 <d g> r <d g> r  <d g> |
-		r8 <d g>16 <d g> <d g>8 <d g> r <d g> r  <d g> |
-		<cis e>4 r <f a> <e g> |
-		r8 <d f>16 <d f> <d f>8 <d f> r <d f> r  <d f> |
+		r8 <d, g bes>16 <d g bes> <d g bes>8 <d g bes> r <d g bes> r  <d g bes> |
+		r8 <d g bes>16 <d g bes> <d g bes>8 <d g bes> r <d g bes> r  <d g bes> |
+		<cis e a>4 r <f a> <e g> |
+		r8 <d f a>16 <d f a> <d f a>8 <d f a> r <d f a> r  <d f a> |
 		}
 			\alternative {
 				{ r8 a bes cis d e f g | }
-				{ r8 <d f>16 <d f> <d f>8 <d f> r <d f> r  <d f> |}
+				{ r8 <d f a>16 <d f a> <d f a>8 <d f a> r <d f a> r  <d f a> |}
 			}
 
 	}
@@ -83,7 +83,7 @@ tenor = {
 
 %part: bass
 bass = {
-	\relative c { \key d \minor
+	\relative c' { \key d \minor
 	
 	\mark \default %A
 	\repeat volta 2 {
@@ -137,121 +137,6 @@ changes = \chordmode {
 
 
 %layout
-#(set-default-paper-size "a5" 'landscape)
-#(set-global-staff-size 17)
-
-\book { 
-  \header { poet = "Melody - C" }
-	\paper { page-count = 1 } 
-    \score {
-
-	<<
-        \new Staff {
-		\melody
-	}
-	>>
-    }
-}
-\book { 
-  \header { poet = "Melody - Bb" }
-	\paper { page-count = 1 } 
-    \score { \transpose c d
-	<<
-        \new Staff {
-		\melody
-	}
-	>>
-    }
-}
-
-\book { 
-  \header { poet = "Melody - Eb" }
-	\paper { page-count = 1 } 
-    \score { \transpose c a,
-	<<
-        \new Staff {
-		\melody
-	}
-	>>
-    }
-}
-
-\book { 
-  \header { poet = "Tenor - C" }
-	\paper { page-count = 1 } 
-    \score {
-	<<
-        \new Staff { 
-		\tenor
-	}
-	>>
-    }
-}
-
-\book { 
-  \header { poet = "Tenor - C" }
-	\paper { page-count = 1 } 
-    \score { \transpose c c,
-	<<
-        \new Staff { \clef bass
-		\tenor
-	}
-	>>
-    }
-}
-
-\book { 
-  \header { poet = "Tenor - Bb" }
-	\paper { page-count = 1 } 
-    \score { \transpose c d
-	<<
-        \new Staff {
-		\tenor
-	}
-	>>
-    }
-}
-
-\book { 
-  \header { poet = "Tenor - Eb" }
-	\paper { page-count = 1 } 
-    \score { \transpose c a
-	<<
-        \new Staff {
-		\tenor
-	}
-	>>
-    }
-}
-
-\book { 
-  \header { poet = "Bass - C" }
-	\paper { page-count = 1 } 
-    \score {
-	<<
-	\new ChordNames { \set chordChanges = ##t \changes }
-        \new Staff { \clef bass
-		\bass
-	}
-	>>
-    }
-}
-
-\book { 
-  \header { poet = "Bass - Eb" }
-	\paper { page-count = 1 } 
-    \score { \transpose c a'
-	<<
-	\new ChordNames { \set chordChanges = ##t \changes }
-        \new Staff { \clef treble
-		\bass
-	}
-	>>
-    }
-}
-
-
-
 \book { \header { poet = "Score" }
   \paper { #(set-paper-size "a4") 
   			page-count = "unset" } 
@@ -261,10 +146,10 @@ changes = \chordmode {
 	\new Staff { 
 		\melody
 	}
-	\new Staff { \clef bass
+	\new Staff { \clef treble
 		\tenor
 	}
-	\new Staff { \clef bass
+	\new Staff { \clef treble
 		\bass
 	}
       >> 
