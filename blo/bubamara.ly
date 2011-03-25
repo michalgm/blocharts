@@ -2,7 +2,7 @@
 
 \header {
 	title = "Bubamara"
-	composer = "Trad"
+	composer = "Trad!"
 	}
 	
 % music pieces
@@ -88,8 +88,16 @@ bass = {
     \break
 	\mark \default
 	\repeat volta 2 {
-	d a d a | g' d g d | d a d dis | e e b b | d a d a | }
+	d a d a | g' d g d | d a d dis | e e a a | d a d a | }
 }
+}
+%part: changes
+changes = \chordmode { 
+	d1:m | d:m | d2:m d:7 | g1:m | 
+	g:m | d:m | e2:m e:dim | a1:7 | a1:7
+
+	d:m | g:m | d:m | e2:dim a:7 | d:m |
+
 }
 
 %layout
