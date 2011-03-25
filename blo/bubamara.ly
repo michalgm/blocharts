@@ -11,13 +11,13 @@ melody = {
 \relative c'' { \key d \minor
     \mark \default
     \repeat volta 2 {
-    a4. bes8 a4 gis | bes8 bes4 f8 d2 | r8 d'4 d8 d c bes a | bes2 g |
+    a4. bes8 a4 gis | a8 a4 f8 d2 | r8 d'4 d8 d c bes a | bes2 g |
     r8 bes4 g8 e4 bes' | a8 a4 f8 d4 r | r8 e4 e8 f e dis e | }
     \alternative {
 	{ a4 bes a2 | }
 	{ r8 a4 bes8 a g f e | \bar "||" }
     }
-
+    \break
     \mark \default
     \repeat volta 2 {
     d8 e f g a gis a4 | r8 d4 bes8 g4 r | r8 a4 f8 d4 r | 
@@ -37,13 +37,41 @@ harmony = {
 	{ cis4 d cis2 | }
 	{ r8 cis4 d8 cis bes a e | \bar "||" }
     }
-
+    \break
     \mark \default
     \repeat volta 2 {
     f8 g a bes d d d4 | r8 g4 d8 bes4 r | r8 d4 a8 f4 r | 
     bes8 a g f e f g a | f2. r4 |
     } 
 }
+}
+%part: tenor
+tenor = {
+  \relative c' { \key d \minor
+    \mark \default
+    \repeat volta 2 {
+      r8 <f a> r <f a> r <f a> <f a> <f a>|
+      r8 <f a> r <f a> r <f a> <f a> <f a>|
+      r8 <f a> r <f a> r <e a> <ees a> <d a'> |
+      r8 <d bes'> r <d bes'> r <d bes'> <d bes'> <d bes'> | 
+      r8 <d bes'> r <d bes'> r <ees bes'> <e bes'> <f bes> |
+      r8 <f a> r <f a> r <f a> <f a> <f a>|
+      r8 <e g> r <e g> r <e g> <e g> <e gis> |
+    }
+    \alternative {
+      { r8 <e a> r <e a> r <cis g'> <cis g'> <cis g'> }
+      { r8 <e a> r <e a> r <cis a'> <cis a'> <cis a'> }
+    }
+    \break
+    \mark \default
+    \repeat volta 2 {
+      r8 <f a> r <f a> r <f a> <f a> <f a>|
+      r8 <g bes> r <g bes> r <g bes> <g bes> <g bes> |
+      r8 <f a> r <f a> r <f a> <f a> <f a>|
+      r8 <e bes'> r <e bes'> r <cis a'> <cis a'> <cis a'> |
+      r8 <f a> r <f a> r <f a> <f a> <f a>|
+    }
+  }
 }
 
 %part: bass
@@ -57,7 +85,7 @@ bass = {
 	    { a e' a, cis | }
 	    { a e' a, cis | \bar "||" }
 	}
-
+    \break
 	\mark \default
 	\repeat volta 2 {
 	d a d a | g' d g d | d a d dis | e e b b | d a d a | }
@@ -71,36 +99,42 @@ bass = {
   \header { poet = "Score" }
     \score {
 	<< \tempo 4 = 184
-	\new Staff {
-		\melody
-	}
-	\new Staff { 
-		\harmony
-	}
-	\new Staff { \clef bass
-		\bass
-	}
+    \new Staff {
+      \melody
+    }
+    \new Staff { 
+      \harmony
+    }
+    \new Staff { 
+      \tenor
+    }
+    \new Staff { \transpose c c''
+      \bass
+    }
 	>>
     }
 }
 
 
 
-%{
+
 \book { \header { poet = "MIDI" }
     \score { 
       << \tempo 4 = 180 
-\unfoldRepeats	\new Staff { 
+        \unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"trumpet"
 		\melody
 	}
-\unfoldRepeats	\new Staff { 
-		\harmony
+    \unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"alto sax"
+      %\harmony
 	}
-\unfoldRepeats	\new Staff { 
+    \unfoldRepeats  \new Staff { \set Staff.midiInstrument = #"trombone"
+      \tenor
+    }
+    \unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"tuba"
 		\bass
 	}
       >> 
     \midi { }
   } 
 }
-%}
+
