@@ -69,7 +69,7 @@ tenor = {
 		r8 bes cis d e f g a |
 		r8 <d, g bes>16 <d g bes> <d g bes>8 <d g bes> r <d g bes> r  <d g bes> |
 		r8 <d g bes>16 <d g bes> <d g bes>8 <d g bes> r <d g bes> r  <d g bes> |
-		<cis e a>4 r <f a> <e g> |
+		<cis e a>4 r <cis f a> <cis e g> |
 		r8 <d f a>16 <d f a> <d f a>8 <d f a> r <d f a> r  <d f a> |
 		}
 			\alternative {
