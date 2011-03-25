@@ -71,7 +71,7 @@ tenor =  \relative c { \key c \minor \time 4/4
 	\set Score.markFormatter = #format-mark-box-letters
 		\override Score.RehearsalMark #'break-align-symbols = #'(clef)
 
-		\mark \default %A
+		\break \mark \default %A
 		\repeat volta 2 {
 			r8 <ees g c> r <ees g c> r <ees g c> r <ees g c> |
 			r <ees g c> r <ees g c> r <ees g c> r <ees g c> |
@@ -79,7 +79,7 @@ tenor =  \relative c { \key c \minor \time 4/4
 			r <d fis d'> r <d fis c'> r <d g b> r <d g b> |
 		}
 
-		\mark \default %B
+        \break \mark \default %B
 		\repeat volta 2 {
 			<ees g c>4-- <ees g c>8 <ees g c>4-- <ees g c>8 <ees g c>4-- |
 			<d f a>4-- <d f a>8 <d f a>4-- <d g b>8 <d g b>4-- |
@@ -87,19 +87,19 @@ tenor =  \relative c { \key c \minor \time 4/4
 			r <d fis d'> r <d fis c'> r <d g b> r <d g b> |
 		}
 
-		\mark \default %C
+        \break \mark \default %C
 		r8 <ees g c> r <ees g c> r <ees g c> r <ees g c> |
 		r8 <ees g c> r <ees g c> r <d g b> r <d g b> |
 		r <ees g c> r <ees g c> r <ees aes c> r <ees aes c> |
 		r <d fis d'> r <d fis c'> r <d g b> r <d g b> |
 
-		\mark \default %D
+        \break \mark \default %D
 		r8 <ees g c> r <ees g c> r <d g b> r <d g b> |
 		r8 <ees g c> r <ees g c> r <d g b> r <d g b> |
 		r <ees g c> r <ees g c> r <ees aes c> r <ees aes c> |
 		r <d fis d'> r <d fis c'> r <d g b> r <d g b> |
 
-		\mark \default %E
+        \break \mark \default %E
 		\repeat volta 2 {
 			<f aes c>2 <f aes c>8 <ees g c> <d f d'> <c ees ees'> |
 			r8 <ees g c> r <ees g c> r <d g b> r <d g b> |
@@ -107,7 +107,7 @@ tenor =  \relative c { \key c \minor \time 4/4
 			r <d fis d'> r <d fis c'> r <d g b> r <d g b> |
 		}
 
-		\mark \default %F
+        \break \mark \default %F
 		\repeat volta 2 {
 			r8 <ees g c> r <ees g c> r <ees g c> r <ees g c> |
 			r <d fis d'> r <d fis c'> r <d g b> r <d g b> |
