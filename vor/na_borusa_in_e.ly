@@ -1,7 +1,7 @@
 \version "2.12.1"
 
 \header {
-	title = "Na Borusa Sa Sinefa"
+	title = "Na Borusa Sa Sinefa (Concert E)"
 	composer = "Traditional?"
 	copyright = "4/13/10" %date of latest edits
 	}
