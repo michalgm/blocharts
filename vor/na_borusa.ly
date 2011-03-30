@@ -73,7 +73,7 @@ tersa = {
 	  }
 	}
 }
-%{
+
 %p-art: tenor
 tenor = {
   \relative c {
@@ -125,7 +125,7 @@ tenor = {
     }
   }
 }
-%}
+
 
 %part: newtenor
 newtenor = {
@@ -333,15 +333,17 @@ changes = \chordmode {
 }
 
 
-%{
+
 \book { \header { poet = "MIDI" }
     \score { 
       << \tempo 4 = 100 
 \unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"trumpet"
 		\melody
 	}
+\unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"trumpet"
+		\tersa
+	}
     \unfoldRepeats  \new Staff { \set Staff.midiInstrument = #"trombone"
-      \transpose c c,
       \tenor
     }
 \unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"tuba"
@@ -351,4 +353,4 @@ changes = \chordmode {
     \midi { }
   } 
 }
-%}
+

@@ -75,7 +75,8 @@ tersa = {
 	}
   } }
 
-%part: tenor
+%{
+%p-art: tenor
 tenor = {
   \transpose c e { \relative c {
     \set Score.markFormatter = #format-mark-box-letters
@@ -126,6 +127,73 @@ tenor = {
     }
   }
   }
+}
+%}
+
+
+%part: newtenor
+newtenor = {
+  \transpose c e { \relative c {
+    \set Score.markFormatter = #format-mark-box-letters
+    
+    \mark \default %A
+    \repeat volta 2 {
+        r16^\markup { \tiny "2nd x play downbeat" } <f bes des> <f bes des>8 <f bes des>16 [<f bes des> r <f bes des> ]
+			r16 <f bes des> <f bes des>8 <f bes des>16 [<f bes des>16 r <f bes des> ] |
+        r16 <f a c> <f a c>8 <f a c>16 [<f a c> r <f a c> ]
+			<f a c>8 ges f fes |
+        ees16 <ges bes ees> <ges bes ees>8 <ges bes ees>16 [<ges bes ees> r <ges bes ees> ]
+			r16 <ges bes ees> <ges bes ees>8 <ges bes ees>16 [<ges bes ees> r <ges bes ees> ] |       
+      }
+    \alternative {
+      	{ r16 <f a c> <f a c>8 <f a c>16 [<f a c> r <f a c> ] 
+		  	<f a c>8 f ges a | }
+      	{ r16 <f a c> <f a c>8 <f a c>16 [<f a c> r <f a c> ] 
+			<f a c>8 ges f fes | }
+    }
+    \break
+	
+    \mark \default %B
+    \repeat volta 2 {
+        ees16 <ges bes ees> <ges bes ees>8 <ges bes ees>16 [<ges bes ees> r <ges bes ees> ]
+			r16 <ges bes ees> <ges bes ees>8 <ges bes ees>16 [<ges bes ees> r <ges bes ees> ] |       
+      	r16 <f a c> <f a c>8 <f a c>16 [<f a c> r <f a c> ] 
+			<f a c>8 ges f fes |
+        ees16 <ges bes ees> <ges bes ees>8 <ges bes ees>16 [<ges bes ees> r <ges bes ees> ]
+			r16 <ges bes ees> <ges bes ees>8 <ges bes ees>16 [<ges bes ees> r <ges bes ees> ] |       
+    }
+    \alternative {
+		{ r16 <f a c> <f a c>8 <f a c>16 [<f a c> r <f a c> ] 
+			<f a c>8 ges f fes | }
+      	{ r16 <f a c> <f a c>8 <f a c>16 [<f a c> r <f a c> ] 
+	  		<f a c>16 <des f> <ees ges> <f a> <ges bes> <a c> <bes des> <c ees>  | }
+    }
+    \break
+
+    \mark \default %C
+    \repeat volta 2 {
+		<bes des f>8 r8 r4 <bes des f>4 <ges bes ges'>|
+		<bes des f>2 r8 ees des c|
+        bes16 <f bes des> <f bes des>8 <f bes des>16 [<f bes des> r <f bes des> ]
+			r16 <f bes des> <f bes des>8 <f bes des>16 [<f bes des>16 r <f bes des> ] |
+    }
+    \alternative {
+      	{ r16 <f a c> <f a c>8 <f a c>16 [<f a c> r <f a c> ] 
+	  		<f a c>16 <des f> <ees ges> <f a> <ges bes> <a c> <bes des> <c ees>  | }
+      	{ r16 <f, a c> <f a c>8 <f a c>16 [<f a c> r <f a c> ] 
+		  	<f a c>8 f ges a | }
+    }
+    \break
+
+    \mark \default %D
+    \repeat volta 2 {
+      <f bes des>1 |
+      <ees aes c> |
+	  <ges bes des> |
+	  <f a c>2 r8 f ges a |
+    }
+  }
+}
 }
 
 
@@ -224,7 +292,7 @@ changes = \transpose c e { \chordmode {
 		\melody
 	}
     \new Staff { \clef bass
-      \tenor
+      \newtenor
     }
     \new Staff { \clef treble 
       \transpose c c''
@@ -245,7 +313,7 @@ changes = \transpose c e { \chordmode {
 	}
     \unfoldRepeats  \new Staff { \set Staff.midiInstrument = #"trombone"
       \transpose c c,
-      \tenor
+      \newtenor
     }
 \unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"tuba"
 		\bass
