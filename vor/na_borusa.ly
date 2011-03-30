@@ -235,11 +235,34 @@ bass = {
   
 %part: changes
 changes = \chordmode { 
-    bes1:m | f:7 | ees:m | f:7 | f:7 |
-    ees:m | f:7 | ees:m | f:7 | f:7 |
-    bes:m | bes:m | bes:m | f:7 | f:7 |
+  \mark \default
+  \repeat volta 2 {
+    bes1:m | f:7 | ees:m 
+  }
+  \alternative {
+    { | f:7 }
+    { | f:7 }
+  }
+  \mark \default
+  \repeat volta 2 {
+    ees:m | f:7 | ees:m |
+  } 
+  \alternative {
+    { f:7 | }
+    { f:7 | }
+  }
+  \mark \default
+  \repeat volta 2 {
+    bes:m | bes:m | bes:m | 
+  } 
+  \alternative {
+    { f:7 | }
+    { f:7 | }
+  }
+  \mark \default
+  \repeat volta 2 {
 	bes:m | aes | ges | f:7 |
-
+  }
 }
 
 %layout
@@ -275,7 +298,19 @@ changes = \chordmode {
 }
 }
 %}
-
+\book { \header { poet = "Score" }
+  \paper { #(set-paper-size "letter") }
+  \score { 
+    << 
+      \new ChordNames \with {
+        \override BarLine #'bar-size = #4
+        voltaOnThisStaff = ##t
+        \consists Bar_engraver
+      }
+      \changes
+    >>
+  }
+}
 
 \book { \header { poet = "Score" }
   \paper { #(set-paper-size "letter") }
