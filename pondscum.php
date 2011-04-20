@@ -8,7 +8,7 @@ $instruments = array('bass'=>'tuba', 'melody'=>'trumpet', 'tenor'=>'trombone', '
 
 function printHTTPHeader($lily, $part) {
 	global $_REQUEST;
-	if ($part == 'source' || isset($_REQUEST['debug'])) {
+	if (isset($_REQUEST['debug'])) {
 		header('Content-Type: text/html; charset=utf-8'); 
 		return;
 	} 
@@ -19,6 +19,9 @@ function printHTTPHeader($lily, $part) {
 	if ($part =='midi') {
 		header('Content-type: audio/midi');
 		header('Content-Disposition: attachment; filename="'.$filename.'.mid"');
+	} elseif ($part =='source') {
+		header('Content-type: text/x-lilypond');
+		header('Content-Disposition: attachment; filename="'.$filename.'.ly"');
 	} else {
 		header('Content-type: application/pdf');
 		header('Content-Disposition: attachment; filename="'.$filename.'.pdf"');
@@ -31,7 +34,7 @@ function createOutput($lily) {
 	$filename = $lily['file'];
 	$output = "";
 	if ($part == 'source') {
-		$output =  "<pre>$contents</pre>";
+		$output =  "$contents";
 	} else {
 		if($part != 'midi') { $part = 'pdf'; }
 		$out = fopen("/tmp/$filename", 'w');
@@ -138,7 +141,9 @@ function buildLayout($lily) {
 	$showwords = isset($lily['outputoptions']['words']) ? $lily['outputoptions']['words'] : "";
 	if ($part == 'score' || $part == 'source') { $page = 'letter'; }
 	$layout = "%%Generated layout";
-	$layout .= $naturalize_function;
+	if ($lily['outputoptions']['naturalize']) {
+		$layout .= $naturalize_function;
+	}
 	$changes = "";
 	if ($lily['changes']) { $changes = "\n\t\t\\transpose c ".$keys[$key]." \\new ChordNames { \\set chordChanges = ##t \\changes }"; }
 	$words = "";
@@ -251,6 +256,7 @@ function lilysort($a, $b) {
 }
 
 $naturalize_function = "
+%------------------Code to 'naturalize' music - get rid of double-sharps, E#, etc.-----------------
 #(define (naturalize-pitch p)
   (let ((o (ly:pitch-octave p))
         (a (* 4 (ly:pitch-alteration p)))
@@ -293,6 +299,7 @@ naturalizeMusic =
 #(define-music-function (parser location m)
   (ly:music?)
   (naturalize m))
+%-----------------End Naturalization code---------------
 ";
 
 ?>
