@@ -3,7 +3,7 @@
 \header {
 	title = "Amara Terra Mia"
 	composer = "Domenico Modugno"
-	copyright = "$Date::            $" %date of latest edits
+	copyright = "$Date::             $" %date of latest edits
 	}
 
 %place a mark at bottom right
