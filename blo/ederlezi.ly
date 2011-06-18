@@ -2,8 +2,8 @@
 
 \header {
 	title = "Ederlezi"
-	composer = "Trad. Roma"
-	copyright = "7/13/10"
+	composer = "Trad. Roma (bg version)"
+	copyright = "3/22/11"
 	tagline = \markup {\bold "A-B A-B drums C A-B "} %form
 	}
 
@@ -56,28 +56,29 @@ tenor = {
 
 	\mark \default %A
 	\repeat volta 2 {
-	  r8. <f a>16 <f a>8 <f a>8 r <e g> <e g>4 | r8. <f a>16 <f a>8 <f a>8 r <f a> <f a>4 | 
-	  r8. <g bes>16 <g bes>8 <g bes>8 r <g bes> <g bes>4 | r8. <f bes>16 <f bes>8 <f bes>8 r <f bes> <f bes>4 | 
-	  r8. <g bes>16 <g bes>8 <g bes>8 r <g bes> <g bes>4 | r8. <f a>16 <f a>8 <f a>8 r <e g> <e g>4 |
-	  r8. <f a>16 <f a>8 <f a>8 r <e g> <e g>4 | r8. <f a>16 <f a>8 <f a>8 r <f a> <f a>4 | 
+	  r8 <f a d>16 <f a d>16 <f a d>8 <f a d>8 r <e g c> <e g c>4 | r8 <f a c>16 <f a c>16 <f a c>8 <f a c>8 r <f a c> <f a c>4 | 
+	  r8 <g bes d>16 <g bes d>16 <g bes d>8 <g bes d>8 r <g bes d> <g bes d>4 | r8 <f bes d>16 <f bes d>16 <f bes d>8 <f bes d>8 r <f bes d> <f bes d>4 | 
+	  r8 <g bes d>16 <g bes d>16 <g bes d>8 <g bes d>8 r <g bes d> <g bes d>4 | r8 <f a d>16 <f a d>16 <f a d>8 <f a d>8 r <e g c> <e g c>4 |
+	  r8 <f a c>16 <f a c>16 <f a c>8 <f a c>8 r <e g cis> <e g cis>4 | r8 <f a d>16 <f a d>16 <f a d>8 <f a d>8 r <f a d> <f a d>4 | 
 	}
 
 	\mark \default %B
 	\repeat volta 2 {
-	  r8. <f a>16 <f a>8 <f a>8 r <f a> <f a>4 | 
-	  r8. <g bes>16 <g bes>8 <g bes>8 r <g bes> <g bes>4 | 
-	  r8. <f a>16 <f a>8 <f a>8 r <e g> <e g>4 | 
-	  r8. <f a>16 <f a>8 <f a>8 r <e g> <e g>4 | 
-	  r8. <f a>16 <f a>8 <f a>8 r <e g> <e g>4 | }
+	  r8 <f a c>16 <f a c>16 <f a c>8 <f a c>8 r <f a c> <f a c>4 | 
+	  r8 <g bes d>16 <g bes d>16 <g bes d>8 <g bes d>8 r <g bes d> <g bes d>4 | 
+	  r8 <f a d>16 <f a d>16 <f a d>8 <f a d>8 r <g bes d> <g bes d>4 | 
+	  r8 <f a d>16 <f a d>16 <f a d>8 <f a d>8 r <g bes d> <g bes d>4 | 
+	  r8 <f a d>16 <f a d>16 <f a d>8 <f a d>8 r <g bes d> <g bes d>4 | }
 	  \alternative {
-		{ r8. <f bes>16 <f bes>8 <f bes>8 r <f bes> <f bes>4 |
-	  	r8. <g bes>16 <g bes>8 <g bes>8 r <g bes> <g bes>4 | 
-	  	r8. <f a>16 <f a>8 <f a>8 r <e g> <e g>4 | 
-	  	r8. <f a>16 <f a>8 <f a>8 r <f a> <f a>4 | }
-		{ <f bes>1 | r | 
-	  r8. <g bes>16 <g bes>8 <g bes>8 r <g bes> <g bes>4 | 
-	  r8. <f a>16 <f a>8 <f a>8 r <e g> <e g>4 | 
-	  	r8. <f a>16 <f a>8 <f a>8 r <f a> \markdownright \mark \markup { \italic "fine" } <f a>4\mark \markup { "D.C." } | }
+		{ r8 <f bes d>16 <f bes d>16 <f bes d>8 <f bes d>8 r <f bes d> <f bes d>4 |
+	  	r8 <g bes d>16 <g bes d>16 <g bes d>8 <g bes d>8 r <g bes d> <g bes d>4 | 
+	  	r8 <f a c>16 <f a c>16 <f a c>8 <f a c>8 r <e g cis> <e g cis>4 | 
+	  	r8 <f a d>16 <f a d>16 <f a d>8 <f a d>8 r <f a d> <f a d>4 | }
+		{ <f bes d>1 | r2. <g bes d>8 <g bes d> |  
+%	  r8 <g bes d>16 <g bes d>16 <g bes d>8 <g bes d>8 r <g bes d> <g bes d>4 | 
+		<g bes d>4 r r <g bes d>8 <g bes d> |
+	  <f a c>8 <f a c>16 <f a c>16 <f a c>8 <f a c>8 r <e g cis> <e g cis>4 | 
+	  	r8 <f a d>16 <f a d>16 <f a d>8 <f a d>8 r <f a d> \markdownright \mark \markup { \italic "fine" } <f a d>4\mark \markup { "D.C." } | }
 	  }
 	
 	\repeat volta 2 { r1 \mark \markup { \italic "Drums" } | r1 | }
@@ -85,11 +86,11 @@ tenor = {
 
 	\mark \default %C
 	  <cis cis'>8 <d d'> <e e'>4 r2 | 
-	  	r8. <a d>16 <a d>8 <a d>8 r <gis d'> <gis d'>4 | 
-	  	r8. <a cis>16 <a cis>8 <a cis>8 r <a cis> <a cis>4 | 
-	  <cis, cis'>8 <d d'> <e e'>4 r2 | 
-	  	r8. <a d>16 <a d>8 <a d>8 r <gis d'> <gis d'>4 | 
-	  	r8. <a cis>16 <a cis>8 <a cis>8 r <a cis> <a cis>4 | 
+	  	r8 <fis a d>16 <fis a d>16 <fis a d>8 <fis a d>8 r <e gis d'> <e gis d'>4 | 
+	  	r8 <e a cis>16 <e a cis>16 <e a cis>8 <e a cis>8 r <e a cis> <e a cis>4 | 
+	  <cis cis'>8 <d d'> <e e'>4 r2 | 
+	  	r8 <fis a d>16 <fis a d>16 <fis a d>8 <fis a d>8 r <e gis d'> <e gis d'>4 | 
+	  	r8 <e a cis>16 <e a cis>16 <e a cis>8 <e a cis>8 r <e a cis> <e a cis>4 | 
 	  \bar ".|" \markdownright \mark "D.C. al Fine" 
 }
 }
@@ -296,6 +297,7 @@ changes = \chordmode {
     }
 }
 %}
+%{
 
 \book { 
   \header { poet = "hardbass - C" }
@@ -310,7 +312,7 @@ changes = \chordmode {
     }
 }
 
-%{
+%}
 
 \book { \header { poet = "Score" }
   \paper { #(set-paper-size "a4") 
@@ -335,7 +337,7 @@ changes = \chordmode {
 }
 
 
-
+%{
 \book { \header { poet = "MIDI" }
     \score { 
       << \tempo 4 = 120 

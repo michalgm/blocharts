@@ -3,7 +3,7 @@
 \header {
 	title = "Sat"
 	composer = "Boban Markovich"
-	copyright = "5/4/10" %date of latest edits
+	copyright = "3/22/11" %date of latest edits
 	}
 
 %place a mark at bottom right
@@ -229,6 +229,12 @@ tenorboth = {
 %	\new ChordNames { \set chordChanges = ##t \changes }
 	\new Staff { 
 		\melody
+	}
+	\new Staff { \clef bass
+		\tenorone
+	}
+	\new Staff { \clef bass
+		\tenortwo
 	}
 	\new Staff { \clef bass
 		\bass
