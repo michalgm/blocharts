@@ -71,10 +71,63 @@ melody = {
 	}
 }
 
-%part: bass
-bass = {
-	\relative c {
+%part: tenor 
+tenor = {
+	\relative c' { \time 7/8 \key d \minor \set beatGrouping = #'(2 2 3)
 
+	\mark \default %A 
+	\repeat volta 2 {
+		a'2~ a4.~ | a2~ a4 e8 |
+		}
+		\alternative {
+			{ cis'2~ cis4.~ | cis2~ cis4.~ | }
+			{ a2~ a4.~ | a2~ a4. | \break }
+		}
+
+	\mark \markup { \abs-fontsize #15 \bold { A' } } %A'
+	\repeat volta 2 {
+		r4 a8 a a a a | a4 <a cis> a e8 | 
+		}
+		\alternative {
+			{ a4 a a e8 | a4 a a4. | }
+			{ a4 a a e8 | a2~ a4. | \break }
+		}
+
+	\mark \default %B 
+	\repeat volta 2 {
+		a2~ a4. | <g bes>2~ <g bes>4. | <e a>2 <f bes>4. |
+		}
+		\alternative {
+			{ <e cis'>2~ <e cis'>4. }
+			{ a2~ a4. | \break }
+		}
+		
+	\mark \markup { \abs-fontsize #15 \bold { B' } } %B'
+	\repeat volta 2 {
+		a2~ a4. | <g bes>2~ <g bes>4. | d'2~ d4. | <a cis>2~ <a cis>4. | \break
+		}
+
+	\mark \default %C 
+	\repeat volta 4 {
+	<d f>2~^\markup { \tiny "Open repeat. Bkgds become rhythmic.  Follow Mike."} <d f>4. | <b d>2~ <b d>4. | <bes d g>2~ <bes d g>4. | <f a a'>2~ <f a a'>4. | \break }
+
+	\mark \default %D 
+		\repeat volta 2 {
+		d'4 d8 d d4 d8 | b4 b8 b b4 b8 | 
+		}
+		\alternative {
+			{ bes4 bes8 bes bes4 bes8 | a4 a a8 bes cis | }
+			{ bes4 bes8 bes bes4 bes8 | a2~ a4 cis8 | \break }
+		}
+		
+	\mark \markup { \abs-fontsize #15 \bold { A' } } %D'
+		\repeat volta 2 {
+		cis4 cis8 cis cis4 cis8 | d4 d8 d d4 d8 | 
+		}
+		\alternative {
+			{ cis4 cis8 cis cis4 cis8 | a4 a8 a g4 d'8 | }
+			{ cis4 cis8 cis cis4 cis8 | a4 a8 a a4. | \break }
+		}
 	}
 }
 
@@ -131,7 +184,7 @@ a | bes | a | a | a | a |
     }
 %    \words
 }
-
+%}
 
 
 \book { \header { poet = "Score" }
@@ -142,8 +195,8 @@ a | bes | a | a | a | a |
 	\new Staff { 
 		\melody
 	}
-	\new Staff { \clef bass
-		\bass
+	\new Staff { 
+		\tenor
 	}
       >> 
   } 
