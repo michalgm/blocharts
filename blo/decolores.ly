@@ -4,6 +4,8 @@
 	composer = "Traditional"
 	copyright = "3/5/10"
 	}
+
+%description: Mexican folk song strongly associated with the struggles of the <a href="http://www.ufw.org/">United Farm Workers</a> during the 1960&#8217;s and 70&#8217;s. Labor leader Cesar Chavez (1927-1993) founded the UFW, and his birthday, March 31, is a state holiday in California and Colorado, with movements pushing for holiday status in other states and federally. While the lyrics to "De Colores" speak mainly about the beauty and the farm animals of the Mexican countryside, they are often interpreted as implying themes of racial solidarity and harmony. The song is always well-received at the numerous immigrant rights events where BLO plays.
 	
 % music pieces
 %part: melody

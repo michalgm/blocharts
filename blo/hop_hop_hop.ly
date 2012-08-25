@@ -6,6 +6,8 @@
 	copyright = "4/27/10" %date of latest edits
 	}
 
+%description:Balkan/rock hit by controversial Bosnian superstar Goran Bregovic, from the album <i>Tales And Songs From Weddings And Funerals</i>. 
+
 %place a mark at bottom right
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
 

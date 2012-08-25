@@ -6,6 +6,8 @@
 	copyright = "3/22/11" %date of latest edits
 	}
 
+%description:"Time." Song by Serb Rom trumpeter and composer Boban Markovic, from the 2004 ablum <i>Boban I Marko</i>.
+
 %place a mark at bottom right
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
 

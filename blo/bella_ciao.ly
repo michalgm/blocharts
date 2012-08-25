@@ -4,7 +4,7 @@
 	title = "Bella Ciao"
 	composer = "Italian Partisan Song"
 	}
-
+%description:A partisan song of the CNL, the Italian resistance to Mussolini during WWII.  Its lyrics were written as a farewell to the female loved ones left behind when partisans went to the Italian hills to fight the guerilla war against fascism.
 
 % music pieces
 %part: melody

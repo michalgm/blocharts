@@ -7,6 +7,8 @@
 	copyright = \markup { \bold "Form: drums, AB, AB, drum break, AB" }
 	}
 
+%description:"God Bless Africa" in the Xhosa language, is part of the joint national anthem of South Africa. It was originally composed as a hymn in 1897 by Enoch Sontonga, a teacher at a Methodist mission school in Johannesburg, South Africa. Since translated into many African and European languages, it was for decades during the apartheid regime considered by many to be the unofficial national anthem of South Africa, representing the suffering of the oppressed. In 1994 after the fall of apartheid, the new State President of South Africa Nelson Mandela declared that both "Nkosi Sikelel' iAfrika" and the previous national anthem, "Die Stem" ("The Call of South Africa") would be national anthems. The hymn is also the national anthem of both Tanzania and Zambia, and was formerly the anthem of Zimbabwe and Namibia. Outside of Africa, the hymn is perhaps best known as the long-time (since 1925) anthem of the African National Congress (ANC), as a result of the global anti-Apartheid movement of the 1970s and 1980s, when it was regularly sung at meetings and other events.  It became part of South Africa's national anthem in 1994, following the ANC's victory in the country's first multi-racial elections. (Adapted from <a href="http://en.wikipedia.org/wiki/Nkosi_Sikelel%27_iAfrika">wikipedia</a>.) 
+
 %place a mark at bottom right
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
 

@@ -6,6 +6,8 @@
 	copyright = "7/1/10" %date of latest edits
 	}
 
+%description:A traditional New Orleans Second Line tune of unknown origin.
+
 %place a mark at bottom right
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
 

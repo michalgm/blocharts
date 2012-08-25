@@ -5,6 +5,7 @@
 	composer = "Rebirth Brass Band"
 	copyright = "7/1/10" %date of latest edits
 	}
+%description: New Orleans 2nd Line-		style tune by Rebirth Brass Band, from their 1994 album <i>Rollin</i>.
 
 %place a mark at bottom right
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
@@ -84,12 +85,6 @@ bass = {
 		}
 	}
 }
-
-%part: words
-words = \markup { }
-
-%part: changes
-changes = \chordmode { }
 
 %layout
 #(set-default-paper-size "a5" 'landscape)

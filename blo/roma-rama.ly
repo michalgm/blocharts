@@ -9,6 +9,8 @@
 	title = "Roma-Rama - alpha version"
     }
 
+%description:An original modal piece (Concert G/Ab) written by former BLO member Axel Herrera.  It was inspired by the music of the Roma people of Eastern Europe and is a tribute to their struggles and culture.
+
 #(set-global-staff-size 20.5767485433)
 \paper {
     paper-width = 21.59\cm

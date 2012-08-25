@@ -5,7 +5,8 @@
 	composer = "Fela Kuti"
 	copyright = "3/7/10"
 	}
-	
+%description: An instrumental composition by the Nigerian performer and composer Fela Anikulapo Kuti (1938-1997).  Fela, as he is popularly known, was one of the  founders of the style of music called "Afro-Beat." He lived in Los Angeles and New York in the late 1960&#8217;s and early 70s, where he was influenced by rhythm and blues and soul music, particularly James Brown.  Coming from a very political family, Fela was a vocal opponent of Nigerian military rule.  He was jailed, physically attacked, and put under house arrest at various periods of his life for dissenting against military rule, and his mother, feminist Funmilayo Ransome-Kuti, was murdered by goverment soldiers.  He died of complications from AIDS.  The profits from a 2003 Fela tribute album <a href="http://www.musicdirect.com/products/detail.asp?sku=LDR113075-2"><i>RED HOT + RIOT</i></a> support efforts to fight AIDS and HIV infection in sub-Saharan Africa.
+
 %place before mark to position it at bottom right
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
 

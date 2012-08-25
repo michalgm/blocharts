@@ -4,6 +4,7 @@
 	title = "Bubamara"
 	composer = "Trad!"
 	}
+%description: BLO plays this song in tribute to <a href="http://voiceofroma.com/">Roma people</a> worldwide. While Bubamara is not a traditional Romani song, it has been popularized by several Romani bands and musicians, including Saban Bajramovic and Fanfare Ciocarlia. Bubamara means "labybug" in the Romani language, and is an important symbol in Romani culture.  Ladybugs attract guests to the home and are also a sign of good luck. For the Roma, the home is a sacred place, and the act of having guests is taken very seriously. This song speaks of the &quot;cute little ladybug&quot; and encourages all the Roma to get together and dance! The lyrics, originally in Serbo-Croatian, were translated and adapted into the Romani language by Dragan Ristic. Saban Bajramovic sang the original version for the film <i>Black Cat, White Cat</i>&quot;. (Text adapted from Dusan Ristic)
 	
 % music pieces
 %part: melody

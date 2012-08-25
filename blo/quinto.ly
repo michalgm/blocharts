@@ -6,6 +6,8 @@
 	copyright = "3/11/10"
 	}
 
+%description:This is a song associated with the Spanish Civil War.  Originally a folk song of anonymous origin, different factions of the Republican side wrote their own lyrics. The BLO based our arrangement on a recording by bassist Charlie Haden from his album <i>Liberation Music Orchestra</i>.
+
 %place a mark at bottom right
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
 

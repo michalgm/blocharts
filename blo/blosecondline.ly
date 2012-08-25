@@ -5,6 +5,7 @@
 	composer = "Josh Sperry"
 	copyright = "3/10/10"
 	}
+%description:Composed by BLO member Josh Sperry. Combines influences of the New Orleans Second Line and Eastern European street bands, particularly Roma influences.  Others hear some mambo (Tito Rodriguez and Horace Silver) influences as well.
 
 %place before mark to position it at bottom right
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }

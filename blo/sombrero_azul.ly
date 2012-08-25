@@ -7,6 +7,8 @@
 	copyright = "7/16/10" %date of latest edits
 	}
 
+%description:A cumbia by Venzuelan musician and political activist Al&iacute Primera about the nation of El Salvador's struggle against US imperialism.
+
 %place a mark at bottom right
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
 

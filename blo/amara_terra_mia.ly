@@ -5,14 +5,12 @@
 	composer = "Domenico Modugno"
 	copyright = "$Date::             $" %date of latest edits
 	}
-
-%place a mark at bottom right
-markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
-
+%description: "My Bitter Land." 1974 song by Italian left-wing singer, actor and politician Domenico Modugno about the hardships faced by poor Italian peasants that forced them to emigrate. Inspired by the version by Roman brass band <a href='http://www.titubanda.it/'>Titubanda</a>, the BLO performs this song in solidarity with all migrants forced to relocate for economic reasons. 
 
 % music pieces
 %part: melody
 melody = {
+  	\mark \default
 	\relative c' { \key bes \minor \time 3/4
 	f4 bes des | f2 f4 | e2. | ges4 f ees | f2 des4 | bes2.~ | bes | r |
 	f4 bes des | f2 f4 | ees2. | ges | f~ | f | r | r2 f4 |
@@ -92,6 +90,7 @@ words = \markup {
   \header { poet = "Melody - C" }
     \score {
         \new Staff {
+		\include "include.ly"
 		\melody
 	}
     }

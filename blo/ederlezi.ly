@@ -6,6 +6,7 @@
 	copyright = "3/22/11"
 	tagline = \markup {\bold "A-B A-B drums C A-B "} %form
 	}
+%description: Traditional <a href="http://voiceofroma.com/">Roma</a> song named for the annual Roma spring festival.  The lyrics declare, "We are all Roma."
 
 %place a mark at bottom right
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
