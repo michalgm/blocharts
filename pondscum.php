@@ -57,9 +57,9 @@ function createOutput($lily) {
 					return;
 				}
 				$output = file_get_contents("/tmp/$filename.pdf");
-				unlink("/tmp/$filename.pdf");
-				unlink("/tmp/$filename.ps");
-				unlink("/tmp/$filename");
+				chunlink("/tmp/$filename.pdf");
+				chunlink("/tmp/$filename.ps");
+				chunlink("/tmp/$filename");
 			}
 		}	
 	}
@@ -69,22 +69,46 @@ function createOutput($lily) {
 function processFile($file, $dir='blo') {
 	global $lilydir;
 	$lily = array();
-	if (!file_exists("$lilydir/$file")) { 
-		error("File $lilydir/$file does not exist");
+	$path = "";
+	if(file_exists($file)) { 
+		$filename=$file;
+		$info = pathinfo($file);
+		$path = $file;
+		$file = $info['filename'].".".$info['extension'];
+	} else {
+		$filename="$lilydir/$file";
+	}
+	if (!file_exists("$filename")) { 
+		error("File $filename does not exist");
 		return;
 	}
 	if (preg_match('/.ly$/', $file)){
-		$score = file_get_contents("$lilydir/$file");
-		preg_match_all('/%Part: (\w+)/i', $score, $parts);
+		$score = file_get_contents("$filename");
+		preg_match("/^%description:\s*(.+)$/im", $score, $description);
+		preg_match_all('/%Part: (\w+)/i', $score, $partsmatch);
 		preg_match('/title ?=[^"]*"([^"]+)"/', $score, $title);
 		preg_match('/tempo(.*)$/m', $score, $tempo);
+		if (! isset($title[1])) { print $file; print_r($score); return; }
 		$lily['title'] = $title[1];
-		$lily['parts'] = $parts[1];
+		$parts = array();
+		if (isset($partsmatch[1])) { 
+			$parts = $partsmatch[1];
+			foreach($parts as $key=>$part) {
+				if (preg_match("/^$part\s*=[^{]*{\s*}/m", $score)) { 
+					unset($parts[$key]);
+				}
+			}
+		}
+		$lily['parts'] = $parts;
 		$lily['tempo'] = isset($tempo[1]) ? $tempo[1] : ' 4 = 100';
 		$lily['file'] = $file;
+		$lily['path'] = $path;
 		$lily['source'] = preg_replace('/\%layout.*/si', '', $score);
 		$lily['changes'] = array_search('changes', $lily['parts']) ? 1 : 0;
-		$lily['words'] = (array_search('words', $lily['parts']) && ! strstr($score, 'words = \markup { }')) ? 1 : 0;
+		$lily['words'] = array_search('words', $lily['parts']);
+		if (isset($description[1])) { 
+			$lily['description'] = $description[1];
+		}
 		$lily['dir'] = $dir;
 	}
 	return $lily;
@@ -136,22 +160,23 @@ function printFileSelect($lily) {
 function buildLayout($lily) {
 	global $keys, $layouts, $octaves, $instruments, $naturalize_function;
 	$part = $lily['outputoptions']['part'];
-	$key = $lily['outputoptions']['key'];
+	$key = isset($lily['outputoptions']['key']) ? $lily['outputoptions']['key'] : "";
+	$page = isset($lily['outputoptions']['page']) ? $lily['outputoptions']['page'] : "letter";
 	if (! $key) { $key = 'C'; }
 	$showwords = isset($lily['outputoptions']['words']) ? $lily['outputoptions']['words'] : "";
-	if ($part == 'score' || $part == 'source') { $page = 'letter'; }
 	$layout = "%%Generated layout";
-	if ($lily['outputoptions']['naturalize']) {
+	if (isset($lily['outputoptions']['naturalize']) && $lily['outputoptions']['naturalize']) {
 		$layout .= $naturalize_function;
 	}
 	$changes = "";
 	if ($lily['changes']) { $changes = "\n\t\t\\transpose c ".$keys[$key]." \\new ChordNames { \\set chordChanges = ##t \\changes }"; }
 	$words = "";
 	if ($lily['words']) { $words = " \n\t\words"; }
+	$tempo = $lily['tempo'];
 	if ($part == 'score'  || $part == 'source' || $part == 'midi') {
 		$parts = $lily['parts'];
 		$layout .= "\n#(set-default-paper-size ".$layouts[$page].')';
-		$layout .= "\n\\book {\n\t\\score { <<\n\t\t\\tempo ".$lily['tempo']. ' ';
+		$layout .= "\n\\book {\n\t\\score { << ";
 		if ($part != 'midi') { $layout .= $changes; }
 		foreach ($parts as $lilypart) { 
 			if ($lilypart == 'changes' || $lilypart == 'words') { continue; }
@@ -160,6 +185,10 @@ function buildLayout($lily) {
 			$layout .="\n\t\t";
 			if ($part == 'midi') { $layout .= '\unfoldRepeats '; }
 			$layout .= "\\new Staff \\with { \\consists \"Volta_engraver\" } {  \\set Staff.midiInstrument = #\"$instrument\" \\clef $clef";
+			if ($tempo) {
+				$layout .= "\n\t\t\t\\tempo $tempo";
+				$tempo = "";
+			}
 			$layout .= "\n\t\t\t\\$lilypart\n\t\t}";
 		}
 		$layout .= "\n\t>> \\layout { \\context { \\Score \\remove \"Volta_engraver\" } } ";
@@ -176,16 +205,18 @@ function buildLayout($lily) {
 			$layout .= "\n#(set-global-staff-size 15)\n"; 
 			$staffspacing = "\\override Staff.VerticalAxisGroup #'minimum-Y-extent = #'(-1 . 1)";
 			$changes = "";
-		} else {
+		} #else {
 			$layout .= "\n#(set-default-paper-size ".$layouts[$page].')';
-		}
+		#}
 		$naturalize = "";
-		if ($lily['outputoptions']['naturalize']) {
+		if (isset($lily['outputoptions']['naturalize']) && $lily['outputoptions']['naturalize']) {
 			$naturalize = "\\naturalizeMusic ";
 		}
 		$layout .="
 		\\book { 
-			\\header{ poet = \"$poet\" }
+			\\header{ poet = \"$poet\" }";
+		if ($part != 'words') {
+			$layout .="
 			\\score { <<
 				$changes
 				\\new Staff \\with { \\consists \"Volta_engraver\" } { 
@@ -193,18 +224,15 @@ function buildLayout($lily) {
 					\\clef $clef 
 				$naturalize \\transpose c ".$keys[$key].$octave."
 				\\$part
-				}
-			
-			>> 
-			\\layout { \\context { \\Score \\remove \"Volta_engraver\" } } 
-	
-			}
-		
+				} >> 
+				\\layout { \\context { \\Score \\remove \"Volta_engraver\" } }
+	   		} %end score 
 		";
-		if ($showwords) {
+		} 
+		if ($showwords || $part == 'words') {
 			$layout .= $words;
 		} 
-		$layout .= "\n} ";
+		$layout .= "\n} %end book";
 	}
 	$lily['layout'] = $layout;
 	$keyname = "";
@@ -227,7 +255,7 @@ function getOctave($key, $part, $clef, $octave) {
 		if (strpos($octave, "'") !== false) { 
 			$octave = substr_replace($octave, '', -1, 1);
 		} else {
-			$octave.=","; 
+			#$octave.=","; 
 		}
 	} else if ($part == 'bass' && $clef == 'treble') {
 		if (strpos($octave, ",") !== false) { 
@@ -252,6 +280,12 @@ function lilysort($a, $b) {
 		return strcasecmp($a['title'], $b['title']);
 	} else if(isset($a['file']) && isset($b['file'])) {
 		return strcasecmp($a['file'], $b['file']);
+	}
+}
+
+function chunlink($file) { 
+	if (file_exists($file)) { 
+		unlink($file);
 	}
 }
 
