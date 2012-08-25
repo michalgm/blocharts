@@ -28,6 +28,7 @@ if(isset($_GET['file'])) {
 	header('Content-Type: text/html; charset=utf-8'); 
 	$dirh = opendir($lilydir);
 	while (($file = readdir($dirh)) !== false) {
+		if ($file == 'include.ly') { continue; }
 		$lilies[] = processFile($file, $dir);
 	}
 	usort($lilies, 'lilysort');
