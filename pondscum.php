@@ -176,7 +176,8 @@ function buildLayout($lily) {
 	if ($part == 'score'  || $part == 'source' || $part == 'midi') {
 		$parts = $lily['parts'];
 		$layout .= "\n#(set-default-paper-size ".$layouts[$page].')';
-		$layout .= "\n\\book {\n\t\\score { << ";
+		$layout .= "\n\\book {\n\t\\score { <<\n\t\t\t\\set Score.markFormatter = #format-mark-box-letters
+			";
 		if ($part != 'midi') { $layout .= $changes; }
 		foreach ($parts as $lilypart) { 
 			if ($lilypart == 'changes' || $lilypart == 'words') { continue; }
@@ -219,6 +220,7 @@ function buildLayout($lily) {
 			$layout .="
 			\\score { <<
 				$changes
+				\\set Score.markFormatter = #format-mark-box-letters
 				\\new Staff \\with { \\consists \"Volta_engraver\" } { 
 					$staffspacing	
 					\\clef $clef 
@@ -251,11 +253,11 @@ function getOctave($key, $part, $clef, $octave) {
 			$octave.=",";
 		}
 	}
-	if ($clef == 'bass') { 
+	if ($clef == 'bass' && $part != 'bass') { 
 		if (strpos($octave, "'") !== false) { 
 			$octave = substr_replace($octave, '', -1, 1);
 		} else {
-			#$octave.=","; 
+			$octave.=","; 
 		}
 	} else if ($part == 'bass' && $clef == 'treble') {
 		if (strpos($octave, ",") !== false) { 
