@@ -25,7 +25,7 @@ melody = {
 		r a r g~ g4 r8 g ^\markup { \tiny \italic "2nd x only" } |
 	}
 
-	\mark \default %B
+	\break \mark \default %B
 	\repeat volta 2 {
 		d'4 d d c8 ees | r d r c r a r a |
 		c4 c c bes8 d | r c r bes r g r g |
@@ -49,7 +49,7 @@ bass = {
 		a, r c ees | a, r c ees | a, r c ees | g, r bes d |
 	}
 
-	\mark \default %B
+	\break \mark \default %B
 	\repeat volta 2 {
 		g, r bes d | a r c ees | a, r c ees | g, r bes d | 
 		g, r bes d | a r c ees | a, r c ees | g, r bes d | 
