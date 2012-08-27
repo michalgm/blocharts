@@ -25,7 +25,7 @@ melody = {
 			{ f4 r r f | }
 		}
 	
-	\mark \default %B
+	\break \mark \default %B
 	\repeat volta 2 {
 		c'2 c | bes4 aes8 f r4 f | c'2 c | bes4 aes8 f r4 f | 
 		c'2 c | bes4 aes8 f r4 f | ees4. e8~ e4 f | }
@@ -49,7 +49,7 @@ tenor = {
 			{ f4 r r f | }
 		}
 	
-	\mark \default %B
+	\break \mark \default %B
 	\repeat volta 2 {
 		aes2 aes | g4 ees8 f r4 f | aes2 aes | g4 ees8 f r4 f | 
 		aes2 aes | g4 ees8 f r4 f | ees4. e8~ e4 f | }
@@ -75,7 +75,7 @@ bass = {
 			{ c r8 ees~ ees4 e | } 
 		}
 	
-	\mark \default %B
+	\break \mark \default %B
 	\repeat volta 2 {
 		f,4 r8 f~ f4 g | aes r8 aes~ aes4 a | bes r8 bes~ bes4 b | c r8 ees~ ees4 e | 
 		f,4 r8 f~ f4 g | aes r8 aes~ aes4 a | ees'4. e8~ e4 f | }
