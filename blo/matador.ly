@@ -18,7 +18,7 @@ melody = \relative c' {
 
   \mark \default %A
   {
-    a8 \mf a r a c4 c8 e ~ |
+    a'8 \mf a r a c4 c8 e ~ |
     e r d4 e d |
     e4. c8 ~ c4 r |
     R1 |
@@ -57,7 +57,7 @@ melody = \relative c' {
   {
     r1 \mf  r1  r1 |
     \override NoteHead #'style = #'cross
-    e''4_"Hey!" r e_"Hey!" r |
+    e'4_"Hey!" r e_"Hey!" r |
     \override NoteHead #'style = #'default
     c8_"cresc." c c c b4 c |
     r2 a8 b c b|
@@ -68,7 +68,7 @@ melody = \relative c' {
     <c e>8 <c e> <c e> <c e> <b d>4 <c e>|
     r2 <a c>8 <b d> <c e> <b d>|
     <c e>8 <c e> <c e> <c e> <b d>4 <c e>|
-    r2 r4 e,8 f |
+    r2 r4 e8 f |
   }
   \break \mark \default %D
   {
@@ -92,8 +92,8 @@ melody = \relative c' {
 
   \break \mark "Solos"
   {
-    c8 c c c c4 e8 e |
-    e4 c8 c8 c4 r4
+    <a,, c e>8 <a c e> <a c e> <a c e> <a c e>4 <c e g>8 <c e g> | 
+    <c e g>4 <a c e>8 <a c e> <a c e>4 r |
   }
 
 }
@@ -176,6 +176,7 @@ tenor = \relative c' {
   {
     c8 c c c c4 e8 e |
     e4 c8 c8 c4 r4
+
   }
 }
 
@@ -257,8 +258,9 @@ bass = \relative c {
   
   \break \mark "Solos"
   {
-    c8 c c c c4 e8 e |
-    e4 c8 c8 c4 r4
+    a8 a a a a4 c8 c | 
+    c4 a8 a a4 r |
+
   }
 
 }
@@ -278,14 +280,14 @@ changes = \chordmode {
     <<
       \new ChordNames { \set chordChanges = ##t \changes }
       \new Staff {
-        \melody
+       \transpose c a { \melody }
       }
        \new Staff {
-        \tenor
+      %  \tenor
       }
        \new Staff {
          \clef bass
-         \bass
+      %   \bass
        }
     >>
   }
