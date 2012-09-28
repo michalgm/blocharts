@@ -17,7 +17,7 @@ melody = {
 \relative c'' { \key g \minor
     \mark \default
     \repeat volta 2 {
-    g16 bes c d f2 f16 f d c | a4 c8. a16 r2 |
+    g16 bes c d f2 g16 f d c | a4 c8. a16 r2 |
     g16 bes c d f2 g16 f d c | a4 c8. a16 r2 |
     g16 bes c d f2 g16 f d c | a4 c8. a16 r4 f'8 g~  |}
     \alternative {
