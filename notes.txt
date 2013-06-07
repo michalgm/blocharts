@@ -1,3 +1,0 @@
-- should be able to make the tenor part in bass clef in the score if we want
-- make tagline smaller
-
