@@ -8,7 +8,7 @@
   copyright = \markup {\bold ""} %form
 }
 
-%description: Frequently-covered samba-rock tune by Los Fabulosos Cadillacs, from their 1993 album <i>Vasos Vac&iacute;os</i>.
+%description:Argentine band <a href="http://www.fabulosos-cadillacs.com/">Los Fabulosos Cadillacs</a>' biggest hit, from their 1993 album <i>Vasos Vacíos</i>, about the oppression and forced disappearances during the years of military dictatorship across Latin America, particularly the National Reorganization Process in Argentina. The song narrates the story of a revolutionary hunted down by law enforcement. (See <a href="http://en.wikipedia.org/wiki/El_Matador">wikipedia entry</a>.)
 
 % music pieces
 %part: melody

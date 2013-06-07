@@ -1,12 +1,13 @@
 \version "2.12.3"
 
 \header {
-  title = "Sweet Dreams"
+  title = "Sweet Dreams (Are Made of This)"
   composer = "Annie Lennox and David A. Stewart"
   arranger =  "based on arrangement by Soul Rebels"
   tagline = "5/18/12" %date of latest edits
   copyright = \markup {\bold ""} %form
 }
+%description:1983 pop hit and ablum by <a href="http://en.wikipedia.org/wiki/Eurythmics">The Euythmics</a>. We play a version by the <a href="http://thesoulrebels.com/">Soul Rebels Brass Band</a> from their 2012 debut record, <a href="http://soulrebelsbrassband.portmerch.com/stores/product.php?productid=18212&cat=0&page=1&featured">Unlock Your Mind</a>.
 
 %place a mark at bottom right
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }

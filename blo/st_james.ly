@@ -6,6 +6,8 @@
 	copyright = "5/6/10" %date of latest edits
 	}
 
+%description:American folksong of unclear origin, made famous by a 1928 recording by <a href="http://en.wikipedia.org/wiki/Louis_Armstrong">Louis Armstrong</a>. (See <a href="http://en.wikipedia.org/wiki/St._James_Infirmary_Blues">wikipedia entry</a>.)
+
 %place a mark at bottom right
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
 

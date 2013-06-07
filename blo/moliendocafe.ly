@@ -1,12 +1,12 @@
 \version "2.12.1"
 
 \header {
-	title = "Moliendo Cafe"
+	title = "Moliendo Café"
 	composer = "Hugo Blanco"
 	copyright = "3/11/10"
 	}
 
-%description:This song by <a href="http://en.wikipedia.org/wiki/Hugo_Blanco_(musician)">Hugo Blanco</a> of Venezuela is about a coffee picker who is in love with the plantation owner&#8217;s daughter.  Famous versions were recorded by the late Puerto Rican singer Rolando La Serie with Ishmael Rivera&#8217;s band in the early 1960s and by Latin Jazz trumpeter/conga player/composer Jerry Gonzalez with his Fort Apache Band.
+%description:1961 hit song by <a href="http://en.wikipedia.org/wiki/Hugo_Blanco_%28musician%29">Hugo Blanco</a> of Venezuela about a coffee picker in love with the plantation owner’s daughter. (Also see <a href="http://en.wikipedia.org/wiki/Moliendo_Cafe">wikipedia entry</a>.)
 
 %place a mark at bottom right
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }

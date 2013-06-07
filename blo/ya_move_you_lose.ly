@@ -1,11 +1,11 @@
 \version "2.12.3"
 
 \header {
-	title = "Ya Move Ya Lose"
+	title = "You Move Ya Lose"
 	composer = "Rebirth Brass Band"
 	copyright = "7/1/10" %date of latest edits
 	}
-%description: New Orleans 2nd Line-		style tune by Rebirth Brass Band, from their 1994 album <i>Rollin</i>.
+%description:<a href="http://en.wikipedia.org/wiki/Second_line_%28parades%29">New Orleans Second Line</a> song by <a href="http://www.rebirthbrassband.com">Rebirth Brass Band</a>, from their 1994 album <a href="http://www.amazon.com/Rollin-ReBirth-Brass-Band/dp/B00000030K">Rollin</a>.
 
 %place a mark at bottom right
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }

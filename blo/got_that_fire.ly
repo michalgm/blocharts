@@ -6,6 +6,7 @@
 	tagline = "7/15/10" %date of latest edits
 	copyright = \markup {\bold ""} %form
 	}
+%description:Traditional <a href="http://en.wikipedia.org/wiki/Second_line_%28parades%29">New Orleans Second Line</a> song.
 
 %place a mark at bottom right
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }

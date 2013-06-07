@@ -1,10 +1,11 @@
 \version "2.12.1"
 
 \header {
-	title = "Na Borusa Sa Sinefa"
+	title = "Naborusa"
 	composer = "Traditional?"
 	copyright = "8/25/12" %date of latest edits
 	}
+%description:Song of unclear origin (and many titles and varied spellings) from the <a href="http://voiceofroma.com/">Romani culture</a>. The version we play was taught to us by <a href="http://www.eefc.org/Shopov.shtml">Rumen “Sali” Shopov</a> and local Balkan musician, <a target='_blank' href="http://www.huzzam.com/">Peter Jaques</a>. 
 
 %place a mark at bottom right
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }

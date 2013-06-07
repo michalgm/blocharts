@@ -2,8 +2,12 @@
 
 \header {
     title = "Cigonko Moja"
-	copyright = "4/22/10"
-    }
+    copyright = "4/22/10"
+    composer="Trad. Roma"
+    arranger="arr. Rumen Shopov"
+}
+
+%description:Literally "My Little Gypsy Girl", this is the title of many songs from Eastern Europe from the <a href="http://voiceofroma.com/">Romani culture</a>. The song we play is a traditional melody taught to us by <a href="http://www.eefc.org/Shopov.shtml">Rumen “Sali” Shopov</a> and local Balkan musician, <a target='_blank' href="http://www.huzzam.com/">Peter Jaques</a>. 
 
 %{ SOLO BACKING (WORK IT IN)
 from "ciganko_solo.ly"

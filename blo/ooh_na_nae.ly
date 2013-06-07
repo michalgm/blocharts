@@ -1,11 +1,13 @@
 \version "2.12.3"
 
 \header {
-	title = "O Na Ne"
+	title = "Ooh Na Nae"
 	composer = "?"
 	tagline = "7/15/10" %date of latest edits
 	copyright = \markup {\bold ""} %form
 	}
+%description:Traditional melody based on one of many chants used by the <a href="http://www.mardigrasindians.com/">Mardi Gras Indians</a> in the <a href="http://en.wikipedia.org/wiki/Second_line_%28parades%29">New Orleans Second Line Tradition</a>.
+
 
 %place a mark at bottom right
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }

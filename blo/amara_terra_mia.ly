@@ -3,7 +3,7 @@
 \header {
 	title = "Amara Terra Mia"
 	composer = "Domenico Modugno"
-	copyright = "$Date::             $" %date of latest edits
+	copyright = "$Date:: 2012-08-24 #$" %date of latest edits
 	}
 %description: "My Bitter Land." 1974 song by Italian left-wing singer, actor and politician Domenico Modugno about the hardships faced by poor Italian peasants that forced them to emigrate. Inspired by the version by Roman brass band <a href='http://www.titubanda.it/'>Titubanda</a>, the BLO performs this song in solidarity with all migrants forced to relocate for economic reasons. 
 

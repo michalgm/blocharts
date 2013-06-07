@@ -6,6 +6,7 @@
 	tagline = "4/19/12" %date of latest edits
 	copyright = \markup {\bold ""} %form
 	}
+%description: Another song by <a href="http://www.fela.net/"Fela Kuti</a> (see above), released as a 22-minute single in 1977.
 
 %place a mark at bottom right
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
