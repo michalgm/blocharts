@@ -3,7 +3,7 @@
 \header {
 	title = "Ooh Na Nae"
 	composer = "?"
-	tagline = "7/15/10" %date of latest edits
+	tagline = "7/4/13" %date of latest edits
 	copyright = \markup {\bold ""} %form
 	}
 %description:Traditional melody based on one of many chants used by the <a href="http://www.mardigrasindians.com/">Mardi Gras Indians</a> in the <a href="http://en.wikipedia.org/wiki/Second_line_%28parades%29">New Orleans Second Line Tradition</a>.
@@ -50,11 +50,20 @@ leadsheet = {
 		\times 2/3 { <ges des>2 <aes ees> <ges des> } | <f c>1 | 
 		}
 	\break
-
+        \mark \markup { \box "Bridge" \small "2 times" \small \italic "- Which Side Are You On" } 
+        \repeat volta 2 {
+              r2 r4 f4 | bes8 bes4 bes8~bes4 aes4 | bes4. bes8 r4 aes4 | c4. bes8 aes f4 bes8~ |
+              bes4 r r aes | c4 bes aes f | f8 f4 f8~f4 ees4 | f4. ees8 des bes4 bes8~ |
+              bes4 r8 f'~ f4 ees | bes bes des ees | f2 r2 | f4 f ees8 des4 bes8~ |
+              bes2 r2 |  bes4 bes des ees | f2 r2 | f4 f ees8 des4 bes8~ | bes2 r2 |
+              
+            
+        }
+        \break
 	\mark \markup { \box "bass 1" } 
 	\clef bass
 	\repeat volta 4 {
-		bes,,4 bes2 bes4 | des4 des2 des4 | ees4 ees2 ees4 | f4. aes8~ aes4 bes |
+		bes,4 bes2 bes4 | des4 des2 des4 | ees4 ees2 ees4 | f4. aes8~ aes4 bes |
 		}
 	\break
 
@@ -87,59 +96,16 @@ bass = { \relative c {
 %part: changes
 changes = \chordmode { }
 
-%layout
-#(set-default-paper-size "a5" 'landscape)
-#(set-global-staff-size 17)
-
-\book { 
-  \header { poet = "Lead Sheet- C" }
-	\paper { page-count = 1 } 
-    \score {
-
-	<<
-        \new Staff {
-		\leadsheet
-	}
-	>>
-    }
+%%Generated layout
+#(set-default-paper-size "letter")
+\book {
+	\score { <<
+			\set Score.markFormatter = #format-mark-box-letters
+			
+		\new Staff \with { \consists "Volta_engraver" } {  \set Staff.midiInstrument = #"alto sax" \clef treble
+			\tempo  4 = 200 
+			\leadsheet
+		}
+	>> \layout { \context { \Score \remove "Volta_engraver" } }  
+        \midi { } } 
 }
-\book { 
-  \header { poet = "Lead Sheet - Bb" }
-	\paper { page-count = 1 } 
-    \score { \transpose c d
-	<<
-        \new Staff {
-		\leadsheet
-	}
-	>>
-    }
-}
-
-\book { 
-  \header { poet = "Lead Sheet - Eb" }
-	\paper { page-count = 1 } 
-    \score { \transpose c a,
-	<<
-        \new Staff {
-		\leadsheet
-	}
-	>>
-    }
-}
-
-
-
-\book { \header { poet = "MIDI" }
-    \score { 
-      << \tempo 4 = 200 
-\unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"alto sax"
-		\leadsheet
-	}
-\unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"tuba"
-		\bass
-	}
-      >> 
-    \midi { }
-  } 
-}
-%}
