@@ -1,136 +1,161 @@
 \version "2.12.1"
 
 \header {
-	title = "Nine to Five"
-	composer = "Dolly Parton"
-	copyright = "$Date:: 2011-04-20 #$" %date of latest edits
-	}
+  tagline = "2/15/2014"
+  title = "Nine to Five"
+  composer = "Dolly Parton"
 
-
-% music pieces
-%part: melody
-melody = {
-	\relative c'' { \key g \major 
-  	\mark \default
-	r1 | r1 | r1 | r1 |
-	\break \mark \default
-	g8 g g g b4 b | d8 d d d e4 g | c,4 c e e| g8 e g4 a8 g e4 |
-	\break
-	g4 e g e | e d e d8 d8~ | d4 r r2 | r1 | 
-	\break
-	g,8 g8 g8 g8 b b b b | d4 d e g | c,4 c4 e4 e4 | g8 e g4 a8 g e4 |
-	\break
-	b'4 a g e | d4 d b' a | g2 r2 | r2 e4 g |
-	\break
-	\mark \default
-	bes4. a8~ a4 g4~ | g2 e4 g | g e8 g~ g e a4~ | a b e, g | 
-	\break
-	r4 b4~ b8 a4. | g4 (e) e8 g4. | g4 e8 g8~ g g4. | a4 b e, g |
-	\break
-	r4 bes4~ bes8 a4. |  g4 (e) e8 g4. | g4 e8 g~ g4 g | a b e, g |
-	\break
-	a2  a4 a~ | a a (e) r4 | e' b8 d8 ~d4 b | d b r2|
-	}
 }
 
-%part: harmony
-harmony = {
+%place a mark at bottom right
+markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
+
+%music pieces
+%part: melody
+melody = {
+  \relative c' {
+    \key f \major
+    \set Score.markFormatter = #format-mark-box-letters
+    \override Score.RehearsalMark #'self-alignment-X = #LEFT
+
+    \mark \markup \box \bold "Vamp"
+    \repeat volta 2 {
+      <f a c>8 ^\markup {\tiny "(2nd time only)"} r8 r4 r2 | r1 | r1 | r1 |
+    }
+    \break \mark \markup \box \bold "1"
+    f8 f f f a4 a | c8 c c4 d f | bes,8 bes bes4 d d8 f8| r8 f8 d4 g8 f d4 |
+
+
+    f4 d f d | d c8 d4~ d8 c4 | c2 r2 | r1 |
+    \break
+    f,8 f4 f8 a4 a | c8 c c4 d f | bes,4 bes4 d4 d8 f | r8 f8 d4 g8 f d4 |
+
+    a'4 g f d | c4 c8 a'4~ a8 g4 | f2 r2 | r2 d4 f |
+    \break \mark \markup \box \bold "2"
+
+    \repeat volta 2 {
+      as4. g4. f4~ | f2 d4 f | f d8 f~ f d g4~ | g a d, f |
+      \break
+      r4 a4~ a8 g4. | f4 d d8 f4. | f4 d8 f8~ f4 f | g4 a d, f |
+
+      \break
+      r4 as4~ as8 g4. |  f4 d d8 f4. | f4 d8 f r r d4 | g8 a r4 d, f |
+
+      \break
+      g2  g4 g~ | g g d r4 | d' c8 c8 ~c4 a |
+    }
+    \alternative {
+      {  c4 a r2| }
+      {  c4 a d,4 f }
+    }
+  }
 }
 
 %part: tenor
 tenor = {
- 	\relative c' { \key g \major 
-	\mark \default
-	r1 | r1 | r1 | r1 |
-	\break \mark \default
-	g'2 b | d e8 r8 d8 c8 | c,2 e2 | g2 a8 r8 g8 fis8 |
-	b2 a2 g2 g4 d8 d~| d4 r r2| r1 |
-	g2 b | d e8 r8 d8 c8 | c,2 e2 | g2 a8 r8 g8 fis8 |
-	b2 a2 | g4 d b' a| g2 r2| r1 |
-	\break
-	\mark \default
-	<e' g>4. <e g>8~ <e g>4 <e g>4~ | e4 <e g>8  <e g> 8 r4 r4| r4 <e g> r <e g> | r <e g> r <e g> |
-	r4 <d b>4~ <d b>8 <d b>4. | <d b>4 <d b>8 <d b> r4 r4 | r4 <d b> r <d b> | r <d b> r <d b> |
-	r4 <e g>4~ <e g>8 <e g>4. |  <e g>4  <e g>8  <e g> 8 r4 r4| r4 <e g> r <e g> | r <e g> r <e g> |
-	cis2 d2| g,2 a2 | d2 e2 | f2 fis2|
+  \relative c' {
+    \key f \major
+    \mark \markup \box \bold "Vamp"
+    \repeat volta 2 {
+      <f a c>8  ^\markup {\tiny "(2nd time only)"} r8 r4 r2 |  r1 | r1 | r1 |
+    }
+    \break \mark \markup \box \bold "1"
+    r4 a8 a r4 c8 c | r4 d8 d r c bes a | r4 d8 d r4 f8 f| r4 bes8 bes r a g f |
+    r4 a,8 a r4 f8 f | f f c4 d4 c8 c~ | c2 r2 | r1 |
+    \break
+    r4 a'8 a r4 c8 c | r4 d8 d r c bes a | r4 d8 d r4 f8 f| r4 bes8 bes r a g f |
+    r4 c8 c r4 a8 a | a8 a g r8 c4 bes8 a~ | a2 r2 | r1
 
-      }
+    \break \mark \markup \box \bold "2"
+    \repeat volta 2 {
+      d4. bes4. aes4~| aes <d f bes> r r | r <d f> r <d f> | r2 aes4 f |
+      r c'~ c8 bes4. | a4 <c f a> r2 | r4 <a c> r <a c> | d c aes8 g f4 |
+      \break
+      r4 d'4~ d8 bes4. | aes4 <d f bes> r r | r <d f> r <d f> | r <d, f> <des e> <c ees> |
+      <b d>2 <c es> | <cis e> <d f> | <c e> <d f>
+    }
+    \alternative {
+      { <ees ges>4 <e g> r2 }
+      { <ees ges>4 <e g> aes8 g f4 }
+    }
+  }
 }
 
 %part: bass
 bass = {
-	\relative c { \key g \major 
-  	\break \mark \default
-	g4 g g g | g g g g | g g g g | g8. e16 e4 f fis |
-	g4 g g g | g g g g (| c,) c c c | c c c c (|
-	g') g g g | g g g g (| d) d d d | d d d d (|
-	g4) g g g | g g g g (| c,) c c c | c c c c (|
-	g') g g g (| d) d d d | g g g g | g2 (g,4) r4 |
-	\break \mark \default
-	c c' g c | c, c' g c | c, c' g c | c, c' g c | 
-	g g' d g | g, g' d g | g, g' d g | g, d' g, g |
-	c, c' g c | c, c' g c  |c, c' g c | c, c b bes |
-	a a b b | c c cis cis | d d e e | f f fis d' |
+  \relative c, {
+    \key f \major
+    \mark \markup \box \bold "Vamp"
+    \repeat volta 2 {
 
+      f4 f f f | f f f f | f f f f | f8. d16 d4 es e |
+    }
+    \break \mark \markup \box \bold "1"
+
+    f4 f f f | f f f f (| bes,) bes bes bes | bes bes bes bes (|
+
+    f') f f f | f f f f (| c) c c c | c c c c (|
+    \break
+    f4) f f f | f f f f (| bes,) bes bes bes | bes bes bes bes (|
+    f') f f f (| c) c c c | f f f f | f2 (f,4) r4 |
+    \break \mark \markup \box \bold "2"
+    \repeat volta 2 {
+      bes bes' f bes | bes, bes' f bes | bes, bes' f bes | bes, bes' f bes |
+      \break
+      f f' c f | f, f' c f | f, f' c f | f, c' f, f |
+      \break
+      bes, bes' f bes | bes, bes' f bes  |bes, bes' f bes | bes, bes a as |
+      \break
+      g g a a | bes bes b b | c c d d |
+    }
+    \alternative {
+      {  es es e c | }
+      {  es es e c | }
+    }
   }
 }
 
+%part: changes
 changes = \chordmode {
-	r1 | r1 | r1 | r1
-	\mark \default
-	g1 | g1 | c1 | c1|
-	g1 | g1 | d1 | d1 |
-	g1 | g1 | c1 | c1 |
-	g1 | d1 | g1 | g1 |
-	\mark \default
-	c1 | c1 | c1 | c1 |
-	g1 | g1 | g1 | g1 |
-	c1 | c1 | c1 | c1 |
-	a1:7 | a1:7 | d1:7 | d1:7 |
+  f1 | f1 | f1 | f1
+  \break \mark \markup \box \bold "1"
+  f1 | f1 | bes1 | bes1|
+  f1 | f1 | c1 | c1 |
+  f1 | f1 | bes1 | bes1 |
+  f1 | c1 | f1 | f1 |
+  \break \mark \markup \box \bold "2"
+  bes1 | bes1 | bes1 | bes1 |
+  f1 | f1 | f1 | f1 |
+  bes1 | bes1 | bes1 | bes1 |
+  g1:7 | g1:7 | c1:7 | c1:7 |
 }
 
 
-%layout
-#(set-default-paper-size "a5" 'landscape)
-\book { 
- \paper { #(set-paper-size "a4") }
-  \header { poet = "Score" }
-    \score {
-	<< \tempo 4 = 184
-	  	\new ChordNames { \set chordChanges = ##t \changes }
+%%Generated layout
+#(set-default-paper-size "letter")
+\book {
+  \score { <<
+    \set Score.markFormatter = #format-mark-box-numbers
 
-    \new Staff {
+    \transpose c c \new ChordNames { \set chordChanges = ##t \changes }
+    \new Staff \with { \consists "Volta_engraver" } {
+      \set Staff.midiInstrument = #"trumpet" \clef treble
+      \tempo  4 = 184
+      \override Score.RehearsalMark #'self-alignment-X = #LEFT
       \melody
     }
-    \new Staff { 
-     \tenor
+    \new Staff \with { \consists "Volta_engraver" } {
+      \set Staff.midiInstrument = #"trombone" \clef treble
+      \override Score.RehearsalMark #'self-alignment-X = #LEFT
+      \tenor
     }
-    \new Staff { \transpose c c''
-   \bass 
+    \new Staff \with { \consists "Volta_engraver" } {
+      \set Staff.midiInstrument = #"tuba" \clef bass
+      \override Score.RehearsalMark #'self-alignment-X = #LEFT
+      \bass
     }
-	>>
-    }
-}
-
-
-
-
-\book { \header { poet = "MIDI" }
-    \score { 
-      << \tempo 4 = 180
-        \unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"trumpet"
-	  \melody
-	}
-    \unfoldRepeats  \new Staff { \set Staff.midiInstrument = #"clarinet"
-       \tenor
-    }
-    \unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"tuba"
-      	\bass
-	}
-	    \unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"tuba"
-	      %\changes
-	}
-      >> 
-    \midi { }
-  } 
+           >>
+           \midi { }
+           \layout { \context { \Score \remove "Volta_engraver" } }
+  }
 }
