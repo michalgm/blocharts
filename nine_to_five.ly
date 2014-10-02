@@ -20,7 +20,7 @@ melody = {
 
     \mark \markup \box \bold "Vamp"
     \repeat volta 2 {
-      <f a c>8 ^\markup {\tiny "(2nd time only)"} r8 r4 r2 | r1 | r1 | r1 |
+      <f a c>8-^ ^\markup {\tiny "(2nd time only)"} r8 r4 r2 | r1 | r1 | r1 |
     }
     \break \mark \markup \box \bold "1"
     f8 f f f a4 a | c8 c c4 d f | bes,8 bes bes4 d d8 f8| r8 f8 d4 g8 f d4 |
@@ -57,7 +57,7 @@ tenor = {
     \key f \major
     \mark \markup \box \bold "Vamp"
     \repeat volta 2 {
-      <f a c>8  ^\markup {\tiny "(2nd time only)"} r8 r4 r2 |  r1 | r1 | r1 |
+      <f a c>8-^  ^\markup {\tiny "(2nd time only)"} r8 r4 r2 |  r1 | r1 | r1 |
     }
     \break \mark \markup \box \bold "1"
     r4 a8 a r4 c8 c | r4 d8 d r c bes a | r4 d8 d r4 f8 f| r4 bes8 bes r a g f |
@@ -68,10 +68,10 @@ tenor = {
 
     \break \mark \markup \box \bold "2"
     \repeat volta 2 {
-      d4. bes4. aes4~| aes <d f bes> r r | r <d f> r <d f> | r2 aes4 f |
-      r c'~ c8 bes4. | a4 <c f a> r2 | r4 <a c> r <a c> | d c aes8 g f4 |
+      d4. bes4. aes4~| aes <d f bes>-^ r r | r <d f> r <d f> | r2 aes4 f |
+      r c'~ c8 bes4. | a4 <c f a>-^ r2 | r4 <a c> r <a c> | d c aes8 g f4 |
       \break
-      r4 d'4~ d8 bes4. | aes4 <d f bes> r r | r <d f> r <d f> | r <d, f> <des e> <c ees> |
+      r4 d'4~ d8 bes4. | aes4 <d f bes>-^ r r | r <d f> r <d f> | r <d, f> <des e> <c ees> |
       <b d>2 <c es> | <cis e> <d f> | <c e> <d f>
     }
     \alternative {
