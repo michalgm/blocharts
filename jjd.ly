@@ -3,10 +3,10 @@
 \header {
 	title = "J.J.D."
 	composer = "Fela Kuti"
-	tagline = "4/19/12" %date of latest edits
+	tagline = "2/17/15" %date of latest edits
 	copyright = \markup {\bold ""} %form
 	}
-%description: Another song by <a href="http://www.fela.net/"Fela Kuti</a> (see above), released as a 22-minute single in 1977.
+%description: Another song by <a href="http://www.fela.net/">Fela Kuti</a> (see above), released as a 22-minute single in 1977.
 
 %place a mark at bottom right
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
@@ -128,7 +128,7 @@ changes = \chordmode { }
     \score {
 	<<
 %	\new ChordNames { \set chordChanges = ##t \changes }
-        \new Staff { \transpose c d
+        \new Staff { \transpose bes c 
 		\melody
 	}
 	>>
@@ -141,7 +141,7 @@ changes = \chordmode { }
     \score {
 	<<
 %	\new ChordNames { \set chordChanges = ##t \changes }
-        \new Staff { \transpose c d
+        \new Staff { \transpose bes c'
 		\guitar
 	}
 	>>
@@ -153,7 +153,7 @@ changes = \chordmode { }
     \score {
 	<<
 %	\new ChordNames { \set chordChanges = ##t \changes }
-        \new Staff { \transpose c a
+        \new Staff { \transpose ees c
 		\melody
 	}
 	>>
@@ -166,7 +166,7 @@ changes = \chordmode { }
     \score {
 	<<
 %	\new ChordNames { \set chordChanges = ##t \changes }
-        \new Staff { \transpose c a
+        \new Staff { \transpose ees c
 		\guitar
 	}
 	>>
@@ -179,7 +179,7 @@ changes = \chordmode { }
     \score {
 	<<
 %	\new ChordNames { \set chordChanges = ##t \changes }
-        \new Staff { \clef treble \transpose c a'
+        \new Staff { \clef treble \transpose ees c''
 		\bass
 	}
 	>>
@@ -187,7 +187,7 @@ changes = \chordmode { }
 %    \words
 }
 
-%{
+
 \book { \header { poet = "Score" }
   \paper { #(set-paper-size "letter") }
     \score { 
@@ -206,12 +206,12 @@ changes = \chordmode { }
   } 
 %    \words
 }
-%{
+
 
 
 \book { \header { poet = "MIDI" }
     \score { 
-      << \tempo 4 = 144 
+      << \tempo 4 = 120 
 \unfoldRepeats	\new Staff { \set Staff.midiInstrument = #"trumpet"
 		\melody
 	}
@@ -225,4 +225,4 @@ changes = \chordmode { }
     \midi { }
   } 
 }
-%}
+
