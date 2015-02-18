@@ -20,17 +20,31 @@
 
 cTreble = {
 
+
   \relative c' {
     \override Score.RehearsalMark #'self-alignment-X = #LEFT
     \key c \minor
     \break
     \mark
     \markup {
-      "AP Touro -- C Minor Blues"
+      "AP Touro 1 -- C Minor Blues" \tiny "like Eb Major Blues"
     }
     <c es g c>1
     c4-^ es-^  f ges | g-^ bes  c2-^ |
     c4-^ bes  g-^ ges |  f  es-^  c2-^
+  } %% end relative c
+
+  \relative c' {
+    \break
+    \key c \minor
+    \mark
+    \markup {
+      \column {
+      "AP Touro 2 -- C Harmonic Minor"      }
+    }
+    <c es g c>1
+    c4-^ d es-^ f | g-^ as b  c-^ |
+    c-^ b as g-^ |  f es-^ d c-^ |
   } %% end relative c
 
   \relative c' {
@@ -47,13 +61,30 @@ cTreble = {
     d-^ c bes a-^ |  g fis-^ es d-^ |
   } %% end relative c
 
+
+  \relative c' {
+    \key bes \major
+    \mark
+    \markup {
+      \column {
+        "Do What You Wanna 1 -- Bb Major Blues" \tiny "like G Minor Blues"
+      }
+    }
+    \break
+    <bes' d f bes>1
+    bes4-^ c des d-^ | f-^ g bes2-^ |
+    bes4-^ g f-^ d-^  |  des c bes2-^  |
+  } %% end relative c
+
+
+
   \relative c' {
     \break
     \key g \minor
     \mark
     \markup {
       \column {
-        \line { "Dog Eat Dog -- G Minor (Dorian)" }
+        \line { "Dog Eat Dog 1, Ghost Town 2 -- G Minor (Dorian)" \tiny "like F Major" }
       }
     }
     <g' bes d g>1
@@ -61,19 +92,24 @@ cTreble = {
     g-^  f e  d-^ |  c bes-^ a g-^ |
   } %% end relative c
 
+
+
   \relative c' {
-    \break
-    \key bes \major
+    \key g \minor
     \mark
     \markup {
       \column {
-        "Do What You Wanna -- Bb Major Blues" \tiny "like G Minor Blues"
+        "Ghost Town 2, Dog Eat Dog 1 -- G Minor Blues" \tiny "like Bb Major Blues"
       }
     }
-    <bes d f bes>1
-    bes4-^ c des d-^ | f-^ g bes2-^ |
-    bes4-^ g f-^ d-^  |  des c bes2-^  |
+    \break
+    <g' bes d g>1
+    g4-^ bes-^ c cis | d-^ f g2-^ |
+    g4-^ f d-^ des | c bes-^ g2-^ |
   } %% end relative c
+
+
+
 
   \relative c' {
     \break
@@ -81,10 +117,10 @@ cTreble = {
     \mark
     \markup {
       \column {
-        "If You Want Me to Stay -- Bb Minor Blues"
+        "If You Want Me to Stay, Do What You Wanna 2, Sweet Dreams 2" "-- Bb Minor Blues" \tiny "like Db Major Blues"
       }
     }
-    <bes des f bes>1
+    <bes' des f bes>1
     bes4-^ des-^ es e | f-^ as bes2-^ |
     bes4-^ as f-^ e | es des-^ bes2-^ |
   } %% end relative c
@@ -97,24 +133,23 @@ cTreble = {
     \mark
     \markup {
       \column {
-        "JJD, Ya Move Ya Lose -- F Minor Blues"
+        "JJD 1, Ya Move Ya Lose 2 -- F Minor (Dorian)"
       }
     }
     <f as c f>1
-    f4-^ as-^ bes b | c-^ es f2-^ |
-    f4-^ es c-^ b | bes as-^ f2-^ |
+    f4-^ g as-^ bes | c-^ d es f-^ |
+    f4-^ es d c-^ | bes as-^ g f-^ |
   } %% end relative c
+
 
   \relative c' {
     \break
     \key a \minor
     \mark
     \markup {
-      \column {
-        "Matador -- A Natural Minor"
-      }
+        "Matador -- A Natural Minor" \tiny "like C Major"
     }
-    <a c e a>1
+    <a' c e a>1
     a4-^ b c-^ d | e-^ f g a-^ |
     a-^ g f e-^ | d c-^ b a |
   } %% end relative c
@@ -125,7 +160,346 @@ cTreble = {
     \mark
     \markup {
       \column {
-        "Moliendo Cafe -- D Natural Minor"
+        "Moliendo Cafe -- D Natural Minor" \tiny "like F Major"
+      }
+    }
+    <d f a d>1
+    d4-^ e f-^ g | a-^ bes c d-^ |
+    d-^ c bes a-^ | g f-^ e d-^ |
+  } %% end relative c
+
+  \relative c' {
+    \break
+    \key bes \minor
+    \mark
+    \markup {
+      \column {
+        "Monserrat Serrat -- F Hijaz" \tiny "like Bb Harmonic Minor"
+      }
+    }
+    <f a c f>1
+    f4-^ ges a-^ bes | c-^ des  es  f-^ |
+    f-^ es des c-^ |  bes a-^ ges f-^ |
+  } %% end relative c
+
+
+
+  \relative c' {
+    \break
+    \key f \minor
+    \mark
+    \markup {
+      \column {
+        "Naborusa -- C Hijaz"  \tiny "like F Harmonic Minor"
+      }
+    }
+    <c e g c>1
+    c4-^ des e-^ f | g-^ as bes c-^ |
+    c-^ bes as g-^ | f e-^ des c-^ |
+  } %% end relative c
+
+  \relative c' {
+    \break
+    \key d \minor
+    \mark
+    \markup {
+      \column {
+        "National Anthem (Radiohead/EE) 1 -- D Harmonic Minor"
+      }
+    }
+    <d f a d>1
+    d4-^ e f-^ g | a-^ bes cis d-^ |
+    d-^ cis bes a-^ | g f-^ e d-^ |
+  } %% end relative c
+
+
+
+  \relative c' {
+
+    \key a \minor
+    \mark
+    \markup {
+      \column {
+        "National Anthem (Radiohead/EE) 2 -- Chromatic Scale"
+      }
+    }
+    \break
+    <d f a d>1
+    d4-^ dis e f-^ | fis-^ g gis a-^ | ais b c cis |
+    d1-^ | des4 c b bes | a-^ as g fis-^ | f-^ e es  d-^ |
+  } %% end relative c
+
+
+  \relative c' {
+    \key a \minor
+    \mark
+    \markup {
+      \column {
+        "National Anthem (Radiohead/EE) 3 -- Whole Tone Scale"
+      }
+    }
+    \break
+    <d f a d>1
+    d4-^ e fis-^ gis | bes c d2-^ |
+    d4-^ c bes as | ges e d2-^ |
+  } %% end relative c
+
+
+
+  \relative c' {
+    \key f \major
+    \mark
+    \markup {
+      \column {
+        "Nine to Five 1 -- F Major Blues" \tiny "like D Minor Blues"
+      }
+    }
+    \break
+    <f a c f>1
+    f4-^ g as a-^ | c-^ d f2-^ |
+    f4-^ d c-^ a-^ | as g f2-^ |
+  } %% end relative c
+
+
+
+  \relative c' {
+    \key f \major
+    \mark
+    \markup {
+      \column {
+        "Nine to Five 2 -- F Major" \tiny "like D Natural Minor"
+      }
+    }
+    \break
+    <f a c f>1
+    f4-^ g a-^ bes | c-^ d e f-^ |
+    f-^ e d c-^ | bes a-^ g f-^ |
+  } %% end relative c
+
+
+
+
+  \relative c' {
+    \break
+    \key bes \minor
+    \mark
+    \markup {
+      \column {
+        "Sweet Dreams 1 -- Bb Natural Minor" \tiny "like Db Major"
+      }
+    }
+    <bes' des f bes>1
+    bes4-^ c des-^ es | f-^ ges as bes-^ |
+    bes-^ as ges f-^ | es des-^ c bes-^ |
+  } %% end relative c
+
+
+  \relative c' {
+    \break
+    \key es \major
+    \mark
+    \markup {
+      \column {
+        "We Got That Fire -- Eb Major Blues" \tiny "like C Minor Blues"
+      }
+    }
+    <es g bes es>1
+    es4-^ f ges g-^  | bes-^ c es2-^ |
+    es4-^ c bes-^ g-^ | ges f es2-^ |
+  }
+
+
+  \relative c' {
+    \break
+    \key es \major
+    \mark
+    \markup {
+      \column {
+        "We Got That Fire -- Eb Minor Blues" \tiny "like Gb Major Blues"
+      }
+    }
+    <es ges bes es>1
+    es4-^ ges-^ as a | bes-^ des es2-^ |
+    es4-^ des bes-^ a | as ges-^ es2-^ |
+  }
+
+
+  \relative c' {
+    \break
+    \key f \minor
+    \mark
+    \markup {
+      \column {
+        "Ya Move Ya Lose 1, JJD 2 -- F Minor Blues" \tiny "like Ab Major Blues"
+      }
+    }
+    <f as c f>1
+    f4-^ as-^ bes b | c-^ es f2-^ |
+    f4-^ es c-^ b | bes as-^ f2-^ |
+  } %% end relative c
+
+
+
+
+} % end ctreble
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+cBass = {
+
+
+  \relative c'' {
+    \override Score.RehearsalMark #'self-alignment-X = #LEFT
+    \key c \minor
+    \break
+    \mark
+    \markup {
+      "AP Touro 1 -- C Minor Blues" \tiny "like Eb Major Blues"
+    }
+    <c es g c>1
+    c4-^ es-^  f ges | g-^ bes  c2-^ |
+    c4-^ bes  g-^ ges |  f  es-^  c2-^
+  } %% end relative c
+
+  \relative c'' {
+    \break
+    \key c \minor
+    \mark
+    \markup {
+      \column {
+      "AP Touro 2 -- C Harmonic Minor"      }
+    }
+    <c es g c>1
+    c4-^ d es-^ f | g-^ as b  c-^ |
+    c-^ b as g-^ |  f es-^ d c-^ |
+  } %% end relative c
+
+  \relative c'' {
+    \break
+    \key g \minor
+    \mark
+    \markup {
+      \column {
+        "Ciganko Moja/Miserlou -- D Hijaz" \tiny "like G Harmonic Minor"
+      }
+    }
+    <d fis a d>1
+    d4-^ es fis-^ g | a-^ bes  c  d-^ |
+    d-^ c bes a-^ |  g fis-^ es d-^ |
+  } %% end relative c
+
+
+  \relative c' {
+    \key bes \major
+    \mark
+    \markup {
+      \column {
+        "Do What You Wanna 1 -- Bb Major Blues" \tiny "like G Minor Blues"
+      }
+    }
+    \break
+    <bes' d f bes>1
+    bes4-^ c des d-^ | f-^ g bes2-^ |
+    bes4-^ g f-^ d-^  |  des c bes2-^  |
+  } %% end relative c
+
+
+
+  \relative c' {
+    \break
+    \key g \minor
+    \mark
+    \markup {
+      \column {
+        \line { "Dog Eat Dog 1, Ghost Town 2 -- G Minor (Dorian)" \tiny "like F Major" }
+      }
+    }
+    <g' bes d g>1
+    g4-^ a bes-^ c | d-^ e  f  g-^ |
+    g-^  f e  d-^ |  c bes-^ a g-^ |
+  } %% end relative c
+
+
+
+  \relative c' {
+    \key g \minor
+    \mark
+    \markup {
+      \column {
+        "Ghost Town 2, Dog Eat Dog 1 -- G Minor Blues" \tiny "like Bb Major Blues"
+      }
+    }
+    \break
+    <g' bes d g>1
+    g4-^ bes-^ c cis | d-^ f g2-^ |
+    g4-^ f d-^ des | c bes-^ g2-^ |
+  } %% end relative c
+
+
+
+
+  \relative c' {
+    \break
+    \key bes \minor
+    \mark
+    \markup {
+      \column {
+        "If You Want Me to Stay, Do What You Wanna 2, Sweet Dreams 2" "-- Bb Minor Blues" \tiny "like Db Major Blues"
+      }
+    }
+    <bes' des f bes>1
+    bes4-^ des-^ es e | f-^ as bes2-^ |
+    bes4-^ as f-^ e | es des-^ bes2-^ |
+  } %% end relative c
+
+  \relative c' {
+
+
+    \break
+    \key f \minor
+    \mark
+    \markup {
+      \column {
+        "JJD 1, Ya Move Ya Lose 2 -- F Minor (Dorian)"
+      }
+    }
+    <f as c f>1
+    f4-^ g as-^ bes | c-^ d es f-^ |
+    f4-^ es d c-^ | bes as-^ g f-^ |
+  } %% end relative c
+
+
+  \relative c' {
+    \break
+    \key a \minor
+    \mark
+    \markup {
+        "Matador -- A Natural Minor" \tiny "like C Major"
+    }
+    <a' c e a>1
+    a4-^ b c-^ d | e-^ f g a-^ |
+    a-^ g f e-^ | d c-^ b a |
+  } %% end relative c
+
+  \relative c'' {
+    \break
+    \key d \minor
+    \mark
+    \markup {
+      \column {
+        "Moliendo Cafe -- D Natural Minor" \tiny "like F Major"
       }
     }
     <d f a d>1
@@ -159,7 +533,7 @@ cTreble = {
     d-^ cis bes a-^ | g f-^ e d-^ |
   %}
 
-  \relative c' {
+  \relative c'' {
     \break
     \key f \minor
     \mark
@@ -173,13 +547,13 @@ cTreble = {
     c-^ bes as g-^ | f e-^ des c-^ |
   } %% end relative c
 
-  \relative c' {
+  \relative c'' {
     \break
     \key d \minor
     \mark
     \markup {
       \column {
-        "National Anthem (Radiohead/EE) -- D Harmonic Minor"
+        "National Anthem (Radiohead/EE) 1 -- D Harmonic Minor"
       }
     }
     <d f a d>1
@@ -187,34 +561,72 @@ cTreble = {
     d-^ cis bes a-^ | g f-^ e d-^ |
   } %% end relative c
 
-  \relative c' {
-    \break
-    \key g \major
+
+
+  \relative c'' {
+
+    \key a \minor
     \mark
     \markup {
       \column {
-        "Nine to Five -- F Major"
+        "National Anthem (Radiohead/EE) 2 -- Chromatic Scale"
       }
     }
+    \break
+    <d f a d>1
+    d4-^ dis e f-^ | fis-^ g gis a-^ | ais b c cis |
+    d1-^ | des4 c b bes | a-^ as g fis-^ | f-^ e es  d-^ |
+  } %% end relative c
+
+
+  \relative c'' {
+    \key a \minor
+    \mark
+    \markup {
+      \column {
+        "National Anthem (Radiohead/EE) 3 -- Whole Tone Scale"
+      }
+    }
+    \break
+    <d f a d>1
+    d4-^ e fis-^ gis | bes c d2-^ |
+    d4-^ c bes as | ges e d2-^ |
+  } %% end relative c
+
+
+
+  \relative c' {
+    \key f \major
+    \mark
+    \markup {
+      \column {
+        "Nine to Five 1 -- F Major Blues" \tiny "like D Minor Blues"
+      }
+    }
+    \break
+    <f a c f>1
+    f4-^ g as a-^ | c-^ d f2-^ |
+    f4-^ d c-^ a-^ | as g f2-^ |
+  } %% end relative c
+
+
+
+  \relative c' {
+    \key f \major
+    \mark
+    \markup {
+      \column {
+        "Nine to Five 2 -- F Major" \tiny "like D Natural Minor"
+      }
+    }
+    \break
     <f a c f>1
     f4-^ g a-^ bes | c-^ d e f-^ |
     f-^ e d c-^ | bes a-^ g f-^ |
   } %% end relative c
 
 
-  \relative c' {
-    \break
-    \key g \minor
-    \mark
-    \markup {
-      \column {
-        "Ghost Town -- G Minor Blues"
-      }
-    }
-    <g' bes d g>1
-    g4-^ bes-^ c cis | d-^ f g2-^ |
-    g4-^ f d-^ des | c bes-^ g2-^ |
-  } %% end relative c
+
 
   \relative c' {
     \break
@@ -222,48 +634,93 @@ cTreble = {
     \mark
     \markup {
       \column {
-        "Sweet Dreams -- Bb Natural Minor"
+        "Sweet Dreams 1 -- Bb Natural Minor" \tiny "like Db Major"
       }
     }
-    <bes des f bes>1
+    <bes' des f bes>1
     bes4-^ c des-^ es | f-^ ges as bes-^ |
     bes-^ as ges f-^ | es des-^ c bes-^ |
   } %% end relative c
 
-  \relative c' {
+
+  \relative c'' {
     \break
     \key es \major
     \mark
     \markup {
       \column {
-        "We Got That Fire -- Eb Minor Blues"
+        "We Got That Fire -- Eb Major Blues" \tiny "like C Minor Blues"
       }
     }
     <es g bes es>1
+    es4-^ f ges g-^  | bes-^ c es2-^ |
+    es4-^ c bes-^ g-^ | ges f es2-^ |
+  }
+
+
+  \relative c'' {
+    \break
+    \key es \major
+    \mark
+    \markup {
+      \column {
+        "We Got That Fire -- Eb Minor Blues" \tiny "like Gb Major Blues"
+      }
+    }
+    <es ges bes es>1
     es4-^ ges-^ as a | bes-^ des es2-^ |
     es4-^ des bes-^ a | as ges-^ es2-^ |
   }
 
-} % end ctreble
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \relative c' {
+    \break
+    \key f \minor
+    \mark
+    \markup {
+      \column {
+        "Ya Move Ya Lose 1, JJD 2 -- F Minor Blues" \tiny "like Ab Major Blues"
+      }
+    }
+    <f as c f>1
+    f4-^ as-^ bes b | c-^ es f2-^ |
+    f4-^ es c-^ b | bes as-^ f2-^ |
+  } %% end relative c
+
+} % end cbass
+
+
+
+
+
 
 
 Bflat = {
 
-
   \relative c' {
     \override Score.RehearsalMark #'self-alignment-X = #LEFT
-    \clef treble \key c \minor
+    \key c \minor
     \break
     \mark
     \markup {
-      "AP Touro -- D Minor Blues"
+      "AP Touro 1 -- D Minor Blues" \tiny "like F Major Blues"
     }
     <c es g c>1
     c4-^ es-^  f ges | g-^ bes  c2-^ |
     c4-^ bes  g-^ ges |  f  es-^  c2-^
+  } %% end relative c
 
+  \relative c' {
+    \break
+    \key c \minor
+    \mark
+    \markup {
+      \column {
+      "AP Touro 2 -- D Harmonic Minor"      }
+    }
+    <c es g c>1
+    c4-^ d es-^ f | g-^ as b  c-^ |
+    c-^ b as g-^ |  f es-^ d c-^ |
   } %% end relative c
 
   \relative c' {
@@ -280,33 +737,55 @@ Bflat = {
     d-^ c bes a-^ |  g fis-^ es d-^ |
   } %% end relative c
 
+
+  \relative c' {
+    \key bes \major
+    \mark
+    \markup {
+      \column {
+        "Do What You Wanna 1 -- C Major Blues" \tiny "like A Minor Blues"
+      }
+    }
+    \break
+    <bes d f bes>1
+    bes4-^ c des d-^ | f-^ g bes2-^ |
+    bes4-^ g f-^ d-^  |  des c bes2-^  |
+  } %% end relative c
+
+
+
   \relative c' {
     \break
     \key g \minor
     \mark
     \markup {
       \column {
-        \line { "Dog Eat Dog -- A Minor (Dorian)" }
+        \line { "Dog Eat Dog 1, Ghost Town 2 -- A Minor (Dorian)" \tiny "like G Major" }
       }
     }
-    <g' bes d g>1
+    <g bes d g>1
     g4-^ a bes-^ c | d-^ e  f  g-^ |
     g-^  f e  d-^ |  c bes-^ a g-^ |
   } %% end relative c
 
+
+
   \relative c' {
-    \break
-    \key bes \major
+    \key g \minor
     \mark
     \markup {
       \column {
-        "Do What You Wanna -- C Major Blues" \tiny "like A Minor Blues"
+        "Ghost Town 2, Dog Eat Dog 1 -- A Minor Blues" \tiny "like C Major Blues"
       }
     }
-    <bes d f bes>1
-    bes4-^ c des d-^ | f-^ g bes2-^ |
-    bes4-^ g f-^ d-^  |  des c bes2-^  |
+    \break
+    <g bes d g>1
+    g4-^ bes-^ c cis | d-^ f g2-^ |
+    g4-^ f d-^ des | c bes-^ g2-^ |
   } %% end relative c
+
+
+
 
   \relative c' {
     \break
@@ -314,7 +793,7 @@ Bflat = {
     \mark
     \markup {
       \column {
-        "If You Want Me to Stay -- C Minor Blues"
+        "If You Want Me to Stay, Do What You Wanna 2, Sweet Dreams 2" "-- C Minor Blues" \tiny "like Eb Major Blues"
       }
     }
     <bes des f bes>1
@@ -329,23 +808,20 @@ Bflat = {
     \key f \minor
     \mark
     \markup {
-      \column {
-        "JJD, Ya Move Ya Lose -- G Minor Blues"
+        "JJD 1, Ya Move Ya Lose 2 -- G Minor (Dorian)" \tiny "like F Major"
       }
-    }
     <f as c f>1
-    f4-^ as-^ bes b | c-^ es f2-^ |
-    f4-^ es c-^ b | bes as-^ f2-^ |
+    f4-^ g as-^ bes | c-^ d es f-^ |
+    f4-^ es d c-^ | bes as-^ g f-^ |
   } %% end relative c
+
 
   \relative c' {
     \break
     \key a \minor
     \mark
     \markup {
-      \column {
-        "Matador -- G Natural Minor"
-      }
+        "Matador -- B Natural Minor" \tiny "like D Major"
     }
     <a c e a>1
     a4-^ b c-^ d | e-^ f g a-^ |
@@ -358,7 +834,7 @@ Bflat = {
     \mark
     \markup {
       \column {
-        "Moliendo Cafe -- E Natural Minor"
+        "Moliendo Cafe -- E Natural Minor" \tiny "like G Major"
       }
     }
     <d f a d>1
@@ -380,17 +856,7 @@ Bflat = {
     f-^ es des c-^ |  bes a-^ ges f-^ |
   } %% end relative c
 
-  %{
-    \break
-    \key d \minor
-    \mark
-    \markup { \column { "Murga (de Panama) -- D Harmonic Minor"
-    }
-    }
-    <d f a d>1
-    d4-^ e f-^ g | a-^ bes cis d-^ |
-    d-^ cis bes a-^ | g f-^ e d-^ |
-  %}
+
 
   \relative c' {
     \break
@@ -412,7 +878,7 @@ Bflat = {
     \mark
     \markup {
       \column {
-        "National Anthem (Radiohead/EE) -- E Harmonic Minor"
+        "National Anthem (Radiohead/EE) 1 -- E Harmonic Minor"
       }
     }
     <d f a d>1
@@ -420,34 +886,72 @@ Bflat = {
     d-^ cis bes a-^ | g f-^ e d-^ |
   } %% end relative c
 
+
+
   \relative c' {
-    \break
-    \key g \major
+
+    \key a \minor
     \mark
     \markup {
       \column {
-        "Nine to Five -- G Major"
+        "National Anthem (Radiohead/EE) 2 -- Chromatic Scale"
       }
     }
+    \break
+    <d f a d>1
+    d4-^ dis e f-^ | fis-^ g gis a-^ | ais b c cis |
+    d1-^ | des4 c b bes | a-^ as g fis-^ | f-^ e es  d-^ |
+  } %% end relative c
+
+
+  \relative c' {
+    \key a \minor
+    \mark
+    \markup {
+      \column {
+        "National Anthem (Radiohead/EE) 3 -- Whole Tone Scale"
+      }
+    }
+    \break
+    <d f a d>1
+    d4-^ e fis-^ gis | bes c d2-^ |
+    d4-^ c bes as | ges e d2-^ |
+  } %% end relative c
+
+
+
+  \relative c' {
+    \key f \major
+    \mark
+    \markup {
+      \column {
+        "Nine to Five 1 -- G Major Blues" \tiny "like E Minor Blues"
+      }
+    }
+    \break
+    <f a c f>1
+    f4-^ g as a-^ | c-^ d f2-^ |
+    f4-^ d c-^ a-^ | as g f2-^ |
+  } %% end relative c
+
+
+
+  \relative c' {
+    \key f \major
+    \mark
+    \markup {
+      \column {
+        "Nine to Five 2 -- G Major" \tiny "like E Natural Minor"
+      }
+    }
+    \break
     <f a c f>1
     f4-^ g a-^ bes | c-^ d e f-^ |
     f-^ e d c-^ | bes a-^ g f-^ |
   } %% end relative c
 
 
-  \relative c' {
-    \break
-    \key g \minor
-    \mark
-    \markup {
-      \column {
-        "Ghost Town -- A Minor Blues"
-      }
-    }
-    <g' bes d g>1
-    g4-^ bes-^ c cis | d-^ f g2-^ |
-    g4-^ f d-^ des | c bes-^ g2-^ |
-  } %% end relative c
+
 
   \relative c' {
     \break
@@ -455,7 +959,7 @@ Bflat = {
     \mark
     \markup {
       \column {
-        "Sweet Dreams -- C Natural Minor"
+        "Sweet Dreams 1 -- C Natural Minor" \tiny "like Eb Major"
       }
     }
     <bes des f bes>1
@@ -463,19 +967,50 @@ Bflat = {
     bes-^ as ges f-^ | es des-^ c bes-^ |
   } %% end relative c
 
+
   \relative c' {
     \break
     \key es \major
     \mark
     \markup {
       \column {
-        "We Got That Fire -- F Minor Blues"
+        "We Got That Fire -- F Major Blues" \tiny "like Ab Minor Blues"
       }
     }
     <es g bes es>1
+    es4-^ f ges g-^  | bes-^ c es2-^ |
+    es4-^ c bes-^ g-^ | ges f es2-^ |
+  }
+
+
+  \relative c' {
+    \break
+    \key es \major
+    \mark
+    \markup {
+      \column {
+        "We Got That Fire -- F Minor Blues" \tiny "like Ab Major Blues"
+      }
+    }
+    <es ges bes es>1
     es4-^ ges-^ as a | bes-^ des es2-^ |
     es4-^ des bes-^ a | as ges-^ es2-^ |
   }
+
+
+  \relative c' {
+    \break
+    \key f \minor
+    \mark
+    \markup {
+      \column {
+        "Ya Move Ya Lose 1, JJD 2 -- G Minor Blues" \tiny "like Bb Major Blues"
+      }
+    }
+    <f as c f>1
+    f4-^ as-^ bes b | c-^ es f2-^ |
+    f4-^ es c-^ b | bes as-^ f2-^ |
+  } %% end relative c
 
 
 } %end bFlat
@@ -496,19 +1031,31 @@ Eflat = {
 
   \relative c' {
     \override Score.RehearsalMark #'self-alignment-X = #LEFT
-    \clef treble \key c \minor
+    \key c \minor
     \break
     \mark
     \markup {
-      "AP Touro -- A Minor Blues"
+      "AP Touro 1 -- A Minor Blues" \tiny "like Eb Major Blues"
     }
     <c es g c>1
     c4-^ es-^  f ges | g-^ bes  c2-^ |
     c4-^ bes  g-^ ges |  f  es-^  c2-^
-
   } %% end relative c
 
   \relative c' {
+    \break
+    \key c \minor
+    \mark
+    \markup {
+      \column {
+      "AP Touro 2 -- A Harmonic Minor"      }
+    }
+    <c es g c>1
+    c4-^ d es-^ f | g-^ as b  c-^ |
+    c-^ b as g-^ |  f es-^ d c-^ |
+  } %% end relative c
+
+  \relative c {
     \break
     \key g \minor
     \mark
@@ -517,38 +1064,60 @@ Eflat = {
         "Ciganko Moja/Miserlou -- B Hijaz" \tiny "like E Harmonic Minor"
       }
     }
-    <d fis a d>1
+    <d' fis a d>1
     d4-^ es fis-^ g | a-^ bes  c  d-^ |
     d-^ c bes a-^ |  g fis-^ es d-^ |
   } %% end relative c
 
-  \relative c {
+
+  \relative c' {
+    \key bes \major
+    \mark
+    \markup {
+      \column {
+        "Do What You Wanna 1 -- G Major Blues" \tiny "like E Minor Blues"
+      }
+    }
+    \break
+    <bes d f bes>1
+    bes4-^ c des d-^ | f-^ g bes2-^ |
+    bes4-^ g f-^ d-^  |  des c bes2-^  |
+  } %% end relative c
+
+
+
+  \relative c' {
     \break
     \key g \minor
     \mark
     \markup {
       \column {
-        \line { "Dog Eat Dog -- E Minor (Dorian)" }
+        \line { "Dog Eat Dog 1, Ghost Town 2 -- E Minor (Dorian)" \tiny "like D Major" }
       }
     }
-    <g' bes d g>1
+    <g bes d g>1
     g4-^ a bes-^ c | d-^ e  f  g-^ |
     g-^  f e  d-^ |  c bes-^ a g-^ |
   } %% end relative c
 
+
+
   \relative c' {
-    \break
-    \key bes \major
+    \key g \minor
     \mark
     \markup {
       \column {
-        "Do What You Wanna -- G Major Blues" \tiny "like E Minor Blues"
+        "Ghost Town 2, Dog Eat Dog 1 -- E Minor Blues" \tiny "like G Major Blues"
       }
     }
-    <bes d f bes>1
-    bes4-^ c des d-^ | f-^ g bes2-^ |
-    bes4-^ g f-^ d-^  |  des c bes2-^  |
+    \break
+    <g bes d g>1
+    g4-^ bes-^ c cis | d-^ f g2-^ |
+    g4-^ f d-^ des | c bes-^ g2-^ |
   } %% end relative c
+
+
+
 
   \relative c' {
     \break
@@ -556,7 +1125,7 @@ Eflat = {
     \mark
     \markup {
       \column {
-        "If You Want Me to Stay -- G Minor Blues"
+        "If You Want Me to Stay, Do What You Wanna 2, Sweet Dreams 2" "-- G Minor Blues" \tiny "like Bb Major Blues"
       }
     }
     <bes des f bes>1
@@ -564,44 +1133,43 @@ Eflat = {
     bes4-^ as f-^ e | es des-^ bes2-^ |
   } %% end relative c
 
-  \relative c {
+  \relative c' {
     \break
     \key f \minor
     \mark
     \markup {
       \column {
-        "JJD, Ya Move Ya Lose -- D Minor Blues"
+        "JJD 1, Ya Move Ya Lose 2 -- D Minor (Dorian)"
       }
     }
-    <f as c f>1
-    f4-^ as-^ bes b | c-^ es f2-^ |
-    f4-^ es c-^ b | bes as-^ f2-^ |
+    <f, as c f>1
+    f4-^ g as-^ bes | c-^ d es f-^ |
+    f4-^ es d c-^ | bes as-^ g f-^ |
   } %% end relative c
+
 
   \relative c' {
     \break
     \key a \minor
     \mark
     \markup {
-      \column {
-        "Matador -- F# Natural Minor"
-      }
+        "Matador -- F# Natural Minor" \tiny "like A Major"
     }
     <a c e a>1
     a4-^ b c-^ d | e-^ f g a-^ |
     a-^ g f e-^ | d c-^ b a |
   } %% end relative c
 
-  \relative c' {
+  \relative c {
     \break
     \key d \minor
     \mark
     \markup {
       \column {
-        "Moliendo Cafe -- B Natural Minor"
+        "Moliendo Cafe -- B Natural Minor" \tiny "like D Major"
       }
     }
-    <d f a d>1
+    <d' f a d>1
     d4-^ e f-^ g | a-^ bes c d-^ |
     d-^ c bes a-^ | g f-^ e d-^ |
   } %% end relative c
@@ -620,17 +1188,8 @@ Eflat = {
     f-^ es des c-^ |  bes a-^ ges f-^ |
   } %% end relative c
 
-  %{
-    \break
-    \key d \minor
-    \mark
-    \markup { \column { "Murga (de Panama) -- D Harmonic Minor"
-    }
-    }
-    <d f a d>1
-    d4-^ e f-^ g | a-^ bes cis d-^ |
-    d-^ cis bes a-^ | g f-^ e d-^ |
-  %}
+
+
 
   \relative c' {
     \break
@@ -638,7 +1197,7 @@ Eflat = {
     \mark
     \markup {
       \column {
-        "Naborusa -- A Hijaz"  \tiny "like E Harmonic Minor"
+        "Naborusa -- A Hijaz"  \tiny "like D Harmonic Minor"
       }
     }
     <c e g c>1
@@ -652,42 +1211,80 @@ Eflat = {
     \mark
     \markup {
       \column {
-        "National Anthem (Radiohead/EE) -- B Harmonic Minor"
+        "National Anthem (Radiohead/EE) 1 -- B Harmonic Minor"
       }
     }
-    <d f a d>1
+    <d' f a d>1
     d4-^ e f-^ g | a-^ bes cis d-^ |
     d-^ cis bes a-^ | g f-^ e d-^ |
   } %% end relative c
 
+
+
   \relative c {
-    \break
-    \key g \major
+
+    \key a \minor
     \mark
     \markup {
       \column {
-        "Nine to Five -- D Major"
+        "National Anthem (Radiohead/EE) 2 -- Chromatic Scale"
       }
     }
+    \break
+    <d' f a d>1
+    d4-^ dis e f-^ | fis-^ g gis a-^ | ais b c cis |
+    d1-^ | des4 c b bes | a-^ as g fis-^ | f-^ e es  d-^ |
+  } %% end relative c
+
+
+  \relative c {
+    \key a \minor
+    \mark
+    \markup {
+      \column {
+        "National Anthem (Radiohead/EE) 3 -- Whole Tone Scale"
+      }
+    }
+    \break
+    <d' f a d>1
+    d4-^ e fis-^ gis | bes c d2-^ |
+    d4-^ c bes as | ges e d2-^ |
+  } %% end relative c
+
+
+
+  \relative c {
+    \key f \major
+    \mark
+    \markup {
+      \column {
+        "Nine to Five 1 -- D Major Blues" \tiny "like B Minor Blues"
+      }
+    }
+    \break
+    <f a c f>1
+    f4-^ g as a-^ | c-^ d f2-^ |
+    f4-^ d c-^ a-^ | as g f2-^ |
+  } %% end relative c
+
+
+
+  \relative c {
+    \key f \major
+    \mark
+    \markup {
+      \column {
+        "Nine to Five 2 -- D Major" \tiny "like B Natural Minor"
+      }
+    }
+    \break
     <f a c f>1
     f4-^ g a-^ bes | c-^ d e f-^ |
     f-^ e d c-^ | bes a-^ g f-^ |
   } %% end relative c
 
 
-  \relative c {
-    \break
-    \key g \minor
-    \mark
-    \markup {
-      \column {
-        "Ghost Town -- E Minor Blues"
-      }
-    }
-    <g' bes d g>1
-    g4-^ bes-^ c cis | d-^ f g2-^ |
-    g4-^ f d-^ des | c bes-^ g2-^ |
-  } %% end relative c
+
 
   \relative c' {
     \break
@@ -695,7 +1292,7 @@ Eflat = {
     \mark
     \markup {
       \column {
-        "Sweet Dreams -- G Natural Minor"
+        "Sweet Dreams 1 -- G Natural Minor" \tiny "like Bb Major"
       }
     }
     <bes des f bes>1
@@ -703,19 +1300,50 @@ Eflat = {
     bes-^ as ges f-^ | es des-^ c bes-^ |
   } %% end relative c
 
+
   \relative c {
     \break
     \key es \major
     \mark
     \markup {
       \column {
-        "We Got That Fire -- C Minor Blues"
+        "We Got That Fire -- C Major Blues" \tiny "like A Minor Blues"
       }
     }
     <es g bes es>1
+    es4-^ f ges g-^  | bes-^ c es2-^ |
+    es4-^ c bes-^ g-^ | ges f es2-^ |
+  }
+
+
+  \relative c {
+    \break
+    \key es \major
+    \mark
+    \markup {
+      \column {
+        "We Got That Fire -- C Minor Blues" \tiny "like Eb Major Blues"
+      }
+    }
+    <es ges bes es>1
     es4-^ ges-^ as a | bes-^ des es2-^ |
     es4-^ des bes-^ a | as ges-^ es2-^ |
   }
+
+
+  \relative c {
+    \break
+    \key f \minor
+    \mark
+    \markup {
+      \column {
+        "Ya Move Ya Lose 1, JJD 2 -- D Minor Blues" \tiny "like F Major Blues"
+      }
+    }
+    <f as c f>1
+    f4-^ as-^ bes b | c-^ es f2-^ |
+    f4-^ es c-^ b | bes as-^ f2-^ |
+  } %% end relative c
 
 
 } %end EFlat
@@ -761,7 +1389,7 @@ Eflat = {
     \transpose c c,,
     \new Staff \with { \consists "Volta_engraver" } {
       \clef bass
-      \cTreble
+      \cBass
     }
            >> \layout { \context { \Score \remove "Volta_engraver" } }
            \midi { }
@@ -805,4 +1433,3 @@ Eflat = {
            \midi { }
   }
 }
-
