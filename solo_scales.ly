@@ -225,7 +225,7 @@ cTreble = {
     }
     \break
     <d f a d>1
-    d4-^ dis e f-^ | fis-^ g gis a-^ | ais b c cis |
+    d4-^ dis e f-^ | fis-^ g gis a-^ | ais b c cis | 
     d1-^ | des4 c b bes | a-^ as g fis-^ | f-^ e es  d-^ |
   } %% end relative c
 
@@ -322,9 +322,9 @@ cTreble = {
     es4-^ ges-^ as a | bes-^ des es2-^ |
     es4-^ des bes-^ a | as ges-^ es2-^ |
   }
-
-
-  \relative c' {
+  
+  
+  \relative c' {  
     \break
     \key f \minor
     \mark
@@ -337,9 +337,9 @@ cTreble = {
     f4-^ as-^ bes b | c-^ es f2-^ |
     f4-^ es c-^ b | bes as-^ f2-^ |
   } %% end relative c
+  
 
-
-
+  
 
 } % end ctreble
 
@@ -574,7 +574,7 @@ cBass = {
     }
     \break
     <d f a d>1
-    d4-^ dis e f-^ | fis-^ g gis a-^ | ais b c cis |
+    d4-^ dis e f-^ | fis-^ g gis a-^ | ais b c cis | 
     d1-^ | des4 c b bes | a-^ as g fis-^ | f-^ e es  d-^ |
   } %% end relative c
 
@@ -671,9 +671,9 @@ cBass = {
     es4-^ ges-^ as a | bes-^ des es2-^ |
     es4-^ des bes-^ a | as ges-^ es2-^ |
   }
-
-
-  \relative c' {
+  
+  
+  \relative c' {  
     \break
     \key f \minor
     \mark
@@ -899,7 +899,7 @@ Bflat = {
     }
     \break
     <d f a d>1
-    d4-^ dis e f-^ | fis-^ g gis a-^ | ais b c cis |
+    d4-^ dis e f-^ | fis-^ g gis a-^ | ais b c cis | 
     d1-^ | des4 c b bes | a-^ as g fis-^ | f-^ e es  d-^ |
   } %% end relative c
 
@@ -996,9 +996,9 @@ Bflat = {
     es4-^ ges-^ as a | bes-^ des es2-^ |
     es4-^ des bes-^ a | as ges-^ es2-^ |
   }
-
-
-  \relative c' {
+  
+  
+  \relative c' {  
     \break
     \key f \minor
     \mark
@@ -1011,7 +1011,7 @@ Bflat = {
     f4-^ as-^ bes b | c-^ es f2-^ |
     f4-^ es c-^ b | bes as-^ f2-^ |
   } %% end relative c
-
+  
 
 } %end bFlat
 
@@ -1232,7 +1232,7 @@ Eflat = {
     }
     \break
     <d' f a d>1
-    d4-^ dis e f-^ | fis-^ g gis a-^ | ais b c cis |
+    d4-^ dis e f-^ | fis-^ g gis a-^ | ais b c cis | 
     d1-^ | des4 c b bes | a-^ as g fis-^ | f-^ e es  d-^ |
   } %% end relative c
 
@@ -1329,9 +1329,9 @@ Eflat = {
     es4-^ ges-^ as a | bes-^ des es2-^ |
     es4-^ des bes-^ a | as ges-^ es2-^ |
   }
-
-
-  \relative c {
+  
+  
+  \relative c {  
     \break
     \key f \minor
     \mark
@@ -1344,7 +1344,7 @@ Eflat = {
     f4-^ as-^ bes b | c-^ es f2-^ |
     f4-^ es c-^ b | bes as-^ f2-^ |
   } %% end relative c
-
+  
 
 } %end EFlat
 
@@ -1358,7 +1358,7 @@ Eflat = {
 
 
 #(set-default-paper-size "letter")
-
+\pointAndClickOff
 
 
 \book {
@@ -1420,7 +1420,7 @@ Eflat = {
 \book {
   \bookOutputSuffix "Eb"
   \header {
-    poet = \markup {\bold "Bb instruments" }
+    poet = \markup {\bold "Eb instruments" }
     meter = \markup {\tiny "(alto & bari sax)" }
   }
   \score { <<
@@ -1433,3 +1433,4 @@ Eflat = {
            \midi { }
   }
 }
+
