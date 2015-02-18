@@ -5,5 +5,5 @@ markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begi
 \set Score.markFormatter = #format-mark-box-letters
 
 \pointAndClickOff
-\pointAndClickTypes #'()
+#\pointAndClickTypes #'()
 #(ly:set-option 'point-and-click '())
