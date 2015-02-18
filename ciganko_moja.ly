@@ -1,35 +1,35 @@
 \version "2.12.2"
 
 \header {
-    title = "Cigonko Moja"
-    copyright = "4/22/10"
-    composer="Trad. Roma"
-    arranger="arr. Rumen Shopov"
+  title = "Ciganko Moja"
+  copyright = "2/17/15"
+  composer="Trad. Roma"
+  arranger="arr. Rumen Shopov"
 }
 
-%description:Literally "My Little Gypsy Girl", this is the title of many songs from Eastern Europe from the <a href="http://voiceofroma.com/">Romani culture</a>. The song we play is a traditional melody taught to us by <a href="http://www.eefc.org/Shopov.shtml">Rumen “Sali” Shopov</a> and local Balkan musician, <a target='_blank' href="http://www.huzzam.com/">Peter Jaques</a>. 
+%description:Literally "My Little Romani Girl", this is the title of many songs from Eastern Europe from the <a href="http://voiceofroma.com/">Romani culture</a>. The song we play is a traditional melody taught to us by <a href="http://www.eefc.org/Shopov.shtml">Rumen “Sali” Shopov</a> and local Balkan musician, <a target='_blank' href="http://www.huzzam.com/">Peter Jaques</a>.
 
 %{ SOLO BACKING (WORK IT IN)
-from "ciganko_solo.ly"
-	{ d4-. r8 fis-. ees4-. fis-. | r8 c-. ees-. fis-. g4-- fis4-. }
-	  \\
-	{  a4-. r8 d-. c4-. d-. | r8 a-. c-. d-. ees4-- d4-.  }
+   from "ciganko_solo.ly"
+   { d4-. r8 fis-. ees4-. fis-. | r8 c-. ees-. fis-. g4-- fis4-. }
+   \\
+   {  a4-. r8 d-. c4-. d-. | r8 a-. c-. d-. ees4-- d4-.  }
 
-from "ciganko_solo_backing.ly" (finale)
-        <a d>4 _. r8 <d fis>8 _. <c es>4 _. <d fis>4 _. | 
-        r8 <a c>8 _. <c es>8 _. <d fis>8 _. <es g>4 _- <d fis>4 _. }
-	%}
+   from "ciganko_solo_backing.ly" (finale)
+   <a d>4 _. r8 <d fis>8 _. <c es>4 _. <d fis>4 _. |
+   r8 <a c>8 _. <c es>8 _. <d fis>8 _. <es g>4 _- <d fis>4 _. }
+%}
 
 %part: melody
 melody =  \relative c'' {
   \repeat volta 2 {
-    d r8 a c4 es | r8 d r a c4 es |
+    d, r8 a c4 es | r8 d r a c4 es |
     d r8 a c4 d | es8 es es r c c c r
   }
-  
+
   \break \mark \default %A
   \repeat volta 2 {
-    g4 g8 fis es4 es8 d | d2 fis8 g a4 |
+    g'4 g8 fis es4 es8 d | d2 fis8 g a4 |
     fis8 g g fis es4 es8 d | d4 fis8 g a fis g es |
     g4 g8 fis es4 es8 d | d2 fis8 g a4 |
     fis8 g g fis es4 es8 d | d4. es8 d c d4
@@ -49,7 +49,7 @@ melody =  \relative c'' {
 }
 
 %part: bass
-bass =  \relative d {
+bass =  \relative c, {
   \repeat volta 2 {
     d r8 a c4 es | r8 d r a c4 es |
     d r8 a c4 d | es8 es es r c c c r
@@ -78,15 +78,15 @@ bass =  \relative d {
     |
     d,4. fis a4 |
     d,4. fis a4 |
-    d,4. fis a4 |
-    d,4. fis a4
+    c,4. ees g4 |
+    d4. fis a4
   }
 }
 
 %part: tenor
 tenor =  \relative c'' {
   \repeat volta 2 {
-    d r8 a c4 es | r8 d r a c4 es |
+    d, r8 a c4 es | r8 d r a c4 es |
     d r8 a c4 d | es8 es es r c c c r
   }
 
@@ -109,12 +109,12 @@ tenor =  \relative c'' {
     c2 cis |
     r4 <d fis a>8 <d fis a> r <d fis a> <d fis a> <d fis a>
   }
-  
+
   \break \mark \default %C
   \repeat volta 2 {
     r4 <d fis a>8 <d fis a> r <d fis a> <d fis a> <d fis a> |
     r4 <d fis a>8 <d fis a> r <d fis a> <d fis a> <d fis a> |
-    r4 <d fis a>8 <d fis a> r <d fis a> <d fis a> <d fis a> |
+    r4 <c ees g>8 <c ees g> r <c ees g> <c ees g> <c ees g> |
     r4 <d fis a>8 <d fis a> r <d fis a> <d fis a> <d fis a> |
   }
 
@@ -130,25 +130,52 @@ changes = \chordmode {
 
 %layout
 \book {
-  \header { poet = "Melody - Eb" }
+  \header { poet = "Score" }
   \score {
     <<
       \new ChordNames { \set chordChanges = ##t \changes }
       \new Staff {
         \melody
       }
-       \new Staff {
+      \new Staff {
         \tenor
       }
-       \new Staff {
-         \clef bass
-         \bass
-       }
+      \new Staff {
+        \clef bass
+        \bass
+      }
     >>
   }
   %    \words
 }
 
+%layout
+\book {
+  \header { poet = "Melody - Eb" }
+  \score {
+    <<
+      \new ChordNames { \set chordChanges = ##t \changes }
+      \new Staff {
+        \transpose ees c' {
+          \melody
+        }
+      }
+      \new Staff {
+        \transpose ees c' {
+          \tenor
+        }
+      }
+      \new Staff {
+        \transpose ees c' {
+
+          \clef bass
+          \bass
+        }
+      }
+    >>
+  }
+  %    \words
+}
 
 
 
