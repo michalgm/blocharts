@@ -4,7 +4,7 @@
   title = "Sweet Dreams (Are Made of This)"
   composer = "Annie Lennox and David A. Stewart"
   arranger =  "based on arrangement by Soul Rebels"
-  tagline = "5/18/12" %date of latest edits
+  tagline = "2/17/15" %date of latest edits
   copyright = \markup {\bold ""} %form
 }
 %description:1983 pop hit and ablum by <a href="http://en.wikipedia.org/wiki/Eurythmics">The Euythmics</a>. We play a version by the <a href="http://thesoulrebels.com/">Soul Rebels Brass Band</a> from their 2012 debut record, <a href="http://soulrebelsbrassband.portmerch.com/stores/product.php?productid=18212&cat=0&page=1&featured">Unlock Your Mind</a>.
@@ -48,7 +48,7 @@ melody = {
     {
       \break \mark \default %C
 
-      | <bes ges'>1~
+      | <bes, ges'>1~
       | <bes ges'>2 <a f'> | <bes f'>2. <des aes'>4 | <es ges>1 |
       | <es ges>1 | <es f> |
     }
@@ -56,7 +56,7 @@ melody = {
 
     \break	\mark \default %D
     \repeat volta 2 {
-      | f8^\markup {  "Bridge" }
+      | f'8^\markup {  "Bridge" }
       des des16 des r8 r2 | f8 des des16 des r8 r2 |
       | f8 des des16 des r8 r2 |
     }
