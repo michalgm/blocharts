@@ -2,9 +2,10 @@
 
 \header {
   title = "Ciganko Moja"
-  copyright = "2/17/15"
+  copyright = "3/16/15"
   composer="Trad. Roma"
   arranger="arr. Rumen Shopov"
+  copyright =  \markup {\bold { "Default Form:" }  "Vamp, Head, Head, Solos/Drum break, Bridge (Miserlou), Vamp"}
 }
 
 %description:Literally "My Little Romani Girl", this is the title of many songs from Eastern Europe from the <a href="http://voiceofroma.com/">Romani culture</a>. The song we play is a traditional melody taught to us by <a href="http://www.eefc.org/Shopov.shtml">Rumen “Sali” Shopov</a> and local Balkan musician, <a target='_blank' href="http://www.huzzam.com/">Peter Jaques</a>.
@@ -22,12 +23,14 @@
 
 %part: melody
 melody =  \relative c'' {
-  \repeat volta 2 {
-    d, r8 a c4 es | r8 d r a c4 es |
-    d r8 a c4 d | es8 es es r c c c r
+  \break \mark \markup \box \bold {"Vamp" } 
+ 
+  \repeat volta 4 {
+    <d, fis a d>^\markup { "4x" \tiny \italic "(layer chord)"} r8 <a d fis a> <c es g c>4 <es g bes es> | r8 <d fis a d> r <a d fis a> <c es g c>4 <es g bes es> |
+    <d fis a d> r8 <a d fis a> <c es g c>4 <d fis a d> | <es g bes es>8 <es g bes es> <es g bes es> r <c es g c> <c es g c> <c es g c> r
   }
 
-  \break \mark \default %A
+  \break \mark \markup \box \bold {"Head" }
   \repeat volta 2 {
     g'4 g8 fis es4 es8 d | d2 fis8 g a4 |
     fis8 g g fis es4 es8 d | d4 fis8 g a fis g es |
@@ -35,13 +38,13 @@ melody =  \relative c'' {
     fis8 g g fis es4 es8 d | d4. es8 d c d4
   }
 
-  \break \mark \default %B
+  \break 
   \repeat volta 2 {
     r fis8 g a4 a | a a a g |
     c2 bes | a4. g8 fis g a4
   }
 
-  \break \mark \default %C
+  \break
   \repeat volta 2 {
     g4. fis8 es4. d8 | d2 fis8 g a4 |
     g4. fis8 es4. d8 | d4. es8 d c d4
@@ -50,12 +53,12 @@ melody =  \relative c'' {
 
 %part: bass
 bass =  \relative c, {
-  \repeat volta 2 {
-    d r8 a c4 es | r8 d r a c4 es |
+  \repeat volta 4 {
+    d^\markup { "4x" \tiny \italic "(layer chord)"} r8 a c4 es | r8 d r a c4 es |
     d r8 a c4 d | es8 es es r c c c r
   }
 
-  \break \mark \default %A
+  \break \mark \markup \box \bold {"Head" }
   \repeat volta 2 {
     d4 r -"break 1st x only" r2 |
     d4. fis a4 | d,4. fis a4 |
@@ -64,7 +67,7 @@ bass =  \relative c, {
     d4. fis a4
   }
 
-  \break \mark \default %B
+  \break 
   \repeat volta 2 {
     |
     d,4. fis a4 |
@@ -73,7 +76,7 @@ bass =  \relative c, {
     d4. fis a4
   }
 
-  \break \mark \default %C
+  \break 
   \repeat volta 2 {
     |
     d,4. fis a4 |
@@ -81,16 +84,21 @@ bass =  \relative c, {
     c,4. ees g4 |
     d4. fis a4
   }
+  \break \mark \markup \box \bold {"Solo Backing" }
+   d,4. fis a4 |
+   d,4. fis a4 |
+   g4. bes d4 |
+   c,4. ees g4 |
 }
 
 %part: tenor
 tenor =  \relative c'' {
-  \repeat volta 2 {
-    d, r8 a c4 es | r8 d r a c4 es |
+  \repeat volta 4 {
+    d,^\markup { "4x" \tiny \italic "(layer chord)"} r8 a c4 es | r8 d r a c4 es |
     d r8 a c4 d | es8 es es r c c c r
   }
 
-  \break \mark \default %A
+  \break \mark \markup \box \bold {"Head" }
   \repeat volta 2 {
     r4 <d fis a>8 <d fis a> r <d fis a> <d fis a> <d fis a> |
     r4 <d fis a>8 <d fis a> r <d fis a> <d fis a> <d fis a> |
@@ -102,7 +110,7 @@ tenor =  \relative c'' {
     r4 <d fis a>8 <d fis a> r <d fis a> <d fis a> <d fis a>
   }
 
-  \break \mark \default %B
+  \break 
   \repeat volta 2 {
     r4 <d fis a>8 <d fis a> r <d fis a> <d fis a> <d fis a> |
     r4 <d fis a>8 <d fis a> r <d fis a> <d fis a> <d fis a> |
@@ -110,7 +118,7 @@ tenor =  \relative c'' {
     r4 <d fis a>8 <d fis a> r <d fis a> <d fis a> <d fis a>
   }
 
-  \break \mark \default %C
+  \break 
   \repeat volta 2 {
     r4 <d fis a>8 <d fis a> r <d fis a> <d fis a> <d fis a> |
     r4 <d fis a>8 <d fis a> r <d fis a> <d fis a> <d fis a> |
@@ -135,6 +143,7 @@ changes = \chordmode {
     <<
       \new ChordNames { \set chordChanges = ##t \changes }
       \new Staff {
+        \tempo  4 = 200
         \melody
       }
       \new Staff {
