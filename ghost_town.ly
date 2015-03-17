@@ -147,7 +147,7 @@ changes = \chordmode {
       \new Staff \with { \consists "Volta_engraver" } {
         \set Staff.midiInstrument = #"trombone" \clef treble
         \override Score.RehearsalMark #'self-alignment-X = #LEFT
-        \transpose ees c' { \tenor }
+        \tenor
       }
       \new Staff \with { \consists "Volta_engraver" } {
         \set Staff.midiInstrument = #"tuba" \clef bass
