@@ -4,6 +4,7 @@
   tagline = "2/17/2015"
   title = "Nine to Five"
   composer = "Dolly Parton"
+  copyright = "Default Form: Vamp, 1, 2, Vamp, Solos, 1, 2, 2"
 
 }
 
