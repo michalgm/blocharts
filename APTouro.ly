@@ -6,7 +6,7 @@
 	tagline = "" %date of latest edits
 	copyright = \markup {\bold ""} %form
 	}
-%description: Written by <a href="www.tromboneshorty.com">Troy "Trombone Shorty" Andrews</a>, this track appears on <a href="http://www.rebirthbrassband.com">Rebirth Brass Band</a>'s 2011 release <a href="http://www.amazon.com/Rebirth-New-Orleans-Brass-Band/dp/B004PBBQAI">Rebirth of New Oreans<a/>. Presumably named for <a href="http://en.wikipedia.org/wiki/A_P_Tureaud">A. P. Tureaud</a>, the famed NAACP attorney who filed the lawsuit that successfully ended the system of Jim Crow segregation in New Orleans.
+%description: Written by <a href="www.tromboneshorty.com">Troy "Trombone Shorty" Andrews</a>, this track appears on <a href="http://www.rebirthbrassband.com">Rebirth Brass Band</a>'s 2011 release <a href="http://www.amazon.com/Rebirth-New-Orleans-Brass-Band/dp/B004PBBQAI">Rebirth of New Oreans</a>. Presumably named for <a href="http://en.wikipedia.org/wiki/A_P_Tureaud">A. P. Tureaud</a>, the famed NAACP attorney who filed the lawsuit that successfully ended the system of Jim Crow segregation in New Orleans.
 
 %part: melody
 melody={
