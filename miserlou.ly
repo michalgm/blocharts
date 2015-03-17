@@ -7,6 +7,7 @@
   %copyright = \markup {\bold { "Default Form:" }  "Vamp, Head, 2, Head, 2, Bridge, Solos/Drum break, Head, 2"}
 }
 % \include "include.ly"
+%description:Greek <a href="http://en.wikipedia.org/wiki/Rebetiko">Rebetiko</a> folk song dating back to at least 1927, claimed by many composers and cultures, with many Arabic, Jewish (<a href="http://en.wikipedia.org/wiki/Klezmer">Klezmer</a>) and Turkish versions, but best known today through <a href="http://en.wikipedia.org/wiki/Dick_Dale">Dick Dale</a>'s 1962 American surf rock interpretation. (From <a href="http://en.wikipedia.org/wiki/Misirlou">wikipedia entry</a>.)
 
 %place a mark at bottom right
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
