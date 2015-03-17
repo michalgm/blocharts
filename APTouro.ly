@@ -72,7 +72,7 @@ riff={
 
 %part: bass
 bass={
-    \relative c' { \time 4/4 \key c \minor \clef bass
+    \relative c' { \time 4/4 \key c \minor 
     \set Score.markFormatter = #format-mark-box-letters 
     \repeat volta 2 {
         c,8. c16 r4  c,8. c16 r4 |
