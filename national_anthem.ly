@@ -1,4 +1,4 @@
-\version "2.18.2"
+\version "2.16.2"
 
 \header {
   tagline = "3/11/2015"
@@ -21,8 +21,8 @@ melody = {
   \relative c'' {
     %\set Score.markFormatter = #format-mark-box-letters
     %\override Score.RehearsalMark #'self-alignment-X = #LEFT
-  \compressFullBarRests
-  \override MultiMeasureRest.expand-limit = #2
+	\compressFullBarRests
+	\override MultiMeasureRest #'expand-limit = #2
     \mark \markup \box \bold "Vamp"
     \repeat volta 2 {
       r1 | r1
