@@ -15,16 +15,16 @@ markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begi
 %part: melody
 melody = {
 \relative c'' { \key g \minor
-    \mark \default
+    \mark \markup \box \bold "Head"
     \repeat volta 2 {
-    g16 bes c d f2 f16 f d c | a4 c8. a16 r2 |
+    g16 bes c d f2 g16 f d c | a4 c8. a16 r2 |
     g16 bes c d f2 g16 f d c | a4 c8. a16 r2 |
     g16 bes c d f2 g16 f d c | a4 c8. a16 r4 f'8 g~  |}
     \alternative {
 	{ g1~ | g1 \markdownright \mark \markup { \italic "fine"} | }
 	{ g1\repeatTie~ | g2. r8 a | \bar "||" } 
     }
-    \break \mark \default
+    \break \mark \markup \box \bold "Bridge"
     g4. f8 d4 r8 a' | g4. f8 d4 r8 a' | g4. f8 d4 r8 a' | g4. f8 d4 r | \bar "||"
 	\markdownright \mark "D.C. al Fine"
 }
@@ -33,7 +33,7 @@ melody = {
 %part: riffOne
 riffOne = {
 \relative c'' { \key g \minor
-    \mark \default
+    \mark \markup \box \bold "Head"
     \repeat volta 2 {
 	\repeat unfold 3 {
 	  c16 d c8 bes g c16 d c bes r8 g | d'16 e d8 c a d16 e d c r8 a |
@@ -43,7 +43,7 @@ riffOne = {
 	{ c16 d c8 bes g c16 d c bes r8 g | d'16 e d8 c a d16 e d c r8 a \markdownright \mark \markup { \italic "fine"} | }
 	{ c16 d c8 bes g c16 d c bes r8 g | d'16 e d8 c a d16 e d c r8 a | \bar "||" }
     }
-    \break \mark \default
+    \break \mark \markup \box \bold "Bridge"
     r2 r16 bes[ r c] d8 r | r2 r16 bes[ r c] d8 r | r2 r16 bes[ r c] d8 r | r2 r16 bes[ r c] d8 r | \bar "||"
 	\markdownright \mark "D.C. al Fine"
 }
@@ -52,7 +52,7 @@ riffOne = {
 %part: riffTwo
 riffTwo = {
 \relative c'' { \key g \minor
-    \mark \default
+    \mark \markup \box \bold "Head"
     \repeat volta 2 {
 	\repeat unfold 3 {
 	  r4 e8 d~ d8. e16 r8 d | r4 f8 e~ e8. f16 r8 e |
@@ -62,7 +62,7 @@ riffTwo = {
 	{ r4 e8 d~ d8. e16 r8 d | r4 f8 e~ e8. f16 r8 e \markdownright \mark \markup { \italic "fine"} | }
 	{ r4 e8 d~ d8. e16 r8 d | r4 f8 e~ e8. f16 r8 e | \bar "||" }
     }
-    \break \mark \default
+    \break \mark \markup \box \bold"Bridge"
     r2 r16 g,[ r a] bes8 r | r2 r16 g[ r a] bes8 r | r2 r16 g[ r a] bes8 r | r2 r16 g[ r a] bes8 r | \bar "||"
 	\markdownright \mark "D.C. al Fine"
 }
@@ -71,7 +71,7 @@ riffTwo = {
 %part: bass
 bass = {
 \relative c { \key g \minor
-    \mark \default
+    \mark \markup \box \bold "Head"
     \repeat volta 2 {
 	\repeat unfold 3 {
 	  g4 bes c8. d16~ d4 | d, f a8. c16~ c4 |
@@ -81,7 +81,7 @@ bass = {
 	{ g4 bes c8. d16~ d4 | d, f a8. c16~ c4 | \markdownright \mark \markup { \italic "fine"} }
 	{ g4 bes c8. d16~ d4 | d, f a8. c16~ c4 | \bar "||" }
     }
-    \break \mark \default
+    \break \mark \markup \box \bold "Bridge"
     g4. d'8 c8. d16 r4 | g,4. d'8 c8. d16 r4 | g,4. d'8 c8. d16 r4 | g,4. d'8 c8. d16 r4 | \bar "||"
 	\markdownright \mark "D.C. al Fine"
 
@@ -151,7 +151,6 @@ bass = {
   } 
 }
 
-%{
 \book { \header { piece = "MIDI" }
     \score { 
       << \tempo 4 = 100 
@@ -171,4 +170,3 @@ bass = {
     \midi { }
   } 
 }
-%}
