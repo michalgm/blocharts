@@ -1,0 +1,203 @@
+\version "2.12.3"
+
+\header { 
+	tagline = "4/29/2025"
+  title = "A.P. Touro"
+  composer = "Troy \"Trombone Shorty\" Andrews for Rebirth BB"
+  arranger = "arr: Mike Jones, Paul Bertin, Jeff Giaquinto"
+
+  copyright = \markup {\bold { "Default Form:" }  "Vamp Head Bridge--Head Bridge Solos--Vamp Head Bridge Bridge"}
+}
+%description: Written by <a href="www.tromboneshorty.com">Troy "Trombone Shorty" Andrews</a>, this track appears on <a href="http://www.rebirthbrassband.com">Rebirth Brass Band</a>'s 2011 release <a href="http://www.amazon.com/Rebirth-New-Orleans-Brass-Band/dp/B004PBBQAI">Rebirth of New Oreans</a>. Presumably named for <a href="http://en.wikipedia.org/wiki/A_P_Tureaud">A. P. Tureaud</a>, the famed NAACP attorney who filed the lawsuit that successfully ended the system of Jim Crow segregation in New Orleans.
+
+%part: melody
+melody={
+  \relative c' {
+    \time 4/4 \key c \minor
+    \mark \markup \box \bold "Vamp"
+    \repeat volta 2 { r1 r }
+
+    \repeat volta 2 { r1 }
+    \alternative {{  r1 } { r2 r8  g' bes16 c r es  | }}
+
+    \break \mark \markup \box \bold "Head"
+    \repeat volta 4 {
+      r c8.~ c2.~ | c2 r8  g8 bes16 c  r es  |
+      r c8.~ c2 r16 g f es~ 
+    }
+    \alternative {
+      { es16 f  r8 r4 r8  g8 bes16 c r es  | }
+      { es, f  r8 r4 r2  | }
+    }
+
+    \break \mark \markup \box \bold "Bridge"
+    \repeat volta 2 {
+      c'8 r r16 g8 bes16~ bes2 |  aes4 r16 bes aes g~ g4 g16 f es d |
+      c8 r r16 g'8 f16~ f2  |
+    }
+    \alternative {
+      { c'4~ c8. b16~ b4 r }
+      { c4~ c8. b16~ b8 g8 bes16 c r es  }
+    }
+  }
+}
+
+%part: riff
+riff={
+  \relative c' {
+    \time 4/4 \key c \minor
+    \mark \markup \box \bold "Vamp"
+
+    \repeat volta 2 { r1 r }
+
+    \repeat volta 2 {
+      r16 <g' es'> r <bes g'>   r <g es'> <f d'> <es c'>      <f d'> <f d'> <es c'>8 r <g es'> |
+    }
+    \alternative {
+      { r16 <g es'> r <bes g'>   r <g es'> <f d'> <es c'>       <f d'> <f d'> <es c'>8 r <c g'> | }
+      { r16 <g' es'> r <bes g'>   r <g es'> <f d'> <es c'>       <f d'> <f d'> <es c'>8 r <c g'> | }
+    }
+    \break \mark \markup \box \bold "Head"
+
+    \repeat volta 4 {
+      r16 <g' es'> r <bes g'>   r <g es'> <f d'> <es c'>      <f d'> <f d'> <es c'>8 r <g es'> |
+      r16 <g es'> r <bes g'>   r <g es'> <f d'> <es c'>      <f d'> <f d'> <es c'>8 r <es c'> |
+      r16 <g es'> r <bes g'>   r <g es'> <f d'> <es c'>      <f d'> <f d'> <es c'>8 r <g es'> |
+    }
+    \alternative {
+      {
+        r16 <g es'> r <bes g'>   r <g es'> <f d'> <es c'>       <f d'> <f d'> <es c'>8 r <c g'> |
+      }
+      {
+        r16 <g' es'> r <bes g'>   r <g es'> <f d'> <es c'>       <f d'> <f d'> <es c'>8 r <c g'> |
+      }
+    }
+    \break \mark \markup \box \bold "Bridge"
+
+    \repeat volta 2 {
+      r16 <g' es'> r <bes g'>   r <g es'> <f d'> <es c'>      <f d'> <f d'> <es c'>8 r <g es'> |
+      r16 <g es'> r <bes g'>   r <g es'> <f d'> <es c'>       <f d'> <f d'> <es c'>8 r <c g'> |
+      r16 <g' es'> r <bes g'>   r <g es'> <f d'> <es c'>      <f d'> <f d'> <es c'>8 r <g es'> |
+    }
+
+        \alternative {
+      {
+        r16 <g es'> r <bes g'>   r <g es'> <f d'> <es c'>       <f d'> <f d'> <es c'>8 r <c g'> |
+      }
+      {
+        r16 <g' es'> r <bes g'>   r <g es'> <f d'> <es c'>       <f d'> <f d'> <es c'>8 r <c g'> |
+      }
+    }
+  }
+}
+
+%part: bass
+bass={
+  \relative c' {
+    \time 4/4 \key c \minor
+    \mark \markup \box \bold "Vamp"
+
+    \repeat volta 2 {
+      c,8. c16 r4  c,8. c16 r4 |
+      c'8. c16 r4  c,8 c c r  |
+    }
+
+
+    \repeat volta 2 {
+      c'8. c16 r4  c,8. c16 r4 |
+    }
+    \alternative {{ c'8. c16 r4  c,8 c c r  | } { c'8. c16 r4  c,8 c c r  | }}
+    \break \mark \markup \box \bold "Head"
+
+    \repeat volta 4 {
+      c'8. c16 r4  c,8. c16 r4 |
+      c'8. c16 r4  c,8. c16 r4 |
+      c'8. c16 r4  c,8. c16 r4 |
+    }
+    \alternative {
+      {c'8. c16 r4  c,8 c c r  | } {c'8. c16 r4  c,8 c c r  |}
+    }
+    \break \mark \markup \box \bold "Bridge"
+    \repeat volta 2 {
+      c'8. c16 r4  bes8. bes16 r4 |
+      aes8. aes16 r4 g8. g16 r4  |
+      f8. f16 r4  ees8. ees16 r4 |
+    }
+
+        \alternative {
+      {d8. d16 r4  g4 g4  } {d8. d16 r4  g4 g4 }
+    }
+
+  }
+}
+%part: changes
+changes = \chordmode {
+
+}
+
+%%Generated layout
+%------------------Code to 'naturalize' music - get rid of double-sharps, E#, etc.-----------------
+#(define (naturalize-pitch p)
+  (let ((o (ly:pitch-octave p))
+        (a (* 4 (ly:pitch-alteration p)))
+        ;; alteration, a, in quarter tone steps,
+        ;; for historical reasons
+        (n (ly:pitch-notename p)))
+    (cond
+     ((and (> a 1) (or (eq? n 6) (eq? n 2)))
+      (set! a (- a 2))
+      (set! n (+ n 1)))
+     ((and (< a -1) (or (eq? n 0) (eq? n 3)))
+      (set! a (+ a 2))
+      (set! n (- n 1))))
+    (cond
+     ((> a 2) (set! a (- a 4)) (set! n (+ n 1)))
+     ((< a -2) (set! a (+ a 4)) (set! n (- n 1))))
+    (if (< n 0) (begin (set! o (- o 1)) (set! n (+ n 7))))
+    (if (> n 6) (begin (set! o (+ o 1)) (set! n (- n 7))))
+    (ly:make-pitch o n (/ a 4))))
+
+#(define (naturalize music)
+  (let ((es (ly:music-property music 'elements))
+        (e (ly:music-property music 'element))
+        (p (ly:music-property music 'pitch)))
+    (if (pair? es)
+       (ly:music-set-property!
+         music 'elements
+         (map (lambda (x) (naturalize x)) es)))
+    (if (ly:music? e)
+       (ly:music-set-property!
+         music 'element
+         (naturalize e)))
+    (if (ly:pitch? p)
+       (begin
+         (set! p (naturalize-pitch p))
+         (ly:music-set-property! music 'pitch p)))
+    music))
+
+naturalizeMusic =
+#(define-music-function (parser location m)
+  (ly:music?)
+  (naturalize m))
+%-----------------End Naturalization code---------------
+
+#(set-default-paper-size "letter")
+\book {
+	\score { <<
+			\set Score.markFormatter = #format-mark-box-numbers
+			
+		\new Staff \with { \consists "Volta_engraver" } {  \set Staff.midiInstrument = #"trumpet" \clef treble
+			\tempo  4 = 90
+			\override Score.RehearsalMark #'self-alignment-X = #LEFT
+			\melody
+		}
+		\new Staff \with { \consists "Volta_engraver" } {  \set Staff.midiInstrument = #"alto sax" \clef treble
+			\override Score.RehearsalMark #'self-alignment-X = #LEFT
+			\riff
+		}
+		\new Staff \with { \consists "Volta_engraver" } {  \set Staff.midiInstrument = #"tuba" \clef bass
+			\override Score.RehearsalMark #'self-alignment-X = #LEFT
+			\bass
+		}
+	>> \layout { \context { \Score \remove "Volta_engraver" } } }  
+}
