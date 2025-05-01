@@ -33,7 +33,7 @@ melody = {
     }
 
 \break
-    \mark \markup \box \bold "A"
+    \mark \markup \box \bold "Head A"
     \repeat volta 2 {
       <f bes>1\segno
       | r4 f8 f g bes4 g8
@@ -46,11 +46,12 @@ melody = {
     }
     \alternative {
       { <g bes>8 r f8 f g bes4 g8 }
+      { <g bes>8 <as c>4 <g bes>8  \mark \markup { \italic "Fine" } r2 }
       { <g bes>8 <as c>4 <g bes>8 r2 }
     }
 
     \break
-    \mark \markup \box \bold "B"
+    \mark \markup \box \bold "Head B (always follows A)"
     \repeat volta 2 {
       <bes d>8^\markup { \italic tutti }  <bes d> r4 <as c>8 <as c> r4  |  <g bes>8 <g bes> r4 <f as> <d f>~
       <d f> <f as> <f as> <g bes>  |  <des c'>8 <c bes'> <bes as'>4 r <d f>~
@@ -77,7 +78,8 @@ melody = {
         r4  <as des>8  <g c>~  <g c>4  <as des>8 <g c>~  |  <g c>4  <c f>8 <bes es>~ <bes es>4  r4  |
       }
       {
-        r4 <as c>8 <g bes>~ <g bes>4  <as c>8 <g bes>8~ <g bes>4 f8 f \mark \markup { \italic "D.S." } g bes4 g8 
+        r4 <as c>8 <g bes>~ <g bes>4  <as c>8 <g bes>8~ 
+        <g bes>4 \mark \markup { \italic "D.S." } f8 f  g bes4 g8 
       }
     }
 
@@ -110,7 +112,7 @@ melodyResponse = {
     }
 
     \break
-    \mark \markup \box \bold "A"
+    \mark \markup \box \bold "Head A"
     \repeat volta 2 {
       | r4\segno f,8 f g bes4 g8
       <f bes>1
@@ -123,11 +125,11 @@ melodyResponse = {
     }
     \alternative {
       { <g bes>8 <as c>4 <g bes>8 r2 }
-      { <g bes>8 <as c>4 <g bes>8 r2 }
+      { <g bes>8 <as c>4 <g bes>8  \mark \markup { \italic "Fine" } r2 }
     }
 
     \break
-    \mark \markup \box \bold "B"
+    \mark \markup \box \bold "Head B (always follows A)"
     \repeat volta 2 {
       <bes d>8^\markup { \italic tutti }  <bes d> r4 <as c>8 <as c> r4  |  <g bes>8 <g bes> r4 <f as> <d f>~
       <d f> <f as> <f as> <g bes>  |  <des c'>8 <c bes'> <bes as'>4 r <d f>~
@@ -154,7 +156,7 @@ melodyResponse = {
         r4  <as des>8  <g c>~  <g c>4  <as des>8 <g c>~  |  <g c>4  <c f>8 <bes es>~ <bes es>4  r4  |
       }
       {
-        r4 <as c>8 <g bes>~ <g bes>4  <as c>8 <g bes>8~ <g bes>4 f8 f g bes4 g8 
+        r4 <as c>8 <g bes>~ <g bes>4  <as c>8 <g bes>8~ <g bes>4 r2. 
       }
     }
 
@@ -186,7 +188,7 @@ tenor = {
     }
 
     \break
-    \mark \markup \box \bold "A"
+    \mark \markup \box \bold "Head A"
     \repeat volta 2 {
       r4.\segno <d f>8~ <d f>2
       <es g>1
@@ -198,11 +200,11 @@ tenor = {
     }
     \alternative {
       { |  bes8 c4 bes8 r2 | }
-      { |  bes8 c4 bes8 r2 | }
+      { |  bes8 c4 bes8  \mark \markup { \italic "Fine" } r2 | }
     }
 
     \break
-    \mark \markup \box \bold "B"
+    \mark \markup \box \bold "Head B (always follows A)"
     \repeat volta 2 {
       <bes' d>8^\markup {\italic tutti }  <bes d> r4 <as c>8 <as c> r4  |  <g bes>8 <g bes> r4 <f as> <d f>~
       <d f> <f as> <f as> <g bes>  |  <des c'>8 <c bes'> <bes as'>4 r <d f>~
@@ -229,7 +231,7 @@ tenor = {
         r4  <as des>8  <g c>~  <g c>4  <as des>8 <g c>~  |  <g c>4  <c f>8 <bes es>~ <bes es>4  r4  |
       }
       {
-           r4 <as c>8 <g bes>~ <g bes>4  <as c>8 <g bes>8~ <g bes>4 f8 f \mark \markup { \italic "D.S." }  g bes4 g8 
+           r4 <as c>8 <g bes>~ <g bes>4  <as c>8 <g bes>8~ <g bes>4  \mark \markup { \italic "D.S." }  r2.
       }
     }
 
@@ -267,7 +269,7 @@ bass = {
     }
 
     \break
-    \mark \markup \box \bold "A"
+    \mark \markup \box \bold "Head A"
     \repeat volta 2 {
       \repeat percent 3 { bes4.\segno d f4  |  es,4. g bes4
       }
@@ -280,7 +282,7 @@ bass = {
     
 
     \break
-    \mark \markup \box \bold "B"
+    \mark \markup \box \bold "Head B (always follows A)"
     \repeat volta 2 {
       \repeat percent 3 { bes4. d f4  |  es,4. g bes4 }
       bes4. d f4
