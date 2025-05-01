@@ -135,23 +135,49 @@ changes = \chordmode {
 
 }
 
-#(set-default-paper-size "letter")
+%layout
+#(set-default-paper-size "a5" 'landscape)
 \book {
-	\score { <<
-			\set Score.markFormatter = #format-mark-box-numbers
-			
-		\new Staff \with { \consists "Volta_engraver" } {  \set Staff.midiInstrument = #"trumpet" \clef treble
-			\tempo  4 = 90
-			\override Score.RehearsalMark #'self-alignment-X = #LEFT
-			\melody
-		}
-		\new Staff \with { \consists "Volta_engraver" } {  \set Staff.midiInstrument = #"alto sax" \clef treble
-			\override Score.RehearsalMark #'self-alignment-X = #LEFT
-			\riff
-		}
-		\new Staff \with { \consists "Volta_engraver" } {  \set Staff.midiInstrument = #"tuba" \clef bass
-			\override Score.RehearsalMark #'self-alignment-X = #LEFT
-			\bass
-		}
-	>> \layout { \context { \Score \remove "Volta_engraver" } } }  
+  \paper { #(set-paper-size "a4") }
+  \header { poet = "Score" }
+  \score {
+    <<
+      \new Staff {
+        \tempo 4 = 90
+        \melody
+      }
+      \new Staff {
+        \riff
+      }
+      \new Staff {
+        \clef bass
+        \bass
+      }
+    >>
+  }
+}
+
+
+
+
+\book {
+  \header { poet = "MIDI" }
+  \score {
+    <<
+      \tempo 4 = 70
+      \unfoldRepeats  \new Staff {
+        \set Staff.midiInstrument = #"trumpet"
+        \melody
+      }
+      \unfoldRepeats  \new Staff {
+        \set Staff.midiInstrument = #"alto sax"
+        \riff
+      }
+      \unfoldRepeats  \new Staff {
+        \set Staff.midiInstrument = #"tuba"
+        \bass
+      }
+    >>
+    \midi { }
+  }
 }
