@@ -293,7 +293,7 @@ bass = {
     }
     \alternative {
       { es,4. g bes4 }
-      { es,4. g bes4 \fine }
+      { es,4. g bes4 }
     }
     
 
