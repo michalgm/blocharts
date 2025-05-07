@@ -48,7 +48,7 @@ melody_call = {
     }
     \alternative {
       { <g bes>8 r f8 f g bes4 g8 }
-      { <g bes>8 <as c>4 <g bes>8 r2 \mark \markup \right-column { \italic "Fine" } }
+      { <g bes>8 <as c>4 <g bes>8 r2 \fine  }
     }
 
     \break
@@ -131,7 +131,7 @@ melody_response = {
     }
     \alternative {
       { <g bes>8 <as c>4 <g bes>8 r2 }
-      { <g bes>8 <as c>4 <g bes>8 r2 \mark \markup \right-column { \italic "Fine" }}
+      { <g bes>8 <as c>4 <g bes>8 r2 \fine }
     }
 
     \break
@@ -211,7 +211,7 @@ tenor = {
     }
     \alternative {
       { |  bes8 c4 bes8 r2 | }
-      { |  bes8 c4 bes8 r2 \mark \markup \right-column { \italic "Fine" } }
+      { |  bes8 c4 bes8 r2 \fine  }
     }
 
     \break
@@ -293,7 +293,7 @@ bass = {
     }
     \alternative {
       { es,4. g bes4 }
-      { es,4. g bes4 \mark \markup \right-column { \italic "Fine" }}
+      { es,4. g bes4 \fine }
     }
     
 
