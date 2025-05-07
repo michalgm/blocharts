@@ -61,7 +61,7 @@ melody_call = {
     }
     \alternative {
       { r1 }
-      { r4 f8^\markup { \tiny "if returning to A" } f g bes4 g8 \jump "D.S." }
+      { r4 f8^\markup { \tiny "if returning to Head" } f g bes4 g8 \jump "D.S." }
     }
 
     \break
