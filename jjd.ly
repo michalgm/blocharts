@@ -88,11 +88,11 @@ guitar = {
 
 %part: bass
 bass = {
-	\relative c { \key f \minor
+	\relative c, { \key f \minor
 
 	\mark \default
 	\repeat volta 2 {
-		f,8 f f aes r4. ees8 | f f f r c' bes aes bes | 
+		f8 f f aes r4. ees8 | f f f r c' bes aes bes | 
 		f8 f f aes r4. ees8 | f f f r ees' d bes aes | \break 
 		}
 
