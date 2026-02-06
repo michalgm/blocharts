@@ -10,10 +10,13 @@
   copyright = \markup {\bold { "Form:" }  "Intro, Verse, Chorus, Intro, Verse, Chorus, Drums, Intro, Coda"}
 }
 
+%description: This song was arranged by our sister band, the <a href="https://rudemechanicalorchestra.org/">Rude Mechanical Orchestra</a>. Cariñito is a chicha (peruvian cumbia). It's a love song, and was first made popular by the band Los Hijos del Sol in Peru a few decades ago. Today, it is well known in Peru, Bolivia, and Ecuador, and all sorts of acts – from cumbia bands to rock bands to folk singers – play their own renditions. People from those countries never fail to recognize it when we play it on the streets. 
+
 %part: melody
 melody = \relative c' {
   \key d\minor
   \time 4/4
+  \compressEmptyMeasures
   \section
   \sectionLabel \markup { \bold \box "Intro"}
   \repeat volta 2 {
@@ -36,7 +39,7 @@ melody = \relative c' {
     \break
     \section
     \sectionLabel \markup { \bold \box "Chorus"  }
-    d2.\f   c4  | c8. a16 ~ a8 r8  r2  |  d2.   c4  | c8. a16 ~ a8 r8  r2  |
+    d'2.\f   c4  | c8. a16 ~ a8 r8  r2  |  d2.   c4  | c8. a16 ~ a8 r8  r2  |
     a8.-.\mp\< e16  r4 r a8 g  | a8.-. f16  r4 r f8 g  |  a4.\f\! c8  g4.  a8 |  f8. d16  r4 r2  |
     a'8.-.\mp\< e16  r4 r a8 g  | a8.-. f16  r4 r f8 g  |  a4.\f\! c8  g4.  a8 |  f8. d16  r4 r2  |
 
@@ -45,7 +48,7 @@ melody = \relative c' {
   \break
   \section
   \sectionLabel \markup { \bold \box "Drums, then D.C."}
-  R1*4
+  \break R1*16
 
 
   \bar "||"
@@ -56,11 +59,67 @@ melody = \relative c' {
 
 } % END PART
 
-%part: countermelody
-countermelody = \relative c' {
+%part: countermelodyHigh
+countermelodyHigh = \relative c' {
   \key d\minor
   %  \override Staff.TimeSignature   #'style = #'numbered
   \time 4/4
+  \compressEmptyMeasures
+  \section
+  \sectionLabel \markup { \bold \box "Intro"}
+  \repeat volta 2 {
+    R1*4
+
+    r4 r8.  c'16  a g a g   f d d8-. | r4 r8.  g16  a c c c  a8-. g16 e  |
+    f8-. r  r8.  g16  a c c c  a8-. g16 e  | f8-. r  r4  r8.  a16 a8-. g16 e
+
+    f16 g8-. f16  f16 g8-. f16   f16 g8-. a16   a8-. g16 e |  f16 g8-. f16  f16 g8-. f16   f16 g8-. a16   a8-. g16 e |
+    f16 g8-. f16  f16 g8-. f16   f16 g8-. g16   g8-. f16 e |  d16 f8-. d16   d16 f8-. d16   d8-. r16 a'16 a8-. g16 e |
+    f16 g8-. f16  f16 g8-. f16   f16 g8-. <a c>16 <a c>8-. <g bes>16 <e g> |
+
+
+    <f a>16 <g bes>8-. <f a>16 <f a>16 <g bes>8-. <f a>16   <f a>16 <g bes>8-. <a c>16  <a c>8-. <g bes>16 <e g> |
+    <f a>16 <g bes>8-. <f a>16  <f a>16 <g bes>8-. <f a>16  <f a>16 <g bes>8-. <g bes>16   <g bes>8-. <f a>16 <e g> |
+    <d f>16 <f a>8-. <d f>16   <d f>16 <f a>8-. <d f>16   a'16 g a g  f8-. d-.^"Last time to Coda"
+
+    \break
+    \section
+    \sectionLabel \markup { \bold \box "Verse" }
+    r8. \acciaccatura  c16 d  r  \acciaccatura  c16 d8-. a16  r \acciaccatura d8 c-. f16 f8-. r |
+    r8. d16  f8-. d16 g   r \acciaccatura g  a8-. a16  a8-. r  | e'16 f e f  e f e f  c e c e  c e c8-. |
+    d8.-.  f16   d c a g   f d f g  a8-. g16 f  |
+
+    e8-. r16  \acciaccatura  c16 d  r  \acciaccatura  c16 d8-. a16  r \acciaccatura d8 c-. f16 f8-. r |
+    r8. d'16  f8-. d16 g   r \acciaccatura g  a8-. a16  a8-. r  | e16 f e f  e f e f  c e c e  c e c8-. |
+    d4-.  r16 \acciaccatura e  f8-. d16   r f, g a  b c d e |
+
+    \break
+    \section
+    \sectionLabel \markup { \bold \box "Chorus"  }
+    d2.\f  c4  | c8. a16 ~ a8 r  r2 |  d2.\f  c4  | c8. a16 ~ a8 r  r16 f f8\mp\<  e d |
+    a'8-. a-.  a16 a a-. a   r a-. a-. a   r a-. a8-.  |  a8-. a-.  a16 a a-. a   r a-. a-. a   r a-. a8-.  |
+    f2\f\!  e  |  d2  r16 f f8\mp\<  e d |
+    a'8-. a-.  a16 a a-. a   r a-. a-. a   r a-. a8-.  |  a8-. a-.  a16 a a-. a   r a-. a-. a   r a-. a8-.  |
+    f2\f\!  e  |  d2  r
+
+  } % end repeat
+  \section
+  \sectionLabel \markup { \bold \box "Drums, then D.C."}
+  \break R1*16
+
+
+%%%%%% CODA
+  r4\coda e2.  |  f8.-. f16 f4-.  r2
+  \bar "|."
+
+} % END PART
+
+%part: countermelodyLow
+countermelodyLow = \relative c' {
+  \key d\minor
+  %  \override Staff.TimeSignature   #'style = #'numbered
+  \time 4/4
+  \compressEmptyMeasures
   \section
   \sectionLabel \markup { \bold \box "Intro"}
   \repeat volta 2 {
@@ -85,14 +144,14 @@ countermelody = \relative c' {
     r8. d16  f8-. d16 g   r \acciaccatura g  a8-. a16  a8-. r  | e16 f e f  e f e f  c e c e  c e c8-. |
     d8.-.  f16   d c a g   f d f g  a8-. g16 f  |
 
-    e8-. r16  \acciaccatura  c'16 d  r  \acciaccatura  c16 d8-. a16  r \acciaccatura d8 c-. f16 f8-. r |
+    e'8-. r16  \acciaccatura  c16 d  r  \acciaccatura  c16 d8-. a16  r \acciaccatura d8 c-. f16 f8-. r |
     r8. d16  f8-. d16 g   r \acciaccatura g  a8-. a16  a8-. r  | e16 f e f  e f e f  c e c e  c e c8-. |
-    d4-.  r16 \acciaccatura e  f8-. d16   r f, g a  b c d e |
+    d4-.  r16 \acciaccatura e  f8-. d16   r f g a  b c d e |
 
     \break
     \section
     \sectionLabel \markup { \bold \box "Chorus"  }
-    d2.\f  c4  | c8. a16 ~ a8 r  r2 |  d2.\f  c4  | c8. a16 ~ a8 r  r16 f' f8\mp\<  e d |
+    d2.\f  c4  | c8. a16 ~ a8 r  r2 |  d2.\f  c4  | c8. a16 ~ a8 r  r16 f f8\mp\<  e d |
     a'8-. a-.  a16 a a-. a   r a-. a-. a   r a-. a8-.  |  a8-. a-.  a16 a a-. a   r a-. a-. a   r a-. a8-.  |
     f2\f\!  e  |  d2  r16 f f8\mp\<  e d |
     a'8-. a-.  a16 a a-. a   r a-. a-. a   r a-. a8-.  |  a8-. a-.  a16 a a-. a   r a-. a-. a   r a-. a8-.  |
@@ -101,7 +160,7 @@ countermelody = \relative c' {
   } % end repeat
   \section
   \sectionLabel \markup { \bold \box "Drums, then D.C."}
-  \break R1*4
+  \break R1*16
 
 
 %%%%%% CODA
@@ -117,6 +176,7 @@ bass = \relative c {
   \key d\minor
   %  \override Staff.TimeSignature   #'style = #'numbered
   \time 4/4
+  \compressEmptyMeasures
   \section
   \sectionLabel \markup { \bold \box "Intro"}
   \repeat volta 2 {
@@ -151,7 +211,7 @@ bass = \relative c {
   } % end repeat
   \section
   \sectionLabel \markup { \bold \box "Drums, then D.C."}
-  \break R1*4
+  \break R1*16
 
 
 %%%%%% CODA
@@ -175,10 +235,18 @@ bass = \relative c {
       \new Staff \with { \consists "Volta_engraver" } {
         \tempo 4=100
 
+        \set Staff.midiInstrument = #"tenor sax" \clef treble
+        \override Score.RehearsalMark.self-alignment-X = #LEFT
+
+        \countermelodyHigh
+      }
+      \new Staff \with { \consists "Volta_engraver" } {
+        \tempo 4=100
+
         \set Staff.midiInstrument = #"alto sax" \clef treble
         \override Score.RehearsalMark.self-alignment-X = #LEFT
 
-        \countermelody
+        \countermelodyLow
       }
       \new Staff \with { \consists "Volta_engraver" } {
         \tempo 4=100
