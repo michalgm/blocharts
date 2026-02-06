@@ -1,1 +1,0 @@
-../ciganko_moja.ly
