@@ -220,11 +220,23 @@ bass = \relative c {
 
 } % END PART
 
+
+
+%part: changes
+changes = \chordmode {
+
+% INTRO
+d1:m
+
+} % END CHORDS  last bracket before layout-- end of last part
+
+
 %%Generated layout
 #(set-default-paper-size "letter")
 \book {
   \score {
     <<
+      \transpose c c \new ChordNames { \set chordChanges = ##t \changes }
       \new Staff \with { \consists "Volta_engraver" } {
         \tempo 4=100
         \set Staff.midiInstrument = #"trumpet" \clef treble
