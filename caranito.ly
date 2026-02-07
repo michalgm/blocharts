@@ -226,7 +226,23 @@ bass = \relative c {
 changes = \chordmode {
 
 % INTRO
-d1:m
+d1:m f f d:m
+d1:m f f d:m
+
+f f f d:m
+f f f d:m
+
+% VERSE
+d1:m f f2 a2 d1:m
+d1:m f f2 a2 d1:m
+
+% CHORUS
+bes2:maj7 c  f1  bes2:maj7 c  f1
+a1 d:m  f2 a  d1:m
+a1 d:m  f2 a  d1:m
+
+R1*16
+c1 f 
 
 } % END CHORDS  last bracket before layout-- end of last part
 
