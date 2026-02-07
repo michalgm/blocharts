@@ -241,7 +241,10 @@ bes2:maj7 c  f1  bes2:maj7 c  f1
 a1 d:m  f2 a  d1:m
 a1 d:m  f2 a  d1:m
 
+% DRUMS
 R1*16
+
+% CODA
 c1 f 
 
 } % END CHORDS  last bracket before layout-- end of last part
