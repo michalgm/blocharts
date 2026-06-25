@@ -1,1 +1,0 @@
-../gelem_gelemBLO.ly

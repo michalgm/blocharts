@@ -1,0 +1,3 @@
+[submodule "pondscum"]
+	path = pondscum
+	url = https://github.com/michalgm/pondscum.git
