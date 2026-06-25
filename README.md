@@ -31,3 +31,5 @@ Make sure you have committed and pushed any changes in the sheetmusic directory
 (NOTE this requires you have a config for 'blo' in your ssh config)
 
 Run `./sync_sheetmusic.sh`
+
+This syncs a repo checkout on the webserver. The webserver has symlinks in the public_html directory pointing to the directories under sheetmusic/ in the checkout. The sheetmusic.php file processes the files/directories in the subdir and formats it into the sheetmusic index page.
