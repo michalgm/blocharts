@@ -2,7 +2,7 @@
 \version "2.12.3"
 
 \header {
-  tagline = "12/1/2013"
+  tagline = "6/25/2026"
 
   title = "If You Want Me To Stay"
   composer = "Sly Stone, 1973"
