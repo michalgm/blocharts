@@ -5,7 +5,8 @@
   composer = "Los Fabuloso Cadilacs"
   arranger =  "arr. Marini"
   tagline = "8/25/12" %date of latest edits
-  copyright = \markup {\bold ""} %form
+  copyright = \markup {\bold {"Default Form: "} "1, 2, 1, 3, 4, drum break, 4, 3
+"} %form
 }
 
 %description:Argentine band <a href="http://www.fabulosos-cadillacs.com/">Los Fabulosos Cadillacs</a>' biggest hit, from their 1993 album <i>Vasos Vacíos</i>, about the oppression and forced disappearances during the years of military dictatorship across Latin America, particularly the National Reorganization Process in Argentina. The song narrates the story of a revolutionary hunted down by law enforcement. (See <a href="http://en.wikipedia.org/wiki/El_Matador">wikipedia entry</a>.)
