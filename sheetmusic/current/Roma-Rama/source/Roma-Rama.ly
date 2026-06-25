@@ -115,10 +115,9 @@ tenor =  \relative b {
 
 %part: bass
 bass =  \relative g, {
-  \clef "bass"
   \key c \minor
 
-    \mark \markup \box \bold "Head"
+  \mark \markup \box \bold "Head"
   \repeat volta 2 {
     \repeat percent 4 {
       g4 r8 d'8 r4 g,4 |
