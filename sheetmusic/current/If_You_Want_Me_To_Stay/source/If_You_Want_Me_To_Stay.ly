@@ -2,7 +2,7 @@
 \version "2.12.3"
 
 \header { 
-	tagline = "2/6/2026"
+	tagline = "6/25/2026"
 
 
   title = "If You Want Me To Stay"
@@ -210,7 +210,7 @@ bass = \relative c {
     | bes1  |  as2 des  |  ges,1  |  f2 f  |
   }
   \break \mark \markup \box \bold "Vamp"
-  bes,8 bes  bes bes  bes bes  bes a  |  as as  as es'  des des  des f | ges ges  ges ges ges ges es es  as as f f  c' c ces ces
+  bes8 bes  bes bes  bes bes  bes a  |  as as  as es'  des des  des f | ges ges  ges ges ges ges es es  as as f f  c' c ces ces
 
   \break \mark \markup \box \bold "Head"
   \repeat volta 2 {
@@ -221,7 +221,7 @@ bass = \relative c {
   \break \mark \markup \box \bold "Hits"
   \repeat volta 2 {
 
-    bes 4 r r8 bes4 a8 | aes4 r r8 aes4 g8 | ges4 r r8 ges4 ges8 | f2 f |
+    bes, 4 r r8 bes4 a8 | aes4 r r8 aes4 g8 | ges4 r r8 ges4 ges8 | f2 f |
   }
 
   %{
