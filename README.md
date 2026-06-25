@@ -28,5 +28,6 @@ git pull --recurse-submodules
 
 ### Updating charts on the BLO website
 Make sure you have committed and pushed any changes in the sheetmusic directory
+(NOTE this requires you have a config for 'blo' in your ssh config)
 
 Run `./sync_sheetmusic.sh`
