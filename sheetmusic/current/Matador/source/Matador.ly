@@ -1,0 +1,350 @@
+\version "2.12.3"
+
+\header { 
+	tagline = "2/6/2026"
+  title = "Matador"
+  composer = "Los Fabuloso Cadilacs"
+  arranger =  "arr. Marini"
+
+  copyright = \markup {\bold ""} %form
+}
+
+%description:Argentine band <a href="http://www.fabulosos-cadillacs.com/">Los Fabulosos Cadillacs</a>' biggest hit, from their 1993 album <i>Vasos Vacíos</i>, about the oppression and forced disappearances during the years of military dictatorship across Latin America, particularly the National Reorganization Process in Argentina. The song narrates the story of a revolutionary hunted down by law enforcement. (See <a href="http://en.wikipedia.org/wiki/El_Matador">wikipedia entry</a>.)
+
+% music pieces
+%part: melody
+melody = \relative c' {
+  \time 2/2 \key c \major
+  \partial 4 r
+
+  \mark \default %A
+  {
+    a'8 \mf a r a c4 c8 e ~ |
+    e r d4 e d |
+    e4. c8 ~ c4 r |
+    R1 |
+    r8 d d d d f r e |
+    r b r b c4 b |
+    c4. a8 ~ a4 r |
+    R1 |
+    r8 d r d d f r e |
+    r b r4 r8 b r b |
+    c4 b8 c r c r d |
+    e4 r r8 a, ~ a b |
+    c c r c d4 c8 b |
+    r e, e e c'4 d8 c |
+    a4 r a8\f a r a |
+    e'1 |
+    r2 a,8 a r f' |
+    e1 |
+    r2 a,8 a r a |
+    e'1 |
+    r2 a,8 a r f' |
+    e1 |
+  }
+
+  \break \mark \default %B
+  {
+    a,8-. a-. a-. a-. a4 c8-. c-.|
+    c4 a8-. a-. a4 r4 |
+    a8-. a-. a-. a-. a4 c8-. c-.|
+    c4 a8-. a-. a4 r4 |
+    a8-. a-. a-. a-. a4 c8-. c-.|
+    c4 a8-. a-. a4 r4 |
+    a8-. a-. a-. a-. a4 c8-. c-.|
+    c4 a8-. a-. a4 r4 |
+  }
+  \break \mark \default %C
+  {
+    r1 \mf  r1  r1 |
+    \override NoteHead #'style = #'cross
+    e'4_"Hey!" r e_"Hey!" r |
+    \override NoteHead #'style = #'default
+    c8_"cresc." c c c b4 c |
+    r2 a8 b c b|
+    c c c c b4 c |
+    \override NoteHead #'style = #'cross
+    e4_"Hey!" r e_"Hey!" r |
+    \override NoteHead #'style = #'default
+    <c e>8 <c e> <c e> <c e> <b d>4 <c e>|
+    r2 <a c>8 <b d> <c e> <b d>|
+    <c e>8 <c e> <c e> <c e> <b d>4 <c e>|
+    r2 r4 e8 f |
+  }
+  \break \mark \default %D
+  {
+    e2.\ff e8 f |
+    e2. r4 |
+    d8 d d d e4-. f8 e ~|
+    e2 r4 e8 f |
+    e2. e8 f |
+    e2. r4 |
+    d8 d d d e4-. f8 e ~ |
+    e2 r8 e r e |
+    g4 f8 e f4 e8 d |
+    e4 d8 c d4 c8 b |
+    c2 r8 f r f |
+    r e ~ e4 r e8 f |
+    e2. e8 f |
+    e2. r4 |
+    d8 d d d e4-. f8 e ~|
+    e4 r4 r2 |
+  }
+
+  \break \mark "Solos"
+  {
+    <a,, c e>8 <a c e> <a c e> <a c e> <a c e>4 <c e g>8 <c e g> | 
+    <c e g>4 <a c e>8 <a c e> <a c e>4 r |
+  }
+
+}
+
+%part: tenor
+tenor = \relative c' {
+  \time 2/2 \key c \major
+  \partial 4 <a' c e>8 ^^ <a c e> ^^
+  \mark \default %A
+  {
+    R1*2
+    r4 <a c e> ^. r <a c e> ^. |
+    r <a c e> ^. r <a c e> ^. |
+    r <a d f> r <a d f> |
+    r <gis b e> r <gis b e> |
+    r4 <a c e> ^. r <a c e> ^. |
+    r <a c e> ^. r <a c e> ^. |
+    r <a d f> r <a d f> |
+    r <gis b e> r <gis b e> |
+    r4 <a c e> ^. r <a c e> ^. |
+    r <a c e> ^. r <a c e> ^. |
+    r <a d f> r <a d f> |
+    r <gis b e> r <gis b e> |
+    e'1 \mp ( |
+    b |
+    c2 d4 f |
+    e2 c4 b |
+    e1 |
+    b |
+    c2 d4 f |
+    e d c b
+  }
+  \break \mark \default %B
+  {
+    a1 ) ( |
+    e ) |
+    d2 e4 a |
+    e1 |
+    a |
+    e |
+    d2 e4 a |
+    e2 r4 <a c e>8 ^^ <a c e> ^^
+  }
+  \break \mark \default %C
+  {
+    a _. a \mf _. a _. a _. g4 _"cresc." _- a _.
+    r2 e8 _. g _. a _. g _. |
+    a _. a _. a _. a _. g4 _- a _. |
+    \override NoteHead #'style = #'cross
+    e'4_"Hey!" r e_"Hey!" r |
+    \override NoteHead #'style = #'default
+    c,8 c c c b4 c |
+    r2 a8 b c b |
+    c c c c b4 c |
+    \override NoteHead #'style = #'cross
+    e'4_"Hey!" r e_"Hey!" r |
+    \override NoteHead #'style = #'default
+    <c, e>8 <c e> <c e> <c e> <b d>4 <c e> |
+    r2 <a c>8 <b d> <c e> <b d>|
+    <c e>8 <c e> <c e> <c e> <b d>4 <c e> |
+    R1
+  }
+  \break \mark \default %D
+  {
+    <a' c e>4 \ff ^> ^- r <a c e> ^> ^- r |
+    R1*3 |
+    r4 <a c e>8 ^^ <a c e> ^^ r4 <a c e>8 ^^ <a c e> ^^ |
+    R1*3 |
+    <a c e>4 r <a c e> r |
+    R1 |
+    d,8 d d d e4 f8 e ~ |
+    e4 r r2 |
+    r4 <a c e>8 <a c e> r4 <a c e>8 <a c e> |
+    R1 |
+    d,8 d d d e4 f8 e ~ |
+    e4 r r <a c e>8 ^^ <a c e> ^^
+  }
+  
+  \break \mark "Solos"
+  {
+    c8 c c c c4 e8 e |
+    e4 c8 c8 c4 r4
+
+  }
+}
+
+%part: bass
+bass = \relative c {
+  \time 2/2 \key c \major
+  \partial 4 a8 ^^ a ^^
+
+  \mark \default %A
+  {
+    R1*2
+    r2 a8 _- a _- a _- a _- |
+    e' ^- e ^- e ^- e ^- c ^- c ^- c ^- d ^> ^.
+    R1*2 |
+    r2 a8 a a a |
+    e' e e e c c c d |
+    R1*2 |
+    r2 a8 a a a |
+    e' e e e c c c d |
+    R1*2
+    r2 a8 _- a _- a _- d _- |
+    e4 ^- e ^- e ^- r |
+    r2 d8 d d d |
+    e4 e e r |
+    r2 a,8 a a d |
+    e4 e e r |
+    r2 d8 d d d |
+    e4 e e r
+  }
+  \break \mark \default %B
+  {
+    r2 a,8 a a d |
+    e4 e e r |
+    r2 d8 d d d |
+    e4 e e r |
+    r2 a,8 a a d |
+    e4 e e r |
+    r2 d8 d d d |
+    e4 e e a,8 ^^ a ^^ |
+  }
+  \break \mark \default %C
+  {
+    a _. a \mf _. a _. a _. g4 _"cresc." _- a _.
+    r2 e8 _. g _. a _. g _. |
+    a _. a _. a _. a _. g4 _- a _. |
+    \override NoteHead #'style = #'cross
+    e'4_"Hey!" r e_"Hey!" r |
+    \override NoteHead #'style = #'default
+    a,8 a a a g4 a |
+    r2 e8 g a g |
+    a a a a g4 a |
+    \override NoteHead #'style = #'cross
+    e'4_"Hey!" r e_"Hey!" r |
+    \override NoteHead #'style = #'default
+    a,8 a a a g4 a |
+    r2 e8 g a g |
+    a a a a g4 a |
+    R1 |
+  }
+  \break \mark \default
+  {
+    r2 \ff a8 a a d |
+    e4 e e r |
+    d8 d d d e4 ^. f8 e ~ |
+    e2 r |
+    r a,8 a a d |
+    e4 e e r |
+    d8 d d d e4 f8 e ~ |
+    e2 r |
+    r a,8 a a d |
+    e4 e e r |
+    d8 d d d e4 f8 e ~ |
+    e2 r |
+    r a,8 a a d |
+    e4 e e r |
+    d8 d d d e4 f8 e ~ |
+    e2 r4 a,8 ^^ a ^^
+  }
+  
+  \break \mark "Solos"
+  {
+    a8 a a a a4 c8 c | 
+    c4 a8 a a4 r |
+
+  }
+
+}
+
+%part: words
+words = \markup { }
+
+%part: changes
+changes = \chordmode {
+}
+
+
+%%Generated layout
+%------------------Code to 'naturalize' music - get rid of double-sharps, E#, etc.-----------------
+#(define (naturalize-pitch p)
+  (let ((o (ly:pitch-octave p))
+        (a (* 4 (ly:pitch-alteration p)))
+        ;; alteration, a, in quarter tone steps,
+        ;; for historical reasons
+        (n (ly:pitch-notename p)))
+    (cond
+     ((and (> a 1) (or (eq? n 6) (eq? n 2)))
+      (set! a (- a 2))
+      (set! n (+ n 1)))
+     ((and (< a -1) (or (eq? n 0) (eq? n 3)))
+      (set! a (+ a 2))
+      (set! n (- n 1))))
+    (cond
+     ((> a 2) (set! a (- a 4)) (set! n (+ n 1)))
+     ((< a -2) (set! a (+ a 4)) (set! n (- n 1))))
+    (if (< n 0) (begin (set! o (- o 1)) (set! n (+ n 7))))
+    (if (> n 6) (begin (set! o (+ o 1)) (set! n (- n 7))))
+    (ly:make-pitch o n (/ a 4))))
+
+#(define (naturalize music)
+  (let ((es (ly:music-property music 'elements))
+        (e (ly:music-property music 'element))
+        (p (ly:music-property music 'pitch)))
+    (if (pair? es)
+       (ly:music-set-property!
+         music 'elements
+         (map (lambda (x) (naturalize x)) es)))
+    (if (ly:music? e)
+       (ly:music-set-property!
+         music 'element
+         (naturalize e)))
+    (if (ly:pitch? p)
+       (begin
+         (set! p (naturalize-pitch p))
+         (ly:music-set-property! music 'pitch p)))
+    music))
+
+naturalizeMusic =
+#(define-music-function (parser location m)
+  (ly:music?)
+  (naturalize m))
+%-----------------End Naturalization code---------------
+
+#(set-default-paper-size "letter")
+\pointAndClickOff
+
+\book {
+	\score { <<
+			\set Score.rehearsalMarkFormatter = #format-mark-box-numbers
+
+			
+		% Group: Melody
+		\new Staff \with { \consists "Volta_engraver" instrumentName = "Melody" } {  \set Staff.midiInstrument = #"trumpet" \clef treble
+			\tempo  4 = 200
+			\override Score.RehearsalMark.self-alignment-X = #LEFT
+			\melody
+		}
+		% Group: Tenor
+		\new Staff \with { \consists "Volta_engraver" instrumentName = "Tenor" } {  \set Staff.midiInstrument = #"trombone" \clef treble
+			\tempo  4 = 200
+			\override Score.RehearsalMark.self-alignment-X = #LEFT
+			\tenor
+		}
+		% Group: Bass
+		\new Staff \with { \consists "Volta_engraver" instrumentName = "Bass" } {  \set Staff.midiInstrument = #"tuba" \clef bass
+			\tempo  4 = 200
+			\override Score.RehearsalMark.self-alignment-X = #LEFT
+			\bass
+		}
+	>> \layout { \context { \Score \remove "Volta_engraver" } } }  
+}

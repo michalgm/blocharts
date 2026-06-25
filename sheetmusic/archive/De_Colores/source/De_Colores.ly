@@ -1,0 +1,109 @@
+\version "2.12.1" 
+\header { 
+	tagline = "1/31/2014"
+	title = "De Colores"
+	composer = "Traditional"
+	copyright = "3/5/10"
+	}
+
+%description: Mexican folk song strongly associated with the struggles of the <a href="http://www.ufw.org/">United Farm Workers</a> during the 1960&#8217;s and 70&#8217;s. Labor leader Cesar Chavez (1927-1993) founded the UFW, and his birthday, March 31, is a state holiday in California and Colorado, with movements pushing for holiday status in other states and federally. While the lyrics to "De Colores" speak mainly about the beauty and the farm animals of the Mexican countryside, they are often interpreted as implying themes of racial solidarity and harmony. The song is always well-received at the numerous immigrant rights events where BLO plays.
+	
+% music pieces
+%part: melody
+melody = { 
+	\relative c'' { \key f \major \time 3/4
+	c2.~ 	 | c2 bes4  | bes a2   | r4 a4 bes | 
+	c c4. c8 | c4 bes a | c c4. c8 | c4 bes a  | c bes2 | r2. | 
+	bes2.~	 | bes2 a4  | a g2     | r4 g4 a   |
+	bes bes4. bes8 | bes4 a g | bes bes4. bes8 | bes4 a g | bes a2 | r2. |
+	c2.~ 	 | c2 bes4  | bes a2   | r4 a4 bes | 
+	c c4. c8 | c4 bes a | c c4. c8 | c4 d ees | d2. | r4 bes c |
+	d d4. d8 | d4 e d | d c4. c8 | c4 d c | c bes4. c8 | 
+	d4 c bes | a2. | r4 bes c |	
+	d d4. d8 | d4 e d | d c4. c8 | c4 d c | c bes4. c8 | 
+	d4 c bes | a2. | r2. |	
+	}
+}
+
+
+%part: pahs
+pahs = { 
+	\relative c' { \key f \major \time 3/4
+	r4 <a c> <a c> | r <a c> <a c> | r <a c> <a c> | r <a c> <a c> | 
+	r <a c> <a c> | r <a c> <a c> | r <a c> <a c> | r <a c> <a c> | 
+	r <g bes> <g bes> | r <g bes> <g bes> | 
+	r <g bes> <g bes> | r <g bes> <g bes> | r <g bes> <g bes> | r <g bes> <g bes> | 
+	r <g bes> <g bes> | r <g bes> <g bes> | r <g bes> <g bes> | r <g bes> <g bes> | 
+	r <a c> <a c> | r <a c> <a c> | 
+	r <a c> <a c> | r <a c> <a c> | r <a c> <a c> | r <a c> <a c> | 
+	r <a c> <a c> | r <a c> <a c> | r <a c> <a c> | r <a c> <a c> | 
+	r <bes d> <bes d> | r <bes d> <bes d> | 
+	r <bes d> <bes d> | r <bes d> <bes d> | r <a c> <a c> | r <a c> <a c> | 
+	r <g bes> <g bes> | r <g bes> <g bes> | r <a c> <a c> | r <a c> <a c> | 
+	r <bes d> <bes d> | r <bes d> <bes d> | r <a c> <a c> | r <a c> <a c> | 
+	r <g bes> <g bes> | r <g bes> <g bes> | r <a c> <a c> | r <a c> <a c> | 
+	}
+}
+
+%part: bass
+bass = {
+	\relative c { \key f \major \time 3/4
+	f,2. | c | f | c | f | c | f | f4 e d | c2. | g' |
+	c,2. | g' | c, | g' | c, | g' | c, | c4 d e | f2. | c |
+	f2. | c | f | c | f | c | f | f4 g a | bes2. | f4 g a |
+	bes2. | bes4 a g | f2. | f4 e d | c2. | c4 d e | f2. | f4 g a |	
+	bes2. | bes4 a g | f2. | f4 e d | c2. | c4 d e | f2. | c4 d e |	
+	}
+}
+
+%part: words
+words = \markup { 
+	\column { 
+	  \line { \bold "Verse 1" }
+	  \line { \fontsize #2 { De Colores De Colores se visten los campos en la primavera }}
+	  \line { \fontsize #2 { De Colores De Colores son los pajarillos que vienen de_afuera }}
+	  \line { \fontsize #2 { De Colores De Colores es el arco iris que vemos lucir }}
+	  \line { \fontsize #2 { Y por eso los grandes amores De muchos colores Me Gustan a mi }}
+	  \line { \fontsize #2 { Y por eso los grandes amores De muchos colores Me Gustan a mi }}
+
+	\hspace #10
+	  \line { \bold "Verse 2" }
+	  \line { \fontsize #2 { Canta el gallo Canta el gallo con el quiri quiri quiri quiri quiri }}
+	  \line { \fontsize #2 { La gallina La gallina con el cara cara cara cara cara }}
+	  \line { \fontsize #2 { Los polluelos Los polluelos con el pio pio pio pio pi }}
+	  \line { \fontsize #2 { Y por eso los grandes amores De muchos colores Me Gustan a mi }}
+	  \line { \fontsize #2 { Y por eso los grandes amores De muchos colores Me Gustan a mi }}
+	}
+}
+
+%part: changes
+changes = \chordmode { 
+        f2. | f | f | f | f | f | f | f | c | c |
+        c | c | c | c | c | c | c | c | f | f |
+        f | f | f | f | f | f | f | f | bes | bes
+        bes | bes | f | f | c | c | f | f | f
+}
+
+%%Generated layout
+#(set-default-paper-size "letter")
+\book {
+	\score { <<
+			\set Score.markFormatter = #format-mark-box-numbers
+			
+		\transpose c c \new ChordNames { \set chordChanges = ##t \changes }
+		\new Staff \with { \consists "Volta_engraver" } {  \set Staff.midiInstrument = #"trumpet" \clef treble
+			\tempo  4 = 100
+			\override Score.RehearsalMark #'self-alignment-X = #LEFT
+			\melody
+		}
+		\new Staff \with { \consists "Volta_engraver" } {  \set Staff.midiInstrument = #"trombone" \clef treble
+			\override Score.RehearsalMark #'self-alignment-X = #LEFT
+			\pahs
+		}
+		\new Staff \with { \consists "Volta_engraver" } {  \set Staff.midiInstrument = #"tuba" \clef bass
+			\override Score.RehearsalMark #'self-alignment-X = #LEFT
+			\bass
+		}
+	>> \layout { \context { \Score \remove "Volta_engraver" } } }  
+	\words 
+}
