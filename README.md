@@ -16,6 +16,8 @@ git clone https://github.com/michalgm/blocharts.git
 cd blocharts
 # fetch latest pondscum
 git pull --recurse-submodules
+# or, if that doesn't work
+git submodule update --init --recursive
 ```
 
 ### Generating charts from lilypond source
@@ -23,7 +25,7 @@ git pull --recurse-submodules
 ./generate_from_lilypond <output_dir> [lilypond_files]
 
 # Example:
-./generate_from_lilypond lilypond_source_files/roma-rama.ly sheetmusic/current/
+./generate_from_lilypond sheetmusic/current/ lilypond_source_files/roma-rama.ly 
 ```
 
 ### Updating charts on the BLO website

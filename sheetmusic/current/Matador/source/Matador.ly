@@ -1,7 +1,8 @@
 \version "2.12.3"
 
-\header {
-  tagline = "8/18/2026"
+\header { 
+	tagline = "8/29/2026"
+
   title = "Matador"
   composer = "Los Fabulosos Cadillacs"
   arranger =  "arr. Marini"
@@ -351,74 +352,74 @@ changes = \chordmode {
 %%Generated layout
 %------------------Code to 'naturalize' music - get rid of double-sharps, E#, etc.-----------------
 #(define (naturalize-pitch p)
-   (let ((o (ly:pitch-octave p))
-         (a (* 4 (ly:pitch-alteration p)))
-         ;; alteration, a, in quarter tone steps,
-         ;; for historical reasons
-         (n (ly:pitch-notename p)))
-     (cond
-      ((and (> a 1) (or (eq? n 6) (eq? n 2)))
-       (set! a (- a 2))
-       (set! n (+ n 1)))
-      ((and (< a -1) (or (eq? n 0) (eq? n 3)))
-       (set! a (+ a 2))
-       (set! n (- n 1))))
-     (cond
-      ((> a 2) (set! a (- a 4)) (set! n (+ n 1)))
-      ((< a -2) (set! a (+ a 4)) (set! n (- n 1))))
-     (if (< n 0) (begin (set! o (- o 1)) (set! n (+ n 7))))
-     (if (> n 6) (begin (set! o (+ o 1)) (set! n (- n 7))))
-     (ly:make-pitch o n (/ a 4))))
+  (let ((o (ly:pitch-octave p))
+        (a (* 4 (ly:pitch-alteration p)))
+        ;; alteration, a, in quarter tone steps,
+        ;; for historical reasons
+        (n (ly:pitch-notename p)))
+    (cond
+     ((and (> a 1) (or (eq? n 6) (eq? n 2)))
+      (set! a (- a 2))
+      (set! n (+ n 1)))
+     ((and (< a -1) (or (eq? n 0) (eq? n 3)))
+      (set! a (+ a 2))
+      (set! n (- n 1))))
+    (cond
+     ((> a 2) (set! a (- a 4)) (set! n (+ n 1)))
+     ((< a -2) (set! a (+ a 4)) (set! n (- n 1))))
+    (if (< n 0) (begin (set! o (- o 1)) (set! n (+ n 7))))
+    (if (> n 6) (begin (set! o (+ o 1)) (set! n (- n 7))))
+    (ly:make-pitch o n (/ a 4))))
 
 #(define (naturalize music)
-   (let ((es (ly:music-property music 'elements))
-         (e (ly:music-property music 'element))
-         (p (ly:music-property music 'pitch)))
-     (if (pair? es)
-         (ly:music-set-property!
-          music 'elements
-          (map (lambda (x) (naturalize x)) es)))
-     (if (ly:music? e)
-         (ly:music-set-property!
-          music 'element
-          (naturalize e)))
-     (if (ly:pitch? p)
-         (begin
-          (set! p (naturalize-pitch p))
-          (ly:music-set-property! music 'pitch p)))
-     music))
+  (let ((es (ly:music-property music 'elements))
+        (e (ly:music-property music 'element))
+        (p (ly:music-property music 'pitch)))
+    (if (pair? es)
+       (ly:music-set-property!
+         music 'elements
+         (map (lambda (x) (naturalize x)) es)))
+    (if (ly:music? e)
+       (ly:music-set-property!
+         music 'element
+         (naturalize e)))
+    (if (ly:pitch? p)
+       (begin
+         (set! p (naturalize-pitch p))
+         (ly:music-set-property! music 'pitch p)))
+    music))
 
 naturalizeMusic =
 #(define-music-function (parser location m)
-   (ly:music?)
-   (naturalize m))
+  (ly:music?)
+  (naturalize m))
 %-----------------End Naturalization code---------------
 
 #(set-default-paper-size "letter")
 \pointAndClickOff
 
 \book {
-  \score { <<
-    \set Score.rehearsalMarkFormatter = #format-mark-box-numbers
+	\score { <<
+			\set Score.rehearsalMarkFormatter = #format-mark-box-numbers
 
-
-    % Group: Melody
-    \new Staff \with { \consists "Volta_engraver" instrumentName = "Melody" } {  \set Staff.midiInstrument = #"trumpet" \clef treble
-                                                                                 \tempo  4 = 200
-                                                                                 \override Score.RehearsalMark.self-alignment-X = #LEFT
-                                                                                 \melody
-    }
-    % Group: Tenor
-    \new Staff \with { \consists "Volta_engraver" instrumentName = "Tenor" } {  \set Staff.midiInstrument = #"trombone" \clef treble
-                                                                                \tempo  4 = 200
-                                                                                \override Score.RehearsalMark.self-alignment-X = #LEFT
-                                                                                \tenor
-    }
-    % Group: Bass
-    \new Staff \with { \consists "Volta_engraver" instrumentName = "Bass" } {  \set Staff.midiInstrument = #"tuba" \clef bass
-                                                                               \tempo  4 = 200
-                                                                               \override Score.RehearsalMark.self-alignment-X = #LEFT
-                                                                               \bass
-    }
-           >> \layout { \context { \Score \remove "Volta_engraver" } } }
+			
+		% Group: Melody
+		\new Staff \with { \consists "Volta_engraver" instrumentName = "Melody" } {  \set Staff.midiInstrument = #"trumpet" \clef treble
+			\tempo   4 = 200
+			\override Score.RehearsalMark.self-alignment-X = #LEFT
+			\melody
+		}
+		% Group: Tenor
+		\new Staff \with { \consists "Volta_engraver" instrumentName = "Tenor" } {  \set Staff.midiInstrument = #"trombone" \clef treble
+			\tempo   4 = 200
+			\override Score.RehearsalMark.self-alignment-X = #LEFT
+			\tenor
+		}
+		% Group: Bass
+		\new Staff \with { \consists "Volta_engraver" instrumentName = "Bass" } {  \set Staff.midiInstrument = #"tuba" \clef bass
+			\tempo   4 = 200
+			\override Score.RehearsalMark.self-alignment-X = #LEFT
+			\bass
+		}
+	>> \layout { \context { \Score \remove "Volta_engraver" } } }  
 }
