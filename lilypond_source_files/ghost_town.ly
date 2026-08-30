@@ -4,7 +4,7 @@
 	tagline = "4/19/2026"
 
   title = "Ghost Town"
-  composer = "The Specials (Arr.Hot 8 Brass Band, Geoff Lee)"
+  composer = "The Specials (Arr. Hot 8 Brass Band, Geoff Lee)"
   copyright = \markup {\bold { "Default Form:" }  "Vamp, Head, 2, Head, 2, Bridge, Solos/Drum break, Vamp, Head, 2"}
 }
 
