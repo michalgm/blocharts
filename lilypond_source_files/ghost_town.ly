@@ -5,7 +5,7 @@
 
   title = "Ghost Town"
   composer = "The Specials (Arr.Hot 8 Brass Band, Geoff Lee)"
-  copyright = \markup {\bold { "Default Form:" }  "Vamp, Head, 2, Head, 2, Bridge, Solos/Drum break, Head, 2"}
+  copyright = \markup {\bold { "Default Form:" }  "Vamp, Head, 2, Head, 2, Bridge, Solos/Drum break, Vamp, Head, 2"}
 }
 
 %place a mark at bottom right

@@ -84,7 +84,7 @@ melody = \relative c' {
     e2. e8 f |
     e2. r4 |
     d8 d d d e4-. f8 e ~|
-    e4 r4 r2^"Last time to Hits (3)" |
+    e4^"Last time to Hits (3)" r4 r2 |
   }
 
   \section
@@ -186,7 +186,7 @@ tenor = \relative c' {
     r4 <a c e>8 <a c e> r4 <a c e>8 <a c e> |
     R1 |
     d,8 d d d e4 f8 e ~ |
-    e4 r r^"Last time tacit, to Hits (3)" <a c e>8 ^^ <a c e> ^^
+    e4^"Last time tacit, to Hits (3)"  r r <a c e>8 ^^ <a c e> ^^
   }
   
   \section
@@ -286,7 +286,7 @@ bass = \relative c {
     r a,8 a a d |
     e4 e e r |
     d8 d d d e4 f8 e ~ |
-    e2 r4^"Last time tacit, to Hits (3)" a,8 ^^ a ^^
+    e2^"Last time tacit, to Hits (3)" r4 a,8 ^^ a ^^
   }
 
   \section
