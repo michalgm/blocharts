@@ -4,7 +4,7 @@
 	tagline = "4/19/2026"
 
   title = "Ghost Town"
-  composer = "The Specials (Arr. Geoff Lee)"
+  composer = "The Specials (Arr.Hot 8 Brass Band, Geoff Lee)"
   copyright = \markup {\bold { "Default Form:" }  "Vamp, Head, 2, Head, 2, Bridge, Solos/Drum break, Head, 2"}
 }
 
@@ -156,7 +156,7 @@ bass = {
     }
     \mark \markup \box \bold "Solos"
     \repeat volta 2 {
-      R1*4
+       g,4 r8 bes~bes4 r4 | r4 r8 d~ d d4 d8 | g,4 r8 bes8~ bes4 r4 | r4 r8 d,8~ d d4 d8 |
     }
      \mark \markup { "D.C. al fine" }
   }

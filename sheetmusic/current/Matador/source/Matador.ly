@@ -1,7 +1,7 @@
 \version "2.12.3"
 
 \header { 
-	tagline = "8/29/2026"
+	tagline = "8/30/2026"
 
   title = "Matador"
   composer = "Los Fabulosos Cadillacs"
@@ -89,23 +89,7 @@ melody = \relative c' {
 
   \section
   \sectionLabel \markup { \bold \box "Drums"}
-  R1*32
-
-  \section
-  \sectionLabel \markup { \bold \box "Solos"}
-
-  \repeat volta 16 {
-    <a,, c e>8 <a c e> <a c e> <a c e> <a c e>4 <c e g>8 <c e g> |
-    \alternative {
-      { % begin 1st ending
-        <c e g>4 <a c e>8 <a c e> <a c e>4 r |
-      } % repeat for 1st ending
-      { % begin 2nd ending
-        <c e g>4 <a c e>8^"To Chorus (4)" <a c e> <a c e>4 r|
-      } % repeat for 2nd ending
-    } % end "alternative" repeat
-
-  } % end volta repeat
+  R1*31  r2.^"To Chorus (4)" e8 f
 } % END PART
 
 
@@ -204,29 +188,13 @@ tenor = \relative c' {
     d,8 d d d e4 f8 e ~ |
     e4 r r^"Last time tacit, to Hits (3)" <a c e>8 ^^ <a c e> ^^
   }
-
+  
   \section
   \sectionLabel \markup { \bold \box "Drums"}
-  R1*32
-
-  \section
-  \sectionLabel \markup { \bold \box "Solos"}
-  \repeat volta 16 {
-    r4 <a c e> ^. r <a c e> ^. |
-    %    a8 a a a a4 c8 c |
-    \alternative {
-      { % begin 1st ending
-        r <a c e> ^. r <a c e> ^. |
-        %   c4 a8 a a4 r
-      } % repeat for 1st ending
-      { % begin 2nd ending
-        r <a c e>^"To Chorus (4)" ^. r <a c e> ^. |
-        %   c4 a8 a a4 r
-      } % repeat for 2nd ending
-    } % end "alternative" repeat
-
-  } % end volta repeat
+  R1*32^"To Chorus (4)"
 } % END PART
+
+
 
 %part: bass
 bass = \relative c {
@@ -323,22 +291,7 @@ bass = \relative c {
 
   \section
   \sectionLabel \markup { \bold \box "Drums"}
-  R1*32
-
-  \section
-  \sectionLabel \markup { \bold \box "Solos"}
-  \repeat volta 16 {
-    a8 a a a a4 c8 c |
-    \alternative {
-      { % begin 1st ending
-        c4 a8 a a4 r
-      } % repeat for 1st ending
-      { % begin 2nd ending
-        c4 a8 a a4^"To Chorus (4)"  e'8 f
-      } % repeat for 2nd ending
-    } % end "alternative" repeat
-
-  } % end volta repeat
+  R1*32^"To Chorus (4)"
 } % END PART
 
 %part: words
