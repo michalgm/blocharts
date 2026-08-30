@@ -7,7 +7,7 @@
   title = "Cariñito"
   composer = "Los Hijos del Sol"
   arranger = "Bruno Soria"
-  copyright = \markup {\bold { "Form:" }  "Intro, Verse, Chorus, Intro, Verse, Chorus, Drums, Intro, Coda"}
+  copyright = \markup {\bold { "Form:" }  "Intro, Verse, Chorus; Intro, Verse, Chorus; Drums, Intro, Verse, Chorus" }
 }
 
 %description: This song was arranged by our sister band, the <a href="https://rudemechanicalorchestra.org/">Rude Mechanical Orchestra</a>. Cariñito is a chicha (peruvian cumbia). It's a love song, and was first made popular by the band Los Hijos del Sol in Peru a few decades ago. Today, it is well known in Peru, Bolivia, and Ecuador, and all sorts of acts – from cumbia bands to rock bands to folk singers – play their own renditions. People from those countries never fail to recognize it when we play it on the streets. 
@@ -224,14 +224,12 @@ bass = \relative c {
 
                     a,8. e'16 ~ e8 a  a,8. e'16 ~ e8 a  | d,8. f16 ~ f8 a  d, c d e  |
                     f8.\f\! c16 ~ c8 bes  a8. e'16 ~ e8 a  | 
-                                        \alternative {
+                    \alternative {
                       { d, 8. a16 ~ a8 d   r16 a a8  bes c } 
-                      { d, 8. a16 ~ a8 d^"Fine" r2 }
+                      { d 8. a16 ~ a8 d^"Fine" r2 }
                     }
-                    
   } % end repeat
 
-  \fine
   \section
   \sectionLabel \markup { \bold \box "Drums, then D.C. al Fine"}
   \break R1*16
