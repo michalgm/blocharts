@@ -1,7 +1,7 @@
 \version "2.12.1"
 
 \header { 
-	tagline = "8/29/2026" 
+	tagline = "8/30/2026" 
 
   title = "Naborusa"
   composer = "Traditional?"
@@ -103,7 +103,7 @@ e1 \fine
 
 %part: tenor
 tenor = {
-  \relative c' {
+  \relative c'' {
     \key c \minor
     \section
     \sectionLabel \markup { \bold \box "Vamp, Solos"}

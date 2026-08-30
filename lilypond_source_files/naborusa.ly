@@ -102,7 +102,7 @@ e1 \fine
 
 %part: tenor
 tenor = {
-  \relative c' {
+  \relative c'' {
     \key c \minor
     \section
     \sectionLabel \markup { \bold \box "Vamp, Solos"}
@@ -120,9 +120,8 @@ tenor = {
 
     \mark \default % Section 1    
     \repeat volta 2 {
-      <f as c>8 r8 r2.
-      %      r16 <f as c> r <f as c> r <f as c> <f as c> <f as c>
-      %     r16 <f as c> r <f as c> r <f as c> <f as c> <f as c>  |
+      <f as c f>16^"1st time break" <f as c f> r <f as c f>  r <f as c f> <f as c f> <f as c f>      
+      r16 <f as c f> r <f as c f> r <f as c f> <f as c f> <f as c f>
       r16 <g c e> r <g c e> r <g c e> <g c e>  <g c e>
       r8 des' c ces |
       bes16 <f bes des> r <f bes des> r <f bes des> <f bes des> <f bes des>
@@ -202,7 +201,7 @@ bass = {
     
     \mark \default % Section 1
     \repeat volta 2 {
-      f8-- r8 r2.
+      f8^"1st time break"  r16 c   r8 f   r c f c   
       % f8[  r16 c] r8 f r c f c 
       | c'8[ r16 g] r8 bes r des c ces |
       bes[ r16 f] r8 aes r bes des bes |

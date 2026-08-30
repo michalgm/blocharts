@@ -75,7 +75,7 @@ countermelodyHigh = \relative c' {
   \repeat volta 2 { \bar ".|:"
                     R1*4
 
-                    r4 r8.  c'16  a g a g   f d d8-. | r4 r8.  g16  a c c c  a8-. g16 e  |
+                    r4 r8.  c''16  a g a g   f d d8-. | r4 r8.  g16  a c c c  a8-. g16 e  |
                     f8-. r  r8.  g16  a c c c  a8-. g16 e  | f8-. r  r4  r8.  a16 a8-. g16 e
 
                     f16 g8-. f16  f16 g8-. f16   f16 g8-. a16   a8-. g16 e |  f16 g8-. f16  f16 g8-. f16   f16 g8-. a16   a8-. g16 e |
@@ -91,17 +91,17 @@ countermelodyHigh = \relative c' {
                     \section
                     \sectionLabel \markup { \bold \box "Verse" }
                     r8. \acciaccatura  c16 d  r  \acciaccatura  c16 d8-. a16  r \acciaccatura d8 c-. f16 f8-. r |
-                    r8. d16  f8-. d16 g   r \acciaccatura g  a8-. a16  a8-. r  | e'16 f e f  e f e f  c e c e  c e c8-. |
+                    r8. d16  f8-. d16 g   r \acciaccatura g  a8-. a16  a8-. r  | e16 f e f  e f e f  c e c e  c e c8-. |
                     d8.-.  f16   d c a g   f d f g  a8-. g16 f  |
 
-                    e8-. r16  \acciaccatura  c16 d  r  \acciaccatura  c16 d8-. a16  r \acciaccatura d8 c-. f16 f8-. r |
-                    r8. d'16  f8-. d16 g   r \acciaccatura g  a8-. a16  a8-. r  | e16 f e f  e f e f  c e c e  c e c8-. |
-                    d4-.  r16 \acciaccatura e  f8-. d16   r f, g a  b c d e |
+                    d8-. r16  \acciaccatura  c'16 d  r  \acciaccatura  c16 d8-. a16  r \acciaccatura d8 c-. f16 f8-. r |
+                    r8. d16  f8-. d16 g   r \acciaccatura g  a8-. a16  a8-. r  | e16 f e f  e f e f  c e c e  c e c8-. |
+                    d4-.  r16 \acciaccatura e  f8-. d16   r f, g a  bes c d e |
 
                     \break
                     \section
                     \sectionLabel \markup { \bold \box "Chorus"  }
-                    d2.\f  c4  | c8. a16 ~ a8 r  r2 |  d2.\f  c4  | c8. a16 ~ a8 r  r16 f f8\mp\<  e d |
+                    d2.\f  c4  | c8. a16 ~ a8 r  r2 |  d2.\f  c4  | c8. a16 ~ a8 r  r16 f' f8\mp\<  e d |
                     a'8-. a-.  a16 a a-. a   r a-. a-. a   r a-. a8-.  |  a8-. a-.  a16 a a-. a   r a-. a-. a   r a-. a8-.  |
                     f2\f\!  e  |  d2  r16 f f8\mp\<  e d |
                     a'8-. a-.  a16 a a-. a   r a-. a-. a   r a-. a8-.  |  a8-. a-.  a16 a a-. a   r a-. a-. a   r a-. a8-.  |
@@ -155,9 +155,9 @@ countermelodyLow = \relative c' {
                     r8. d16  f8-. d16 g   r \acciaccatura g  a8-. a16  a8-. r  | e16 f e f  e f e f  c e c e  c e c8-. |
                     d8.-.  f16   d c a g   f d f g  a8-. g16 f  |
 
-                    e'8-. r16  \acciaccatura  c16 d  r  \acciaccatura  c16 d8-. a16  r \acciaccatura d8 c-. f16 f8-. r |
+                    d'8-. r16  \acciaccatura  c16 d  r  \acciaccatura  c16 d8-. a16  r \acciaccatura d8 c-. f16 f8-. r |
                     r8. d16  f8-. d16 g   r \acciaccatura g  a8-. a16  a8-. r  | e16 f e f  e f e f  c e c e  c e c8-. |
-                    d4-.  r16 \acciaccatura e  f8-. d16   r f g a  b c d e |
+                    d4-.  r16 \acciaccatura e  f8-. d16   r f g a  bes c d e |
 
                     \break
                     \section
