@@ -39,11 +39,12 @@ melody={
     \break \mark \markup \box \bold "Bridge"
     \repeat volta 2 {
       c'8 r r16 g8 bes16~ bes2 |  aes4 r16 bes aes g~ g4 g16 f es d |
-      c8 r r16 g'8 f16~ f2  |  c'4~^"D.S., last time repeat 4x" c8. b16~ b4 r 
+      c8 r r16 g'8 f16~ f2  |  c'4~^"D.S., last time 4x" c8. b16~ b4 r 
       \fine
     }
     
-    \mark \markup \box \bold "Solos"
+    \section
+    \sectionLabel \markup { \bold \box "Solos"}
     \repeat volta 4 {
       R1*2^"4x"
     }
@@ -92,11 +93,13 @@ riff={
       r16 <g' es'> r <bes g'>   r <g es'> <f d'> <es c'>      <f d'> <f d'> <es c'>8 r <g es'> |
       r16 <g es'> r <bes g'>   r <g es'> <f d'> <es c'>       <f d'> <f d'> <es c'>8 r <c g'> |
       r16 <g' es'> r <bes g'>   r <g es'> <f d'> <es c'>      <f d'> <f d'> <es c'>8 r <g es'> |
-      r16^"D.S., last time repeat 4x"  <g es'> r <bes g'>   r <g es'> <f d'> <es c'>       <f d'> <f d'> <es c'>8 r <c g'> |
+      r16^"D.S., last time 4x"  <g es'> r <bes g'>   r <g es'> <f d'> <es c'>       <f d'> <f d'> <es c'>8 r <c g'> |
       \fine
     }
 
-    \mark \markup \box \bold "Solos"
+    \section
+    \sectionLabel \markup { \bold \box "Solos"}
+
     \repeat volta 4 {
       R1*2^"4x"
     }
@@ -137,11 +140,13 @@ bass={
       c'8. c16 r4  bes8. bes16 r4 |
       aes8. aes16 r4 g8. g16 r4  |
       f8. f16 r4  ees8. ees16 r4 |
-      d8.^"D.S., last time repeat 4x"  d16 r4  g4 g4
+      d8.^"D.S., last time 4x"  d16 r4  g4 g4
       \fine
     }
     
-    \mark \markup \box \bold "Solos"
+    \break
+    \section
+    \sectionLabel \markup { \bold \box "Solos"}
     \repeat volta 4 {
       c8. c16 r4  c,8. c16 r4 |
       c'8. c16 r4  c,8 c c r^"4x"  |
