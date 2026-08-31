@@ -1,7 +1,7 @@
 \version "2.12.3"
 
 \header { 
-	tagline = "2/6/2026" 
+	tagline = "8/31/2026" 
 
   title = "A.P. Touro"
   composer = "Troy \"Trombone Shorty\" Andrews for Rebirth BB"
@@ -15,15 +15,20 @@
 melody={
   \relative c' {
     \time 4/4 \key c \minor
+    \compressEmptyMeasures
+    \override MultiMeasureRest.expand-limit = #1
     \mark \markup \box \bold "Vamp"
-    \repeat volta 2 { r1 r }
+    \repeat volta 2 {  R1*2^"4x"
 
-    \repeat volta 2 { r1 }
-    \alternative {{  r1 } { r2 r8  g' bes16 c r es  | }}
+                       \repeat volta 4 { r1\segno }
+                       \alternative {  {  r1 } 
+                                       { r2 r8  g' bes16 c r es  | }
+                       } % end alternative 
+    }
 
     \break \mark \markup \box \bold "Head"
-    \repeat volta 4 {
-      r c8.~ c2.~ | c2 r8  g8 bes16 c  r es  |
+    \repeat volta 2 {
+      r c8.~ c2.~  | c2 r8  g8 bes16 c  r es  |
       r c8.~ c2 r16 g f es~ 
     }
     \alternative {
@@ -34,12 +39,18 @@ melody={
     \break \mark \markup \box \bold "Bridge"
     \repeat volta 2 {
       c'8 r r16 g8 bes16~ bes2 |  aes4 r16 bes aes g~ g4 g16 f es d |
-      c8 r r16 g'8 f16~ f2  |
+      c8 r r16 g'8 f16~ f2  |  c'4~^"D.S., last time repeat 4x" c8. b16~ b4 r 
+      \fine
     }
-    \alternative {
-      { c'4~ c8. b16~ b4 r }
-      { c4~ c8. b16~ b8 g8 bes16 c r es  }
+    
+    \mark \markup \box \bold "Solos"
+    \repeat volta 4 {
+      R1*2^"4x"
     }
+    \repeat volta 4 {
+      R1*4^"D.C. al Fine"
+    }
+
   }
 }
 
@@ -47,12 +58,14 @@ melody={
 riff={
   \relative c' {
     \time 4/4 \key c \minor
+    \compressEmptyMeasures
+    \override MultiMeasureRest.expand-limit = #1
     \mark \markup \box \bold "Vamp"
 
-    \repeat volta 2 { r1 r }
+    \repeat volta 2 {  R1*2^"4x"  } 
 
-    \repeat volta 2 {
-      r16 <g' es'> r <bes g'>   r <g es'> <f d'> <es c'>      <f d'> <f d'> <es c'>8 r <g es'> |
+    \repeat volta 4 {
+      r16\segno <g' es'> r <bes g'>   r <g es'> <f d'> <es c'>      <f d'> <f d'> <es c'>8 r <g es'> |
     }
     \alternative {
       { r16 <g es'> r <bes g'>   r <g es'> <f d'> <es c'>       <f d'> <f d'> <es c'>8 r <c g'> | }
@@ -60,7 +73,7 @@ riff={
     }
     \break \mark \markup \box \bold "Head"
 
-    \repeat volta 4 {
+    \repeat volta 2 {
       r16 <g' es'> r <bes g'>   r <g es'> <f d'> <es c'>      <f d'> <f d'> <es c'>8 r <g es'> |
       r16 <g es'> r <bes g'>   r <g es'> <f d'> <es c'>      <f d'> <f d'> <es c'>8 r <es c'> |
       r16 <g es'> r <bes g'>   r <g es'> <f d'> <es c'>      <f d'> <f d'> <es c'>8 r <g es'> |
@@ -79,15 +92,16 @@ riff={
       r16 <g' es'> r <bes g'>   r <g es'> <f d'> <es c'>      <f d'> <f d'> <es c'>8 r <g es'> |
       r16 <g es'> r <bes g'>   r <g es'> <f d'> <es c'>       <f d'> <f d'> <es c'>8 r <c g'> |
       r16 <g' es'> r <bes g'>   r <g es'> <f d'> <es c'>      <f d'> <f d'> <es c'>8 r <g es'> |
+      r16^"D.S., last time repeat 4x"  <g es'> r <bes g'>   r <g es'> <f d'> <es c'>       <f d'> <f d'> <es c'>8 r <c g'> |
+      \fine
     }
 
-        \alternative {
-      {
-        r16 <g es'> r <bes g'>   r <g es'> <f d'> <es c'>       <f d'> <f d'> <es c'>8 r <c g'> |
-      }
-      {
-        r16 <g' es'> r <bes g'>   r <g es'> <f d'> <es c'>       <f d'> <f d'> <es c'>8 r <c g'> |
-      }
+    \mark \markup \box \bold "Solos"
+    \repeat volta 4 {
+      R1*2^"4x"
+    }
+    \repeat volta 4 {
+      R1*4^"D.C. al Fine"
     }
   }
 }
@@ -96,21 +110,21 @@ riff={
 bass={
   \relative c' {
     \time 4/4 \key c \minor
+    \compressEmptyMeasures
     \mark \markup \box \bold "Vamp"
 
-    \repeat volta 2 {
+    \repeat volta 4 {
       c,8. c16 r4  c,8. c16 r4 |
-      c'8. c16 r4  c,8 c c r  |
+      c'8. c16 r4  c,8 c c r^"4x"  |
     }
 
-
-    \repeat volta 2 {
-      c'8. c16 r4  c,8. c16 r4 |
+    \repeat volta 4 {
+      c'8.\segno  c16 r4  c,8. c16 r4 |
     }
     \alternative {{ c'8. c16 r4  c,8 c c r  | } { c'8. c16 r4  c,8 c c r  | }}
     \break \mark \markup \box \bold "Head"
 
-    \repeat volta 4 {
+    \repeat volta 2 {
       c'8. c16 r4  c,8. c16 r4 |
       c'8. c16 r4  c,8. c16 r4 |
       c'8. c16 r4  c,8. c16 r4 |
@@ -123,12 +137,21 @@ bass={
       c'8. c16 r4  bes8. bes16 r4 |
       aes8. aes16 r4 g8. g16 r4  |
       f8. f16 r4  ees8. ees16 r4 |
+      d8.^"D.S., last time repeat 4x"  d16 r4  g4 g4
+      \fine
     }
-
-        \alternative {
-      {d8. d16 r4  g4 g4  } {d8. d16 r4  g4 g4 }
+    
+    \mark \markup \box \bold "Solos"
+    \repeat volta 4 {
+      c8. c16 r4  c,8. c16 r4 |
+      c'8. c16 r4  c,8 c c r^"4x"  |
     }
-
+    \repeat volta 2 {
+      c'8. c16 r4  bes8. bes16 r4 |
+      aes8. aes16 r4 g8. g16 r4  |
+      f8. f16 r4  ees8. ees16 r4 |
+      d8. d16 r4^"D.C. al Fine"  g4 g4
+    }
   }
 }
 %part: changes
