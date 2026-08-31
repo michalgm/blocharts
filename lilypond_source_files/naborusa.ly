@@ -1,24 +1,26 @@
-\version "2.12.1"
+\version "2.12.3"
 
 \header { 
-  tagline = "2/6/2026"
+  tagline = "8/30/2026"
   title = "Naborusa"
   composer = "Traditional?"
-  copyright = "8/23/26" %date of latest edits
+  copyright = "8/30/26" %date of latest edits
 }
 %description:Song of unclear origin (and many titles and varied spellings) from the <a href="http://voiceofroma.com/">Romani culture</a>. The version we play was taught to us by <a href="http://www.eefc.org/Shopov.shtml">Rumen “Sali” Shopov</a> and local Balkan musician, <a target='_blank' href="http://www.huzzam.com/">Peter Jaques</a>. 
 
 %place a mark at bottom right
-markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
+% markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
 
 
 % music pieces
 %part: melody
 melody = {
   \relative c' {
-    \key c \minor
+    \key f \minor
+    \compressEmptyMeasures
+    \override MultiMeasureRest.expand-limit = #1
     \section
-    \sectionLabel \markup { \bold \box "Vamp, Solos"}
+    \sectionLabel \markup { \bold \box "Vamp"}
 
     \repeat volta 4 {
       r1^"4x"
@@ -30,7 +32,7 @@ melody = {
     
     \mark \default % Section 1
     \repeat volta 2 {
-      c8. c16~ c8 c c'4 bes8 aes | g16 aes r bes~ bes2. | des,8. des16~ des8 f aes4 g8 f |
+      c8.\segno c16~ c8 c c'4 bes8 aes | g16 aes r bes~ bes2. | des,8. des16~ des8 f aes4 g8 f |
     }
     \alternative { { g16 f r e~ e2. | } { g16 f r e~ e2. | } }
 
@@ -40,7 +42,7 @@ melody = {
     }
     \alternative { { g16 f r e~ e2. | } { g16 f r e~ e2. | } }
 
-    \break \mark \default %C
+    \break \mark \default % Section 3
     \repeat volta 2 {
       r8 c' c c c8. aes16~ aes8 bes |
       c1 |
@@ -51,18 +53,28 @@ melody = {
     \break \mark \default % Section 4
     \repeat volta 2 {
       r8 f( f f f4 g8 aes | g16 f r ees~ ees2. -\bendAfter #-4 |
-      des8) des( des des des4 ees8 f | e16 des r \mark "D.C." c~ c2.) |
+      des8) des des des des4 ees8 f  |
     }
-    c1 \fine
+    \alternative { { e16 des r  c~ c2. } { e16 des r^"D.S., Solos, last x to Coda" c~ c2. } }
+    
+    \break
+    \section
+    \sectionLabel \markup { \bold \box "Solos"}
+    \repeat volta 4 {
+      R1*2^"Open, then D.S. al Coda" 
+    } % end solos repeat
+    c'1\coda  \fine
   }
 }
 
-%part: tersa
+% part: tersa
 tersa = {
   \relative c' {
-    \key c \minor
+    \key f \minor
+    \compressEmptyMeasures
+    \override MultiMeasureRest.expand-limit = #1
     \section
-    \sectionLabel \markup { \bold \box "Vamp, Solos"}
+    \sectionLabel \markup { \bold \box "Vamp"}
     \repeat volta 4 {
       r1^"4x"
     } % end 1st vamp repeat
@@ -74,7 +86,7 @@ tersa = {
 
     \mark \default
     \repeat volta 2 {
-      aes8. aes16~ aes8 aes aes'4 g8 f | e16 f r g~ g2. |
+      aes8.\segno aes16~ aes8 aes aes'4 g8 f | e16 f r g~ g2. |
       bes,8. bes16~ bes8 des f4 e8 des |
     }
     \alternative { { e16 des r c~ c2. | } { e16 des r c~ c2. | } }
@@ -94,18 +106,28 @@ tersa = {
     \break \mark \default
     \repeat volta 2 {
       r8 aes( aes aes aes4 bes8 c | bes16 aes r g~ g2. -\bendAfter #-4 |
-      f8) f( f f f4 g8 aes | g16 f r \mark "D.C." e~ e2.) | 
+      f8) f f f f4 g8 aes | 
     }
-e1 \fine
+    \alternative { { g16 f r  e~ e2. } {  g16 f r^"D.S., Solos, last x to Coda"  e~ e2. } }
+
+    \break
+    \sectionLabel \markup { \bold \box "Solos"}
+    \repeat volta 4 {
+      R1*2^"Open, then D.S. al Coda" 
+    } % end solos repeat
+    e'1\coda  \fine
+
   }
 }
 
 %part: tenor
 tenor = {
   \relative c'' {
-    \key c \minor
+    \key f \minor
+    \compressEmptyMeasures
+    \override MultiMeasureRest.expand-limit = #1
     \section
-    \sectionLabel \markup { \bold \box "Vamp, Solos"}
+    \sectionLabel \markup { \bold \box "Vamp"}
     \repeat volta 4 {
       r1^"4x"
     } % end 1st vamp repeat
@@ -120,7 +142,7 @@ tenor = {
 
     \mark \default % Section 1    
     \repeat volta 2 {
-      <f as c f>16^"1st time break" <f as c f> r <f as c f>  r <f as c f> <f as c f> <f as c f>      
+      <f as c f>16^"1st time break"\segno <f as c f> r <f as c f>  r <f as c f> <f as c f> <f as c f>      
       r16 <f as c f> r <f as c f> r <f as c f> <f as c f> <f as c f>
       r16 <g c e> r <g c e> r <g c e> <g c e>  <g c e>
       r8 des' c ces |
@@ -177,20 +199,31 @@ tenor = {
       <f as c>1 |
       <g bes es> |
       <f as des> |
-      <g c e>2 r8 c \mark "D.C."  des e |
     } 
+    \alternative { {   <g c e>2 r8 c  des e | } {   <g, c e>1^"D.S., Solos, last x to Coda" } }
+
+    \break
+    \section
+    \sectionLabel \markup { \bold \box "Solos"}
+    \repeat volta 4 {  
+      R1*2^"Open, then D.S. al Coda" 
+    } % end solos repeat
+    <g c e>1\coda \fine
   }
 }
+
 
 
 %part: bass
 bass = {
   \relative c' {
-    \key c \minor
+    \key f \minor
+    \compressEmptyMeasures
+    \override MultiMeasureRest.expand-limit = #1
     \section
-    \sectionLabel \markup { \bold \box "Vamp, Solos"}
+    \sectionLabel \markup { \bold \box "Vamp"}
     \repeat volta 4 {
-      c,[ r16 g] r8 bes r16 c r c  g8 bes^"4x" |
+      c,8[ r16 g] r8 bes r16 c r c  g8 bes^"4x" |
     } % end 1st vamp repeat
     \repeat volta 4 {
       c[ r16 g] r8 bes r16 c r c  g8 bes |
@@ -201,7 +234,7 @@ bass = {
     
     \mark \default % Section 1
     \repeat volta 2 {
-      f8^"1st time break"  r16 c   r8 f   r c f c   
+      f8\segno^"1st time break"  r16 c   r8 f   r c f c   
       % f8[  r16 c] r8 f r c f c 
       | c'8[ r16 g] r8 bes r des c ces |
       bes[ r16 f] r8 aes r bes des bes |
@@ -218,15 +251,25 @@ bass = {
     \break \mark \default % Section 3
     \repeat volta 2 {
       f8-- r r4 f as| f8[ r16 c] r8 f r bes aes g |
-      f[ r16 c] r8 f r c f c | c[ r16 g] r8 bes r c des e |
+      f[ r16 c] r8 f r c f c | c'[ r16 g] r8 bes r c des e |
     }
 
     \break \mark \default % Section 4
     \repeat volta 2 {
       f[ r16 c] r8 f r c f c | ees[ r16 bes] r8 ees r f ees d |
-      des[ r16 aes] r8 des r aes des8 aes | c[ r16 g] r8 bes r c \mark "D.C." des e |
+      des[ r16 aes] r8 des r aes des8 aes |
     }
-c1 \fine
+    \alternative { {   c[ r16 g] r8 bes r c  des e } {  c[ r16 g]^"D.S., Solos, last x to Coda" r8  bes r16 c r c  g8 bes  } }
+
+    \break
+    \section
+    \sectionLabel \markup { \bold \box "Solos"}
+    \repeat volta 4 {
+      c,[^"(Or, easier: play prev bar/Vamp)" r16 e] r8 g   r16 as r g  as g f e 
+      c8[ r16^"Open, then D.S. al Coda"  e] r8 g   r16 des r bes  des8 bes16 des
+    } % end solos repeat
+  
+    c1\coda \fine
   }
 }
 
@@ -235,11 +278,26 @@ words = \markup { }
 
 %part: changes
 changes = \chordmode { 
-  f1:m | c:7 | bes:m | c:7 | c:7 |
-  bes:m | c:7 | bes:m | c:7 | c:7 |
-  f:m | f:m | f:m | c:7 | 
-  f:m | ees | des | c:7 |
+  % VAMP
+  c:7  | c:7  | c:7  | c:7  | 
 
+% Section 1
+f1:m | c:7 | bes:m | c:7 | c:7 |
+
+% Section 2
+bes:m | c:7 | bes:m | c:7 | c:7 |
+
+% Section 3
+f:m | f:m | f:m | c:7 | 
+
+% Section 4
+f:m | ees | des | c:7 |
+
+% Solos
+c:7 | c:7
+
+% Coda
+c:7
 }
 
 %%Generated layout
@@ -294,7 +352,7 @@ naturalizeMusic =
 \book {
   \score { <<
     \set Score.rehearsalMarkFormatter = #format-mark-box-numbers
-
+      \transpose c c \new ChordNames { \set chordChanges = ##t \changes }
     
     % Group: Melody
     \new Staff \with { \consists "Volta_engraver" instrumentName = "Melody" } {  \set Staff.midiInstrument = #"trumpet" \clef treble
