@@ -1,13 +1,13 @@
 \version "2.12.3"
 
 \header { 
-	tagline = "8/30/2026"
+	tagline = "8/31/2026"
 
   title = "Matador"
   composer = "Los Fabulosos Cadillacs"
   arranger =  "arr. Marini"
 
-  copyright = \markup {\bold {"Default Form: "} "1, 2, 1, 3, 4, drum break, 4, 3" }%form
+  copyright = \markup {\bold {"Default Form: "} "1, 2, 1, 3, 4, drum break, solos, 4, 3" }%form
 }
 
 %description:Argentine band <a href="http://www.fabulosos-cadillacs.com/">Los Fabulosos Cadillacs</a>' biggest hit, from their 1993 album <i>Vasos Vacíos</i>, about the oppression and forced disappearances during the years of military dictatorship across Latin America, particularly the National Reorganization Process in Argentina. The song narrates the story of a revolutionary hunted down by law enforcement. (See <a href="http://en.wikipedia.org/wiki/El_Matador">wikipedia entry</a>.)
@@ -17,6 +17,7 @@
 melody = \relative c' {
   \time 2/2 \key c \major
   \compressEmptyMeasures
+  \override MultiMeasureRest.expand-limit = #1
   \partial 4 r
 
   \repeat volta 2 {
@@ -99,6 +100,7 @@ melody = \relative c' {
 tenor = \relative c' {
   \time 2/2 \key c \major
   \compressEmptyMeasures
+  \override MultiMeasureRest.expand-limit = #1
   \partial 4 <a' c e>8 ^^ <a c e> ^^
 
   \repeat volta 2 {
@@ -156,13 +158,13 @@ tenor = \relative c' {
           \override NoteHead #'style = #'cross
           e'4_"Hey!" r e_"Hey!" r |
           \override NoteHead #'style = #'default
-          c,8 c c c b4 c |
+          c8 c c c b4 c |
           r2 a8 b c b |
           c c c c b4 c |
           \override NoteHead #'style = #'cross
-          e'4_"Hey!" r e_"Hey!" r |
+          e4_"Hey!" r e_"Hey!" r |
           \override NoteHead #'style = #'default
-          <c, e>8 <c e> <c e> <c e> <b d>4 <c e> |
+          <c e>8 <c e> <c e> <c e> <b d>4 <c e> |
           r2 <a c>8 <b d> <c e> <b d>|
           <c e>8 <c e> <c e> <c e> <b d>4 <c e>^"Fine" |
           R1
@@ -175,7 +177,7 @@ tenor = \relative c' {
   \section
   \sectionLabel \markup { \bold \box "Chorus"}
   {
-    <a' c e>4 \ff ^> ^- r <a c e> ^> ^- r |
+    <a c e>4 \ff ^> ^- r <a c e> ^> ^- r |
     R1*3 |
     r4 <a c e>8 ^^ <a c e> ^^ r4 <a c e>8 ^^ <a c e> ^^ |
     R1*3 |
@@ -200,6 +202,7 @@ tenor = \relative c' {
 bass = \relative c {
   \time 2/2 \key c \major
   \compressEmptyMeasures
+  \override MultiMeasureRest.expand-limit = #1
   \partial 4 a8 ^^ a ^^
 
   \repeat volta 2 {

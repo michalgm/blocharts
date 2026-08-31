@@ -16,6 +16,7 @@
 melody = \relative c' {
   \time 2/2 \key c \major
   \compressEmptyMeasures
+  \override MultiMeasureRest.expand-limit = #1
   \partial 4 r
 
   \repeat volta 2 {
@@ -98,6 +99,7 @@ melody = \relative c' {
 tenor = \relative c' {
   \time 2/2 \key c \major
   \compressEmptyMeasures
+  \override MultiMeasureRest.expand-limit = #1
   \partial 4 <a' c e>8 ^^ <a c e> ^^
 
   \repeat volta 2 {
@@ -155,13 +157,13 @@ tenor = \relative c' {
           \override NoteHead #'style = #'cross
           e'4_"Hey!" r e_"Hey!" r |
           \override NoteHead #'style = #'default
-          c,8 c c c b4 c |
+          c8 c c c b4 c |
           r2 a8 b c b |
           c c c c b4 c |
           \override NoteHead #'style = #'cross
-          e'4_"Hey!" r e_"Hey!" r |
+          e4_"Hey!" r e_"Hey!" r |
           \override NoteHead #'style = #'default
-          <c, e>8 <c e> <c e> <c e> <b d>4 <c e> |
+          <c e>8 <c e> <c e> <c e> <b d>4 <c e> |
           r2 <a c>8 <b d> <c e> <b d>|
           <c e>8 <c e> <c e> <c e> <b d>4 <c e>^"Fine" |
           R1
@@ -174,7 +176,7 @@ tenor = \relative c' {
   \section
   \sectionLabel \markup { \bold \box "Chorus"}
   {
-    <a' c e>4 \ff ^> ^- r <a c e> ^> ^- r |
+    <a c e>4 \ff ^> ^- r <a c e> ^> ^- r |
     R1*3 |
     r4 <a c e>8 ^^ <a c e> ^^ r4 <a c e>8 ^^ <a c e> ^^ |
     R1*3 |
@@ -199,6 +201,7 @@ tenor = \relative c' {
 bass = \relative c {
   \time 2/2 \key c \major
   \compressEmptyMeasures
+  \override MultiMeasureRest.expand-limit = #1
   \partial 4 a8 ^^ a ^^
 
   \repeat volta 2 {

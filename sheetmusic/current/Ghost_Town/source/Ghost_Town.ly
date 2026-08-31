@@ -1,11 +1,11 @@
 \version "2.18.2"
 
 \header { 
-	tagline = "8/30/2026"
+	tagline = "8/31/2026"
 
 
   title = "Ghost Town"
-  composer = "The Specials (Arr.Hot 8 Brass Band, Geoff Lee)"
+  composer = "The Specials (Arr. Hot 8 Brass Band, Geoff Lee)"
   copyright = \markup {\bold { "Default Form:" }  "Vamp, Head, 2, Head, 2, Bridge, Solos/Drum break, Vamp, Head, 2"}
 }
 
@@ -17,6 +17,9 @@ markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begi
 melody = {
   \relative c' {
     \key g \minor
+    \compressEmptyMeasures
+    \override MultiMeasureRest.expand-limit = #1
+
     \mark \markup \box \bold "Vamp"
     \repeat volta 2 {
       R1*4
@@ -55,7 +58,7 @@ melody = {
     \repeat volta 2 {
       R1*4
     }
-          \mark \markup { "D.C. al fine" }
+    \mark \markup { "D.C. al fine" }
   }
 }
 
@@ -63,10 +66,13 @@ melody = {
 tenor = {
   \relative c {
     \key g \minor
+    \compressEmptyMeasures
+    \override MultiMeasureRest.expand-limit = #1
+
     \mark \markup \box \bold "Vamp"
     \repeat volta 2 {
-    r4 r8 <bes'' d>8~ <bes d>4. <a cis>8~ | <a cis>2 r8 c4 bes8 |
-    g4 r8 <bes d>8~ <bes d>4. <a cis>8~ | <a cis>4. d8 c bes g f |
+      r4 r8 <bes'' d>8~ <bes d>4. <a cis>8~ | <a cis>2 r8 c4 bes8 |
+      g4 r8 <bes d>8~ <bes d>4. <a cis>8~ | <a cis>4. d8 c bes g f |
     }
 
     \repeat volta 2 {
@@ -110,13 +116,13 @@ tenor = {
     \alternative {
       {   r4 <f aes>8 <f aes>8 r4 <f aes>8 <f aes>8 }
       {   r4 <f aes>8 <f aes>8  r4 <f aes>8 <f aes>8
-         | r4 <f aes>  <c fis a>2 }
+          | r4 <f aes>  <c fis a>2 }
     }
     \mark \markup \box \bold "Solos"
     \repeat volta 2 {
       R1*4
     }
-      \mark \markup { "D.C. al fine" }
+    \mark \markup { "D.C. al fine" }
   }
 }
 
@@ -124,6 +130,9 @@ tenor = {
 bass = {
   \relative c {
     \key g \minor
+    \compressEmptyMeasures
+    \override MultiMeasureRest.expand-limit = #1
+
     \mark \markup \box \bold "Vamp"
     \repeat volta 2 {
       R1*4
@@ -142,10 +151,10 @@ bass = {
         g,4 r8 bes~bes4 r4 | r4 r8 d~ d d4 d8 | g,4 r8 bes8~ bes4 r4 | r4 r8 d,8~ d d4 d8 |
       }
       f4. f8~ f4 f | r4 f8 f~ f f f4 | fis2 fis8 fis r b | r b r b dis4 fis^"Fine" |
-   } %%%% END REPEAT BACK TO HEAD
+    } %%%% END REPEAT BACK TO HEAD
 
  
- \break \mark \markup \box \bold "Bridge"
+    \break \mark \markup \box \bold "Bridge"
     g,1 | aes1 | a2 cis | d a' |
     \break \repeat volta 4 {
       aes,4. aes8 aes4. aes8 | aes4. aes8~ aes8 aes8~ aes4 |
@@ -157,9 +166,9 @@ bass = {
     }
     \mark \markup \box \bold "Solos"
     \repeat volta 2 {
-       g,4 r8 bes~bes4 r4 | r4 r8 d~ d d4 d8 | g,4 r8 bes8~ bes4 r4 | r4 r8 d,8~ d d4 d8 |
+      g,4 r8 bes~bes4 r4 | r4 r8 d~ d d4 d8 | g,4 r8 bes8~ bes4 r4 | r4 r8 d,8~ d d4 d8 |
     }
-     \mark \markup { "D.C. al fine" }
+    \mark \markup { "D.C. al fine" }
   }
 }
 
