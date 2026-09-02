@@ -48,7 +48,7 @@ tenorABody = {
 }
 tenorAFirstEnding = { f4 r r2 | }
 tenorASecondEnding = { f4 r r f | }
-tenorAFirstPass = { \tenorABody \tenorAFirstEnding }
+tenorAFirstPass = \relative c' { \tenorABody \tenorAFirstEnding }
 
 tenorBPair = { aes2 aes | g4 ees8 f r4 f | }
 tenorBBody = { \repeat unfold 3 { \tenorBPair } \hornBCadence }
@@ -67,7 +67,7 @@ bassABody = {
   bes r8 bes~ bes4 b |
 }
 bassAFirstEnding = { c r8 ees~ ees4 e | }
-bassAFirstPass = { \bassABody \bassAFirstEnding }
+bassAFirstPass = \relative c { \bassABody \bassAFirstEnding }
 
 bassBBody = {
   \bassWalkFour
@@ -87,7 +87,7 @@ bassFinalBody = {
 }
 
 % Complete repeated sections
-melodySectionOne = {
+melodySectionOne = \relative c'' {
   \repeat volta 2 { \melodyABody }
   \alternative {
     { \melodyAFirstEnding }
@@ -95,7 +95,7 @@ melodySectionOne = {
   }
 }
 
-melodySectionTwo = {
+melodySectionTwo = \relative c' {
   \repeat volta 2 { \melodyBBody }
   \alternative {
     { \hornBFirstEnding }
@@ -103,7 +103,7 @@ melodySectionTwo = {
   }
 }
 
-tenorSectionOne = {
+tenorSectionOne = \relative c' {
   \repeat volta 2 { \tenorABody }
   \alternative {
     { \tenorAFirstEnding }
@@ -111,7 +111,7 @@ tenorSectionOne = {
   }
 }
 
-tenorSectionTwo = {
+tenorSectionTwo = \relative c'' {
   \repeat volta 2 { \tenorBBody }
   \alternative {
     { \hornBFirstEnding }
@@ -119,7 +119,7 @@ tenorSectionTwo = {
   }
 }
 
-bassSectionOne = {
+bassSectionOne = \relative c {
   \repeat volta 2 { \bassABody }
   \alternative {
     { \bassAFirstEnding }
@@ -127,7 +127,7 @@ bassSectionOne = {
   }
 }
 
-bassSectionTwo = {
+bassSectionTwo = \relative c {
   \repeat volta 2 { \bassBBody }
   \alternative {
     { r2. f4 | }
@@ -167,7 +167,10 @@ hornBridge = {
   \repeat volta 2 { \hornFinalBody }
 }
 
-bassBridge = {
+melodyBridge = \relative c'' { \hornBridge }
+tenorBridge = \relative c'' { \hornBridge }
+
+bassBridge = \relative c {
   \repeat volta 4 { \bassBridgeBody }
   \repeat volta 2 { \bassFinalBody }
 }
@@ -275,7 +278,7 @@ bassDrumSoloSectionTwo = \drummode { \bassDrumSectionTwo }
        (sectionTwo . ,#{ \melodySectionTwo #})
        (soloSectionOne . ,#{ \melodySoloSectionOne #})
        (soloSectionTwo . ,#{ \melodySoloSectionTwo #})
-       (bridge . ,#{ \hornBridge #})))
+       (bridge . ,#{ \melodyBridge #})))
     (tenor .
       ((vampOne . ,#{ \tenorVampOne #})
        (vampTwo . ,#{ \tenorVampTwo #})
@@ -284,7 +287,7 @@ bassDrumSoloSectionTwo = \drummode { \bassDrumSectionTwo }
        (sectionTwo . ,#{ \tenorSectionTwo #})
        (soloSectionOne . ,#{ \tenorSoloSectionOne #})
        (soloSectionTwo . ,#{ \tenorSoloSectionTwo #})
-       (bridge . ,#{ \hornBridge #})))
+       (bridge . ,#{ \tenorBridge #})))
     (bass .
       ((vampOne . ,#{ \bassVampOne #})
        (vampTwo . ,#{ \bassVampTwo #})
@@ -318,13 +321,13 @@ bassDrumSoloSectionTwo = \drummode { \bassDrumSectionTwo }
 
 % Named final parts retained for pondscum's %part convention.
 %part: melody
-melody = { \relative c'' { \key f \minor #(assemble-form 'melody full-form) } }
+melody = { \key f \minor #(assemble-form 'melody full-form) }
 
 %part: tenor
-tenor = { \relative c' { \key f \minor #(assemble-form 'tenor full-form) } }
+tenor = { \key f \minor #(assemble-form 'tenor full-form) }
 
 %part: bass
-bass = { \relative c { \key f \minor #(assemble-form 'bass full-form) } }
+bass = { \key f \minor #(assemble-form 'bass full-form) }
 
 %part: bassDrum
 % Tresillo in 4/4: attacks on beat 1, the "and" of 2, and beat 4.
@@ -344,15 +347,15 @@ lyreRoadmap = {
 }
 
 melodyLyre = {
-  \relative c'' { \key f \minor #(assemble-form 'melody lyre-form) }
+  \key f \minor #(assemble-form 'melody lyre-form)
 }
 
 tenorLyre = {
-  \relative c' { \key f \minor #(assemble-form 'tenor lyre-form) }
+  \key f \minor #(assemble-form 'tenor lyre-form)
 }
 
 bassLyre = {
-  \relative c { \key f \minor #(assemble-form 'bass lyre-form) }
+  \key f \minor #(assemble-form 'bass lyre-form)
 }
 
 bassDrumLyre = \drummode {
