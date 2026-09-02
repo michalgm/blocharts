@@ -229,147 +229,106 @@ roadmap = {
   \silentSectionOne
 }
 
-% music pieces
+% Named fragments used by the form assembler.
+melodyVampOne = { R1*8 }
+melodyVampTwo = { R1*8 }
+melodyVampThree = { R1*16 }
+melodySoloSectionOne = { \silentSectionOne }
+melodySoloSectionTwo = { s1*0\p \melodySectionTwo s1*0\mf }
+
+tenorVampOne = { R1*8 }
+tenorVampTwo = { R1*8 }
+tenorVampThree = { \repeat unfold 2 { \tenorAFirstPass } }
+tenorSoloSectionOne = { \silentSectionOne }
+tenorSoloSectionTwo = { s1*0\p \tenorSectionTwo s1*0\mf }
+
+bassVampOne = { \bassAFirstPass }
+bassVampTwo = { \bassAFirstPass }
+bassVampThree = { \repeat unfold 2 { \bassAFirstPass } }
+bassSoloSectionOne = { \bassSectionOne }
+bassSoloSectionTwo = { \bassSectionTwo }
+
+bassDrumVampOne = \drummode { \repeat unfold 8 { r1 | } }
+bassDrumVampTwo = \drummode { \repeat unfold 8 { \tresillo } }
+bassDrumVampThree = \drummode { \repeat unfold 16 { \tresillo } }
+bassDrumSoloSectionOne = \drummode { \bassDrumSectionOne }
+bassDrumSoloSectionTwo = \drummode { \bassDrumSectionTwo }
+
+% The form is data: each instrument supplies music for each named section.
+#(define full-form
+  '(vampOne vampTwo vampThree
+    sectionOne sectionTwo
+    vampThree
+    sectionOne sectionTwo
+    soloSectionOne soloSectionOne soloSectionTwo
+    bridge
+    sectionOne sectionTwo))
+
+#(define lyre-form '(sectionOne sectionTwo bridge))
+
+#(define instrument-sections
+  `((melody .
+      ((vampOne . ,#{ \melodyVampOne #})
+       (vampTwo . ,#{ \melodyVampTwo #})
+       (vampThree . ,#{ \melodyVampThree #})
+       (sectionOne . ,#{ \melodySectionOne #})
+       (sectionTwo . ,#{ \melodySectionTwo #})
+       (soloSectionOne . ,#{ \melodySoloSectionOne #})
+       (soloSectionTwo . ,#{ \melodySoloSectionTwo #})
+       (bridge . ,#{ \hornBridge #})))
+    (tenor .
+      ((vampOne . ,#{ \tenorVampOne #})
+       (vampTwo . ,#{ \tenorVampTwo #})
+       (vampThree . ,#{ \tenorVampThree #})
+       (sectionOne . ,#{ \tenorSectionOne #})
+       (sectionTwo . ,#{ \tenorSectionTwo #})
+       (soloSectionOne . ,#{ \tenorSoloSectionOne #})
+       (soloSectionTwo . ,#{ \tenorSoloSectionTwo #})
+       (bridge . ,#{ \hornBridge #})))
+    (bass .
+      ((vampOne . ,#{ \bassVampOne #})
+       (vampTwo . ,#{ \bassVampTwo #})
+       (vampThree . ,#{ \bassVampThree #})
+       (sectionOne . ,#{ \bassSectionOne #})
+       (sectionTwo . ,#{ \bassSectionTwo #})
+       (soloSectionOne . ,#{ \bassSoloSectionOne #})
+       (soloSectionTwo . ,#{ \bassSoloSectionTwo #})
+       (bridge . ,#{ \bassBridge #})))
+    (bassDrum .
+      ((vampOne . ,#{ \bassDrumVampOne #})
+       (vampTwo . ,#{ \bassDrumVampTwo #})
+       (vampThree . ,#{ \bassDrumVampThree #})
+       (sectionOne . ,#{ \bassDrumSectionOne #})
+       (sectionTwo . ,#{ \bassDrumSectionTwo #})
+       (soloSectionOne . ,#{ \bassDrumSoloSectionOne #})
+       (soloSectionTwo . ,#{ \bassDrumSoloSectionTwo #})
+       (bridge . ,#{ \bassDrumBridge #})))))
+
+#(define (instrument-section instrument section)
+  (let* ((instrument-entry (assq instrument instrument-sections))
+         (section-entry
+          (and instrument-entry (assq section (cdr instrument-entry)))))
+    (if section-entry
+        (ly:music-deep-copy (cdr section-entry))
+        (ly:error "No music for ~a.~a" instrument section))))
+
+#(define (assemble-form instrument form)
+  (make-sequential-music
+   (map (lambda (section) (instrument-section instrument section)) form)))
+
+% Named final parts retained for pondscum's %part convention.
 %part: melody
-melody = {
-  \relative c'' {
-    \key f \minor
-
-    % Opening vamps: bass; bass and drums; bass, drums, and tenor
-    R1*8
-    R1*8
-    R1*16
-
-    % Sections 1 and 2
-    \melodySectionOne
-    \melodySectionTwo
-
-    % Bass, drums, and tenor vamp; melody tacet
-    R1*16
-
-    % Sections 1 and 2, full-energy pass
-    \melodySectionOne
-    \melodySectionTwo
-
-    % Solo form: section 1 twice, then section 2
-    \repeat unfold 2 { \silentSectionOne }
-    s1*0\p
-    \melodySectionTwo
-    s1*0\mf
-
-    % The complete 32-bar bridge
-    \hornBridge
-
-    % Head: sections 1 and 2
-    \melodySectionOne
-    \melodySectionTwo
-  }
-}
+melody = { \relative c'' { \key f \minor #(assemble-form 'melody full-form) } }
 
 %part: tenor
-tenor = {
-  \relative c' {
-    \key f \minor
-
-    % Opening vamps 1 and 2: bass; bass and drums
-    R1*16
-
-    % Opening vamp 3: bass, drums, and tenor
-    \repeat unfold 2 { \tenorAFirstPass }
-
-    % Sections 1 and 2
-    \tenorSectionOne
-    \tenorSectionTwo
-
-    % Bass, drums, and tenor vamp
-    \repeat unfold 2 { \tenorAFirstPass }
-
-    % Sections 1 and 2, full-energy pass
-    \tenorSectionOne
-    \tenorSectionTwo
-
-    % Solo section 1: soloist plays; tenor tacet
-    \repeat unfold 2 { \silentSectionOne }
-
-    % Solo section 2: play softly unless tenor is the active soloist
-    s1*0\p
-    \tenorSectionTwo
-    s1*0\mf
-
-    % Bridge, then the head
-    \hornBridge
-    \tenorSectionOne
-    \tenorSectionTwo
-  }
-}
-
-
+tenor = { \relative c' { \key f \minor #(assemble-form 'tenor full-form) } }
 
 %part: bass
-bass = {
-  \relative c {
-    \key f \minor
-
-    % Opening vamp 1: bass alone
-    \bassAFirstPass
-
-    % Opening vamp 2: bass and drums
-    \bassAFirstPass
-
-    % Opening vamp 3: bass, drums, and tenor
-    \repeat unfold 2 { \bassAFirstPass }
-
-    % Sections 1 and 2
-    \bassSectionOne
-    \bassSectionTwo
-
-    % Bass, drums, and tenor vamp
-    \repeat unfold 2 { \bassAFirstPass }
-
-    % Sections 1 and 2, full-energy pass
-    \bassSectionOne
-    \bassSectionTwo
-
-    % Solo form: section 1 twice, then section 2
-    \repeat unfold 2 { \bassSectionOne }
-    \bassSectionTwo
-
-    % Bridge, then the head
-    \bassBridge
-    \bassSectionOne
-    \bassSectionTwo
-  }
-}
+bass = { \relative c { \key f \minor #(assemble-form 'bass full-form) } }
 
 %part: bassDrum
 % Tresillo in 4/4: attacks on beat 1, the "and" of 2, and beat 4.
-bassDrum = \drummode {
-  % Opening vamp 1: bass alone
-  \repeat unfold 8 { r1 | }
-
-  % Opening vamps 2 and 3: bass and drums; bass, drums, and tenor
-  \repeat unfold 24 { \tresillo }
-
-  % Sections 1 and 2
-  \bassDrumSectionOne
-  \bassDrumSectionTwo
-
-  % Bass, drums, and tenor vamp
-  \repeat unfold 16 { \tresillo }
-
-  % Sections 1 and 2, full-energy pass
-  \bassDrumSectionOne
-  \bassDrumSectionTwo
-
-  % Solo form: section 1 twice, then section 2
-  \repeat unfold 2 { \bassDrumSectionOne }
-  \bassDrumSectionTwo
-
-  % Bridge, then the head
-  \bassDrumBridge
-  \bassDrumSectionOne
-  \bassDrumSectionTwo
-}
+bassDrum = \drummode { #(assemble-form 'bassDrum full-form) }
 
 % Compact music and roadmap for single-page lyre charts. The complete playing
 % order is printed from performanceForm; only reusable sections appear here.
@@ -385,36 +344,19 @@ lyreRoadmap = {
 }
 
 melodyLyre = {
-  \relative c'' {
-    \key f \minor
-    \melodySectionOne
-    \melodySectionTwo
-    \hornBridge
-  }
+  \relative c'' { \key f \minor #(assemble-form 'melody lyre-form) }
 }
 
 tenorLyre = {
-  \relative c' {
-    \key f \minor
-    \tenorSectionOne
-    \tenorSectionTwo
-    \hornBridge
-  }
+  \relative c' { \key f \minor #(assemble-form 'tenor lyre-form) }
 }
 
 bassLyre = {
-  \relative c {
-    \key f \minor
-    \bassSectionOne
-    \bassSectionTwo
-    \bassBridge
-  }
+  \relative c { \key f \minor #(assemble-form 'bass lyre-form) }
 }
 
 bassDrumLyre = \drummode {
-  \bassDrumSectionOne
-  \bassDrumSectionTwo
-  \bassDrumBridge
+  #(assemble-form 'bassDrum lyre-form)
 }
 
 %%Generated layout
