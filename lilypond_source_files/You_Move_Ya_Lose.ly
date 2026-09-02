@@ -1,10 +1,12 @@
 \version "2.12.3"
 
+performanceForm = "Vamp, 1&2, Vamp, 1&2, Solos, Bridge, 1&2"
+
 \header { 
 	tagline = "9/1/2026"
   title = "You Move Ya Lose"
   composer = "Rebirth Brass Band"
-  copyright = \markup {\bold { "Default Form:" }  "Vamp, 1&2, Vamp, 1&2, Solos, Bridge, 1&2"}
+  copyright = \markup { \bold { "Default Form:" } \performanceForm }
 }
 %description:<a href="http://en.wikipedia.org/wiki/Second_line_%28parades%29">New Orleans Second Line</a> song by <a href="http://www.rebirthbrassband.com">Rebirth Brass Band</a>, from their 1994 album <a href="http://www.amazon.com/Rollin-ReBirth-Brass-Band/dp/B00000030K">Rollin</a>.
 
@@ -175,6 +177,11 @@ bassDrumBridge = \drummode {
   \repeat volta 2 { \repeat unfold 8 { \tresillo } }
 }
 
+silentBridge = {
+  \repeat volta 4 { s1*4 }
+  \repeat volta 2 { s1*8 }
+}
+
 % Score-wide section labels and layout breaks. Pondscum includes this once in
 % the full score and alongside the music in each extracted part.
 roadmap = {
@@ -212,8 +219,7 @@ roadmap = {
   \break
 
   \mark \markup \box \bold "Bridge"
-  \repeat volta 4 { s1*4 }
-  \repeat volta 2 { s1*8 }
+  \silentBridge
   \break
 
   \mark \markup \box \bold "1"
@@ -363,6 +369,52 @@ bassDrum = \drummode {
   \bassDrumBridge
   \bassDrumSectionOne
   \bassDrumSectionTwo
+}
+
+% Compact music and roadmap for single-page lyre charts. The complete playing
+% order is printed from performanceForm; only reusable sections appear here.
+lyreRoadmap = {
+  \mark \markup \box \bold "1"
+  \silentSectionOne
+  \break
+  \mark \markup \box \bold "2"
+  \silentSectionOne
+  \break
+  \mark \markup \box \bold "Bridge"
+  \silentBridge
+}
+
+melodyLyre = {
+  \relative c'' {
+    \key f \minor
+    \melodySectionOne
+    \melodySectionTwo
+    \hornBridge
+  }
+}
+
+tenorLyre = {
+  \relative c' {
+    \key f \minor
+    \tenorSectionOne
+    \tenorSectionTwo
+    \hornBridge
+  }
+}
+
+bassLyre = {
+  \relative c {
+    \key f \minor
+    \bassSectionOne
+    \bassSectionTwo
+    \bassBridge
+  }
+}
+
+bassDrumLyre = \drummode {
+  \bassDrumSectionOne
+  \bassDrumSectionTwo
+  \bassDrumBridge
 }
 
 %%Generated layout
