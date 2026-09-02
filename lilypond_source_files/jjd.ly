@@ -13,14 +13,14 @@ markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begi
 
 
 % Reusable melody sections
-melodySectionOne = {
+melodySectionOne = \relative c' {
 	\repeat volta 2 {
 		ces'16 bes aes bes~ bes2~ bes8 f | aes aes r4 c8 ees c ees |
 		c8 bes16 aes f8 ees~ ees4~ ees8 f | aes aes r4 ees8 f aes bes |
 	}
 }
 
-melodySectionTwo = {
+melodySectionTwo = \relative c'' {
 	\repeat volta 2 {
 		<<
 			{ ees8 [r16 ees] r8 f r2 | c8 [r16 c] r8 ees r2 | bes8 [r16 bes] r8 c r4 aes8 f~ | }
@@ -47,7 +47,7 @@ melodySectionTwo = {
 	}
 }
 
-melodySectionThree = {
+melodySectionThree = \relative c'' {
 	\repeat volta 2 {
 		<aes c>8 r r2. | r2. r8 <bes d> |
 		<aes c>8 r r2. | r2. r8 <bes d> |
@@ -56,8 +56,8 @@ melodySectionThree = {
 
 % The guitar plays the same two-bar riff throughout. Section 2 needs a small
 % wrapper so its identical final bar appears under both written endings.
-guitarFirstBar = { f8. aes16~ aes8 c, ees-. ees-. ees4-. | }
-guitarSecondBar = { f8. aes16~ aes8 ees f-. f-. f4-. | }
+guitarFirstBar = \relative c' { f8. aes16~ aes8 c, ees-. ees-. ees4-. | }
+guitarSecondBar = \relative c' { f8. aes16~ aes8 ees f-. f-. f4-. | }
 guitarRiff = { \repeat unfold 2 { \guitarFirstBar \guitarSecondBar } }
 
 guitarSection = { \repeat volta 2 { \guitarRiff } }
@@ -74,15 +74,19 @@ guitarSectionWithEndings = {
 	}
 }
 
+guitarSoloHead = { \repeat volta 4 { \guitarRiff } }
+
 % Reusable bass sections
-bassSection = {
-	\repeat volta 2 {
-		f8 f f aes r4. ees8 | f f f r c' bes aes bes |
-		f8 f f aes r4. ees8 | f f f r ees' d bes aes |
-	}
+bassRiff = \relative c, {
+	f8 f f aes r4. ees8 | f f f r c' bes aes bes |
+	f8 f f aes r4. ees8 | f f f r ees' d bes aes |
 }
 
-bassSectionTwo = {
+bassSection = {
+	\repeat volta 2 { \bassRiff }
+}
+
+bassSectionTwo = \relative c, {
 	\repeat volta 2 {
 		f1 | g | aes |
 	}
@@ -91,6 +95,20 @@ bassSectionTwo = {
 		{ bes | }
 	}
 }
+
+bassSoloHead = { \repeat volta 4 { \bassRiff } }
+
+% Silent counterparts preserve each section's repeat structure when an
+% instrument is tacet.
+silentRepeatedSection = { \repeat volta 2 { R1*4 } }
+silentSectionWithEndings = {
+	\repeat volta 2 { R1*3 }
+	\alternative {
+		{ R1 }
+		{ R1 }
+	}
+}
+silentSoloHead = { \repeat volta 4 { R1*4 } }
 
 % Score-wide section labels and layout breaks. Pondscum includes this once in
 % the full score and alongside the music in each extracted part.
@@ -102,36 +120,101 @@ roadmapSectionTwo = {
 		{ s1 }
 	}
 }
+roadmapSoloHead = { \repeat volta 4 { s1*4 } }
 
 roadmap = {
-	\mark \default
+	\mark \markup { \box \bold "A" \italic "Tenor only" }
 	\roadmapRepeatedSection
 	\break
-	\mark \default
+	\mark \markup { \box \bold "B" \italic "Bass + Tenor" }
+	\roadmapRepeatedSection
+	\break
+	\mark \markup { \box \bold "C" \italic "Drums + Bass + Tenor" }
+	\roadmapRepeatedSection
+	\break
+	\mark \markup { \box \bold "D" \italic "Head" }
+	\roadmapRepeatedSection
+	\break
+	\mark \markup { \box \bold "E" \italic "Bridge" }
 	\roadmapSectionTwo
 	\break
-	\mark \default
+	\mark \markup { \box \bold "F" \italic "Hits" }
+	\roadmapRepeatedSection
+	\break
+	\mark \markup { \box \bold "G" \italic "Head" }
+	\roadmapRepeatedSection
+	\break
+	\mark \markup { \box \bold "H" \italic "Bridge" }
+	\roadmapSectionTwo
+	\break
+	\mark \markup { \box \bold "I" \italic "Solo 1 over Head - 16 bars" }
+	\roadmapSoloHead
+	\break
+	\mark \markup { \box \bold "J" \italic "Solo 1 over Bridge" }
+	\roadmapSectionTwo
+	\break
+	\mark \markup { \box \bold "K" \italic "Solo 2 over Head - 16 bars" }
+	\roadmapSoloHead
+	\break
+	\mark \markup { \box \bold "L" \italic "Solo 2 over Bridge" }
+	\roadmapSectionTwo
+	\break
+	\mark \markup { \box \bold "M" \italic "Head" }
+	\roadmapRepeatedSection
+	\break
+	\mark \markup { \box \bold "N" \italic "Bridge" }
+	\roadmapSectionTwo
+}
+
+lyreRoadmap = {
+	\mark \markup \box \bold "1"
+	\roadmapRepeatedSection
+	\break
+	\mark \markup \box \bold "2"
+	\roadmapSectionTwo
+	\break
+	\mark \markup \box \bold "3"
 	\roadmapRepeatedSection
 }
 
-% Until the performance form is defined, the full chart and compact lyre chart
-% both use the three sections currently present in the source.
-#(define full-form '(sectionOne sectionTwo sectionThree))
+% The full arrangement and compact lyre chart have independent forms.
+#(define full-form
+	'(tenorVamp bassTenorVamp drumsBassTenorVamp
+	  sectionOne sectionTwo sectionThree
+	  sectionOne sectionTwo
+	  soloHead soloBridge
+	  soloHead soloBridge
+	  sectionOne sectionTwo))
 #(define lyre-form '(sectionOne sectionTwo sectionThree))
 
 #(define instrument-sections
 	`((melody .
-		((sectionOne . ,#{ \melodySectionOne #})
+		((tenorVamp . ,#{ \silentRepeatedSection #})
+		 (bassTenorVamp . ,#{ \silentRepeatedSection #})
+		 (drumsBassTenorVamp . ,#{ \silentRepeatedSection #})
+		 (sectionOne . ,#{ \melodySectionOne #})
 		 (sectionTwo . ,#{ \melodySectionTwo #})
-		 (sectionThree . ,#{ \melodySectionThree #})))
+		 (sectionThree . ,#{ \melodySectionThree #})
+		 (soloHead . ,#{ \silentSoloHead #})
+		 (soloBridge . ,#{ \silentSectionWithEndings #})))
 	  (guitar .
-		((sectionOne . ,#{ \guitarSection #})
+		((tenorVamp . ,#{ \guitarSection #})
+		 (bassTenorVamp . ,#{ \guitarSection #})
+		 (drumsBassTenorVamp . ,#{ \guitarSection #})
+		 (sectionOne . ,#{ \guitarSection #})
 		 (sectionTwo . ,#{ \guitarSectionWithEndings #})
-		 (sectionThree . ,#{ \guitarSection #})))
+		 (sectionThree . ,#{ \guitarSection #})
+		 (soloHead . ,#{ \guitarSoloHead #})
+		 (soloBridge . ,#{ \guitarSectionWithEndings #})))
 	  (bass .
-		((sectionOne . ,#{ \bassSection #})
+		((tenorVamp . ,#{ \silentRepeatedSection #})
+		 (bassTenorVamp . ,#{ \bassSection #})
+		 (drumsBassTenorVamp . ,#{ \bassSection #})
+		 (sectionOne . ,#{ \bassSection #})
 		 (sectionTwo . ,#{ \bassSectionTwo #})
-		 (sectionThree . ,#{ \bassSection #})))))
+		 (sectionThree . ,#{ \bassSection #})
+		 (soloHead . ,#{ \bassSoloHead #})
+		 (soloBridge . ,#{ \bassSectionTwo #})))))
 
 #(define (instrument-section instrument section)
 	(let* ((instrument-entry (assq instrument instrument-sections))
@@ -147,21 +230,17 @@ roadmap = {
 
 % Named final parts retained for pondscum's %part convention.
 %part: melody
-melody = { \relative c' { \key f \minor #(assemble-form 'melody full-form) } }
+melody = { \key f \minor #(assemble-form 'melody full-form) }
 
 %part: guitar
-guitar = { \relative c' { \key f \minor #(assemble-form 'guitar full-form) } }
+guitar = { \key f \minor #(assemble-form 'guitar full-form) }
 
 %part: bass
-bass = { \relative c, { \key f \minor #(assemble-form 'bass full-form) } }
+bass = { \key f \minor #(assemble-form 'bass full-form) }
 
-% The compact lyre chart uses the same sections for now. These variables let
-% its form diverge from the full arrangement later without duplicating notes.
-lyreRoadmap = { \roadmap }
-
-melodyLyre = { \relative c' { \key f \minor #(assemble-form 'melody lyre-form) } }
-guitarLyre = { \relative c' { \key f \minor #(assemble-form 'guitar lyre-form) } }
-bassLyre = { \relative c, { \key f \minor #(assemble-form 'bass lyre-form) } }
+melodyLyre = { \key f \minor #(assemble-form 'melody lyre-form) }
+guitarLyre = { \key f \minor #(assemble-form 'guitar lyre-form) }
+bassLyre = { \key f \minor #(assemble-form 'bass lyre-form) }
 
 %part: words
 words = \markup { }
