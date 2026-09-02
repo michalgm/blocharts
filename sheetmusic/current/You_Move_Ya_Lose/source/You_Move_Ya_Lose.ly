@@ -267,43 +267,53 @@ bassDrumSoloSectionTwo = \drummode { \bassDrumSectionTwo }
 
 #(define lyre-form '(sectionOne sectionTwo bridge))
 
+#(define section-order
+  '(vampOne vampTwo vampThree sectionOne sectionTwo
+    soloSectionOne soloSectionTwo bridge))
+
+#(define (make-section-map . music)
+  (if (= (length section-order) (length music))
+      (map cons section-order music)
+      (ly:error "Expected ~a instrument sections, got ~a"
+                (length section-order) (length music))))
+
 #(define instrument-sections
-  `((melody .
-      ((vampOne . ,#{ \melodyVampOne #})
-       (vampTwo . ,#{ \melodyVampTwo #})
-       (vampThree . ,#{ \melodyVampThree #})
-       (sectionOne . ,#{ \melodySectionOne #})
-       (sectionTwo . ,#{ \melodySectionTwo #})
-       (soloSectionOne . ,#{ \melodySoloSectionOne #})
-       (soloSectionTwo . ,#{ \melodySoloSectionTwo #})
-       (bridge . ,#{ \hornBridge #})))
-    (tenor .
-      ((vampOne . ,#{ \tenorVampOne #})
-       (vampTwo . ,#{ \tenorVampTwo #})
-       (vampThree . ,#{ \tenorVampThree #})
-       (sectionOne . ,#{ \tenorSectionOne #})
-       (sectionTwo . ,#{ \tenorSectionTwo #})
-       (soloSectionOne . ,#{ \tenorSoloSectionOne #})
-       (soloSectionTwo . ,#{ \tenorSoloSectionTwo #})
-       (bridge . ,#{ \hornBridge #})))
-    (bass .
-      ((vampOne . ,#{ \bassVampOne #})
-       (vampTwo . ,#{ \bassVampTwo #})
-       (vampThree . ,#{ \bassVampThree #})
-       (sectionOne . ,#{ \bassSectionOne #})
-       (sectionTwo . ,#{ \bassSectionTwo #})
-       (soloSectionOne . ,#{ \bassSoloSectionOne #})
-       (soloSectionTwo . ,#{ \bassSoloSectionTwo #})
-       (bridge . ,#{ \bassBridge #})))
-    (bassDrum .
-      ((vampOne . ,#{ \bassDrumVampOne #})
-       (vampTwo . ,#{ \bassDrumVampTwo #})
-       (vampThree . ,#{ \bassDrumVampThree #})
-       (sectionOne . ,#{ \bassDrumSectionOne #})
-       (sectionTwo . ,#{ \bassDrumSectionTwo #})
-       (soloSectionOne . ,#{ \bassDrumSoloSectionOne #})
-       (soloSectionTwo . ,#{ \bassDrumSoloSectionTwo #})
-       (bridge . ,#{ \bassDrumBridge #})))))
+  `((melody . ,(make-section-map
+                 #{ \melodyVampOne #}
+                 #{ \melodyVampTwo #}
+                 #{ \melodyVampThree #}
+                 #{ \melodySectionOne #}
+                 #{ \melodySectionTwo #}
+                 #{ \melodySoloSectionOne #}
+                 #{ \melodySoloSectionTwo #}
+                 #{ \hornBridge #}))
+    (tenor . ,(make-section-map
+                #{ \tenorVampOne #}
+                #{ \tenorVampTwo #}
+                #{ \tenorVampThree #}
+                #{ \tenorSectionOne #}
+                #{ \tenorSectionTwo #}
+                #{ \tenorSoloSectionOne #}
+                #{ \tenorSoloSectionTwo #}
+                #{ \hornBridge #}))
+    (bass . ,(make-section-map
+               #{ \bassVampOne #}
+               #{ \bassVampTwo #}
+               #{ \bassVampThree #}
+               #{ \bassSectionOne #}
+               #{ \bassSectionTwo #}
+               #{ \bassSoloSectionOne #}
+               #{ \bassSoloSectionTwo #}
+               #{ \bassBridge #}))
+    (bassDrum . ,(make-section-map
+                   #{ \bassDrumVampOne #}
+                   #{ \bassDrumVampTwo #}
+                   #{ \bassDrumVampThree #}
+                   #{ \bassDrumSectionOne #}
+                   #{ \bassDrumSectionTwo #}
+                   #{ \bassDrumSoloSectionOne #}
+                   #{ \bassDrumSoloSectionTwo #}
+                   #{ \bassDrumBridge #}))))
 
 #(define (instrument-section instrument section)
   (let* ((instrument-entry (assq instrument instrument-sections))
