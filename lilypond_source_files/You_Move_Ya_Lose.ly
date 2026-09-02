@@ -1,8 +1,7 @@
 \version "2.12.3"
 
 \header { 
-	tagline = "9/2/2026" 
-
+	tagline = "9/1/2026"
   title = "You Move Ya Lose"
   composer = "Rebirth Brass Band"
   copyright = \markup {\bold { "Default Form:" }  "Vamp, 1&2, Vamp, 1&2, Solos, Bridge, 1&2"}
@@ -390,34 +389,48 @@ naturalizeMusic =
 #(set-default-paper-size "letter")
 \pointAndClickOff
 
-\book {
-	\score { <<
+% Shared staff assembly for both printed notation and MIDI output
+scoreMusic = <<
 			\set Score.rehearsalMarkFormatter = #format-mark-box-numbers
 
 			
 		% Group: Melody
 		\new Staff \with { \consists "Volta_engraver" instrumentName = "Melody" } {  \set Staff.midiInstrument = #"trumpet" \clef treble
-			\tempo    4 = 200
+			\tempo   4 = 200
 			\override Score.RehearsalMark.self-alignment-X = #LEFT
 			\melody
 		}
 		% Group: Tenor
 		\new Staff \with { \consists "Volta_engraver" instrumentName = "Tenor" } {  \set Staff.midiInstrument = #"trombone" \clef treble
-			\tempo    4 = 200
+			\tempo   4 = 200
 			\override Score.RehearsalMark.self-alignment-X = #LEFT
 			\tenor
 		}
 		% Group: Bass
 		\new Staff \with { \consists "Volta_engraver" instrumentName = "Bass" } {  \set Staff.midiInstrument = #"tuba" \clef bass
-			\tempo    4 = 200
+			\tempo   4 = 200
 			\override Score.RehearsalMark.self-alignment-X = #LEFT
 			\bass
 		}
-		% Group: BassDrum
-		\new DrumStaff \with { \consists "Volta_engraver" instrumentName = "BassDrum" } {
-			\tempo    4 = 200
-			\override Score.RehearsalMark.self-alignment-X = #LEFT
+		% Group: Bass Drum
+		\new DrumStaff \with {
+			\consists "Volta_engraver"
+			instrumentName = "Bass Drum"
+			shortInstrumentName = "B.D."
+		} {
 			\bassDrum
 		}
-	>> \layout { \context { \Score \remove "Volta_engraver" } } }  
+	>>
+
+\book {
+	% Printed score
+	\score {
+		\scoreMusic
+		\layout { \context { \Score \remove "Volta_engraver" } }
+	}
+	% MIDI performance with all written repeats and alternatives played
+	\score {
+		\unfoldRepeats { \scoreMusic }
+		\midi { }
+	}
 }
