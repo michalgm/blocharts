@@ -28,10 +28,6 @@ git submodule update --init --recursive
 ./generate_from_lilypond sheetmusic/current/ lilypond_source_files/roma-rama.ly 
 ```
 
-The batch generator reads `pondscum/generate_charts/default_config.json`. It can
-enable or disable the score, MIDI, and source outputs, and can include or exclude
-parts by name. A `"*": true` entry enables any part not listed explicitly.
-
 ### Updating charts on the BLO website
 Make sure you have committed and pushed any changes in the sheetmusic directory
 (NOTE this requires you have a config for 'blo' in your ssh config)
