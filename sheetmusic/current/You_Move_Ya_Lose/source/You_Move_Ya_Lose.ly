@@ -396,19 +396,19 @@ naturalizeMusic =
 
 			
 		% Group: Melody
-		\new Staff \with { \consists "Volta_engraver" instrumentName = "Melody" } {  \set Staff.midiInstrument = #"trumpet" \clef treble
+		\new Staff \with { \consists "Volta_engraver" instrumentName = "Melody" } { \set Staff.midiInstrument = #"trumpet" \clef treble
 			\tempo    4 = 200
 			\override Score.RehearsalMark.self-alignment-X = #LEFT
 			\melody
 		}
 		% Group: Tenor
-		\new Staff \with { \consists "Volta_engraver" instrumentName = "Tenor" } {  \set Staff.midiInstrument = #"trombone" \clef treble
+		\new Staff \with { \consists "Volta_engraver" instrumentName = "Tenor" } { \set Staff.midiInstrument = #"trombone" \clef treble
 			\tempo    4 = 200
 			\override Score.RehearsalMark.self-alignment-X = #LEFT
 			\tenor
 		}
 		% Group: Bass
-		\new Staff \with { \consists "Volta_engraver" instrumentName = "Bass" } {  \set Staff.midiInstrument = #"tuba" \clef bass
+		\new Staff \with { \consists "Volta_engraver" instrumentName = "Bass" } { \set Staff.midiInstrument = #"tuba" \clef bass
 			\tempo    4 = 200
 			\override Score.RehearsalMark.self-alignment-X = #LEFT
 			\bass
