@@ -176,6 +176,54 @@ bassDrumBridge = \drummode {
   \repeat volta 2 { \repeat unfold 8 { \tresillo } }
 }
 
+% Score-wide section labels and layout breaks. Pondscum includes this once in
+% the full score and alongside the music in each extracted part.
+roadmap = {
+  \mark \markup \box \bold "Vamp"
+  s1*8
+  \break
+  s1*8
+  \break
+  s1*16
+  \break
+
+  \mark \markup \box \bold "1"
+  \silentSectionOne
+  \break
+  \mark \markup \box \bold "2"
+  \silentSectionOne
+  \break
+
+  \mark \markup \box \bold "BD&T Vamp"
+  s1*16
+  \break
+
+  \mark \markup \column { \box \bold "1" \italic "Go crazy — make it fun!" }
+  \silentSectionOne
+  \break
+  \mark \markup \column { \box \bold "2" \italic "Go crazy — make it fun!" }
+  \silentSectionOne
+  \break
+
+  \mark \markup \column { \box \bold "Solos" \italic "Soloist plays; melody and tenor tacet" }
+  \repeat unfold 2 { \silentSectionOne }
+  \break
+  \mark \markup \italic "Section 2: melody and tenor play softly; active soloist continues"
+  \silentSectionOne
+  \break
+
+  \mark \markup \box \bold "Bridge"
+  \repeat volta 4 { s1*4 }
+  \repeat volta 2 { s1*8 }
+  \break
+
+  \mark \markup \box \bold "1"
+  \silentSectionOne
+  \break
+  \mark \markup \box \bold "2"
+  \silentSectionOne
+}
+
 % music pieces
 %part: melody
 melody = {
@@ -183,55 +231,32 @@ melody = {
     \key f \minor
 
     % Opening vamps: bass; bass and drums; bass, drums, and tenor
-    \mark \markup \box \bold "Vamp"
     R1*8
-    \break
     R1*8
-    \break
     R1*16
-    \break
 
     % Sections 1 and 2
-    \mark \markup \box \bold "1"
     \melodySectionOne
-    \break
-    \mark \markup \box \bold "2"
     \melodySectionTwo
 
     % Bass, drums, and tenor vamp; melody tacet
-    \break
-    \mark \markup \box \bold "BD&T Vamp"
     R1*16
 
     % Sections 1 and 2, full-energy pass
-    \break
-    \mark \markup \column { \box \bold "1" \italic "Go crazy — make it fun!" }
     \melodySectionOne
-    \break
-    \mark \markup \column { \box \bold "2" \italic "Go crazy — make it fun!" }
     \melodySectionTwo
 
     % Solo form: section 1 twice, then section 2
-    \break
-    \mark \markup \column { \box \bold "Solos" \italic "Soloist plays; melody and tenor tacet" }
     \repeat unfold 2 { \silentSectionOne }
-    \break
-    \mark \markup \italic "Section 2: melody and tenor play softly; active soloist continues"
     s1*0\p
     \melodySectionTwo
     s1*0\mf
 
     % The complete 32-bar bridge
-    \break
-    \mark \markup \box \bold "Bridge"
     \hornBridge
 
     % Head: sections 1 and 2
-    \break
-    \mark \markup \box \bold "1"
     \melodySectionOne
-    \break
-    \mark \markup \box \bold "2"
     \melodySectionTwo
   }
 }
@@ -399,7 +424,7 @@ naturalizeMusic =
 		\new Staff \with { \consists "Volta_engraver" instrumentName = "Melody" } { \set Staff.midiInstrument = #"trumpet" \clef treble
 			\tempo    4 = 200
 			\override Score.RehearsalMark.self-alignment-X = #LEFT
-			\melody
+			<< \roadmap { \melody } >>
 		}
 		% Group: Tenor
 		\new Staff \with { \consists "Volta_engraver" instrumentName = "Tenor" } { \set Staff.midiInstrument = #"trombone" \clef treble
