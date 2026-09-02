@@ -204,17 +204,17 @@ roadmap = {
   s1*16
   \break
 
-  \mark \markup \column { \box \bold "1" \italic "Go crazy — make it fun!" }
+  \mark \markup \box \bold "1"
   \silentSectionOne
   \break
-  \mark \markup \column { \box \bold "2" \italic "Go crazy — make it fun!" }
+  \mark \markup \box \bold "2"
   \silentSectionOne
   \break
 
-  \mark \markup \column { \box \bold "Solos" \italic "Soloist plays; melody and tenor tacet" }
+  \mark \markup \box \bold "Solos"
   \repeat unfold 2 { \silentSectionOne }
   \break
-  \mark \markup \italic "Section 2: melody and tenor play softly; active soloist continues"
+  \mark \markup \box \bold "2"
   \silentSectionOne
   \break
 
