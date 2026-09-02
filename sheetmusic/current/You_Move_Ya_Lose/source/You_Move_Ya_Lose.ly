@@ -201,7 +201,7 @@ roadmap = {
   \silentSectionOne
   \break
 
-  \mark \markup \box \bold "BD&T Vamp"
+  \mark \markup \box \bold "Vamp"
   s1*16
   \break
 
