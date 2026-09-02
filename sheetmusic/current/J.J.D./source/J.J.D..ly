@@ -55,34 +55,28 @@ melodySectionThree = {
 	}
 }
 
-% Reusable guitar sections
-guitarSectionOne = {
-	\repeat volta 2 {
-		f8. aes16~ aes8 c, ees-. ees-. ees4-. | f8. aes16~ aes8 ees f-. f-. f4-. |
-		f8. aes16~ aes8 c, ees-. ees-. ees4-. | f8. aes16~ aes8 ees f-. f-. f4-. |
-	}
-}
+% The guitar plays the same two-bar riff throughout. Section 2 needs a small
+% wrapper so its identical final bar appears under both written endings.
+guitarFirstBar = { f8. aes16~ aes8 c, ees-. ees-. ees4-. | }
+guitarSecondBar = { f8. aes16~ aes8 ees f-. f-. f4-. | }
+guitarRiff = { \repeat unfold 2 { \guitarFirstBar \guitarSecondBar } }
 
-guitarSectionTwo = {
+guitarSection = { \repeat volta 2 { \guitarRiff } }
+
+guitarSectionWithEndings = {
 	\repeat volta 2 {
-		f8. aes16~ aes8 c, ees-. ees-. ees4-. | f8. aes16~ aes8 ees f-. f-. f4-. |
-		f8. aes16~ aes8 c, ees-. ees-. ees4-. |
+		\guitarFirstBar
+		\guitarSecondBar
+		\guitarFirstBar
 	}
 	\alternative {
-		{ f8. aes16~ aes8 ees f-. f-. f4-. | }
-		{ f8. aes16~ aes8 ees f-. f-. f4-. | }
-	}
-}
-
-guitarSectionThree = {
-	\repeat volta 2 {
-		f8. aes16~ aes8 c, ees-. ees-. ees4-. | f8. aes16~ aes8 ees f-. f-. f4-. |
-		f8. aes16~ aes8 c, ees-. ees-. ees4-. | f8. aes16~ aes8 ees f-. f-. f4-. |
+		{ \guitarSecondBar }
+		{ \guitarSecondBar }
 	}
 }
 
 % Reusable bass sections
-bassSectionOne = {
+bassSection = {
 	\repeat volta 2 {
 		f8 f f aes r4. ees8 | f f f r c' bes aes bes |
 		f8 f f aes r4. ees8 | f f f r ees' d bes aes |
@@ -99,16 +93,9 @@ bassSectionTwo = {
 	}
 }
 
-bassSectionThree = {
-	\repeat volta 2 {
-		f8 f f aes r4. ees8 | f f f r c' bes aes bes |
-		f8 f f aes r4. ees8 | f f f r ees' d bes aes |
-	}
-}
-
 % Score-wide section labels and layout breaks. Pondscum includes this once in
 % the full score and alongside the music in each extracted part.
-roadmapSectionOne = { \repeat volta 2 { s1*4 } }
+roadmapRepeatedSection = { \repeat volta 2 { s1*4 } }
 roadmapSectionTwo = {
 	\repeat volta 2 { s1*3 }
 	\alternative {
@@ -116,17 +103,16 @@ roadmapSectionTwo = {
 		{ s1 }
 	}
 }
-roadmapSectionThree = { \repeat volta 2 { s1*4 } }
 
 roadmap = {
 	\mark \default
-	\roadmapSectionOne
+	\roadmapRepeatedSection
 	\break
 	\mark \default
 	\roadmapSectionTwo
 	\break
 	\mark \default
-	\roadmapSectionThree
+	\roadmapRepeatedSection
 }
 
 % Until the performance form is defined, the full chart and compact lyre chart
@@ -140,13 +126,13 @@ roadmap = {
 		 (sectionTwo . ,#{ \melodySectionTwo #})
 		 (sectionThree . ,#{ \melodySectionThree #})))
 	  (guitar .
-		((sectionOne . ,#{ \guitarSectionOne #})
-		 (sectionTwo . ,#{ \guitarSectionTwo #})
-		 (sectionThree . ,#{ \guitarSectionThree #})))
+		((sectionOne . ,#{ \guitarSection #})
+		 (sectionTwo . ,#{ \guitarSectionWithEndings #})
+		 (sectionThree . ,#{ \guitarSection #})))
 	  (bass .
-		((sectionOne . ,#{ \bassSectionOne #})
+		((sectionOne . ,#{ \bassSection #})
 		 (sectionTwo . ,#{ \bassSectionTwo #})
-		 (sectionThree . ,#{ \bassSectionThree #})))))
+		 (sectionThree . ,#{ \bassSection #})))))
 
 #(define (instrument-section instrument section)
 	(let* ((instrument-entry (assq instrument instrument-sections))
