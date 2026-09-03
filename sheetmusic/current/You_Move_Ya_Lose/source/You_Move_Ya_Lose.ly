@@ -136,7 +136,7 @@ bassSectionTwo = \relative c {
   }
 }
 
-silentSectionOne = {
+silentEightBarRepeat = {
   \repeat volta 2 { R1*7 }
   \alternative {
     { R1 }
@@ -187,20 +187,14 @@ silentBridge = {
 }
 
 % Named fragments used by the form assembler.
-melodySoloSectionOne = { \silentSectionOne }
 melodySoloSectionTwo = { s1*0\p \melodySectionTwo s1*0\mf }
 
 tenorVamp = { \repeat unfold 2 { \tenorAFirstPass } }
-tenorSoloSectionOne = { \silentSectionOne }
 tenorSoloSectionTwo = { s1*0\p \tenorSectionTwo s1*0\mf }
 
 bassVamp = { \repeat unfold 2 { \bassAFirstPass } }
-bassSoloSectionOne = { \bassSectionOne }
-bassSoloSectionTwo = { \bassSectionTwo }
 
 bassDrumVamp = \drummode { \repeat unfold 16 { \tresillo } }
-bassDrumSoloSectionOne = \drummode { \bassDrumSectionOne }
-bassDrumSoloSectionTwo = \drummode { \bassDrumSectionTwo }
 
 % Each section owns its label, roadmap timing, and instrument parts.
 #(define section-definitions
@@ -223,32 +217,32 @@ bassDrumSoloSectionTwo = \drummode { \bassDrumSectionTwo }
       (bassDrum . ,#{ \bassDrumVamp #}))
     (sectionOne
       (label . ,#{ \mark \markup \box \bold "1" #})
-      (guide . ,#{ \silentSectionOne #})
+      (guide . ,#{ \silentEightBarRepeat #})
       (melody . ,#{ \melodySectionOne #})
       (tenor . ,#{ \tenorSectionOne #})
       (bass . ,#{ \bassSectionOne #})
       (bassDrum . ,#{ \bassDrumSectionOne #}))
     (sectionTwo
       (label . ,#{ \mark \markup \box \bold "2" #})
-      (guide . ,#{ \silentSectionOne #})
+      (guide . ,#{ \silentEightBarRepeat #})
       (melody . ,#{ \melodySectionTwo #})
       (tenor . ,#{ \tenorSectionTwo #})
       (bass . ,#{ \bassSectionTwo #})
       (bassDrum . ,#{ \bassDrumSectionTwo #}))
     (soloSectionOne
       (label . ,#{ \mark \markup \box \bold "Solos" #})
-      (guide . ,#{ \silentSectionOne #})
-      (melody . ,#{ \melodySoloSectionOne #})
-      (tenor . ,#{ \tenorSoloSectionOne #})
-      (bass . ,#{ \bassSoloSectionOne #})
-      (bassDrum . ,#{ \bassDrumSoloSectionOne #}))
+      (guide . ,#{ \silentEightBarRepeat #})
+      (melody . ,#{ \silentEightBarRepeat #})
+      (tenor . ,#{ \silentEightBarRepeat #})
+      (bass . ,#{ \bassSectionOne #})
+      (bassDrum . ,#{ \bassDrumSectionOne #}))
     (soloSectionTwo
       (label . ,#{ \mark \markup \box \bold "2" #})
-      (guide . ,#{ \silentSectionOne #})
+      (guide . ,#{ \silentEightBarRepeat #})
       (melody . ,#{ \melodySoloSectionTwo #})
       (tenor . ,#{ \tenorSoloSectionTwo #})
-      (bass . ,#{ \bassSoloSectionTwo #})
-      (bassDrum . ,#{ \bassDrumSoloSectionTwo #}))
+      (bass . ,#{ \bassSectionTwo #})
+      (bassDrum . ,#{ \bassDrumSectionTwo #}))
     (bridge
       (label . ,#{ \mark \markup \box \bold "Bridge" #})
       (guide . ,#{ \silentBridge #})
