@@ -1,5 +1,7 @@
 \version "2.12.3"
 
+\include "form.ily"
+
 performanceForm = "Vamp, 1&2, Vamp, 1&2, Solos, Bridge, 1&2"
 
 \header { 
@@ -283,90 +285,50 @@ silentBridge = {
 
 #(define lyre-form '(sectionOne sectionTwo bridge))
 
-#(define (form-entry-name entry)
-  (if (symbol? entry) entry (car entry)))
-
-#(define (form-entry-property entry property default)
-  (let ((override (and (pair? entry) (assq property (cdr entry)))))
-    (if override (cdr override) default)))
-
-#(define (section-definition section-name)
-  (let ((section (assq section-name section-definitions)))
-    (if section
-        section
-        (ly:error "No definition for section ~a" section-name))))
-
-#(define (section-property section-name property)
-  (let ((entry (assq property (cdr (section-definition section-name)))))
-    (if entry
-        (cdr entry)
-        (ly:error "No ~a value for section ~a" property section-name))))
-
-#(define (assemble-form instrument form)
-  (make-sequential-music
-   (map
-    (lambda (entry)
-      (ly:music-deep-copy
-       (section-property (form-entry-name entry) instrument)))
-    form)))
-
-#(define section-break #{ \break #})
-
-#(define (roadmap-entry entry last?)
-  (let* ((section-name (form-entry-name entry))
-         (label
-          (form-entry-property
-           entry 'label (section-property section-name 'label)))
-         (break-after (form-entry-property entry 'break-after #t)))
-    (make-sequential-music
-     (append
-      (if label (list (ly:music-deep-copy label)) '())
-      (list (ly:music-deep-copy (section-property section-name 'guide)))
-      (if (and break-after (not last?))
-          (list (ly:music-deep-copy section-break))
-          '())))))
-
-#(define (assemble-roadmap form)
-  (make-sequential-music
-   (let loop ((entries form))
-     (if (null? entries)
-         '()
-         (cons
-          (roadmap-entry (car entries) (null? (cdr entries)))
-          (loop (cdr entries)))))))
-
 % Pondscum discovers these names; both are derived from their respective forms.
-roadmap = { #(assemble-roadmap full-form) }
-lyreRoadmap = { #(assemble-roadmap lyre-form) }
+roadmap = {
+  #(assemble-roadmap section-definitions full-form default-roadmap-label)
+}
+lyreRoadmap = {
+  #(assemble-roadmap section-definitions lyre-form default-roadmap-label)
+}
 
 % Named final parts retained for pondscum's %part convention.
 %part: melody
-melody = { \key f \minor #(assemble-form 'melody full-form) }
+melody = {
+  \key f \minor #(assemble-form section-definitions 'melody full-form)
+}
 
 %part: tenor
-tenor = { \key f \minor #(assemble-form 'tenor full-form) }
+tenor = {
+  \key f \minor #(assemble-form section-definitions 'tenor full-form)
+}
 
 %part: bass
-bass = { \key f \minor #(assemble-form 'bass full-form) }
+bass = {
+  \key f \minor #(assemble-form section-definitions 'bass full-form)
+}
 
 %part: bassDrum
 % Tresillo in 4/4: attacks on beat 1, the "and" of 2, and beat 4.
-bassDrum = \drummode { #(assemble-form 'bassDrum full-form) }
+bassDrum = \drummode {
+  #(assemble-form section-definitions 'bassDrum full-form)
+}
 
 melodyLyre = {
-  \key f \minor #(assemble-form 'melody lyre-form)
+  \key f \minor #(assemble-form section-definitions 'melody lyre-form)
 }
 
 tenorLyre = {
-  \key f \minor #(assemble-form 'tenor lyre-form)
+  \key f \minor #(assemble-form section-definitions 'tenor lyre-form)
 }
 
 bassLyre = {
-  \key f \minor #(assemble-form 'bass lyre-form)
+  \key f \minor #(assemble-form section-definitions 'bass lyre-form)
 }
 
 bassDrumLyre = \drummode {
-  #(assemble-form 'bassDrum lyre-form)
+  #(assemble-form section-definitions 'bassDrum lyre-form)
 }
 
 %%Generated layout

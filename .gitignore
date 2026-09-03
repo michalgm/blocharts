@@ -1,5 +1,6 @@
 lilypond_source_files/**
 !lilypond_source_files/*.ly
+!lilypond_source_files/*.ily
 
 # macOS Finder metadata should never be tracked or packaged.
 .DS_Store
