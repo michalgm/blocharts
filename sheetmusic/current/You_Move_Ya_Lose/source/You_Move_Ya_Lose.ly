@@ -187,53 +187,40 @@ silentBridge = {
 }
 
 % Named fragments used by the form assembler.
-melodyVampOne = { R1*8 }
-melodyVampTwo = { R1*8 }
-melodyVampThree = { R1*16 }
 melodySoloSectionOne = { \silentSectionOne }
 melodySoloSectionTwo = { s1*0\p \melodySectionTwo s1*0\mf }
 
-tenorVampOne = { R1*8 }
-tenorVampTwo = { R1*8 }
-tenorVampThree = { \repeat unfold 2 { \tenorAFirstPass } }
+tenorVamp = { \repeat unfold 2 { \tenorAFirstPass } }
 tenorSoloSectionOne = { \silentSectionOne }
 tenorSoloSectionTwo = { s1*0\p \tenorSectionTwo s1*0\mf }
 
-bassVampOne = { \bassAFirstPass }
-bassVampTwo = { \bassAFirstPass }
-bassVampThree = { \repeat unfold 2 { \bassAFirstPass } }
+bassVamp = { \repeat unfold 2 { \bassAFirstPass } }
 bassSoloSectionOne = { \bassSectionOne }
 bassSoloSectionTwo = { \bassSectionTwo }
 
-bassDrumVampOne = \drummode { \repeat unfold 8 { r1 | } }
-bassDrumVampTwo = \drummode { \repeat unfold 8 { \tresillo } }
-bassDrumVampThree = \drummode { \repeat unfold 16 { \tresillo } }
+bassDrumVamp = \drummode { \repeat unfold 16 { \tresillo } }
 bassDrumSoloSectionOne = \drummode { \bassDrumSectionOne }
 bassDrumSoloSectionTwo = \drummode { \bassDrumSectionTwo }
 
 % Each section owns its label, roadmap timing, and instrument parts.
 #(define section-definitions
-  `((vampOne
+  `((introVamp
       (label . ,#{ \mark \markup \box \bold "Vamp" #})
-      (guide . ,#{ s1*8 #})
-      (melody . ,#{ \melodyVampOne #})
-      (tenor . ,#{ \tenorVampOne #})
-      (bass . ,#{ \bassVampOne #})
-      (bassDrum . ,#{ \bassDrumVampOne #}))
-    (vampTwo
-      (label . #f)
-      (guide . ,#{ s1*8 #})
-      (melody . ,#{ \melodyVampTwo #})
-      (tenor . ,#{ \tenorVampTwo #})
-      (bass . ,#{ \bassVampTwo #})
-      (bassDrum . ,#{ \bassDrumVampTwo #}))
-    (vampThree
+      (guide . ,#{ s1*8 \break s1*8 #})
+      (melody . ,#{ R1*16 #})
+      (tenor . ,#{ R1*16 #})
+      (bass . ,#{ \bassVamp #})
+      (bassDrum . ,#{
+        \repeat unfold 8 { r1 | }
+        \repeat unfold 8 { \tresillo }
+      #}))
+    (vamp
       (label . #f)
       (guide . ,#{ s1*16 #})
-      (melody . ,#{ \melodyVampThree #})
-      (tenor . ,#{ \tenorVampThree #})
-      (bass . ,#{ \bassVampThree #})
-      (bassDrum . ,#{ \bassDrumVampThree #}))
+      (melody . ,#{ R1*16 #})
+      (tenor . ,#{ \tenorVamp #})
+      (bass . ,#{ \bassVamp #})
+      (bassDrum . ,#{ \bassDrumVamp #}))
     (sectionOne
       (label . ,#{ \mark \markup \box \bold "1" #})
       (guide . ,#{ \silentSectionOne #})
@@ -273,9 +260,9 @@ bassDrumSoloSectionTwo = \drummode { \bassDrumSectionTwo }
 % The full playing order is authored only here. A form entry may override its
 % section's label or whether a line break follows it.
 #(define full-form
-  `(vampOne vampTwo vampThree
+  `(introVamp vamp
     sectionOne sectionTwo
-    (vampThree (label . ,#{ \mark \markup \box \bold "Vamp" #}))
+    (vamp (label . ,#{ \mark \markup \box \bold "Vamp" #}))
     sectionOne sectionTwo
     (soloSectionOne (break-after . #f))
     (soloSectionOne (label . #f))
