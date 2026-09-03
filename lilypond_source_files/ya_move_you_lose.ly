@@ -48,12 +48,11 @@ tenorABody = {
 }
 tenorAFirstEnding = { f4 r r2 | }
 tenorASecondEnding = { f4 r r f | }
-tenorAFirstPass = \relative c' { \tenorABody \tenorAFirstEnding }
 
 tenorBPair = { aes2 aes | g4 ees8 f r4 f | }
 tenorBBody = { \repeat unfold 3 { \tenorBPair } \hornBCadence }
 
-% Reusable bass phrases
+% Bass phrases
 bassWalkTwo = {
   f,4 r8 f~ f4 g | aes r8 aes~ aes4 a |
 }
@@ -67,7 +66,6 @@ bassABody = {
   bes r8 bes~ bes4 b |
 }
 bassAFirstEnding = { c r8 ees~ ees4 e | }
-bassAFirstPass = \relative c { \bassABody \bassAFirstEnding }
 
 bassBBody = {
   \bassWalkFour
@@ -143,6 +141,16 @@ silentEightBarRepeat = {
   }
 }
 
+% Invisible timing for roadmap labels and breaks. Unlike R1, skips do not
+% print rests when Pondscum overlays the roadmap on an instrument staff.
+eightBarRepeatGuide = {
+  \repeat volta 2 { s1*7 }
+  \alternative {
+    { s1 }
+    { s1 }
+  }
+}
+
 % Reusable bass-drum phrases and sections
 tresillo = \drummode { bd8 r4 bd8 r4 bd4 | }
 
@@ -151,6 +159,29 @@ bassDrumSectionOne = \drummode {
   \alternative {
     { \tresillo }
     { \tresillo }
+  }
+}
+
+% Show the regular eight-bar repeat, but enter only on the second pass.
+% The \unfolded music is hidden in print and supplies the correct MIDI playback.
+bassDrumIntroVamp = \drummode {
+  \repeat volta 2 {
+    \volta #'() {
+      bd8^\markup { \italic "2nd time only" } r4 bd8 r4 bd4 |
+      \repeat unfold 6 { \tresillo }
+    }
+    \volta 1 { \unfolded { \repeat unfold 7 { r1 | } } }
+    \volta 2 { \unfolded { \repeat unfold 7 { \tresillo } } }
+  }
+  \alternative {
+    {
+      \volta #'() { \tresillo }
+      \unfolded { r1 | }
+    }
+    {
+      \volta #'() { \tresillo }
+      \unfolded { \tresillo }
+    }
   }
 }
 
@@ -185,61 +216,48 @@ silentBridge = {
   \repeat volta 2 { s1*8 }
 }
 
-% Named fragments used by the form assembler.
-melodySoloSectionTwo = { s1*0\p \melodySectionTwo s1*0\mf }
-
-tenorVamp = { \repeat unfold 2 { \tenorAFirstPass } }
-tenorSoloSectionTwo = { s1*0\p \tenorSectionTwo s1*0\mf }
-
-bassVamp = { \repeat unfold 2 { \bassAFirstPass } }
-
-bassDrumVamp = \drummode { \repeat unfold 16 { \tresillo } }
-
 % Each section owns its label, roadmap timing, and instrument parts.
 #(define section-definitions
   `((introVamp
       (label . ,#{ \mark \markup \box \bold "Vamp" #})
-      (guide . ,#{ s1*8 \break s1*8 #})
-      (melody . ,#{ R1*16 #})
-      (tenor . ,#{ R1*16 #})
-      (bass . ,#{ \bassVamp #})
-      (bassDrum . ,#{
-        \repeat unfold 8 { r1 | }
-        \repeat unfold 8 { \tresillo }
-      #}))
+      (guide . ,#{ \eightBarRepeatGuide #})
+      (melody . ,#{ \silentEightBarRepeat #})
+      (tenor . ,#{ \silentEightBarRepeat #})
+      (bass . ,#{ \bassSectionOne #})
+      (bassDrum . ,#{ \bassDrumIntroVamp #}))
     (vamp
-      (label . #f)
-      (guide . ,#{ s1*16 #})
-      (melody . ,#{ R1*16 #})
-      (tenor . ,#{ \tenorVamp #})
-      (bass . ,#{ \bassVamp #})
-      (bassDrum . ,#{ \bassDrumVamp #}))
+      (label . ,#{ \mark \markup \box \bold "Vamp" #})
+      (guide . ,#{ \eightBarRepeatGuide #})
+      (melody . ,#{ \silentEightBarRepeat #})
+      (tenor . ,#{ \tenorSectionOne #})
+      (bass . ,#{ \bassSectionOne #})
+      (bassDrum . ,#{ \bassDrumSectionOne #}))
     (sectionOne
       (label . ,#{ \mark \markup \box \bold "1" #})
-      (guide . ,#{ \silentEightBarRepeat #})
+      (guide . ,#{ \eightBarRepeatGuide #})
       (melody . ,#{ \melodySectionOne #})
       (tenor . ,#{ \tenorSectionOne #})
       (bass . ,#{ \bassSectionOne #})
       (bassDrum . ,#{ \bassDrumSectionOne #}))
     (sectionTwo
       (label . ,#{ \mark \markup \box \bold "2" #})
-      (guide . ,#{ \silentEightBarRepeat #})
+      (guide . ,#{ \eightBarRepeatGuide #})
       (melody . ,#{ \melodySectionTwo #})
       (tenor . ,#{ \tenorSectionTwo #})
       (bass . ,#{ \bassSectionTwo #})
       (bassDrum . ,#{ \bassDrumSectionTwo #}))
     (soloSectionOne
-      (label . ,#{ \mark \markup \box \bold "Solos" #})
-      (guide . ,#{ \silentEightBarRepeat #})
+      (label . ,#{ \mark \markup \box \bold "Solos 1" #})
+      (guide . ,#{ \eightBarRepeatGuide #})
       (melody . ,#{ \silentEightBarRepeat #})
       (tenor . ,#{ \silentEightBarRepeat #})
       (bass . ,#{ \bassSectionOne #})
       (bassDrum . ,#{ \bassDrumSectionOne #}))
     (soloSectionTwo
-      (label . ,#{ \mark \markup \box \bold "2" #})
-      (guide . ,#{ \silentEightBarRepeat #})
-      (melody . ,#{ \melodySoloSectionTwo #})
-      (tenor . ,#{ \tenorSoloSectionTwo #})
+      (label . ,#{ \mark \markup \box \bold "Solos 2" #})
+      (guide . ,#{ \eightBarRepeatGuide #})
+      (melody . ,#{ \silentEightBarRepeat #})
+      (tenor . ,#{ s1*0\p \tenorSectionTwo s1*0\mf #})
       (bass . ,#{ \bassSectionTwo #})
       (bassDrum . ,#{ \bassDrumSectionTwo #}))
     (bridge
@@ -255,9 +273,9 @@ bassDrumVamp = \drummode { \repeat unfold 16 { \tresillo } }
 #(define full-form
   `(introVamp vamp
     sectionOne sectionTwo
-    (vamp (label . ,#{ \mark \markup \box \bold "Vamp" #}))
+    vamp
     sectionOne sectionTwo
-    (soloSectionOne (break-after . #f))
+    soloSectionOne
     (soloSectionOne (label . #f))
     soloSectionTwo
     bridge
