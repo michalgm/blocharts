@@ -3,7 +3,7 @@
 performanceForm = "Vamp, 1&2, Vamp, 1&2, Solos, Bridge, 1&2"
 
 \header { 
-	tagline = "9/2/2026" 
+	tagline = "9/3/2026" 
 
   title = "You Move Ya Lose"
   composer = "Rebirth Brass Band"
@@ -186,53 +186,6 @@ silentBridge = {
   \repeat volta 2 { s1*8 }
 }
 
-% Score-wide section labels and layout breaks. Pondscum includes this once in
-% the full score and alongside the music in each extracted part.
-roadmap = {
-  \mark \markup \box \bold "Vamp"
-  s1*8
-  \break
-  s1*8
-  \break
-  s1*16
-  \break
-
-  \mark \markup \box \bold "1"
-  \silentSectionOne
-  \break
-  \mark \markup \box \bold "2"
-  \silentSectionOne
-  \break
-
-  \mark \markup \box \bold "Vamp"
-  s1*16
-  \break
-
-  \mark \markup \box \bold "1"
-  \silentSectionOne
-  \break
-  \mark \markup \box \bold "2"
-  \silentSectionOne
-  \break
-
-  \mark \markup \box \bold "Solos"
-  \repeat unfold 2 { \silentSectionOne }
-  \break
-  \mark \markup \box \bold "2"
-  \silentSectionOne
-  \break
-
-  \mark \markup \box \bold "Bridge"
-  \silentBridge
-  \break
-
-  \mark \markup \box \bold "1"
-  \silentSectionOne
-  \break
-  \mark \markup \box \bold "2"
-  \silentSectionOne
-}
-
 % Named fragments used by the form assembler.
 melodyVampOne = { R1*8 }
 melodyVampTwo = { R1*8 }
@@ -258,67 +211,135 @@ bassDrumVampThree = \drummode { \repeat unfold 16 { \tresillo } }
 bassDrumSoloSectionOne = \drummode { \bassDrumSectionOne }
 bassDrumSoloSectionTwo = \drummode { \bassDrumSectionTwo }
 
-% The form is data: each instrument supplies music for each named section.
+% Each section owns its label, roadmap timing, and instrument parts.
+#(define section-definitions
+  `((vampOne
+      (label . ,#{ \mark \markup \box \bold "Vamp" #})
+      (guide . ,#{ s1*8 #})
+      (melody . ,#{ \melodyVampOne #})
+      (tenor . ,#{ \tenorVampOne #})
+      (bass . ,#{ \bassVampOne #})
+      (bassDrum . ,#{ \bassDrumVampOne #}))
+    (vampTwo
+      (label . #f)
+      (guide . ,#{ s1*8 #})
+      (melody . ,#{ \melodyVampTwo #})
+      (tenor . ,#{ \tenorVampTwo #})
+      (bass . ,#{ \bassVampTwo #})
+      (bassDrum . ,#{ \bassDrumVampTwo #}))
+    (vampThree
+      (label . #f)
+      (guide . ,#{ s1*16 #})
+      (melody . ,#{ \melodyVampThree #})
+      (tenor . ,#{ \tenorVampThree #})
+      (bass . ,#{ \bassVampThree #})
+      (bassDrum . ,#{ \bassDrumVampThree #}))
+    (sectionOne
+      (label . ,#{ \mark \markup \box \bold "1" #})
+      (guide . ,#{ \silentSectionOne #})
+      (melody . ,#{ \melodySectionOne #})
+      (tenor . ,#{ \tenorSectionOne #})
+      (bass . ,#{ \bassSectionOne #})
+      (bassDrum . ,#{ \bassDrumSectionOne #}))
+    (sectionTwo
+      (label . ,#{ \mark \markup \box \bold "2" #})
+      (guide . ,#{ \silentSectionOne #})
+      (melody . ,#{ \melodySectionTwo #})
+      (tenor . ,#{ \tenorSectionTwo #})
+      (bass . ,#{ \bassSectionTwo #})
+      (bassDrum . ,#{ \bassDrumSectionTwo #}))
+    (soloSectionOne
+      (label . ,#{ \mark \markup \box \bold "Solos" #})
+      (guide . ,#{ \silentSectionOne #})
+      (melody . ,#{ \melodySoloSectionOne #})
+      (tenor . ,#{ \tenorSoloSectionOne #})
+      (bass . ,#{ \bassSoloSectionOne #})
+      (bassDrum . ,#{ \bassDrumSoloSectionOne #}))
+    (soloSectionTwo
+      (label . ,#{ \mark \markup \box \bold "2" #})
+      (guide . ,#{ \silentSectionOne #})
+      (melody . ,#{ \melodySoloSectionTwo #})
+      (tenor . ,#{ \tenorSoloSectionTwo #})
+      (bass . ,#{ \bassSoloSectionTwo #})
+      (bassDrum . ,#{ \bassDrumSoloSectionTwo #}))
+    (bridge
+      (label . ,#{ \mark \markup \box \bold "Bridge" #})
+      (guide . ,#{ \silentBridge #})
+      (melody . ,#{ \melodyBridge #})
+      (tenor . ,#{ \tenorBridge #})
+      (bass . ,#{ \bassBridge #})
+      (bassDrum . ,#{ \bassDrumBridge #}))))
+
+% The full playing order is authored only here. A form entry may override its
+% section's label or whether a line break follows it.
 #(define full-form
-  '(vampOne vampTwo vampThree
+  `(vampOne vampTwo vampThree
     sectionOne sectionTwo
-    vampThree
+    (vampThree (label . ,#{ \mark \markup \box \bold "Vamp" #}))
     sectionOne sectionTwo
-    soloSectionOne soloSectionOne soloSectionTwo
+    (soloSectionOne (break-after . #f))
+    (soloSectionOne (label . #f))
+    soloSectionTwo
     bridge
     sectionOne sectionTwo))
 
 #(define lyre-form '(sectionOne sectionTwo bridge))
 
-#(define instrument-sections
-  `((melody .
-      ((vampOne . ,#{ \melodyVampOne #})
-       (vampTwo . ,#{ \melodyVampTwo #})
-       (vampThree . ,#{ \melodyVampThree #})
-       (sectionOne . ,#{ \melodySectionOne #})
-       (sectionTwo . ,#{ \melodySectionTwo #})
-       (soloSectionOne . ,#{ \melodySoloSectionOne #})
-       (soloSectionTwo . ,#{ \melodySoloSectionTwo #})
-       (bridge . ,#{ \melodyBridge #})))
-    (tenor .
-      ((vampOne . ,#{ \tenorVampOne #})
-       (vampTwo . ,#{ \tenorVampTwo #})
-       (vampThree . ,#{ \tenorVampThree #})
-       (sectionOne . ,#{ \tenorSectionOne #})
-       (sectionTwo . ,#{ \tenorSectionTwo #})
-       (soloSectionOne . ,#{ \tenorSoloSectionOne #})
-       (soloSectionTwo . ,#{ \tenorSoloSectionTwo #})
-       (bridge . ,#{ \tenorBridge #})))
-    (bass .
-      ((vampOne . ,#{ \bassVampOne #})
-       (vampTwo . ,#{ \bassVampTwo #})
-       (vampThree . ,#{ \bassVampThree #})
-       (sectionOne . ,#{ \bassSectionOne #})
-       (sectionTwo . ,#{ \bassSectionTwo #})
-       (soloSectionOne . ,#{ \bassSoloSectionOne #})
-       (soloSectionTwo . ,#{ \bassSoloSectionTwo #})
-       (bridge . ,#{ \bassBridge #})))
-    (bassDrum .
-      ((vampOne . ,#{ \bassDrumVampOne #})
-       (vampTwo . ,#{ \bassDrumVampTwo #})
-       (vampThree . ,#{ \bassDrumVampThree #})
-       (sectionOne . ,#{ \bassDrumSectionOne #})
-       (sectionTwo . ,#{ \bassDrumSectionTwo #})
-       (soloSectionOne . ,#{ \bassDrumSoloSectionOne #})
-       (soloSectionTwo . ,#{ \bassDrumSoloSectionTwo #})
-       (bridge . ,#{ \bassDrumBridge #})))))
+#(define (form-entry-name entry)
+  (if (symbol? entry) entry (car entry)))
 
-#(define (instrument-section instrument section)
-  (let* ((instrument-entry (assq instrument instrument-sections))
-         (section-entry
-          (and instrument-entry (assq section (cdr instrument-entry)))))
-    (if section-entry
-        (ly:music-deep-copy (cdr section-entry))
-        (ly:error "No music for ~a.~a" instrument section))))
+#(define (form-entry-property entry property default)
+  (let ((override (and (pair? entry) (assq property (cdr entry)))))
+    (if override (cdr override) default)))
+
+#(define (section-definition section-name)
+  (let ((section (assq section-name section-definitions)))
+    (if section
+        section
+        (ly:error "No definition for section ~a" section-name))))
+
+#(define (section-property section-name property)
+  (let ((entry (assq property (cdr (section-definition section-name)))))
+    (if entry
+        (cdr entry)
+        (ly:error "No ~a value for section ~a" property section-name))))
 
 #(define (assemble-form instrument form)
   (make-sequential-music
-   (map (lambda (section) (instrument-section instrument section)) form)))
+   (map
+    (lambda (entry)
+      (ly:music-deep-copy
+       (section-property (form-entry-name entry) instrument)))
+    form)))
+
+#(define section-break #{ \break #})
+
+#(define (roadmap-entry entry last?)
+  (let* ((section-name (form-entry-name entry))
+         (label
+          (form-entry-property
+           entry 'label (section-property section-name 'label)))
+         (break-after (form-entry-property entry 'break-after #t)))
+    (make-sequential-music
+     (append
+      (if label (list (ly:music-deep-copy label)) '())
+      (list (ly:music-deep-copy (section-property section-name 'guide)))
+      (if (and break-after (not last?))
+          (list (ly:music-deep-copy section-break))
+          '())))))
+
+#(define (assemble-roadmap form)
+  (make-sequential-music
+   (let loop ((entries form))
+     (if (null? entries)
+         '()
+         (cons
+          (roadmap-entry (car entries) (null? (cdr entries)))
+          (loop (cdr entries)))))))
+
+% Pondscum discovers these names; both are derived from their respective forms.
+roadmap = { #(assemble-roadmap full-form) }
+lyreRoadmap = { #(assemble-roadmap lyre-form) }
 
 % Named final parts retained for pondscum's %part convention.
 %part: melody
@@ -333,19 +354,6 @@ bass = { \key f \minor #(assemble-form 'bass full-form) }
 %part: bassDrum
 % Tresillo in 4/4: attacks on beat 1, the "and" of 2, and beat 4.
 bassDrum = \drummode { #(assemble-form 'bassDrum full-form) }
-
-% Compact music and roadmap for single-page lyre charts. The complete playing
-% order is printed from performanceForm; only reusable sections appear here.
-lyreRoadmap = {
-  \mark \markup \box \bold "1"
-  \silentSectionOne
-  \break
-  \mark \markup \box \bold "2"
-  \silentSectionOne
-  \break
-  \mark \markup \box \bold "Bridge"
-  \silentBridge
-}
 
 melodyLyre = {
   \key f \minor #(assemble-form 'melody lyre-form)
