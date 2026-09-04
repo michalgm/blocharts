@@ -2,12 +2,14 @@
 
 \include "form.ily"
 
+performanceForm = "Vamp, Head, Bridge, Hits, Head, Solos, Bridge, Head, Bridge (x2)"
+
 \header { 
-	tagline = "9/3/2026"
+	tagline = "9/4/2026"
 	title = "J.J.D."
 	composer = "Fela Kuti"
 
-	copyright = \markup {\bold ""} %form
+	copyright = \markup { \bold { "Default Form:" } \performanceForm }
 	}
 %description: Another song by <a href="http://www.fela.net/">Fela Kuti</a> (see above), released as a 22-minute single in 1977.
 
@@ -16,14 +18,14 @@ markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begi
 
 
 % Reusable melody sections
-melodySectionOne = \relative c' {
+melodysectionHead = \relative c' {
 	\repeat volta 2 {
 		ces'16 bes aes bes~ bes2~ bes8 f | aes aes r4 c8 ees c ees |
 		c8 bes16 aes f8 ees~ ees4~ ees8 f | aes aes r4 ees8 f aes bes |
 	}
 }
 
-melodySectionTwo = \relative c'' {
+melodysectionBridge = \relative c'' {
 	\repeat volta 2 {
 		<<
 			{ ees8 [r16 ees] r8 f r2 | c8 [r16 c] r8 ees r2 | bes8 [r16 bes] r8 c r4 aes8 f~ | }
@@ -50,7 +52,7 @@ melodySectionTwo = \relative c'' {
 	}
 }
 
-melodySectionThree = \relative c'' {
+melodysectionHits = \relative c'' {
 	\repeat volta 2 {
 		<aes c>8 r r2. | r2. r8 <bes d> |
 		<aes c>8 r r2. | r2. r8 <bes d> |
@@ -89,7 +91,7 @@ bassSection = {
 	\repeat volta 2 { \bassRiff }
 }
 
-bassSectionTwo = \relative c, {
+basssectionBridge = \relative c, {
 	\repeat volta 2 {
 		f1 | g | aes |
 	}
@@ -100,6 +102,52 @@ bassSectionTwo = \relative c, {
 }
 
 bassSoloHead = { \repeat volta 4 { \bassRiff } }
+
+% Bass drum enters with the full rhythm section at C and continues throughout.
+% One bar: dotted eighth, sixteenth, eighth rest, eighth note, half rest.
+bassDrumPattern = \drummode { bd8. bd16 r8 bd8 r2 | }
+
+% One bar of steady quarter-note cowbell.
+cowbellPattern = \drummode { cb4 cb cb cb | }
+
+cowbellRepeatedSection = \drummode {
+	\repeat volta 2 { \repeat unfold 4 { \cowbellPattern } }
+}
+
+cowbellsectionBridge = \drummode {
+	\repeat volta 2 { \repeat unfold 3 { \cowbellPattern } }
+	\alternative {
+		{ \cowbellPattern }
+		{ \cowbellPattern }
+	}
+}
+
+cowbellSoloHead = \drummode {
+	\repeat volta 4 { \repeat unfold 4 { \cowbellPattern } }
+}
+
+% Steady quarter-note side-stick clicks keep time before the bass drum enters.
+bassDrumClickPattern = \drummode { ss4 ss ss ss | }
+
+bassDrumClickSection = \drummode {
+	\repeat volta 2 { \repeat unfold 4 { \bassDrumClickPattern } }
+}
+
+bassDrumRepeatedSection = \drummode {
+	\repeat volta 2 { \repeat unfold 4 { \bassDrumPattern } }
+}
+
+bassDrumsectionBridge = \drummode {
+	\repeat volta 2 { \repeat unfold 3 { \bassDrumPattern } }
+	\alternative {
+		{ \bassDrumPattern }
+		{ \bassDrumPattern }
+	}
+}
+
+bassDrumSoloHead = \drummode {
+	\repeat volta 4 { \repeat unfold 4 { \bassDrumPattern } }
+}
 
 % Silent counterparts preserve each section's repeat structure when an
 % instrument is tacet.
@@ -115,7 +163,7 @@ silentSoloHead = { \repeat volta 4 { R1*4 } }
 
 % Invisible timing for score-wide labels and layout breaks.
 roadmapRepeatedSection = { \repeat volta 2 { s1*4 } }
-roadmapSectionTwo = {
+roadmapsectionBridge = {
 	\repeat volta 2 { s1*3 }
 	\alternative {
 		{ s1 }
@@ -131,64 +179,80 @@ roadmapSoloHead = { \repeat volta 4 { s1*4 } }
 		(guide . ,#{ \roadmapRepeatedSection #})
 		(melody . ,#{ \silentRepeatedSection #})
 		(guitar . ,#{ \guitarSection #})
-		(bass . ,#{ \silentRepeatedSection #}))
+		(bass . ,#{ \silentRepeatedSection #})
+		(bassDrum . ,#{ \bassDrumClickSection #})
+		(cowbell . ,#{ \silentRepeatedSection #}))
 	  (bassTenorVamp
 		(description . "Bass + Tenor")
 		(guide . ,#{ \roadmapRepeatedSection #})
 		(melody . ,#{ \silentRepeatedSection #})
 		(guitar . ,#{ \guitarSection #})
-		(bass . ,#{ \bassSection #}))
+		(bass . ,#{ \bassSection #})
+		(bassDrum . ,#{ \bassDrumClickSection #})
+		(cowbell . ,#{ \silentRepeatedSection #}))
 	  (drumsBassTenorVamp
 		(description . "Drums + Bass + Tenor")
 		(guide . ,#{ \roadmapRepeatedSection #})
 		(melody . ,#{ \silentRepeatedSection #})
 		(guitar . ,#{ \guitarSection #})
-		(bass . ,#{ \bassSection #}))
-	  (sectionOne
+		(bass . ,#{ \bassSection #})
+		(bassDrum . ,#{ \bassDrumRepeatedSection #})
+		(cowbell . ,#{ \cowbellRepeatedSection #}))
+	  (sectionHead
 		(description . "Head")
 		(lyre-label . "1")
 		(guide . ,#{ \roadmapRepeatedSection #})
-		(melody . ,#{ \melodySectionOne #})
+		(melody . ,#{ \melodysectionHead #})
 		(guitar . ,#{ \guitarSection #})
-		(bass . ,#{ \bassSection #}))
-	  (sectionTwo
+		(bass . ,#{ \bassSection #})
+		(bassDrum . ,#{ \bassDrumRepeatedSection #})
+		(cowbell . ,#{ \cowbellRepeatedSection #}))
+	  (sectionBridge
 		(description . "Bridge")
 		(lyre-label . "2")
-		(guide . ,#{ \roadmapSectionTwo #})
-		(melody . ,#{ \melodySectionTwo #})
+		(guide . ,#{ \roadmapsectionBridge #})
+		(melody . ,#{ \melodysectionBridge #})
 		(guitar . ,#{ \guitarSectionWithEndings #})
-		(bass . ,#{ \bassSectionTwo #}))
-	  (sectionThree
+		(bass . ,#{ \basssectionBridge #})
+		(bassDrum . ,#{ \bassDrumsectionBridge #})
+		(cowbell . ,#{ \cowbellsectionBridge #}))
+	  (sectionHits
 		(description . "Hits")
 		(lyre-label . "3")
 		(guide . ,#{ \roadmapRepeatedSection #})
-		(melody . ,#{ \melodySectionThree #})
+		(melody . ,#{ \melodysectionHits #})
 		(guitar . ,#{ \guitarSection #})
-		(bass . ,#{ \bassSection #}))
+		(bass . ,#{ \bassSection #})
+		(bassDrum . ,#{ \bassDrumRepeatedSection #})
+		(cowbell . ,#{ \cowbellRepeatedSection #}))
 	  (soloHead
 		(guide . ,#{ \roadmapSoloHead #})
 		(melody . ,#{ \silentSoloHead #})
 		(guitar . ,#{ \guitarSoloHead #})
-		(bass . ,#{ \bassSoloHead #}))
+		(bass . ,#{ \bassSoloHead #})
+		(bassDrum . ,#{ \bassDrumSoloHead #})
+		(cowbell . ,#{ \cowbellSoloHead #}))
 	  (soloBridge
-		(guide . ,#{ \roadmapSectionTwo #})
+		(guide . ,#{ \roadmapsectionBridge #})
 		(melody . ,#{ \silentSectionWithEndings #})
 		(guitar . ,#{ \guitarSectionWithEndings #})
-		(bass . ,#{ \bassSectionTwo #}))))
+		(bass . ,#{ \basssectionBridge #})
+		(bassDrum . ,#{ \bassDrumsectionBridge #})
+		(cowbell . ,#{ \cowbellsectionBridge #}))))
 
 % The arrangement order is authored only here. Occurrence descriptions travel
 % with repeated solo sections while their A-N labels are generated by position.
 #(define full-form
 	`(tenorVamp bassTenorVamp drumsBassTenorVamp
-	  sectionOne sectionTwo sectionThree
-	  sectionOne sectionTwo
-	  (soloHead (description . "Solo 1 over Head - 16 bars"))
-	  (soloBridge (description . "Solo 1 over Bridge"))
-	  (soloHead (description . "Solo 2 over Head - 16 bars"))
-	  (soloBridge (description . "Solo 2 over Bridge"))
-	  sectionOne sectionTwo))
+	  sectionHead sectionBridge sectionHits
+	  sectionHead sectionBridge
+	  (soloHead (description . "Soloist 1 over Head (2x)"))
+	  (soloBridge (description . "Soloist 1 over Bridge"))
+	  (soloHead (description . "Soloist 2 over Head (2x)"))
+	  (soloBridge (description . "Soloist 2 over Bridge"))
+	  sectionHead sectionBridge))
 
-#(define lyre-form '(sectionOne sectionTwo sectionThree))
+#(define lyre-form '(sectionHead sectionBridge sectionHits))
 
 #(define (alphabetic-roadmap-label definitions entry index)
 	(let* ((section-name (form-entry-name entry))
@@ -226,6 +290,16 @@ bass = {
 	\key f \minor #(assemble-form section-definitions 'bass full-form)
 }
 
+%part: bassDrum
+bassDrum = \drummode {
+	#(assemble-form section-definitions 'bassDrum full-form)
+}
+
+%part: cowbell
+cowbell = \drummode {
+	#(assemble-form section-definitions 'cowbell full-form)
+}
+
 melodyLyre = {
 	\key f \minor #(assemble-form section-definitions 'melody lyre-form)
 }
@@ -234,6 +308,12 @@ guitarLyre = {
 }
 bassLyre = {
 	\key f \minor #(assemble-form section-definitions 'bass lyre-form)
+}
+bassDrumLyre = \drummode {
+	#(assemble-form section-definitions 'bassDrum lyre-form)
+}
+cowbellLyre = \drummode {
+	#(assemble-form section-definitions 'cowbell lyre-form)
 }
 
 %part: words
@@ -313,6 +393,18 @@ naturalizeMusic =
 			\tempo  4 = 120 
 			\override Score.RehearsalMark.self-alignment-X = #LEFT
 			\bass
+		}
+		% Group: BassDrum
+		\new DrumStaff \with { \consists "Volta_engraver" instrumentName = "BassDrum" } {
+			\tempo  4 = 120 
+			\override Score.RehearsalMark.self-alignment-X = #LEFT
+			\bassDrum
+		}
+		% Group: Cowbell
+		\new DrumStaff \with { \consists "Volta_engraver" instrumentName = "Cowbell" } {
+			\tempo  4 = 120 
+			\override Score.RehearsalMark.self-alignment-X = #LEFT
+			\cowbell
 		}
 	>> \layout { \context { \Score \remove "Volta_engraver" } } }  
 }
