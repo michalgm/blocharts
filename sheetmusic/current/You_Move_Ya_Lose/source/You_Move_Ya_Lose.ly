@@ -208,6 +208,7 @@ silentBridge = {
 #(define section-definitions
   `((introBassVamp
       (label . ,#{ \mark \markup \box \bold "Vamp" #})
+      (break-after . #f)
       (guide . ,#{ \eightBarGuide #})
       (melody . ,#{ \silentEightBars #})
       (tenor . ,#{ \silentEightBars #})
@@ -215,6 +216,7 @@ silentBridge = {
       (bassDrum . ,#{ \silentEightBars #}))
     (introBassAndDrumVamp
       (label . #f)
+      (break-after . #f)
       (guide . ,#{ \eightBarGuide #})
       (melody . ,#{ \silentEightBars #})
       (tenor . ,#{ \silentEightBars #})
@@ -222,6 +224,7 @@ silentBridge = {
       (bassDrum . ,#{ \bassDrumEightBars #}))
     (vamp
       (label . ,#{ \mark \markup \box \bold "Vamp" #})
+      (bar-after . "||")
       (guide . ,#{ \eightBarRepeatGuide #})
       (melody . ,#{ \silentEightBarRepeat #})
       (tenor . ,#{ \tenorSectionOne #})
@@ -236,6 +239,7 @@ silentBridge = {
       (bassDrum . ,#{ \bassDrumSectionOne #}))
     (sectionTwo
       (label . ,#{ \mark \markup \box \bold "2" #})
+      (bar-after . "||")
       (guide . ,#{ \eightBarRepeatGuide #})
       (melody . ,#{ \melodySectionTwo #})
       (tenor . ,#{ \tenorSectionTwo #})
@@ -250,6 +254,7 @@ silentBridge = {
       (bassDrum . ,#{ \bassDrumSectionOne #}))
     (soloSectionTwo
       (label . ,#{ \mark \markup \box \bold "Solos 2" #})
+      (bar-after . "||")
       (guide . ,#{ \eightBarRepeatGuide #})
       (melody . ,#{ \silentEightBarRepeat #})
       (tenor . ,#{ s1*0\p \tenorSectionTwo s1*0\mf #})
@@ -257,18 +262,17 @@ silentBridge = {
       (bassDrum . ,#{ \bassDrumSectionTwo #}))
     (bridge
       (label . ,#{ \mark \markup \box \bold "Bridge" #})
+      (bar-after . "||")
       (guide . ,#{ \silentBridge #})
       (melody . ,#{ \melodyBridge #})
       (tenor . ,#{ \tenorBridge #})
       (bass . ,#{ \bassBridge #})
       (bassDrum . ,#{ \bassDrumBridge #}))))
 
-% The full playing order is authored only here. A form entry may override its
-% section's label or whether a line break follows it.
+% The full playing order is authored only here. An occurrence may override its
+% section's label, barline, Fine, or line-break defaults when necessary.
 #(define full-form
-  `((introBassVamp
-    (break-after . #f))
-    (introBassAndDrumVamp (break-after . #f))
+  `(introBassVamp introBassAndDrumVamp
     (vamp (label . #f))
     sectionOne sectionTwo
     vamp
@@ -277,9 +281,13 @@ silentBridge = {
     (soloSectionOne (label . #f))
     soloSectionTwo
     bridge
-    sectionOne sectionTwo))
+    sectionOne
+    (sectionTwo (fine-after . #t))))
 
-#(define lyre-form '(sectionOne sectionTwo bridge))
+#(define lyre-form
+  '(sectionOne
+    sectionTwo
+    (bridge (bar-after . "|."))))
 
 % Pondscum discovers these names; both are derived from their respective forms.
 form = {
@@ -292,22 +300,30 @@ lyreForm = {
 % Named final parts retained for pondscum's %part convention.
 %part: melody
 melody = {
+  \compressEmptyMeasures
+  \override MultiMeasureRest.expand-limit = #1
   \key f \minor #(assemble-form section-definitions 'melody full-form)
 }
 
 %part: tenor
 tenor = {
+  \compressEmptyMeasures
+  \override MultiMeasureRest.expand-limit = #1
   \key f \minor #(assemble-form section-definitions 'tenor full-form)
 }
 
 %part: bass
 bass = {
+  \compressEmptyMeasures
+  \override MultiMeasureRest.expand-limit = #1
   \key f \minor #(assemble-form section-definitions 'bass full-form)
 }
 
 %part: bassDrum
 % Tresillo in 4/4: attacks on beat 1, the "and" of 2, and beat 4.
 bassDrum = \drummode {
+  \compressEmptyMeasures
+  \override MultiMeasureRest.expand-limit = #1
   #(assemble-form section-definitions 'bassDrum full-form)
 }
 
