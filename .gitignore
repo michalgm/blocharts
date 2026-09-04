@@ -1,2 +1,4 @@
 lilypond_source_files/**
 !lilypond_source_files/*.ly
+
+.DS_Store
