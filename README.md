@@ -30,7 +30,32 @@ git submodule update --init --recursive
 
 ### Updating charts on the BLO website
 Make sure you have committed and pushed any changes in the sheetmusic directory
-(NOTE this requires you have a config for 'blo' in your ssh config)
+
+#### Configure SSH access
+
+The sync script connects to the webserver using the `blo` SSH alias. If you do
+not already have an SSH key, generate a dedicated Ed25519 key:
+
+```sh
+ssh-keygen -t ed25519 -f ~/.ssh/blo_ed25519 -C "your-email@example.com"
+```
+
+Send the generated public key (`~/.ssh/blo_ed25519.pub`) to a BLO website
+administrator so they can add it to the `blo` account's `authorized_keys` file.
+Never share or commit the private key (`~/.ssh/blo_ed25519`).
+
+Add [the SSH config from the wiki](https://members.brassliberation.org/doc/ssh-config-R3Akoy6n22) to `~/.ssh/config` (create the file if necessary).
+
+Protect the SSH files and test the connection:
+
+```sh
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/config ~/.ssh/blo_ed25519
+ssh blo
+```
+
+The host name, user name, port, and public key are not secrets. The private key
+is sensitive and must remain only on the machine where it was generated.
 
 Run `./sync_sheetmusic.sh`
 
