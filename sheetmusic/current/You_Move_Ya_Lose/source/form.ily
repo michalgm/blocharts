@@ -36,10 +36,10 @@
 
 #(define section-break #{ \break #})
 
-#(define (default-roadmap-label definitions entry index)
+#(define (default-form-label definitions entry index)
   (form-entry-section-property definitions entry 'label))
 
-#(define (roadmap-entry definitions entry index last? label-maker)
+#(define (form-guide-entry definitions entry index last? label-maker)
   (let* ((section-name (form-entry-name entry))
          (label (label-maker definitions entry index))
          (break-after (form-entry-property entry 'break-after #t)))
@@ -53,12 +53,12 @@
           (list (ly:music-deep-copy section-break))
           '())))))
 
-#(define (assemble-roadmap definitions form label-maker)
+#(define (assemble-form-guide definitions form label-maker)
   (make-sequential-music
    (let loop ((entries form) (index 0))
      (if (null? entries)
          '()
          (cons
-          (roadmap-entry
+          (form-guide-entry
            definitions (car entries) index (null? (cdr entries)) label-maker)
           (loop (cdr entries) (+ index 1)))))))
