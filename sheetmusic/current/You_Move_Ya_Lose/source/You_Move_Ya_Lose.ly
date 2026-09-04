@@ -5,7 +5,7 @@
 performanceForm = "Vamp, 1&2, Vamp, 1&2, Solos, Bridge, 1&2"
 
 \header { 
-	tagline = "9/3/2026" 
+	tagline = "9/4/2026" 
 
   title = "You Move Ya Lose"
   composer = "Rebirth Brass Band"
