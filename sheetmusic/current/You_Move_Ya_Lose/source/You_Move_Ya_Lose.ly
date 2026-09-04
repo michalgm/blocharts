@@ -117,11 +117,6 @@ tenorSectionTwo = \relative c'' {
   }
 }
 
-bassEightBars = \relative c {
-  \bassABody
-  \bassAFirstEnding
-}
-
 bassSectionOne = \relative c {
   \repeat volta 2 { \bassABody }
   \alternative {
@@ -138,7 +133,6 @@ bassSectionTwo = \relative c {
   }
 }
 
-silentEightBars = { R1*8 }
 silentEightBarRepeat = {
   \repeat volta 2 { R1*7 }
   \alternative {
@@ -149,7 +143,6 @@ silentEightBarRepeat = {
 
 % Invisible timing for form labels and breaks. Unlike R1, skips do not
 % print rests when Pondscum overlays the form on an instrument staff.
-eightBarGuide = { s1*8 }
 eightBarRepeatGuide = {
   \repeat volta 2 { s1*7 }
   \alternative {
@@ -161,15 +154,34 @@ eightBarRepeatGuide = {
 % Reusable bass-drum phrases and sections
 tresillo = \drummode { bd8 r4 bd8 r4 bd4 | }
 
-bassDrumEightBars = \drummode {
-  \repeat unfold 8 { \tresillo }
-}
-
 bassDrumSectionOne = \drummode {
   \repeat volta 2 { \repeat unfold 7 { \tresillo } }
   \alternative {
     { \tresillo }
     { \tresillo }
+  }
+}
+
+% Show the regular eight-bar repeat, but enter only on the second pass.
+% The \unfolded music is hidden in print and supplies the correct MIDI playback.
+bassDrumIntroVamp = \drummode {
+  \repeat volta 2 {
+    \volta #'() {
+      bd8^\markup { \italic "2nd time only" } r4 bd8 r4 bd4 |
+      \repeat unfold 6 { \tresillo }
+    }
+    \volta 1 { \unfolded { \repeat unfold 7 { r1 | } } }
+    \volta 2 { \unfolded { \repeat unfold 7 { \tresillo } } }
+  }
+  \alternative {
+    {
+      \volta #'() { \tresillo }
+      \unfolded { r1 | }
+    }
+    {
+      \volta #'() { \tresillo }
+      \unfolded { \tresillo }
+    }
   }
 }
 
@@ -206,30 +218,14 @@ silentBridge = {
 
 % Each section owns its label, form timing, and instrument parts.
 #(define section-definitions
-  `((introBassVamp
-      (label . ,#{ \mark \markup \box \bold "Vamp" #})
-      (break-after . #f)
-      (guide . ,#{ \eightBarGuide #})
-      (melody . ,#{ \silentEightBars #})
-      (tenor . ,#{ \silentEightBars #})
-      (bass . ,#{ \bassEightBars #})
-      (bassDrum . ,#{ \silentEightBars #}))
-    (introBassAndDrumVamp
-      (label . #f)
-      (break-after . #f)
-      (guide . ,#{ \eightBarGuide #})
-      (melody . ,#{ \silentEightBars #})
-      (tenor . ,#{ \silentEightBars #})
-      (bass . ,#{ \bassEightBars #})
-      (bassDrum . ,#{ \bassDrumEightBars #}))
-    (vamp
+  `((vamp
       (label . ,#{ \mark \markup \box \bold "Vamp" #})
       (bar-after . "||")
-      (guide . ,#{ \eightBarRepeatGuide #})
-      (melody . ,#{ \silentEightBarRepeat #})
-      (tenor . ,#{ \tenorSectionOne #})
-      (bass . ,#{ \bassSectionOne #})
-      (bassDrum . ,#{ \bassDrumSectionOne #}))
+      (guide . ,#{ \eightBarRepeatGuide \eightBarRepeatGuide #})
+      (melody . ,#{ \silentEightBarRepeat \silentEightBarRepeat #})
+      (tenor . ,#{ \silentEightBarRepeat \tenorSectionOne #})
+      (bass . ,#{ \bassSectionOne \bassSectionOne #})
+      (bassDrum . ,#{ \bassDrumIntroVamp \bassDrumSectionOne #}))
     (sectionOne
       (label . ,#{ \mark \markup \box \bold "1" #})
       (guide . ,#{ \eightBarRepeatGuide #})
@@ -272,8 +268,7 @@ silentBridge = {
 % The full playing order is authored only here. An occurrence may override its
 % section's label, barline, Fine, or line-break defaults when necessary.
 #(define full-form
-  `(introBassVamp introBassAndDrumVamp
-    (vamp (label . #f))
+  `(vamp
     sectionOne sectionTwo
     vamp
     sectionOne sectionTwo
