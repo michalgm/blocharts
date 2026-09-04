@@ -161,21 +161,21 @@ silentSectionWithEndings = {
 silentSoloHead = { \repeat volta 4 { R1*4 } }
 
 % Invisible timing for score-wide labels and layout breaks.
-roadmapRepeatedSection = { \repeat volta 2 { s1*4 } }
-roadmapsectionBridge = {
+formRepeatedSection = { \repeat volta 2 { s1*4 } }
+formSectionBridge = {
 	\repeat volta 2 { s1*3 }
 	\alternative {
 		{ s1 }
 		{ s1 }
 	}
 }
-roadmapSoloHead = { \repeat volta 4 { s1*4 } }
+formSoloHead = { \repeat volta 4 { s1*4 } }
 
-% Each section owns its description, roadmap timing, and instrument parts.
+% Each section owns its description, form timing, and instrument parts.
 #(define section-definitions
 	`((tenorVamp
 		(description . "Tenor only")
-		(guide . ,#{ \roadmapRepeatedSection #})
+		(guide . ,#{ \formRepeatedSection #})
 		(melody . ,#{ \silentRepeatedSection #})
 		(guitar . ,#{ \guitarSection #})
 		(bass . ,#{ \silentRepeatedSection #})
@@ -183,7 +183,7 @@ roadmapSoloHead = { \repeat volta 4 { s1*4 } }
 		(cowbell . ,#{ \silentRepeatedSection #}))
 	  (bassTenorVamp
 		(description . "Bass + Tenor")
-		(guide . ,#{ \roadmapRepeatedSection #})
+		(guide . ,#{ \formRepeatedSection #})
 		(melody . ,#{ \silentRepeatedSection #})
 		(guitar . ,#{ \guitarSection #})
 		(bass . ,#{ \bassSection #})
@@ -191,7 +191,7 @@ roadmapSoloHead = { \repeat volta 4 { s1*4 } }
 		(cowbell . ,#{ \silentRepeatedSection #}))
 	  (drumsBassTenorVamp
 		(description . "Drums + Bass + Tenor")
-		(guide . ,#{ \roadmapRepeatedSection #})
+		(guide . ,#{ \formRepeatedSection #})
 		(melody . ,#{ \silentRepeatedSection #})
 		(guitar . ,#{ \guitarSection #})
 		(bass . ,#{ \bassSection #})
@@ -200,7 +200,7 @@ roadmapSoloHead = { \repeat volta 4 { s1*4 } }
 	  (sectionHead
 		(description . "Head")
 		(lyre-label . "1")
-		(guide . ,#{ \roadmapRepeatedSection #})
+		(guide . ,#{ \formRepeatedSection #})
 		(melody . ,#{ \melodysectionHead #})
 		(guitar . ,#{ \guitarSection #})
 		(bass . ,#{ \bassSection #})
@@ -209,7 +209,7 @@ roadmapSoloHead = { \repeat volta 4 { s1*4 } }
 	  (sectionBridge
 		(description . "Bridge")
 		(lyre-label . "2")
-		(guide . ,#{ \roadmapsectionBridge #})
+		(guide . ,#{ \formSectionBridge #})
 		(melody . ,#{ \melodysectionBridge #})
 		(guitar . ,#{ \guitarSectionWithEndings #})
 		(bass . ,#{ \basssectionBridge #})
@@ -218,21 +218,21 @@ roadmapSoloHead = { \repeat volta 4 { s1*4 } }
 	  (sectionHits
 		(description . "Hits")
 		(lyre-label . "3")
-		(guide . ,#{ \roadmapRepeatedSection #})
+		(guide . ,#{ \formRepeatedSection #})
 		(melody . ,#{ \melodysectionHits #})
 		(guitar . ,#{ \guitarSection #})
 		(bass . ,#{ \bassSection #})
 		(bassDrum . ,#{ \bassDrumRepeatedSection #})
 		(cowbell . ,#{ \cowbellRepeatedSection #}))
 	  (soloHead
-		(guide . ,#{ \roadmapSoloHead #})
+		(guide . ,#{ \formSoloHead #})
 		(melody . ,#{ \silentSoloHead #})
 		(guitar . ,#{ \guitarSoloHead #})
 		(bass . ,#{ \bassSoloHead #})
 		(bassDrum . ,#{ \bassDrumSoloHead #})
 		(cowbell . ,#{ \cowbellSoloHead #}))
 	  (soloBridge
-		(guide . ,#{ \roadmapsectionBridge #})
+		(guide . ,#{ \formSectionBridge #})
 		(melody . ,#{ \silentSectionWithEndings #})
 		(guitar . ,#{ \guitarSectionWithEndings #})
 		(bass . ,#{ \basssectionBridge #})
@@ -253,24 +253,24 @@ roadmapSoloHead = { \repeat volta 4 { s1*4 } }
 
 #(define lyre-form '(sectionHead sectionBridge sectionHits))
 
-#(define (alphabetic-roadmap-label definitions entry index)
+#(define (alphabetic-form-label definitions entry index)
 	(let* ((section-name (form-entry-name entry))
 		   (label (string (integer->char (+ (char->integer #\A) index))))
 		   (description
 			(form-entry-section-property definitions entry 'description)))
 		#{ \mark \markup { \box \bold #label \italic #description } #}))
 
-#(define (numeric-roadmap-label definitions entry index)
+#(define (numeric-form-label definitions entry index)
 	(let* ((section-name (form-entry-name entry))
 		   (label (section-property definitions section-name 'lyre-label)))
 		#{ \mark \markup \box \bold #label #}))
 
-roadmap = {
-	#(assemble-roadmap section-definitions full-form alphabetic-roadmap-label)
+form = {
+	#(assemble-form-guide section-definitions full-form alphabetic-form-label)
 }
 
-lyreRoadmap = {
-	#(assemble-roadmap section-definitions lyre-form numeric-roadmap-label)
+lyreForm = {
+	#(assemble-form-guide section-definitions lyre-form numeric-form-label)
 }
 
 % Named final parts retained for pondscum's %part convention.
@@ -329,7 +329,7 @@ changes = \chordmode { }
     \score {
 	<<
 %	\new ChordNames { \set chordChanges = ##t \changes }
-        \new Staff { << \roadmap { \transpose bes c \melody } >> }
+        \new Staff { << \form { \transpose bes c \melody } >> }
 	>>
     }
 %    \words
@@ -340,7 +340,7 @@ changes = \chordmode { }
     \score {
 	<<
 %	\new ChordNames { \set chordChanges = ##t \changes }
-        \new Staff { << \roadmap { \transpose bes c' \guitar } >> }
+        \new Staff { << \form { \transpose bes c' \guitar } >> }
 	>>
     }
 %    \words
@@ -350,7 +350,7 @@ changes = \chordmode { }
     \score {
 	<<
 %	\new ChordNames { \set chordChanges = ##t \changes }
-        \new Staff { << \roadmap { \transpose ees c \melody } >> }
+        \new Staff { << \form { \transpose ees c \melody } >> }
 	>>
     }
 %    \words
@@ -361,7 +361,7 @@ changes = \chordmode { }
     \score {
 	<<
 %	\new ChordNames { \set chordChanges = ##t \changes }
-        \new Staff { << \roadmap { \transpose ees c \guitar } >> }
+        \new Staff { << \form { \transpose ees c \guitar } >> }
 	>>
     }
 %    \words
@@ -372,7 +372,7 @@ changes = \chordmode { }
     \score {
 	<<
 %	\new ChordNames { \set chordChanges = ##t \changes }
-        \new Staff { << \roadmap { \clef treble \transpose ees c'' \bass } >> }
+        \new Staff { << \form { \clef treble \transpose ees c'' \bass } >> }
 	>>
     }
 %    \words
@@ -384,7 +384,7 @@ changes = \chordmode { }
     \score { 
       << 
 %	\new ChordNames { \set chordChanges = ##t \changes }
-	\new Staff { << \roadmap { \melody } >> }
+	\new Staff { << \form { \melody } >> }
 	\new Staff { 
 		\guitar
 	}

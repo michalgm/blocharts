@@ -143,8 +143,8 @@ silentEightBarRepeat = {
   }
 }
 
-% Invisible timing for roadmap labels and breaks. Unlike R1, skips do not
-% print rests when Pondscum overlays the roadmap on an instrument staff.
+% Invisible timing for form labels and breaks. Unlike R1, skips do not
+% print rests when Pondscum overlays the form on an instrument staff.
 eightBarRepeatGuide = {
   \repeat volta 2 { s1*7 }
   \alternative {
@@ -218,7 +218,7 @@ silentBridge = {
   \repeat volta 2 { s1*8 }
 }
 
-% Each section owns its label, roadmap timing, and instrument parts.
+% Each section owns its label, form timing, and instrument parts.
 #(define section-definitions
   `((introVamp
       (label . ,#{ \mark \markup \box \bold "Vamp" #})
@@ -286,11 +286,11 @@ silentBridge = {
 #(define lyre-form '(sectionOne sectionTwo bridge))
 
 % Pondscum discovers these names; both are derived from their respective forms.
-roadmap = {
-  #(assemble-roadmap section-definitions full-form default-roadmap-label)
+form = {
+  #(assemble-form-guide section-definitions full-form default-form-label)
 }
-lyreRoadmap = {
-  #(assemble-roadmap section-definitions lyre-form default-roadmap-label)
+lyreForm = {
+  #(assemble-form-guide section-definitions lyre-form default-form-label)
 }
 
 % Named final parts retained for pondscum's %part convention.
