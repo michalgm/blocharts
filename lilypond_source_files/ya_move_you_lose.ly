@@ -2,7 +2,7 @@
 
 \include "form.ily"
 
-performanceForm = "Intro; D.S.: Part 1 (no melody), Part 1, Part 2; Coda: two solo choruses, Part 3, Part 1, Part 2"
+performanceForm = "Vamp; D.S.: 1 (no melody), 1, 2; Coda: two solo choruses, Bridge, 1, 2"
 
 \header { 
 	tagline = "9/1/2026"
@@ -237,30 +237,30 @@ silentBridge = {
 
 % Each section owns its label, form timing, and instrument parts.
 #(define section-definitions
-  `((intro
-      (label . ,#{ \mark \markup \box \bold "Intro - Part 1" #})
+  `((vamp
+      (label . ,#{ \mark \markup \box \bold "Vamp" #})
       (bar-after . "||")
       (guide . ,#{ \eightBarRepeatGuide #})
       (melody . ,#{ \silentEightBarRepeatNoAlt #})
       (tenor . ,#{ \silentEightBarRepeatNoAlt #})
       (bass . ,#{ \bassRiff #})
       (bassDrum . ,#{ \bassDrumIntroVamp #}))
-    (partOneNoMelody
-      (label . ,#{ \mark \markup \box \bold "Part 1 - no melody" #})
+    (sectionOneNoMelody
+      (label . ,#{ \mark \markup \box \bold "1 - no melody" #})
       (guide . ,#{ \eightBarRepeatWithAlternateGuide #})
       (melody . ,#{ \silentEightBarRepeat #})
       (tenor . ,#{ \tenorSectionOne #})
       (bass . ,#{ \bassSectionOne #})
       (bassDrum . ,#{ \bassDrumSectionOne #}))
     (sectionOne
-      (label . ,#{ \mark \markup \box \bold "Part 1" #})
+      (label . ,#{ \mark \markup \box \bold "1" #})
       (guide . ,#{ \eightBarRepeatWithAlternateGuide #})
       (melody . ,#{ \melodySectionOne #})
       (tenor . ,#{ \tenorSectionOne #})
       (bass . ,#{ \bassSectionOne #})
       (bassDrum . ,#{ \bassDrumSectionOne #}))
     (sectionTwo
-      (label . ,#{ \mark \markup \box \bold "Part 2" #})
+      (label . ,#{ \mark \markup \box \bold "2" #})
       (bar-after . "||")
       (guide . ,#{ \eightBarRepeatWithAlternateGuide #})
       (melody . ,#{ \melodySectionTwo #})
@@ -280,7 +280,7 @@ silentBridge = {
       (bass . ,#{ \bassSolos #})
       (bassDrum . ,#{ \bassDrumSolos #}))
     (bridge
-      (label . ,#{ \mark \markup \box \bold "Part 3" #})
+      (label . ,#{ \mark \markup \box \bold "Bridge" #})
       (bar-after . "||")
       (guide . ,#{ \silentBridge #})
       (melody . ,#{ \melodyBridge #})
@@ -295,9 +295,9 @@ silentBridge = {
 % The full playing order is authored only here. An occurrence may override its
 % section's label, barline, Fine, or line-break defaults when necessary.
 #(define full-form
-  `(intro
+  `(vamp
     (segno-repeat "Coda"
-      partOneNoMelody
+      sectionOneNoMelody
       sectionOne
       sectionTwo)
     solos
