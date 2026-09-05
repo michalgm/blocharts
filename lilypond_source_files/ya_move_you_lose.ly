@@ -2,7 +2,7 @@
 
 \include "form.ily"
 
-performanceForm = "Vamp, 1&2, Vamp, 1&2, Solos, Bridge, 1&2"
+performanceForm = "Intro; D.S.: Part 1 (no melody), Part 1, Part 2; Coda: two solo choruses, Part 3, Part 1, Part 2"
 
 \header { 
 	tagline = "9/1/2026"
@@ -116,6 +116,10 @@ tenorSectionTwo = \relative c'' {
   }
 }
 
+bassRiff = \relative c {
+  \repeat volta 2 { \bassABody \bassAFirstEnding }
+}
+
 bassSectionOne = \relative c {
   \repeat volta 2 { \bassABody }
   \alternative {
@@ -132,6 +136,11 @@ bassSectionTwo = \relative c {
   }
 }
 
+% 96 measures total
+bassSolos = \relative c {
+  \repeat volta 12 { \bassABody \bassAFirstEnding }
+}
+
 silentEightBarRepeat = {
   \repeat volta 2 { R1*7 }
   \alternative {
@@ -140,14 +149,31 @@ silentEightBarRepeat = {
   }
 }
 
+silentEightBarRepeatNoAlt = {
+  \repeat volta 2 { R1*8 }
+}
+
 % Invisible timing for form labels and breaks. Unlike R1, skips do not
 % print rests when Pondscum overlays the form on an instrument staff.
-eightBarRepeatGuide = {
+eightBarRepeatWithAlternateGuide = {
   \repeat volta 2 { s1*7 }
   \alternative {
     { s1 }
     { s1 }
   }
+}
+
+eightBarRepeatGuide = {
+  \repeat volta 2 { s1*8 }
+}
+
+% Guide for solos, whiich is 96 measures in total
+solosGuide = {
+  \repeat volta 12 { s1*8 }
+}
+
+solosRests = {
+  \repeat volta 12 { R1*8 }
 }
 
 % Reusable bass-drum phrases and sections
@@ -167,20 +193,10 @@ bassDrumIntroVamp = \drummode {
   \repeat volta 2 {
     \volta #'() {
       bd8^\markup { \italic "2nd time only" } r4 bd8 r4 bd4 |
-      \repeat unfold 6 { \tresillo }
+      \repeat unfold 7 { \tresillo }
     }
-    \volta 1 { \unfolded { \repeat unfold 7 { r1 | } } }
-    \volta 2 { \unfolded { \repeat unfold 7 { \tresillo } } }
-  }
-  \alternative {
-    {
-      \volta #'() { \tresillo }
-      \unfolded { r1 | }
-    }
-    {
-      \volta #'() { \tresillo }
-      \unfolded { \tresillo }
-    }
+    \volta 1 { \unfolded { \repeat unfold 8 { r1 | } } }
+    \volta 2 { \unfolded { \repeat unfold 8 { \tresillo } } }
   }
 }
 
@@ -190,6 +206,10 @@ bassDrumSectionTwo = \drummode {
     { r2. bd4 | }
     { r1 | }
   }
+}
+
+bassDrumSolos = \drummode {
+  \repeat volta 12 { \repeat unfold 8 { \tresillo } }
 }
 
 hornBridge = {
@@ -217,46 +237,50 @@ silentBridge = {
 
 % Each section owns its label, form timing, and instrument parts.
 #(define section-definitions
-  `((vamp
-      (label . ,#{ \mark \markup \box \bold "Vamp" #})
+  `((intro
+      (label . ,#{ \mark \markup \box \bold "Intro - Part 1" #})
       (bar-after . "||")
-      (guide . ,#{ \eightBarRepeatGuide \eightBarRepeatGuide #})
-      (melody . ,#{ \silentEightBarRepeat \silentEightBarRepeat #})
-      (tenor . ,#{ \silentEightBarRepeat \tenorSectionOne #})
-      (bass . ,#{ \bassSectionOne \bassSectionOne #})
-      (bassDrum . ,#{ \bassDrumIntroVamp \bassDrumSectionOne #}))
-    (sectionOne
-      (label . ,#{ \mark \markup \box \bold "1" #})
       (guide . ,#{ \eightBarRepeatGuide #})
+      (melody . ,#{ \silentEightBarRepeatNoAlt #})
+      (tenor . ,#{ \silentEightBarRepeatNoAlt #})
+      (bass . ,#{ \bassRiff #})
+      (bassDrum . ,#{ \bassDrumIntroVamp #}))
+    (partOneNoMelody
+      (label . ,#{ \mark \markup \box \bold "Part 1 - no melody" #})
+      (guide . ,#{ \eightBarRepeatWithAlternateGuide #})
+      (melody . ,#{ \silentEightBarRepeat #})
+      (tenor . ,#{ \tenorSectionOne #})
+      (bass . ,#{ \bassSectionOne #})
+      (bassDrum . ,#{ \bassDrumSectionOne #}))
+    (sectionOne
+      (label . ,#{ \mark \markup \box \bold "Part 1" #})
+      (guide . ,#{ \eightBarRepeatWithAlternateGuide #})
       (melody . ,#{ \melodySectionOne #})
       (tenor . ,#{ \tenorSectionOne #})
       (bass . ,#{ \bassSectionOne #})
       (bassDrum . ,#{ \bassDrumSectionOne #}))
     (sectionTwo
-      (label . ,#{ \mark \markup \box \bold "2" #})
+      (label . ,#{ \mark \markup \box \bold "Part 2" #})
       (bar-after . "||")
-      (guide . ,#{ \eightBarRepeatGuide #})
+      (guide . ,#{ \eightBarRepeatWithAlternateGuide #})
       (melody . ,#{ \melodySectionTwo #})
       (tenor . ,#{ \tenorSectionTwo #})
       (bass . ,#{ \bassSectionTwo #})
       (bassDrum . ,#{ \bassDrumSectionTwo #}))
-    (soloSectionOne
-      (label . ,#{ \mark \markup \box \bold "Solos 1" #})
-      (guide . ,#{ \eightBarRepeatGuide #})
-      (melody . ,#{ \silentEightBarRepeat #})
-      (tenor . ,#{ \silentEightBarRepeat #})
-      (bass . ,#{ \bassSectionOne #})
-      (bassDrum . ,#{ \bassDrumSectionOne #}))
-    (soloSectionTwo
-      (label . ,#{ \mark \markup \box \bold "Solos 2" #})
-      (bar-after . "||")
-      (guide . ,#{ \eightBarRepeatGuide #})
-      (melody . ,#{ \silentEightBarRepeat #})
-      (tenor . ,#{ s1*0\p \tenorSectionTwo s1*0\mf #})
-      (bass . ,#{ \bassSectionTwo #})
-      (bassDrum . ,#{ \bassDrumSectionTwo #}))
+    (solos
+      (label . ,#{
+        \mark \markup \line {
+          \box \bold "Solos"
+          \italic "12x"
+        }
+      #})
+      (guide . ,#{ \solosGuide #})
+      (melody . ,#{ \solosRests #})
+      (tenor . ,#{ \solosRests #})
+      (bass . ,#{ \bassSolos #})
+      (bassDrum . ,#{ \bassDrumSolos #}))
     (bridge
-      (label . ,#{ \mark \markup \box \bold "Bridge" #})
+      (label . ,#{ \mark \markup \box \bold "Part 3" #})
       (bar-after . "||")
       (guide . ,#{ \silentBridge #})
       (melody . ,#{ \melodyBridge #})
@@ -267,13 +291,12 @@ silentBridge = {
 % The full playing order is authored only here. An occurrence may override its
 % section's label, barline, Fine, or line-break defaults when necessary.
 #(define full-form
-  `(vamp
-    sectionOne sectionTwo
-    vamp
-    sectionOne sectionTwo
-    soloSectionOne
-    (soloSectionOne (label . #f))
-    soloSectionTwo
+  `(intro
+    (segno-repeat "Coda"
+      partOneNoMelody
+      sectionOne
+      sectionTwo)
+    solos
     bridge
     sectionOne
     (sectionTwo (fine-after . #t))))
@@ -285,9 +308,12 @@ silentBridge = {
 
 % Pondscum discovers these names; both are derived from their respective forms.
 form = {
+  \override Score.RehearsalMark.break-visibility = #begin-of-line-visible
+  \override Score.SegnoMark.break-visibility = #begin-of-line-visible
   #(assemble-form-guide section-definitions full-form default-form-label)
 }
 lyreForm = {
+  \override Score.RehearsalMark.break-visibility = #begin-of-line-visible
   #(assemble-form-guide section-definitions lyre-form default-form-label)
 }
 
