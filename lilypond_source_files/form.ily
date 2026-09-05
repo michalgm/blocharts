@@ -26,6 +26,11 @@
 %   assemble-form       builds the actual notes for one instrument;
 %   assemble-form-guide builds invisible timing plus labels, breaks, barlines,
 %                       and navigation marks to overlay on the instrument.
+%
+% validate-section-lengths checks the data before either assembler uses it.  It
+% discovers the instrument fields, requires every section to define all of
+% them, and requires each part to have the same duration as that section's
+% guide.
 
 % Return the section-name symbol from either supported occurrence form:
 %   sectionOne                         => sectionOne
@@ -159,6 +164,69 @@
     (if entry
         (cdr entry)
         (ly:error "No ~a value for section ~a" property section-name))))
+
+% These fields describe or format a section rather than supplying an instrument
+% part.  Everything else whose value is a LilyPond music object is considered a
+% part.  Taking the union across every section means a part missing from even
+% the first section is still discovered elsewhere and reported.
+#(define section-metadata-properties
+  '(label guide break-after bar-after fine-after))
+
+#(define (section-part-names definitions)
+  (let section-loop ((sections definitions) (parts '()))
+    (if (null? sections)
+        parts
+        (let property-loop
+          ((properties (cdr (car sections))) (found parts))
+          (if (null? properties)
+              (section-loop (cdr sections) found)
+              (let* ((property (car properties))
+                     (name (car property))
+                     (value (cdr property)))
+                (property-loop
+                 (cdr properties)
+                 (if (and (ly:music? value)
+                          (not (memq name section-metadata-properties))
+                          (not (memq name found)))
+                     (append found (list name))
+                     found))))))))
+
+% Moments are LilyPond's exact representation of musical time.  Comparing in
+% both directions avoids relying on the printed representation of a Moment.
+#(define (music-moments-equal? left right)
+  (and (not (ly:moment<? left right))
+       (not (ly:moment<? right left))))
+
+% Validate one complete section registry.  The guide is the canonical duration
+% because it is the timing stream used to place section-wide labels and breaks.
+% ly:error aborts compilation and names the precise section and part, turning a
+% subtle engraving misalignment into an immediate source error.
+#(define (validate-section-lengths definitions)
+  (let ((part-names (section-part-names definitions)))
+    (for-each
+     (lambda (section)
+       (let* ((section-name (car section))
+              (guide (section-property definitions section-name 'guide))
+              (expected-length (ly:music-length guide)))
+         (for-each
+          (lambda (part-name)
+            (let ((part-entry (assq part-name (cdr section))))
+              (if (not part-entry)
+                  (ly:error
+                   "Section ~a has no ~a part" section-name part-name)
+                  (let ((part (cdr part-entry)))
+                    (if (not (ly:music? part))
+                        (ly:error
+                         "Section ~a: ~a is not music" section-name part-name)
+                        (let ((actual-length (ly:music-length part)))
+                          (if (not (music-moments-equal?
+                                    actual-length expected-length))
+                              (ly:error
+                               "Section ~a: ~a has length ~a; guide has length ~a"
+                               section-name part-name
+                               actual-length expected-length))))))))
+          part-names)))
+     definitions)))
 
 % Assemble the playable music for a single instrument by walking `form' in
 % order.  Nested navigation entries recurse into this same function.  Ordinary

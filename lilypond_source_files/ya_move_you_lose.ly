@@ -288,6 +288,10 @@ silentBridge = {
       (bass . ,#{ \bassBridge #})
       (bassDrum . ,#{ \bassDrumBridge #}))))
 
+% Fail compilation early if any instrument part is missing or does not occupy
+% the same amount of musical time as its section guide.
+#(validate-section-lengths section-definitions)
+
 % The full playing order is authored only here. An occurrence may override its
 % section's label, barline, Fine, or line-break defaults when necessary.
 #(define full-form
