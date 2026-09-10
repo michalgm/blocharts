@@ -239,7 +239,7 @@ silentBridge = {
 % Each section owns its label, form timing, and instrument parts.
 #(define section-definitions
   `((vamp
-      (label . ,#{ \mark \markup \box \bold "Vamp" #})
+      (label . #f)
       (guide . ,#{ \eightBarRepeatGuide #})
       (melody . ,#{ \silentEightBarRepeatNoAlt #})
       (tenor . ,#{ \silentEightBarRepeatNoAlt #})
@@ -294,7 +294,7 @@ silentBridge = {
 % section's label, barline, Fine, or line-break defaults when necessary.
 #(define full-form
   `(vamp
-    (segno-repeat "Coda"
+    (segno-repeat al-fine
       sectionOneNoMelody
       sectionOne
       sectionTwo)
@@ -313,6 +313,8 @@ form = {
   \override Score.RehearsalMark.break-visibility = #begin-of-line-visible
   \override Score.SegnoMark.break-visibility = #begin-of-line-visible
   #(assemble-form-guide section-definitions full-form default-form-label)
+  \set Score.finalFineTextVisibility = ##t
+  \fine
 }
 lyreForm = {
   \override Score.RehearsalMark.break-visibility = #begin-of-line-visible

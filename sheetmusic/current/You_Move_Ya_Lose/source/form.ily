@@ -40,6 +40,9 @@
 
 % A segno-repeat form entry has the shape
 %   (segno-repeat "Coda label" section ...)
+%   (segno-repeat al-fine section ...)
+% al-fine prints D.S. al Fine without a heading after the repeat; the chart
+% places Fine at its actual end. Both modes use the same playback order.
 % It keeps the printed navigation and unfolded MIDI order in the same form.
 % `pair?' distinguishes a list from a bare symbol, and `eq?' compares symbols.
 #(define (segno-repeat-entry? entry)
@@ -144,17 +147,20 @@
 % `skip-of-length' makes silent spacer music exactly as long as `music'.  The
 % simultaneous << ... >> block therefore overlays two equal-length streams:
 % the normal section guide (labels, breaks, etc.) and the native segno repeat.
-#(define (make-segno-guide music coda-label)
-  (let ((navigation (skip-of-length music)))
+#(define (make-segno-guide music destination)
+  (let ((navigation (skip-of-length music))
+        (al-fine? (eq? destination 'al-fine)))
     #{
       \set Score.dalSegnoTextFormatter =
-        #(make-dal-segno-al-coda-formatter coda-label)
+        #(make-dal-segno-al-coda-formatter
+          (if al-fine? "Fine" destination))
       <<
         { #music }
         { \repeat segno 2 { #navigation } }
       >>
       \section
-      \sectionLabel #coda-label
+      #(if al-fine? (make-sequential-music '())
+           #{ \sectionLabel #destination #})
       \break
     #}))
 
