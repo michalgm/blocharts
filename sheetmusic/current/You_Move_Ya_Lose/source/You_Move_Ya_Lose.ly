@@ -20,7 +20,7 @@ hornBSecondEnding = { r1 | }
 
 hornBridgeBody = {
   <as c ees>8 r4 <as c ees>8 ~ <as c ees>4 <as c ees> | <g bes d>8 r4 <g bes d>8 ~ <g bes d>4 <g bes d> |
-  <f as c>8 r4 <f as c>8 ~ <f as c>4 <f as c> | <e g b> \mark \markup \italic "4x" r2. |
+  <f as c>8 r4 <f as c>8 ~ <f as c>4 <f as c> | <e g b> r2. |
 }
 
 hornFinalBody = {
@@ -75,7 +75,7 @@ bassBBody = {
 
 bassBridgeBody = {
   f,4 r8 f~ f4 g | aes r8 aes~ aes4 a | bes r8 bes~ bes4 b |
-  c \mark \markup \italic "4x" r8 ees~ ees4 e |
+  c r8 ees~ ees4 e |
 }
 
 bassFinalBody = {
@@ -240,6 +240,7 @@ bassDrumBridge = \drummode {
 
 silentBridge = {
   \repeat volta 4 { s1*4 }
+  \textEndMark \markup \bold "4x total"
   \repeat volta 2 { s1*8 }
 }
 
