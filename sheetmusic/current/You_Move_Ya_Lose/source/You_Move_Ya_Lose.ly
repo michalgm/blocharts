@@ -171,6 +171,7 @@ eightBarRepeatGuide = {
 % Guide for solos, whiich is 96 measures in total
 solosGuide = {
   \repeat volta 12 { s1*8 }
+  \textEndMark \markup \bold "12x"
 }
 
 solosRests = {
@@ -267,12 +268,7 @@ silentBridge = {
       (bass . ,#{ \bassSectionTwo #})
       (bassDrum . ,#{ \bassDrumSectionTwo #}))
     (solos
-      (label . ,#{
-        \mark \markup \line {
-          \box \bold "Solos"
-          \italic "12x"
-        }
-      #})
+      (label . ,#{ \mark \markup \box \bold "Solos" #})
       (guide . ,#{ \solosGuide #})
       (melody . ,#{ \solosRests #})
       (tenor . ,#{ \solosRests #})
