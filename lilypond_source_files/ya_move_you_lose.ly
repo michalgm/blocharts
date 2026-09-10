@@ -167,8 +167,14 @@ eightBarRepeatGuide = {
   \repeat volta 2 { s1*8 }
 }
 
-% Guide for solos, whiich is 96 measures in total
+% Two 48-bar solo forms over the existing 96-bar accompaniment.
 solosGuide = {
+  s1*0^\markup {
+    \column {
+      \line { \bold "Solo form: Section 1 twice, then Section 2" }
+      \line { \italic "1st time through form: Soloist 1; 2nd: Soloist 2" }
+    }
+  }
   \repeat volta 12 { s1*8 }
   \textEndMark \markup \bold "12x"
 }
