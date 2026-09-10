@@ -81,16 +81,26 @@
 #(define (make-segno-repeat music)
   #{ \repeat volta 2 { #music } #})
 
+% Build the return-instruction formatter from the same destination label used
+% below.  In this form both passes contain identical music and Coda follows the
+% repeated passage directly, so inventing an empty second alternative produces
+% invalid engraving.  Supplying the wording here keeps the honest simple segno
+% repeat while ensuring its instruction and destination share one source of
+% truth.
+#(define (make-dal-segno-al-coda-formatter coda-label)
+  (lambda (context return-count marks)
+    (make-line-markup (list "D.S. al" coda-label))))
+
 % Give the invisible form guide the sole segno repeat. Its plain skip avoids
 % ambiguous jump points when the visible guide ends with nested volta endings.
 % `skip-of-length' makes silent spacer music exactly as long as `music'.  The
 % simultaneous << ... >> block therefore overlays two equal-length streams:
 % the normal section guide (labels, breaks, etc.) and the native segno repeat.
-% Once the repeat ends, \section establishes the navigation boundary and
-% \sectionLabel prints the Coda label supplied by the song's form entry.
 #(define (make-segno-guide music coda-label)
   (let ((navigation (skip-of-length music)))
     #{
+      \set Score.dalSegnoTextFormatter =
+        #(make-dal-segno-al-coda-formatter coda-label)
       <<
         { #music }
         { \repeat segno 2 { #navigation } }

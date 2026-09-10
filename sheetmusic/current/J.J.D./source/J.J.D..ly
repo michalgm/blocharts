@@ -5,7 +5,7 @@
 performanceForm = "Vamp, Head, Bridge, Hits, Head, Solos, Bridge, Head, Bridge (x2)"
 
 \header { 
-	tagline = "9/4/2026"
+	tagline = "9/10/2026"
 	title = "J.J.D."
 	composer = "Fela Kuti"
 
@@ -236,6 +236,10 @@ formSoloHead = { \repeat volta 4 { s1*4 } }
 		(bass . ,#{ \basssectionBridge #})
 		(bassDrum . ,#{ \bassDrumsectionBridge #})
 		(cowbell . ,#{ \cowbellsectionBridge #}))))
+
+% Fail compilation early if any instrument part is missing or does not occupy
+% the same amount of musical time as its section guide.
+#(validate-section-lengths section-definitions)
 
 % The arrangement order is authored only here. Occurrence labels override a
 % section's default label for repeated solo sections.

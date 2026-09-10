@@ -2,10 +2,10 @@
 
 \include "form.ily"
 
-performanceForm = "Vamp; D.S.: 1 (no melody), 1, 2; Coda: two solo choruses, Bridge, 1, 2"
+performanceForm = "Vamp, 1, 2, Vamp, 1, 2, Solos, Bridge, 1, 2"
 
 \header { 
-	tagline = "9/5/2026" 
+	tagline = "9/10/2026" 
 
   title = "You Move Ya Lose"
   composer = "Rebirth Brass Band"
@@ -240,14 +240,13 @@ silentBridge = {
 #(define section-definitions
   `((vamp
       (label . ,#{ \mark \markup \box \bold "Vamp" #})
-      (bar-after . "||")
       (guide . ,#{ \eightBarRepeatGuide #})
       (melody . ,#{ \silentEightBarRepeatNoAlt #})
       (tenor . ,#{ \silentEightBarRepeatNoAlt #})
       (bass . ,#{ \bassRiff #})
       (bassDrum . ,#{ \bassDrumIntroVamp #}))
     (sectionOneNoMelody
-      (label . ,#{ \mark \markup \box \bold "1 - no melody" #})
+      (label . ,#{ \mark \markup \box \bold "Vamp" #})
       (guide . ,#{ \eightBarRepeatWithAlternateGuide #})
       (melody . ,#{ \silentEightBarRepeat #})
       (tenor . ,#{ \tenorSectionOne #})
@@ -262,7 +261,6 @@ silentBridge = {
       (bassDrum . ,#{ \bassDrumSectionOne #}))
     (sectionTwo
       (label . ,#{ \mark \markup \box \bold "2" #})
-      (bar-after . "||")
       (guide . ,#{ \eightBarRepeatWithAlternateGuide #})
       (melody . ,#{ \melodySectionTwo #})
       (tenor . ,#{ \tenorSectionTwo #})
@@ -282,7 +280,6 @@ silentBridge = {
       (bassDrum . ,#{ \bassDrumSolos #}))
     (bridge
       (label . ,#{ \mark \markup \box \bold "Bridge" #})
-      (bar-after . "||")
       (guide . ,#{ \silentBridge #})
       (melody . ,#{ \melodyBridge #})
       (tenor . ,#{ \tenorBridge #})
