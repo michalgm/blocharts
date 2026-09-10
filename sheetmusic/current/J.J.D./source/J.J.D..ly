@@ -2,7 +2,7 @@
 
 \include "form.ily"
 
-performanceForm = "Vamp, Head, Bridge, Hits, Head, Solos, Bridge, Head, Bridge (x2)"
+performanceForm = "Vamp, Head, Bridge, Hits, Head, Bridge, Solos (Head 2x, Bridge per soloist), Head, Bridge"
 
 \header { 
 	tagline = "9/10/2026"
@@ -79,8 +79,6 @@ guitarSectionWithEndings = {
 	}
 }
 
-guitarSoloHead = { \repeat volta 4 { \guitarRiff } }
-
 % Reusable bass sections
 bassRiff = \relative c, {
 	f8 f f aes r4. ees8 | f f f r c' bes aes bes |
@@ -102,6 +100,19 @@ basssectionBridge = \relative c, {
 }
 
 bassSoloHead = { \repeat volta 4 { \bassRiff } }
+
+% Print one riff, but keep the first two passes silent in unfolded playback.
+bassIntroVamp = {
+	\repeat volta 4 {
+		\volta #'() {
+			s1*0^\markup { \italic "Enter on 3rd pass" }
+			\bassRiff
+		}
+		\volta 1,2 { \unfolded { R1*4 } }
+		\volta 3,4 { \unfolded { \bassRiff } }
+	}
+}
+
 
 % Bass drum enters with the full rhythm section at C and continues throughout.
 % One bar: dotted eighth, sixteenth, eighth rest, eighth note, half rest.
@@ -129,8 +140,8 @@ cowbellSoloHead = \drummode {
 % Steady quarter-note side-stick clicks keep time before the bass drum enters.
 bassDrumClickPattern = \drummode { ss4 ss ss ss | }
 
-bassDrumClickSection = \drummode {
-	\repeat volta 2 { \repeat unfold 4 { \bassDrumClickPattern } }
+bassDrumIntroVamp = \drummode {
+	\repeat volta 4 { \repeat unfold 4 { \bassDrumClickPattern } }
 }
 
 bassDrumRepeatedSection = \drummode {
@@ -170,26 +181,24 @@ formSectionBridge = {
 		{ s1 }
 	}
 }
-formSoloHead = { \repeat volta 4 { s1*4 } }
+formSoloHead = {
+	\repeat volta 4 { s1*4 }
+	\textEndMark \markup \bold "4x (2 Heads)"
+}
 
 % Each section owns its label, form timing, and instrument parts.
 #(define section-definitions
-	`((tenorVamp
+	`((introVamp
 		(label . "Vamp")
-		(guide . ,#{ \formRepeatedSection #})
-		(melody . ,#{ \silentRepeatedSection #})
-		(guitar . ,#{ \guitarSection #})
-		(bass . ,#{ \silentRepeatedSection #})
-		(bassDrum . ,#{ \bassDrumClickSection #})
-		(cowbell . ,#{ \silentRepeatedSection #}))
-	  (bassTenorVamp
-		(label . "Vamp")
-		(guide . ,#{ \formRepeatedSection #})
-		(melody . ,#{ \silentRepeatedSection #})
-		(guitar . ,#{ \guitarSection #})
-		(bass . ,#{ \bassSection #})
-		(bassDrum . ,#{ \bassDrumClickSection #})
-		(cowbell . ,#{ \silentRepeatedSection #}))
+		(guide . ,#{
+			\repeat volta 4 { s1*4 }
+			\textEndMark \markup \bold "4x"
+		#})
+		(melody . ,#{ \repeat volta 4 { R1*4 } #})
+		(guitar . ,#{ \repeat volta 4 { \guitarRiff } #})
+		(bass . ,#{ \bassIntroVamp #})
+		(bassDrum . ,#{ \bassDrumIntroVamp #})
+		(cowbell . ,#{ \repeat volta 4 { R1*4 } #}))
 	  (drumsBassTenorVamp
 		(label . "Vamp")
 		(guide . ,#{ \formRepeatedSection #})
@@ -225,14 +234,14 @@ formSoloHead = { \repeat volta 4 { s1*4 } }
 	  (soloHead
 		(guide . ,#{ \formSoloHead #})
 		(melody . ,#{ \silentSoloHead #})
-		(guitar . ,#{ \guitarSoloHead #})
+		(guitar . ,#{ \silentSoloHead #})
 		(bass . ,#{ \bassSoloHead #})
 		(bassDrum . ,#{ \bassDrumSoloHead #})
 		(cowbell . ,#{ \cowbellSoloHead #}))
 	  (soloBridge
 		(guide . ,#{ \formSectionBridge #})
 		(melody . ,#{ \silentSectionWithEndings #})
-		(guitar . ,#{ \guitarSectionWithEndings #})
+		(guitar . ,#{ \silentSectionWithEndings #})
 		(bass . ,#{ \basssectionBridge #})
 		(bassDrum . ,#{ \bassDrumsectionBridge #})
 		(cowbell . ,#{ \cowbellsectionBridge #}))))
@@ -241,17 +250,18 @@ formSoloHead = { \repeat volta 4 { s1*4 } }
 % the same amount of musical time as its section guide.
 #(validate-section-lengths section-definitions)
 
-% The arrangement order is authored only here. Occurrence labels override a
-% section's default label for repeated solo sections.
+% Keep the default performance intact while writing the opening return and
+% the two identical solo cycles only once. All inner repeats apply on the D.S.
 #(define full-form
-	`(tenorVamp bassTenorVamp drumsBassTenorVamp
-	  sectionHead sectionBridge sectionHits
-	  sectionHead sectionBridge
-	  (soloHead (label . "Soloist 1 over Head (2x)"))
-	  (soloBridge (label . "Soloist 1 over Bridge"))
-	  (soloHead (label . "Soloist 2 over Head (2x)"))
-	  (soloBridge (label . "Soloist 2 over Bridge"))
-	  sectionHead sectionBridge))
+  '(introVamp drumsBassTenorVamp
+    (segno-with-ending "Coda"
+      (sectionHead sectionBridge)
+      (sectionHits))
+    (volta-repeat 2 #f "1st pass: Soloist 1; 2nd pass: Soloist 2"
+      (soloHead (label . "Solo Head"))
+      (soloBridge (label . "Solo Bridge")))
+    sectionHead
+    (sectionBridge (fine-after . #t))))
 
 #(define lyre-form '(sectionHead sectionBridge sectionHits))
 
@@ -260,6 +270,8 @@ formSoloHead = { \repeat volta 4 { s1*4 } }
 		#{ \mark \markup \box \bold #label #}))
 
 form = {
+  \override Score.RehearsalMark.break-visibility = #begin-of-line-visible
+  \override Score.SegnoMark.break-visibility = #begin-of-line-visible
 	#(assemble-form-guide section-definitions full-form boxed-form-label)
 }
 
@@ -270,26 +282,36 @@ lyreForm = {
 % Named final parts retained for pondscum's %part convention.
 %part: melody
 melody = {
+  \compressEmptyMeasures
+  \override MultiMeasureRest.expand-limit = #1
 	\key f \minor #(assemble-form section-definitions 'melody full-form)
 }
 
 %part: guitar
 guitar = {
+  \compressEmptyMeasures
+  \override MultiMeasureRest.expand-limit = #1
 	\key f \minor #(assemble-form section-definitions 'guitar full-form)
 }
 
 %part: bass
 bass = {
+  \compressEmptyMeasures
+  \override MultiMeasureRest.expand-limit = #1
 	\key f \minor #(assemble-form section-definitions 'bass full-form)
 }
 
 %part: bassDrum
 bassDrum = \drummode {
+  \compressEmptyMeasures
+  \override MultiMeasureRest.expand-limit = #1
 	#(assemble-form section-definitions 'bassDrum full-form)
 }
 
 %part: cowbell
 cowbell = \drummode {
+  \compressEmptyMeasures
+  \override MultiMeasureRest.expand-limit = #1
 	#(assemble-form section-definitions 'cowbell full-form)
 }
 

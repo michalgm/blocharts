@@ -53,9 +53,57 @@
 #(define (segno-repeat-entry-form entry)
   (cddr entry))
 
+% A segno-with-ending entry has the shape
+%   (segno-with-ending "Coda label" (repeated sections ...) (first-pass sections ...))
+% Play the body, the first-pass ending, the body again, then continue at Coda.
+% Unlike segno-repeat, this places the coda exit before the first-pass ending.
+#(define (segno-with-ending-entry? entry)
+  (and (pair? entry) (eq? (car entry) 'segno-with-ending)))
+
+#(define (segno-with-ending-body entry) (caddr entry))
+#(define (segno-with-ending-tail entry) (cadddr entry))
+
+#(define (make-segno-with-ending music ending)
+  #{ \repeat volta 2 { #music \volta 1 { #ending } } #})
+
+% As in make-segno-guide, native navigation runs on plain skips, keeping
+% jump points outside the section guides' nested first/second endings.
+% The playable guide retains its repeats so it also unfolds in time with parts.
+#(define (make-segno-with-ending-guide music ending coda-label)
+  (let ((body-skip (skip-of-length music))
+        (ending-skip (skip-of-length ending)))
+    #{
+      \set Score.dalSegnoTextFormatter =
+        #(lambda (context return-count marks)
+           (make-line-markup
+            (list "D.S. al" coda-label "(with repeats)")))
+      <<
+        { #(make-segno-with-ending #{ #music \break #} ending) }
+        {
+          \repeat segno 2 {
+            #body-skip
+            \once \override Score.CodaMark.break-visibility = #end-of-line-visible
+            \once \override Score.CodaMark.self-alignment-X = #RIGHT
+            \set Score.codaMarkFormatter =
+              #(lambda (mark context) (make-line-markup (list "To" coda-label)))
+            \alternative {
+              \volta 1 { #ending-skip }
+              \volta 2 \volta #'() {
+                \section
+                \sectionLabel #coda-label
+              }
+            }
+          }
+        }
+      >>
+      \unset Score.codaMarkFormatter
+      \break
+    #}))
+
 % A volta-repeat form entry has the shape
 %   (volta-repeat count "heading" "pass label" section ...)
 % For example, it can describe one written solo form that is played twice.
+% Use #f for the heading when the first section already identifies the block.
 #(define (volta-repeat-entry? entry)
   (and (pair? entry) (eq? (car entry) 'volta-repeat)))
 
@@ -119,14 +167,15 @@
           music repeat-count heading pass-label show-navigation?)
   (if show-navigation?
       #{
-        s1*0^\markup {
-          \column {
-            \line { \bold #heading }
-            \line { \bold "Entire solo form 2x" }
-            \line { \italic #pass-label }
-          }
-        }
+        s1*0^#(make-column-markup
+                (append
+                 (if heading (list (make-bold-markup heading)) '())
+                 (list
+                  (make-bold-markup
+                   (format #f "Entire solo form ~ax" repeat-count))
+                  (make-italic-markup pass-label))))
         \repeat volta #repeat-count { #music }
+        \textEndMark \markup \italic "Repeat entire solo form"
         \break
       #}
       #{ \repeat volta #repeat-count { #music } #}))
@@ -250,6 +299,10 @@
    (map
     (lambda (entry)
       (cond
+       ((segno-with-ending-entry? entry)
+        (make-segno-with-ending
+         (assemble-form definitions instrument (segno-with-ending-body entry))
+         (assemble-form definitions instrument (segno-with-ending-tail entry))))
        ((segno-repeat-entry? entry)
         (make-segno-repeat
          (assemble-form
@@ -328,6 +381,13 @@
          '()
          (cons
           (cond
+           ((segno-with-ending-entry? (car entries))
+            (make-segno-with-ending-guide
+             (assemble-form-guide
+              definitions (segno-with-ending-body (car entries)) label-maker)
+             (assemble-form-guide
+              definitions (segno-with-ending-tail (car entries)) label-maker)
+             (segno-repeat-entry-label (car entries))))
            ((segno-repeat-entry? (car entries))
             (make-segno-guide
              (assemble-form-guide
