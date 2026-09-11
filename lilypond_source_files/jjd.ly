@@ -254,13 +254,12 @@ formSoloHead = {
 #(define full-form
   '(introVamp drumsBassTenorVamp
     (segno-with-ending "Coda"
-      (sectionHead sectionBridge)
+      (sectionHead (sectionBridge (fine-on-return . #t)))
       (sectionHits))
     (volta-repeat 2 #f "1st pass: Soloist 1; 2nd pass: Soloist 2"
       (soloHead (label . "Solo Head"))
       (soloBridge (label . "Solo Bridge")))
-    sectionHead
-    (sectionBridge (fine-after . #t))))
+    (ds-al-fine sectionHead sectionBridge)))
 
 #(define lyre-form '(sectionHead sectionBridge sectionHits))
 

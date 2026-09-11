@@ -103,6 +103,25 @@
       \break
     #}))
 
+% A final return names the sections played again without printing them twice:
+%   (ds-al-fine section ...)
+% Place fine-on-return on the destination endpoint. The one-pass wrapper
+% makes the hidden music available only when Pondscum unfolds repeats for MIDI.
+#(define (ds-al-fine-entry? entry)
+  (and (pair? entry) (eq? (car entry) 'ds-al-fine)))
+
+#(define (make-return-playback music)
+  #{ \repeat volta 1 { \unfolded { #music } } #})
+
+#(define (make-final-return-guide music)
+  #{
+    \textEndMark \markup \column {
+      \line { \italic "After Soloist 1: repeat solo form" }
+      \line { \italic "After both soloists: D.S. al Fine (with repeats)" }
+    }
+    #(make-return-playback music)
+  #})
+
 % A volta-repeat form entry has the shape
 %   (volta-repeat count "heading" "pass label" section ...)
 % For example, it can describe one written solo form that is played twice.
@@ -169,8 +188,9 @@
 % show-navigation? is #t only while building the shared form guide.  That copy
 % receives the explanatory markup and final line break.  Each instrument's
 % playable music still receives the repeat itself, but not duplicate text.
-#(define (make-volta-repeat
-          music repeat-count heading pass-label show-navigation?)
+#(define* (make-volta-repeat
+          music repeat-count heading pass-label show-navigation?
+          #:optional (final-return? #f))
   (if show-navigation?
       #{
         s1*0^#(make-column-markup
@@ -181,7 +201,8 @@
                    (format #f "Entire solo form ~ax" repeat-count))
                   (make-italic-markup pass-label))))
         \repeat volta #repeat-count { #music }
-        \textEndMark \markup \italic "Repeat entire solo form"
+        #(if final-return? (make-sequential-music '())
+             #{ \textEndMark \markup \italic "Repeat entire solo form" #})
         \break
       #}
       #{ \repeat volta #repeat-count { #music } #}))
@@ -235,7 +256,7 @@
 % part.  Taking the union across every section means a part missing from even
 % the first section is still discovered elsewhere and reported.
 #(define section-metadata-properties
-  '(label guide break-after bar-after fine-after))
+  '(label guide break-after bar-after fine-after fine-on-return))
 
 #(define (section-part-names definitions)
   (let section-loop ((sections definitions) (parts '()))
@@ -305,6 +326,9 @@
    (map
     (lambda (entry)
       (cond
+       ((ds-al-fine-entry? entry)
+        (make-return-playback
+         (assemble-form definitions instrument (cdr entry))))
        ((segno-with-ending-entry? entry)
         (make-segno-with-ending
          (assemble-form definitions instrument (segno-with-ending-body entry))
@@ -367,6 +391,12 @@
       (list
        (ly:music-deep-copy
         (section-property definitions section-name 'guide)))
+      (if (form-entry-property definitions entry 'fine-on-return #f)
+          (list #{
+            \once \override Score.TextMark.direction = #DOWN
+            \textEndMark \markup \italic "Fine"
+          #})
+          '())
       (cond
        (fine-after (list (ly:music-deep-copy fine-ending)))
        (bar-after (list (form-barline bar-after)))
@@ -387,6 +417,9 @@
          '()
          (cons
           (cond
+           ((ds-al-fine-entry? (car entries))
+            (make-final-return-guide
+             (assemble-form-guide definitions (cdr (car entries)) label-maker)))
            ((segno-with-ending-entry? (car entries))
             (make-segno-with-ending-guide
              (assemble-form-guide
@@ -410,7 +443,8 @@
              (volta-repeat-entry-count (car entries))
              (volta-repeat-entry-heading (car entries))
              (volta-repeat-entry-label (car entries))
-             #t))
+             #t
+             (and (pair? (cdr entries)) (ds-al-fine-entry? (cadr entries)))))
            (else
             (form-guide-entry
              definitions (car entries) index (null? (cdr entries)) label-maker)))

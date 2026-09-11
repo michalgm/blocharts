@@ -108,6 +108,15 @@ tenorSectionOne = \relative c' {
   }
 }
 
+% The vamp leads into Section 1 without Section 1's beat-four pickup.
+tenorVamp = \relative c' {
+  \repeat volta 2 { \tenorABody }
+  \alternative {
+    { \tenorAFirstEnding }
+    { \tenorAFirstEnding }
+  }
+}
+
 tenorSectionTwo = \relative c'' {
   \repeat volta 2 { \tenorBBody }
   \alternative {
@@ -238,8 +247,14 @@ bassDrumBridge = \drummode {
 }
 
 silentBridge = {
-  \repeat volta 4 { s1*4 }
+  % Keep the first phrase on one system in the full score and letter parts.
+  % The lyre guide removes these layout instructions.
+  \repeat volta 4 {
+    \repeat unfold 3 { s1 \tag #'full-layout { \noBreak } }
+    s1
+  }
   \textEndMark \markup \bold "4x total"
+  \tag #'full-layout { \break }
   \repeat volta 2 { s1*8 }
 }
 
@@ -256,7 +271,7 @@ silentBridge = {
       (label . ,#{ \mark \markup \box \bold "Vamp" #})
       (guide . ,#{ \eightBarRepeatWithAlternateGuide #})
       (melody . ,#{ \silentEightBarRepeat #})
-      (tenor . ,#{ \tenorSectionOne #})
+      (tenor . ,#{ \tenorVamp #})
       (bass . ,#{ \bassSectionOne #})
       (bassDrum . ,#{ \bassDrumSectionOne #}))
     (sectionOne
@@ -308,7 +323,7 @@ silentBridge = {
 #(define lyre-form
   '(sectionOne
     sectionTwo
-    (bridge (bar-after . "|."))))
+    bridge))
 
 % Pondscum discovers these names; both are derived from their respective forms.
 form = {
@@ -320,7 +335,9 @@ form = {
 }
 lyreForm = {
   \override Score.RehearsalMark.break-visibility = #begin-of-line-visible
-  #(assemble-form-guide section-definitions lyre-form default-form-label)
+  \removeWithTag #'full-layout {
+    #(assemble-form-guide section-definitions lyre-form default-form-label)
+  }
 }
 
 % Named final parts retained for pondscum's %part convention.
