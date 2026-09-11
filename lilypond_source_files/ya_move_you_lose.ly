@@ -2,7 +2,7 @@
 
 \include "form.ily"
 
-performanceForm = "Vamp, 1, 2, Vamp, 1, 2, Solos, Bridge, 1, 2"
+performanceForm = "Vamp, 1, 2, Vamp, 1, 2, Solos, Bridge, 1, 2, Ending"
 
 \header { 
 	tagline = "9/1/2026"
@@ -258,6 +258,11 @@ silentBridge = {
   \repeat volta 2 { s1*8 }
 }
 
+% Concert-pitch ending, played once after the final Section 2.
+hornEnding = \relative c' { ees2\fermata e2\fermata | f1\fermata | }
+bassEnding = \relative c, { ees2\fermata e2\fermata | f1\fermata | }
+bassDrumEnding = \drummode { bd2\fermata bd2\fermata | bd1\fermata | }
+
 % Each section owns its label, form timing, and instrument parts.
 #(define section-definitions
   `((vamp
@@ -301,7 +306,14 @@ silentBridge = {
       (melody . ,#{ \melodyBridge #})
       (tenor . ,#{ \tenorBridge #})
       (bass . ,#{ \bassBridge #})
-      (bassDrum . ,#{ \bassDrumBridge #}))))
+      (bassDrum . ,#{ \bassDrumBridge #}))
+    (ending
+      (label . ,#{ \mark \markup \box \bold "Ending" #})
+      (guide . ,#{ s1 \noBreak s1 #})
+      (melody . ,#{ \hornEnding #})
+      (tenor . ,#{ \hornEnding #})
+      (bass . ,#{ \bassEnding #})
+      (bassDrum . ,#{ \bassDrumEnding #}))))
 
 % Fail compilation early if any instrument part is missing or does not occupy
 % the same amount of musical time as its section guide.
@@ -318,12 +330,14 @@ silentBridge = {
     solos
     bridge
     sectionOne
-    (sectionTwo (fine-after . #t))))
+    sectionTwo
+    (ending (fine-after . #t))))
 
 #(define lyre-form
   '(sectionOne
     sectionTwo
-    bridge))
+    bridge
+    (ending (fine-after . #t))))
 
 % Pondscum discovers these names; both are derived from their respective forms.
 form = {
