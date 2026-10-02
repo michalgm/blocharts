@@ -312,7 +312,7 @@ naturalizeMusic =
 
 
 %{
-Source recording notes
+Source recording timestamps
 From "Rebirth Kickin' It LIve!"
 
 0:00 drum roll...
