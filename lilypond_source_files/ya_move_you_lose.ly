@@ -2,7 +2,7 @@
 
 \include "form.ily"
 
-performanceForm = "Vamp, 1, 2, Vamp, 1, 2, Solos, Bridge, 1, 2, Ending"
+performanceForm = "Vamp, 1, 2, Vamp, 1, 2, Bridge, Solos, Vamp, 1, 2, Coda"
 
 \header { 
 	tagline = "9/1/2026"
@@ -110,11 +110,7 @@ tenorSectionOne = \relative c' {
 
 % The vamp leads into Section 1 without Section 1's beat-four pickup.
 tenorVamp = \relative c' {
-  \repeat volta 2 { \tenorABody }
-  \alternative {
-    { \tenorAFirstEnding }
-    { \tenorAFirstEnding }
-  }
+  \repeat volta 2 { \tenorABody \tenorAFirstEnding }
 }
 
 tenorSectionTwo = \relative c'' {
@@ -145,9 +141,9 @@ bassSectionTwo = \relative c {
   }
 }
 
-% 96 measures total
+% 48 measures total
 bassSolos = \relative c {
-  \repeat volta 12 { \bassABody \bassAFirstEnding }
+  \repeat volta 6 { \bassABody \bassAFirstEnding }
 }
 
 silentEightBarRepeat = {
@@ -176,20 +172,19 @@ eightBarRepeatGuide = {
   \repeat volta 2 { s1*8 }
 }
 
-% Two 48-bar solo forms over the existing 96-bar accompaniment.
+% One 48-bar solo form.
 solosGuide = {
   s1*0^\markup {
     \column {
       \line { \bold "Solo form: Section 1 twice, then Section 2" }
-      \line { \italic "1st time through form: Soloist 1; 2nd: Soloist 2" }
     }
   }
-  \repeat volta 12 { s1*8 }
-  \textEndMark \markup \bold "12x"
+  \repeat volta 6 { s1*8 }
+  \textEndMark \markup \bold "6x"
 }
 
 solosRests = {
-  \repeat volta 12 { R1*8 }
+  \repeat volta 6 { R1*8 }
 }
 
 % Reusable bass-drum phrases and sections
@@ -225,7 +220,7 @@ bassDrumSectionTwo = \drummode {
 }
 
 bassDrumSolos = \drummode {
-  \repeat volta 12 { \repeat unfold 8 { \tresillo } }
+  \repeat volta 6 { \repeat unfold 8 { \tresillo } }
 }
 
 hornBridge = {
@@ -274,11 +269,11 @@ bassDrumEnding = \drummode { bd2\fermata bd2\fermata | bd1\fermata | }
       (bassDrum . ,#{ \bassDrumIntroVamp #}))
     (sectionOneNoMelody
       (label . ,#{ \mark \markup \box \bold "Vamp" #})
-      (guide . ,#{ \eightBarRepeatWithAlternateGuide #})
-      (melody . ,#{ \silentEightBarRepeat #})
+      (guide . ,#{ \eightBarRepeatGuide #})
+      (melody . ,#{ \silentEightBarRepeatNoAlt #})
       (tenor . ,#{ \tenorVamp #})
-      (bass . ,#{ \bassSectionOne #})
-      (bassDrum . ,#{ \bassDrumSectionOne #}))
+      (bass . ,#{ \bassRiff #})
+      (bassDrum . ,#{ \repeat volta 2 { \repeat unfold 8 { \tresillo } } #}))
     (sectionOne
       (label . ,#{ \mark \markup \box \bold "1" #})
       (guide . ,#{ \eightBarRepeatWithAlternateGuide #})
@@ -308,7 +303,7 @@ bassDrumEnding = \drummode { bd2\fermata bd2\fermata | bd1\fermata | }
       (bass . ,#{ \bassBridge #})
       (bassDrum . ,#{ \bassDrumBridge #}))
     (ending
-      (label . ,#{ \mark \markup \box \bold "Ending" #})
+      (label . ,#{ \mark \markup { \musicglyph "scripts.coda" \bold "Coda" } #})
       (guide . ,#{ s1 \noBreak s1 #})
       (melody . ,#{ \hornEnding #})
       (tenor . ,#{ \hornEnding #})
@@ -323,14 +318,13 @@ bassDrumEnding = \drummode { bd2\fermata bd2\fermata | bd1\fermata | }
 % section's label, barline, Fine, or line-break defaults when necessary.
 #(define full-form
   `(vamp
-    (segno-repeat al-fine
+    (segno-repeat first-time
       sectionOneNoMelody
       sectionOne
       sectionTwo)
-    solos
     bridge
-    sectionOne
-    sectionTwo
+    solos
+    (ds-al-coda sectionOneNoMelody sectionOne sectionTwo)
     (ending (fine-after . #t))))
 
 #(define lyre-form
@@ -344,8 +338,6 @@ form = {
   \override Score.RehearsalMark.break-visibility = #begin-of-line-visible
   \override Score.SegnoMark.break-visibility = #begin-of-line-visible
   #(assemble-form-guide section-definitions full-form default-form-label)
-  \set Score.finalFineTextVisibility = ##t
-  \fine
 }
 lyreForm = {
   \override Score.RehearsalMark.break-visibility = #begin-of-line-visible
