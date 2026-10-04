@@ -5,7 +5,7 @@
   title = "Freedom"
   composer = "Rebirth Brass Band"
   arranger = "Arr. Geoff Lee"
-  copyright = \markup {\bold { "Default Form:" }  "Vamp, Head, Solos, Bridge, Head"}
+  copyright = \markup {\bold { "Default Form:" }  "Vamp, Head, Head, Solo 1, add backing 1, Bridge, Solo 2, add backing 2, Head, Coda"}
 }
 
 %place a mark at bottom right
@@ -18,42 +18,91 @@ melody = {
   {
     \key f \minor
     \time 4/4
+    \compressEmptyMeasures
+    \override MultiMeasureRest.expand-limit = #1
+
+
+    \section
+    \sectionLabel \markup { \bold \box "Vamp" }
+    \repeat volta 2 {
+      R1*4
+    }
 
     \section
     \sectionLabel \markup { \bold \box "Head" }
     \repeat volta 2 {
-      bes1\<~ | bes2\! r8. bes16 aes8 bes | des8. bes16 r4 r2 | r1 |
-      \break
-      bes1\<~ | bes2\! r8. bes16 aes8 bes | des8. bes16 r4 r2 | r1 |
-      \break
+      bes1\<~\segno | bes2\! r8. bes16 aes8 bes | des8. bes16 r4 r2 | r1 |
+    } % end volta
+
+    \break
+    \repeat volta 2 {
       r8 f' r16 f r8 f4 ees16 des bes r |
       r8 f' r16 f r8 f4 ees16 des bes r |
       r8 f' r16 f r8 f4 ees16 des bes r |
-      r8 f' r16 f r8 f4 ees16 des bes r |
-    }
+      r8 f'^"4x, D.S., last time to Coda" r16 f r8 f4 ees16 des bes r |
+    } % end volta
+
+    \break
+    \section
+    \sectionLabel \markup { \bold \box "Solo 1" }
+    \repeat volta 4 {
+      R1*4
+    } % end volta
+
+    \section
+    \sectionLabel \markup { \bold \box "...Solo 1 backing" \italic " (Get up, Stand up!)" }
+    \repeat volta 4 {
+      aes16 bes r8 c16 des r8 r2 | aes16 bes r des r aes bes r r2 |
+      aes16 bes r8 c16 des r8 r2 | f16 r f ees r des bes r r2 |
+    } % end volta
 
     \break
     \section
     \sectionLabel \markup { \bold \box "Bridge" }
-    r2 r4 r8 aes16 aes16 |
+    %   r2 r4 r8 aes16 aes16 |
     \repeat volta 2 {
       bes16 bes r f r bes r c r g r8 r c16 c |
-      des16 des r bes r des r c r f ees des bes aes f ees |
+      des16 des r bes r des r c r f ees des bes aes f^"4x" ees |
     }
 
     \break
     \section
-    \sectionLabel \markup { \bold \box "One" \italic " (Get up, Stand up!)" }
-    aes16 bes r8 c16 des r8 r2 | aes16 bes r des r aes bes r r2 |
-    aes16 bes r8 c16 des r8 r2 | f16 r f ees r des bes r r2 |
+    \sectionLabel \markup { \bold \box "Solo 2" }
+    \repeat volta 4 {
+      R1*4
+    } % end repeat
+
+    \section
+    \sectionLabel \markup { \bold \box "...Solo 2 backing" \italic " (Which side are you on?)" }
+    bes8 bes des16 ees r f~ f4 r |
+    f8 f ees16 des r bes~ bes4 r |
+    bes8 bes des16 ees r f~ f4 r |
+    f8 f ees16 des r bes~ bes4^"D.S." r |
 
     \break
     \section
-    \sectionLabel \markup { \bold \box "Two" \italic " (Which side are you on?)" }
-    bes8 bes des16 ees r f~ f4 r |
-    f8 f ees16 des r bes~ bes4 r |
-    bes8 bes des16 ees r f~ f4 r |
-    f8 f ees16 des r bes~ bes4 r |
+    \sectionLabel \markup { \bold \box "Coda" }
+    \repeat volta 2 {
+      bes'1\<~\coda
+    } % end volta
+
+    \alternative {
+      {
+        % begin 1st ending
+        {
+          | bes2\! r8. bes16 aes8 bes | des8. bes16 r4 r2 | r1 |
+        }
+      } % repeat for 1st ending
+      {
+        % begin 2nd ending
+        {
+          | bes2\! r8. bes16^"ritardando...." aes8 bes | des8. bes16 r4 r2 |
+          \fine
+        }
+      } % repeat for 2nd ending
+    } % end "alternative" repeat
+
+
   }
 }
 
@@ -70,11 +119,13 @@ bass = {
   {
     \key f \minor
     \time 4/4
+    \compressEmptyMeasures
+    \override MultiMeasureRest.expand-limit = #1
 
     \section
-    \sectionLabel \markup { \bold \box "Head" }
+    \sectionLabel \markup { \bold \box "Vamp" }
     \repeat volta 2 {
-      \repeat percent 6 {
+      \repeat percent 2 {
         bes8. f bes8 c8. g c8 |
         des8. bes des8 c8. bes8. aes8 |
       }
@@ -82,29 +133,105 @@ bass = {
 
     \break
     \section
-    \sectionLabel \markup { \bold \box "Bridge" }
-    r1
+    \sectionLabel \markup { \bold \box "Head" }
+    \repeat volta 2 {
+      \repeat percent 2 {
+        bes8.\segno f bes8 c8. g c8 |
+        des8. bes des8 c8. bes8. aes8 |
+      } % end percent repeat
+    } % end volta repeat
+
     \repeat volta 2 {
       bes8. f bes8 c8. g c8 |
       des8. bes des8 c8. bes8. aes8 |
-    }
+      bes8. f bes8 c8. g c8 |
+      des8. bes^"4x, D.S., last time to Coda" des8 c8. bes8. aes8 |
+    } % end volta repeat
 
     \break
     \section
-    \sectionLabel \markup { \bold \box "One" \italic " (Get up, Stand up!)" }
-    \repeat percent 2 {
-      bes8. f bes8 c8. g c8 |
-      des8. bes des8 c8. bes8. aes8 |
-    }
-  
+    \sectionLabel \markup { \bold \box "Solo 1" }
+    \repeat volta 2 {
+      \repeat percent 2 {
+        bes8. f bes8 c8. g c8 |
+        des8. bes des8 c8. bes8. aes8 |
+      } % end percent repeat
+    } % end volta repeat
+
+    \section
+    \sectionLabel \markup { \bold \box "...Solo 1 backing" \italic " (Get up, Stand up!)" }
+    \repeat volta 2 {
+      \repeat percent 2 {
+        bes8. f bes8 c8. g c8 |
+        des8. bes des8 c8. bes8. aes8 |
+      } % end percent repeat
+    } % end volta repeat
 
     \break
     \section
-    \sectionLabel \markup { \bold \box "Two" \italic " (Which side are you on?)" }
-    \repeat percent 2 {
+    \sectionLabel \markup { \bold \box "Bridge" }
+    \repeat volta 2 {
+      bes8. f bes8 c8. g c8 |
+      des8. bes des8 c8. bes8. aes8^"4x" |
+    }
+
+    \section
+    \sectionLabel \markup { \bold \box "Solo 2" }
+    \repeat volta 2 {
+      \repeat percent 2 {
+        bes8. f bes8 c8. g c8 |
+        des8. bes des8 c8. bes8. aes8 |
+      } % end percent repeat
+    } % end volta repeat
+
+    \section
+    \sectionLabel \markup { \bold \box "...Solo 2 backing" \italic " (Which side are you on?)" }
+    \repeat volta 2 {
       bes8. f bes8 c8. g c8 |
       des8. bes des8 c8. bes8. aes8 |
-    }
+      bes8. f bes8 c8. g c8 |
+      des8. bes des8 c8. bes8.^"D.S." aes8 |
+    } % end volta repeat
+
+    \break
+    \section
+    \sectionLabel \markup { \bold \box "Coda" }
+    \repeat volta 2 {
+      bes8.\coda f bes8 c8. g c8 |
+    } % end volta repeat
+    \alternative {
+      {
+        % begin 1st ending
+        {
+          des8. bes des8 c8. bes8. aes8 |
+          bes8. f bes8 c8. g c8 |
+          des8. bes des8 c8. bes8. aes8 |
+        }
+      } % repeat for 1st ending
+      {
+        % begin 2nd ending
+        {
+          des8. bes des8 c8.^"ritardando...." bes8. aes8 |
+          bes4 r2.
+        }
+        \fine
+
+      } % repeat for 2nd ending
+    } % end "alternative" repeat
+
+    %{
+    \alternative {
+      { % begin 1st ending
+        {
+        }
+      } % repeat for 1st ending
+      { % begin 2nd ending
+        {
+        }
+      } % repeat for 2nd ending
+    } % end "alternative" repeat
+    %}
+
   }
 }
 
@@ -182,3 +309,38 @@ naturalizeMusic =
     >> \layout { \context { \Score \remove "Volta_engraver" } }
   }
 }
+
+
+%{
+Source recording timestamps
+From "Rebirth Kickin' It LIve!"
+
+0:00 drum roll...
+0:13 tuba + bass drum, snare continues roll, vocalizing
+0:35 [A] sung
+0:53 [B] sung
+
+1:10 [A] (horns)
+1:29 [B]
+
+1:47 [A'] <-- Variation on A section that BLO doesn't play
+
+2:06 [SOLO 1] (tenor sax)
+3:00 [SOLO backing 1] ("Get Up, Stand Up")
+
+3:19 [SOLO 2] (trombone)
+
+4:13 [BRIDGE]
+
+4:31 [SOLO 3] (trumpet)
+5:26 [SOLO backing 3] <-- BLO doesn't play, replaces with "Which Side Are You On?"
+
+5:44 [A]
+6:03 [B]
+
+6:21 [A] sung
+6:40 [B] sung
+
+6:57 [BRIDGE]
+%}
+
