@@ -1,11 +1,11 @@
 \version "2.24.4"
 
 \header { 
-	tagline = "10/1/2026"
+	tagline = "10/7/2026"
 
   title = "Freedom"
   composer = "Rebirth Brass Band"
-  arranger = "Arr. Geoff Lee"
+  arranger = "Arr. Geoff Lee, Jeff Giaquinto"
   copyright = \markup {\bold { "Default Form:" }  "Vamp, Head, Head, Solo 1, add backing 1, Bridge, Solo 2, add backing 2, Head, Coda"}
 }
 
@@ -80,29 +80,10 @@ melody = {
     bes8 bes des16 ees r f~ f4 r |
     f8 f ees16 des r bes~ bes4^"D.S." r |
 
-    \break
     \section
     \sectionLabel \markup { \bold \box "Coda" }
-    \repeat volta 2 {
-      bes'1\<~\coda
-    } % end volta
-
-    \alternative {
-      {
-        % begin 1st ending
-        {
-          | bes2\! r8. bes16 aes8 bes | des8. bes16 r4 r2 | r1 |
-        }
-      } % repeat for 1st ending
-      {
-        % begin 2nd ending
-        {
-          | bes2\! r8. bes16^"ritardando...." aes8 bes | des8. bes16 r4 r2 |
-          \fine
-        }
-      } % repeat for 2nd ending
-    } % end "alternative" repeat
-
+      <bes d f bes>4\<~\coda
+\fine
 
   }
 }
@@ -194,27 +175,9 @@ bass = {
       des8. bes des8 c8. bes8.^"D.S." aes8 |
     } % end volta repeat
 
-    \break
     \section
     \sectionLabel \markup { \bold \box "Coda" }
-    \repeat volta 2 {
-      bes8.\coda f bes8 c8. g c8 |
-    } % end volta repeat
-    \alternative {
-      {
-        % begin 1st ending
-        {
-          des8. bes des8 c8. bes8. aes8 |
-          bes8. f bes8 c8. g c8 |
-          des8. bes des8 c8. bes8. aes8 |
-        }
-      } % repeat for 1st ending
-      {
-        % begin 2nd ending
-        {
-          des8. bes des8 c8.^"ritardando...." bes8. aes8 |
-          bes4 r2.
-        }
+      bes4\coda 
         \fine
 
       } % repeat for 2nd ending
