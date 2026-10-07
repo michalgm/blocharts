@@ -1,11 +1,15 @@
 \version "2.12.3"
 
+\include "form.ily"
+
+performanceForm = "Vamp, Head, Bridge, Hits, Head, Bridge, Solos (Head 2x, Bridge per soloist), Head, Bridge"
+
 \header { 
-	tagline = "2/6/2026"
+	tagline = "9/11/2026"
 	title = "J.J.D."
 	composer = "Fela Kuti"
 
-	copyright = \markup {\bold ""} %form
+	copyright = \markup { \bold { "Default Form:" } \performanceForm }
 	}
 %description: Another song by <a href="http://www.fela.net/">Fela Kuti</a> (see above), released as a 22-minute single in 1977.
 
@@ -13,106 +17,317 @@
 markdownright = { \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT \once \override Score.RehearsalMark #'direction = #DOWN }
 
 
-% music pieces
-%part: melody
-melody = {
-	\relative c' { \key f \minor
-
-	\mark \default
+% Reusable melody sections
+melodysectionHead = \relative c' {
 	\repeat volta 2 {
 		ces'16 bes aes bes~ bes2~ bes8 f | aes aes r4 c8 ees c ees |
-		c8 bes16 aes f8 ees~ ees4~ ees8 f | aes aes r4 ees8 f aes bes | \break
-		}
+		c8 bes16 aes f8 ees~ ees4~ ees8 f | aes aes r4 ees8 f aes bes |
+	}
+}
 
-	\mark \default
+melodysectionBridge = \relative c'' {
 	\repeat volta 2 {
 		<<
-		{ ees8 [r16 ees] r8 f r2 | c8 [r16 c] r8 ees r2 | bes8 [r16 bes] r8 c r4 aes8 f~ |  }
-		\\
-		{ <f, c'>1 | <g d'> | <aes ees'> |  }
+			{ ees8 [r16 ees] r8 f r2 | c8 [r16 c] r8 ees r2 | bes8 [r16 bes] r8 c r4 aes8 f~ | }
+			\\
+			{ <f, c'>1 | <g d'> | <aes ees'> | }
 		>>
 	}
-		\alternative {
-		 { 
-			<< 
-			{ f'2 f8 aes bes c | }
-			\\
-			{ <bes, f'>1 | }
+	\alternative {
+		{
+			<<
+				{ f'2 f8 aes bes c | }
+				\\
+				{ <bes, f'>1 | }
 			>>
 		}
-		 { 
-			<< 
-			{ f'2 }
-			\\
-			{ bes,2 }
+		{
+			<<
+				{ f'2 }
+				\\
+				{ bes,2 }
 			>>
-		r4 r8 <bes' d>| \break
+			r4 r8 <bes' d> |
 		}
 	}
+}
 
-	\mark \default
+melodysectionHits = \relative c'' {
 	\repeat volta 2 {
-		<aes c>8 r r2. | r2. r8 <bes d> |	
-		<aes c>8 r r2. | r2. r8 <bes d> |	
+		<aes c>8 r r2. | r2. r8 <bes d> |
+		<aes c>8 r r2. | r2. r8 <bes d> |
 	}
-		 
+}
+
+% The guitar plays the same two-bar riff throughout. Section 2 needs a small
+% wrapper so its identical final bar appears under both written endings.
+guitarFirstBar = \relative c' { f8. aes16~ aes8 c, ees-. ees-. ees4-. | }
+guitarSecondBar = \relative c' { f8. aes16~ aes8 ees f-. f-. f4-. | }
+guitarRiff = { \repeat unfold 2 { \guitarFirstBar \guitarSecondBar } }
+
+guitarSection = { \repeat volta 2 { \guitarRiff } }
+
+guitarSectionWithEndings = {
+	\repeat volta 2 {
+		\guitarFirstBar
+		\guitarSecondBar
+		\guitarFirstBar
 	}
+	\alternative {
+		{ \guitarSecondBar }
+		{ \guitarSecondBar }
+	}
+}
+
+% Reusable bass sections
+bassRiff = \relative c, {
+	f8 f f aes r4. ees8 | f f f r c' bes aes bes |
+	f8 f f aes r4. ees8 | f f f r ees' d bes aes |
+}
+
+bassSection = {
+	\repeat volta 2 { \bassRiff }
+}
+
+basssectionBridge = \relative c, {
+	\repeat volta 2 {
+		f1 | g | aes |
+	}
+	\alternative {
+		{ bes | }
+		{ bes | }
+	}
+}
+
+bassSoloHead = { \repeat volta 4 { \bassRiff } }
+
+% Print one riff, but keep the first two passes silent in unfolded playback.
+bassIntroVamp = {
+	\repeat volta 4 {
+		\volta #'() {
+			s1*0^\markup { \italic "Enter on 3rd pass" }
+			\bassRiff
+		}
+		\volta 1,2 { \unfolded { R1*4 } }
+		\volta 3,4 { \unfolded { \bassRiff } }
+	}
+}
+
+
+% Bass drum enters with the full rhythm section at C and continues throughout.
+% One bar: dotted eighth, sixteenth, eighth rest, eighth note, half rest.
+bassDrumPattern = \drummode { bd8. bd16 r8 bd8 r2 | }
+
+% One bar of steady quarter-note cowbell.
+cowbellPattern = \drummode { cb4 cb cb cb | }
+
+cowbellRepeatedSection = \drummode {
+	\repeat volta 2 { \repeat unfold 4 { \cowbellPattern } }
+}
+
+cowbellsectionBridge = \drummode {
+	\repeat volta 2 { \repeat unfold 3 { \cowbellPattern } }
+	\alternative {
+		{ \cowbellPattern }
+		{ \cowbellPattern }
+	}
+}
+
+cowbellSoloHead = \drummode {
+	\repeat volta 4 { \repeat unfold 4 { \cowbellPattern } }
+}
+
+% Steady quarter-note side-stick clicks keep time before the bass drum enters.
+bassDrumClickPattern = \drummode { ss4 ss ss ss | }
+
+bassDrumIntroVamp = \drummode {
+	\repeat volta 4 { \repeat unfold 4 { \bassDrumClickPattern } }
+}
+
+bassDrumRepeatedSection = \drummode {
+	\repeat volta 2 { \repeat unfold 4 { \bassDrumPattern } }
+}
+
+bassDrumsectionBridge = \drummode {
+	\repeat volta 2 { \repeat unfold 3 { \bassDrumPattern } }
+	\alternative {
+		{ \bassDrumPattern }
+		{ \bassDrumPattern }
+	}
+}
+
+bassDrumSoloHead = \drummode {
+	\repeat volta 4 { \repeat unfold 4 { \bassDrumPattern } }
+}
+
+% Silent counterparts preserve each section's repeat structure when an
+% instrument is tacet.
+silentRepeatedSection = { \repeat volta 2 { R1*4 } }
+silentSectionWithEndings = {
+	\repeat volta 2 { R1*3 }
+	\alternative {
+		{ R1 }
+		{ R1 }
+	}
+}
+silentSoloHead = { \repeat volta 4 { R1*4 } }
+
+% Invisible timing for score-wide labels and layout breaks.
+formRepeatedSection = { \repeat volta 2 { s1*4 } }
+formSectionBridge = {
+	\repeat volta 2 { s1*3 }
+	\alternative {
+		{ s1 }
+		{ s1 }
+	}
+}
+formSoloHead = {
+	\repeat volta 4 { s1*4 }
+	\textEndMark \markup \bold "4x (2 Heads)"
+}
+
+% Each section owns its label, form timing, and instrument parts.
+#(define section-definitions
+	`((introVamp
+		(label . "Vamp")
+		(guide . ,#{
+			\repeat volta 4 { s1*4 }
+			\textEndMark \markup \bold "4x"
+		#})
+		(melody . ,#{ \repeat volta 4 { R1*4 } #})
+		(guitar . ,#{ \repeat volta 4 { \guitarRiff } #})
+		(bass . ,#{ \bassIntroVamp #})
+		(bassDrum . ,#{ \bassDrumIntroVamp #})
+		(cowbell . ,#{ \repeat volta 4 { R1*4 } #}))
+	  (drumsBassTenorVamp
+		(label . "Vamp")
+		(guide . ,#{ \formRepeatedSection #})
+		(melody . ,#{ \silentRepeatedSection #})
+		(guitar . ,#{ \guitarSection #})
+		(bass . ,#{ \bassSection #})
+		(bassDrum . ,#{ \bassDrumRepeatedSection #})
+		(cowbell . ,#{ \cowbellRepeatedSection #}))
+	  (sectionHead
+		(label . "Head")
+		(guide . ,#{ \formRepeatedSection #})
+		(melody . ,#{ \melodysectionHead #})
+		(guitar . ,#{ \guitarSection #})
+		(bass . ,#{ \bassSection #})
+		(bassDrum . ,#{ \bassDrumRepeatedSection #})
+		(cowbell . ,#{ \cowbellRepeatedSection #}))
+	  (sectionBridge
+		(label . "Bridge")
+		(guide . ,#{ \formSectionBridge #})
+		(melody . ,#{ \melodysectionBridge #})
+		(guitar . ,#{ \guitarSectionWithEndings #})
+		(bass . ,#{ \basssectionBridge #})
+		(bassDrum . ,#{ \bassDrumsectionBridge #})
+		(cowbell . ,#{ \cowbellsectionBridge #}))
+	  (sectionHits
+		(label . "Hits")
+		(guide . ,#{ \formRepeatedSection #})
+		(melody . ,#{ \melodysectionHits #})
+		(guitar . ,#{ \guitarSection #})
+		(bass . ,#{ \bassSection #})
+		(bassDrum . ,#{ \bassDrumRepeatedSection #})
+		(cowbell . ,#{ \cowbellRepeatedSection #}))
+	  (soloHead
+		(guide . ,#{ \formSoloHead #})
+		(melody . ,#{ \silentSoloHead #})
+		(guitar . ,#{ \silentSoloHead #})
+		(bass . ,#{ \bassSoloHead #})
+		(bassDrum . ,#{ \bassDrumSoloHead #})
+		(cowbell . ,#{ \cowbellSoloHead #}))
+	  (soloBridge
+		(guide . ,#{ \formSectionBridge #})
+		(melody . ,#{ \silentSectionWithEndings #})
+		(guitar . ,#{ \silentSectionWithEndings #})
+		(bass . ,#{ \basssectionBridge #})
+		(bassDrum . ,#{ \bassDrumsectionBridge #})
+		(cowbell . ,#{ \cowbellsectionBridge #}))))
+
+% Fail compilation early if any instrument part is missing or does not occupy
+% the same amount of musical time as its section guide.
+#(validate-section-lengths section-definitions)
+
+% Keep the default performance intact while writing the opening return and
+% the two identical solo cycles only once. All inner repeats apply on the D.S.
+#(define full-form
+  '(introVamp drumsBassTenorVamp
+    (segno-with-ending "Coda"
+      (sectionHead (sectionBridge (fine-on-return . #t)))
+      (sectionHits))
+    (volta-repeat 2 #f "1st pass: Soloist 1; 2nd pass: Soloist 2"
+      (soloHead (label . "Solo Head"))
+      (soloBridge (label . "Solo Bridge")))
+    (ds-al-fine sectionHead sectionBridge)))
+
+#(define lyre-form '(sectionHead sectionBridge sectionHits))
+
+#(define (boxed-form-label definitions entry index)
+	(let ((label (form-entry-section-property definitions entry 'label)))
+		#{ \mark \markup \box \bold #label #}))
+
+form = {
+  \override Score.RehearsalMark.break-visibility = #begin-of-line-visible
+  \override Score.SegnoMark.break-visibility = #begin-of-line-visible
+	#(assemble-form-guide section-definitions full-form boxed-form-label)
+}
+
+lyreForm = {
+	#(assemble-form-guide section-definitions lyre-form boxed-form-label)
+}
+
+% Named final parts retained for pondscum's %part convention.
+%part: melody
+melody = {
+  \compressEmptyMeasures
+  \override MultiMeasureRest.expand-limit = #1
+	\key f \minor #(assemble-form section-definitions 'melody full-form)
 }
 
 %part: guitar
 guitar = {
-	\relative c' { \key f \minor
-
-	\mark \default
-	\repeat volta 2 {
-		f8. aes16~ aes8 c, ees-. ees-. ees4-.  | f8. aes16~ aes8 ees f-. f-. f4-. |
-		f8. aes16~ aes8 c, ees-. ees-. ees4-.  | f8. aes16~ aes8 ees f-. f-. f4-. | \break
-		}
-	
-	\mark \default
-	\repeat volta 2 {
-		f8. aes16~ aes8 c, ees-. ees-. ees4-.  | f8. aes16~ aes8 ees f-. f-. f4-. |
-		f8. aes16~ aes8 c, ees-. ees-. ees4-.  | 
-		}
-		\alternative {
-			{ f8. aes16~ aes8 ees f-. f-. f4-. |}
-			{ f8. aes16~ aes8 ees f-. f-. f4-. | \break}
-		}	
-
-	\mark \default
-	\repeat volta 2 {
-		f8. aes16~ aes8 c, ees-. ees-. ees4-.  | f8. aes16~ aes8 ees f-. f-. f4-. |
-		f8. aes16~ aes8 c, ees-. ees-. ees4-.  | f8. aes16~ aes8 ees f-. f-. f4-. |
-		}	
-	}
+  \compressEmptyMeasures
+  \override MultiMeasureRest.expand-limit = #1
+	\key f \minor #(assemble-form section-definitions 'guitar full-form)
 }
 
 %part: bass
 bass = {
-	\relative c, { \key f \minor
+  \compressEmptyMeasures
+  \override MultiMeasureRest.expand-limit = #1
+	\key f \minor #(assemble-form section-definitions 'bass full-form)
+}
 
-	\mark \default
-	\repeat volta 2 {
-		f8 f f aes r4. ees8 | f f f r c' bes aes bes | 
-		f8 f f aes r4. ees8 | f f f r ees' d bes aes | \break 
-		}
+%part: bassDrum
+bassDrum = \drummode {
+  \compressEmptyMeasures
+  \override MultiMeasureRest.expand-limit = #1
+	#(assemble-form section-definitions 'bassDrum full-form)
+}
 
-	\mark \default
-	\repeat volta 2 {
-		f1 | g | aes | 
-		}
-		\alternative {
-			{ bes | }
-			{ bes |  \break}
-		}
+%part: cowbell
+cowbell = \drummode {
+  \compressEmptyMeasures
+  \override MultiMeasureRest.expand-limit = #1
+	#(assemble-form section-definitions 'cowbell full-form)
+}
 
-	\mark \default
-	\repeat volta 2 {
-		f8 f f aes r4. ees8 | f f f r c' bes aes bes | 
-		f8 f f aes r4. ees8 | f f f r ees' d bes aes | 
-		}
-
-	}
+melodyLyre = {
+	\key f \minor #(assemble-form section-definitions 'melody lyre-form)
+}
+guitarLyre = {
+	\key f \minor #(assemble-form section-definitions 'guitar lyre-form)
+}
+bassLyre = {
+	\key f \minor #(assemble-form section-definitions 'bass lyre-form)
+}
+bassDrumLyre = \drummode {
+	#(assemble-form section-definitions 'bassDrum lyre-form)
+}
+cowbellLyre = \drummode {
+	#(assemble-form section-definitions 'cowbell lyre-form)
 }
 
 %part: words
@@ -176,22 +391,34 @@ naturalizeMusic =
 
 			
 		% Group: Melody
-		\new Staff \with { \consists "Volta_engraver" instrumentName = "Melody" } {  \set Staff.midiInstrument = #"trumpet" \clef treble
+		\new Staff \with { \consists "Volta_engraver" instrumentName = "Melody" } { \set Staff.midiInstrument = #"trumpet" \clef treble
 			\tempo  4 = 120 
 			\override Score.RehearsalMark.self-alignment-X = #LEFT
-			\melody
+			<< \form { \melody } >>
 		}
 		% Group: Guitar
-		\new Staff \with { \consists "Volta_engraver" instrumentName = "Guitar" } {  \set Staff.midiInstrument = #"alto sax" \clef treble
+		\new Staff \with { \consists "Volta_engraver" instrumentName = "Guitar" } { \set Staff.midiInstrument = #"alto sax" \clef treble
 			\tempo  4 = 120 
 			\override Score.RehearsalMark.self-alignment-X = #LEFT
 			\guitar
 		}
 		% Group: Bass
-		\new Staff \with { \consists "Volta_engraver" instrumentName = "Bass" } {  \set Staff.midiInstrument = #"tuba" \clef bass
+		\new Staff \with { \consists "Volta_engraver" instrumentName = "Bass" } { \set Staff.midiInstrument = #"tuba" \clef bass
 			\tempo  4 = 120 
 			\override Score.RehearsalMark.self-alignment-X = #LEFT
 			\bass
+		}
+		% Group: BassDrum
+		\new DrumStaff \with { \consists "Volta_engraver" instrumentName = "BassDrum" } {
+			\tempo  4 = 120 
+			\override Score.RehearsalMark.self-alignment-X = #LEFT
+			\bassDrum
+		}
+		% Group: Cowbell
+		\new DrumStaff \with { \consists "Volta_engraver" instrumentName = "Cowbell" } {
+			\tempo  4 = 120 
+			\override Score.RehearsalMark.self-alignment-X = #LEFT
+			\cowbell
 		}
 	>> \layout { \context { \Score \remove "Volta_engraver" } } }  
 }
