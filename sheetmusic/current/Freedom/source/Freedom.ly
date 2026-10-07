@@ -64,21 +64,23 @@ melody = {
     \repeat volta 2 {
       bes16 bes r f r bes r c r g r8 r c16 c |
       des16 des r bes r des r c r f ees des bes aes f^"4x" ees |
-    }
+    } % end volta
 
     \break
     \section
     \sectionLabel \markup { \bold \box "Solo 2" }
     \repeat volta 4 {
       R1*4
-    } % end repeat
+    } % end volta
 
     \section
     \sectionLabel \markup { \bold \box "...Solo 2 backing" \italic " (Which side are you on?)" }
+    \repeat volta 2 {
     bes8 bes des16 ees r f~ f4 r |
     f8 f ees16 des r bes~ bes4 r |
     bes8 bes des16 ees r f~ f4 r |
     f8 f ees16 des r bes~ bes4^"D.S." r |
+    } % end volta
 
     \section
     \sectionLabel \markup { \bold \box "Coda" }
@@ -179,9 +181,6 @@ bass = {
     \sectionLabel \markup { \bold \box "Coda" }
       bes4\coda 
         \fine
-
-      } % repeat for 2nd ending
-    } % end "alternative" repeat
 
     %{
     \alternative {

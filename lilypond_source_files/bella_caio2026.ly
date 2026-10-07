@@ -6,7 +6,7 @@
   composer = "Trad Italian"
   arranger =  "arr. La Plebe, Jeff Gaquinto"
 
-  copyright = \markup {\bold {"Default Form: "} "1, 2, 1, 3, 4, drum break, solos, 4, 3" }%form
+  copyright = \markup {\bold {"Default Form: "} "TBD" }%form
 }
 
 %description:Argentine band <a href="http://www.fabulosos-cadillacs.com/">Los Fabulosos Cadillacs</a>' biggest hit, from their 1993 album <i>Vasos Vacíos</i>, about the oppression and forced disappearances during the years of military dictatorship across Latin America, particularly the National Reorganization Process in Argentina. The song narrates the story of a revolutionary hunted down by law enforcement. (See <a href="http://en.wikipedia.org/wiki/El_Matador">wikipedia entry</a>.)
@@ -14,20 +14,17 @@
 % music pieces
 %part: melody
 melody = \relative c' {
-  \time 2/2 \key c \major
+  \time 4/4 \key bes \major
   \compressEmptyMeasures
   \override MultiMeasureRest.expand-limit = #1
-  \partial 4 r
 
   \repeat volta 2 {
     \mark \default %Section 1: Verse+Prechorus
     {
-      a'8 \mf a r a c4 c8 e ~ |    e r d4 e d |    e4. c8 ~ c4 r |  R1 |
-      r8 d d d d f r e |   r b r b c4 b |   c4. a8 ~ a4 r |  R1 |
-      r8 d r d d f r e |   r b r4 r8 b r b |   c4 b8 c r c r d |
-      e4 r r8 a, ~ a b |   c c r c d4 c8 b |   r e, e e c'4 d8 c |  a4 r a8\f a r a |
-      e'1 |    r2 a,8 a r f' |  e1 |   r2 a,8 a r a |
-      e'1 |   r2 a,8 a r f' |  e1 |
+	\partial 4. d8 g a | 
+ bes g~ g4 r8 d g a | bes g r4 r8 d g a |
+	bes4 a8 g bes4 a8 g | d'4 d d c8 d | 
+	ees ees r4 r8 ees d c | ees d r4 r8 d c bes | a4 d bes a | g2 r8 d g a |
     }
 
     \alternative {
@@ -93,91 +90,6 @@ melody = \relative c' {
 } % END MELODY
 
 
-%part: countermelody
-countermelody = \relative c' {
-  \time 2/2 \key c \major
-  \compressEmptyMeasures
-  \override MultiMeasureRest.expand-limit = #1
-  \partial 4 r
-
-  \repeat volta 2 {
-    \mark \default %Section 1: Verse+Prechorus
-    {
-      a'8 \mf a r a c4 c8 e ~ |    e r d4 e d |    e4. c8 ~ c4 r |  R1 |
-      r8 d d d d f r e |   r b r b c4 b |   c4. a8 ~ a4 r |  R1 |
-      r8 d r d d f r e |   r b r4 r8 b r b |   c4 b8 c r c r d |
-      e4 r r8 a, ~ a b |   c c r c d4 c8 b |   r e, e e c'4 d8 c |  a4 r a8\f a r a |
-      e'1 |    r2 a,8 a r f' |  e1 |   r2 a,8 a r a |
-      e'1 |   r2 a,8 a r f' |  e1 |
-    }
-
-    \alternative {
-      { % begin 1st ending
-        \break \mark \default  %Section 2: Horn Line
-        {
-          a,8-. a-. a-. a-. a4 c8-. c-.|    c4 a8-. a-. a4 r4 |
-          a8-. a-. a-. a-. a4 c8-. c-.|    c4 a8-. a-. a4 r4 |
-          a8-. a-. a-. a-. a4 c8-. c-.|    c4 a8-. a-. a4 r4 |
-          a8-. a-. a-. a-. a4 c8-. c-.|    c4 a8-. a-. a4 r4 |
-        }
-      } % repeat for 1st ending
-      { % begin 2nd ending
-        \break \mark \default %Section 3: Hits
-        \section
-        \sectionLabel \markup { \bold \box "Hits"}
-        {
-          r1 \mf  r1  r1 |
-          \override NoteHead #'style = #'cross
-          e'4_"Hey!" r e_"Hey!" r |
-          \override NoteHead #'style = #'default
-          c8_"cresc." c c c b4 c |
-          r2 a8 b c b|
-          c c c c b4 c |
-          \override NoteHead #'style = #'cross
-          e4_"Hey!" r e_"Hey!" r |
-          \override NoteHead #'style = #'default
-          <c e>8 <c e> <c e> <c e> <b d>4 <c e>|
-          r2 <a c>8 <b d> <c e> <b d>|
-          <c e>8 <c e> <c e> <c e> <b d>4 <c e>^"Fine"|
-          r2 r4 e8 f |
-        }
-      } % repeat for 2nd ending
-    } % end "alternative" repeat
-  } % end volta repeat
-
-  \break \mark \default %Section 4: Chorus
-  \section
-  \sectionLabel \markup { \bold \box "Chorus"}
-
-  {
-    e2.\ff e8 f |
-    e2. r4 |
-    d8 d d d e4-. f8 e ~|
-    e2 r4 e8 f |
-    e2. e8 f |
-    e2. r4 |
-    d8 d d d e4-. f8 e ~ |
-    e2 r8 e r e |
-    g4 f8 e f4 e8 d |
-    e4 d8 c d4 c8 b |
-    c2 r8 f r f |
-    r e ~ e4 r e8 f |
-    e2. e8 f |
-    e2. r4 |
-    d8 d d d e4-.^"Last time to Hits (3)" f8 e ~|
-    e4 r4 r2 |
-  }
-
-  \section
-  \sectionLabel \markup { \bold \box "Drums"}
-  R1*31  r2.^"To Chorus (4)" e8 f
-} % END COUNTERMELODY
-
-
-
-
-
-
 
 
 %part: tenor
@@ -185,7 +97,6 @@ tenor = \relative c' {
   \time 2/2 \key c \major
   \compressEmptyMeasures
   \override MultiMeasureRest.expand-limit = #1
-  \partial 4 <a' c e>8 ^^ <a c e> ^^
 
   \repeat volta 2 {
 
@@ -287,7 +198,6 @@ bass = \relative c {
   \time 2/2 \key c \major
   \compressEmptyMeasures
   \override MultiMeasureRest.expand-limit = #1
-  \partial 4 a8 ^^ a ^^
 
   \repeat volta 2 {
     \mark \default %Section 1: Verse+Prechorus
