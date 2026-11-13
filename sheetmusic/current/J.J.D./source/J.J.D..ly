@@ -5,7 +5,7 @@
 performanceForm = "Vamp, Head, Bridge, Hits, Head, Bridge, Solos (Head 2x, Bridge per soloist), Head, Bridge"
 
 \header { 
-	tagline = "9/11/2026"
+	tagline = "11/13/2026"
 	title = "J.J.D."
 	composer = "Fela Kuti"
 

@@ -41,6 +41,9 @@
 % A segno-repeat form entry has the shape
 %   (segno-repeat "Coda label" section ...)
 %   (segno-repeat al-fine section ...)
+%   (segno-repeat first-time section ...)
+% first-time prints a first-time-only D.S. and an after-solos Coda exit;
+% a later ds-al-coda entry supplies the final return.
 % al-fine prints D.S. al Fine without a heading after the repeat; the chart
 % places Fine at its actual end. Both modes use the same playback order.
 % It keeps the printed navigation and unfolded MIDI order in the same form.
@@ -110,6 +113,19 @@
 #(define (ds-al-fine-entry? entry)
   (and (pair? entry) (eq? (car entry) 'ds-al-fine)))
 
+% A later return to the same segno, followed by the chart's Coda section:
+%   (ds-al-coda section ...)
+#(define (ds-al-coda-entry? entry)
+  (and (pair? entry) (eq? (car entry) 'ds-al-coda)))
+
+#(define (make-coda-return-guide music)
+  #{
+    \tweak direction #DOWN
+    \textEndMark \markup \italic "D.S. al Coda (with repeats)"
+    #(make-return-playback music)
+    \break
+  #})
+
 #(define (make-return-playback music)
   #{ \repeat volta 1 { \unfolded { #music } } #})
 
@@ -168,17 +184,24 @@
 % the normal section guide (labels, breaks, etc.) and the native segno repeat.
 #(define (make-segno-guide music destination)
   (let ((navigation (skip-of-length music))
-        (al-fine? (eq? destination 'al-fine)))
+        (al-fine? (eq? destination 'al-fine))
+        (first-time? (eq? destination 'first-time)))
     #{
       \set Score.dalSegnoTextFormatter =
-        #(make-dal-segno-al-coda-formatter
-          (if al-fine? "Fine" destination))
+        #(if first-time?
+           (lambda (context return-count marks)
+             (make-column-markup
+              (list
+               (make-line-markup (list "D.S. first time only (with repeats)"))
+               (make-line-markup (list "To Coda after solos")))))
+           (make-dal-segno-al-coda-formatter
+            (if al-fine? "Fine" destination)))
       <<
         { #music }
         { \repeat segno 2 { #navigation } }
       >>
       \section
-      #(if al-fine? (make-sequential-music '())
+      #(if (or al-fine? first-time?) (make-sequential-music '())
            #{ \sectionLabel #destination #})
       \break
     #}))
@@ -326,7 +349,7 @@
    (map
     (lambda (entry)
       (cond
-       ((ds-al-fine-entry? entry)
+       ((or (ds-al-fine-entry? entry) (ds-al-coda-entry? entry))
         (make-return-playback
          (assemble-form definitions instrument (cdr entry))))
        ((segno-with-ending-entry? entry)
@@ -417,6 +440,9 @@
          '()
          (cons
           (cond
+           ((ds-al-coda-entry? (car entries))
+            (make-coda-return-guide
+             (assemble-form-guide definitions (cdr (car entries)) label-maker)))
            ((ds-al-fine-entry? (car entries))
             (make-final-return-guide
              (assemble-form-guide definitions (cdr (car entries)) label-maker)))
