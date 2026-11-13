@@ -1,10 +1,10 @@
 \version "2.24.4"
 
 \header {
-  tagline = "8/27/2025"
+  tagline = "10/7/2025"
   title = "Freedom"
   composer = "Rebirth Brass Band"
-  arranger = "Arr. Geoff Lee"
+  arranger = "Arr. Geoff Lee, Jeff Giaquinto"
   copyright = \markup {\bold { "Default Form:" }  "Vamp, Head, Head, Solo 1, add backing 1, Bridge, Solo 2, add backing 2, Head, Coda"}
 }
 
@@ -63,45 +63,28 @@ melody = {
     \repeat volta 2 {
       bes16 bes r f r bes r c r g r8 r c16 c |
       des16 des r bes r des r c r f ees des bes aes f^"4x" ees |
-    }
+    } % end volta
 
     \break
     \section
     \sectionLabel \markup { \bold \box "Solo 2" }
     \repeat volta 4 {
       R1*4
-    } % end repeat
+    } % end volta
 
     \section
     \sectionLabel \markup { \bold \box "...Solo 2 backing" \italic " (Which side are you on?)" }
+    \repeat volta 2 {
     bes8 bes des16 ees r f~ f4 r |
     f8 f ees16 des r bes~ bes4 r |
     bes8 bes des16 ees r f~ f4 r |
     f8 f ees16 des r bes~ bes4^"D.S." r |
-
-    \break
-    \section
-    \sectionLabel \markup { \bold \box "Coda" }
-    \repeat volta 2 {
-      bes'1\<~\coda
     } % end volta
 
-    \alternative {
-      {
-        % begin 1st ending
-        {
-          | bes2\! r8. bes16 aes8 bes | des8. bes16 r4 r2 | r1 |
-        }
-      } % repeat for 1st ending
-      {
-        % begin 2nd ending
-        {
-          | bes2\! r8. bes16^"ritardando...." aes8 bes | des8. bes16 r4 r2 |
-          \fine
-        }
-      } % repeat for 2nd ending
-    } % end "alternative" repeat
-
+    \section
+    \sectionLabel \markup { \bold \box "Coda" }
+      <bes d f bes>4\<~\coda
+\fine
 
   }
 }
@@ -193,31 +176,10 @@ bass = {
       des8. bes des8 c8. bes8.^"D.S." aes8 |
     } % end volta repeat
 
-    \break
     \section
     \sectionLabel \markup { \bold \box "Coda" }
-    \repeat volta 2 {
-      bes8.\coda f bes8 c8. g c8 |
-    } % end volta repeat
-    \alternative {
-      {
-        % begin 1st ending
-        {
-          des8. bes des8 c8. bes8. aes8 |
-          bes8. f bes8 c8. g c8 |
-          des8. bes des8 c8. bes8. aes8 |
-        }
-      } % repeat for 1st ending
-      {
-        % begin 2nd ending
-        {
-          des8. bes des8 c8.^"ritardando...." bes8. aes8 |
-          bes4 r2.
-        }
+      bes4\coda 
         \fine
-
-      } % repeat for 2nd ending
-    } % end "alternative" repeat
 
     %{
     \alternative {
